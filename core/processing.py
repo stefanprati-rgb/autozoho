@@ -4,7 +4,7 @@ import logging
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from core.messaging import abrir_modal_whatsapp, selecionar_canal_e_modelo, enviar_mensagem_whatsapp, trocar_departamento_zoho
+from core.messaging import abrir_modal_whatsapp, selecionar_canal_e_modelo, enviar_mensagem_whatsapp
 
 def processar_pagina_cliente(driver, nome_cliente, departamento, template_nome, ancoras, dry_run=False):
     """Processa um cliente individual."""
