@@ -1,2 +1,246 @@
 2025-11-21 14:41:53,940 - INFO - Iniciando automação em: 2025-11-21 14:41:53.940813
 2025-11-21 14:41:53,941 - WARNING - >>> MODO DRY-RUN (SIMULAÇÃO) ATIVADO <<<
+2025-11-21 14:44:35,663 - INFO - Iniciando automação em: 2025-11-21 14:44:35.663694
+2025-11-21 14:44:35,664 - WARNING - >>> MODO DRY-RUN (SIMULAÇÃO) ATIVADO <<<
+2025-11-21 14:47:22,760 - INFO - Iniciando automação em: 2025-11-21 14:47:22.759987
+2025-11-21 14:47:22,760 - WARNING - >>> MODO DRY-RUN (SIMULAÇÃO) ATIVADO <<<
+2025-11-21 14:47:27,831 - INFO - Template: Cobrança 1.4 | Departamento: EGS
+2025-11-21 14:47:27,833 - ERROR - Lista de clientes vazia ou arquivo não encontrado.
+2025-11-21 14:50:10,826 - INFO - Iniciando automação em: 2025-11-21 14:50:10.826946
+2025-11-21 14:50:10,827 - WARNING - >>> MODO DRY-RUN (SIMULAÇÃO) ATIVADO <<<
+2025-11-21 14:50:14,872 - INFO - Template: Cobrança 1.4 | Departamento: EGS
+2025-11-21 14:50:14,895 - INFO - Carregados 18 clientes para processar.
+2025-11-21 14:50:14,895 - INFO - Iniciando Microsoft Edge...
+2025-11-21 14:50:17,376 - WARNING - There was an error managing msedgedriver (error sending request for url (https://msedgedriver.azureedge.net/LATEST_RELEASE_142_WINDOWS)); using driver found in the cache
+2025-11-21 14:50:26,530 - INFO - Navegando para login...
+2025-11-21 14:51:36,256 - INFO - Selecionando departamento: EGS
+2025-11-21 14:51:38,424 - INFO - Departamento 'EGS' já selecionado.
+2025-11-21 15:04:35,073 - INFO - Iniciando automação em: 2025-11-21 15:04:35.073915
+2025-11-21 15:04:35,074 - WARNING - >>> MODO DRY-RUN (SIMULAÇÃO) ATIVADO <<<
+2025-11-21 15:05:04,671 - INFO - Iniciando automação em: 2025-11-21 15:05:04.671916
+2025-11-21 15:05:09,302 - INFO - Template: Cobrança 1.4 | Departamento: EGS
+2025-11-21 15:05:09,314 - INFO - Carregados 18 clientes para processar.
+2025-11-21 15:05:09,314 - INFO - Iniciando Microsoft Edge...
+2025-11-21 15:05:10,914 - WARNING - There was an error managing msedgedriver (error sending request for url (https://msedgedriver.azureedge.net/LATEST_RELEASE_142_WINDOWS)); using driver found in the cache
+2025-11-21 15:05:18,816 - INFO - Navegando para login...
+2025-11-21 15:06:02,415 - INFO - Selecionando departamento: EGS
+2025-11-21 15:06:04,565 - INFO - Departamento 'EGS' já selecionado.
+2025-11-21 15:06:05,671 - INFO - 🔍 Iniciando busca por: '62955505197360'
+2025-11-21 15:06:05,672 - INFO - Variações geradas: ['62955505197360']
+2025-11-21 15:06:06,811 - INFO - Tentativa 1/1: Buscando por '62955505197360'
+2025-11-21 15:06:07,993 - ERROR - Erro na tentativa de busca: Message: stale element reference: stale element not found in the current frame
+  (Session info: MicrosoftEdge=142.0.3595.90); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#stale-element-reference-exception
+Stacktrace:
+	GetHandleVerifier [0x0x7ff6d86b2605+51877]
+	GetHandleVerifier [0x0x7ff6d86b2664+51972]
+	GetHandleVerifier [0x0x7ff6d8868bf5+1847445]
+	(No symbol) [0x0x7ff6d8427c7e]
+	(No symbol) [0x0x7ff6d842a54f]
+	(No symbol) [0x0x7ff6d842a60f]
+	(No symbol) [0x0x7ff6d847139a]
+	(No symbol) [0x0x7ff6d847129c]
+	(No symbol) [0x0x7ff6d8471448]
+	(No symbol) [0x0x7ff6d8469942]
+	(No symbol) [0x0x7ff6d849212a]
+	(No symbol) [0x0x7ff6d846667b]
+	(No symbol) [0x0x7ff6d846652d]
+	(No symbol) [0x0x7ff6d84923e0]
+	(No symbol) [0x0x7ff6d846667b]
+	(No symbol) [0x0x7ff6d84af3d2]
+	(No symbol) [0x0x7ff6d8491df3]
+	(No symbol) [0x0x7ff6d8465b36]
+	(No symbol) [0x0x7ff6d8464d80]
+	(No symbol) [0x0x7ff6d8465973]
+	(No symbol) [0x0x7ff6d852e4a5]
+	(No symbol) [0x0x7ff6d852a75d]
+	GetHandleVerifier [0x0x7ff6d86dce43+226019]
+	GetHandleVerifier [0x0x7ff6d86cc011+156849]
+	GetHandleVerifier [0x0x7ff6d86d4509+190889]
+	GetHandleVerifier [0x0x7ff6d86b9744+80868]
+	GetHandleVerifier [0x0x7ff6d86b9893+81203]
+	GetHandleVerifier [0x0x7ff6d86a7e16+8886]
+	BaseThreadInitThunk [0x0x7ffc275de8d7+23]
+	RtlUserThreadStart [0x0x7ffc2802c53c+44]
+
+2025-11-21 15:06:08,012 - WARNING - ❌ Cliente '62955505197360' não encontrado após todas as tentativas.
+2025-11-21 15:06:08,029 - INFO - 🔍 Iniciando busca por: '62955505182176'
+2025-11-21 15:06:08,029 - INFO - Variações geradas: ['62955505182176']
+2025-11-21 15:06:12,012 - INFO - Tentativa 1/1: Buscando por '62955505182176'
+2025-11-21 15:06:16,543 - WARNING - ❌ Cliente '62955505182176' não encontrado após todas as tentativas.
+2025-11-21 15:06:16,555 - INFO - 🔍 Iniciando busca por: '62955505015199'
+2025-11-21 15:06:16,556 - INFO - Variações geradas: ['62955505015199']
+2025-11-21 15:06:17,692 - INFO - Tentativa 1/1: Buscando por '62955505015199'
+2025-11-21 15:06:20,078 - WARNING - ❌ Cliente '62955505015199' não encontrado após todas as tentativas.
+2025-11-21 15:06:20,090 - INFO - 🔍 Iniciando busca por: '62955505016080'
+2025-11-21 15:06:20,090 - INFO - Variações geradas: ['62955505016080']
+2025-11-21 15:06:21,208 - INFO - Tentativa 1/1: Buscando por '62955505016080'
+2025-11-21 15:06:23,934 - WARNING - ❌ Cliente '62955505016080' não encontrado após todas as tentativas.
+2025-11-21 15:06:23,941 - INFO - 🔍 Iniciando busca por: '62955505057789'
+2025-11-21 15:06:23,941 - INFO - Variações geradas: ['62955505057789']
+2025-11-21 15:06:25,068 - INFO - Tentativa 1/1: Buscando por '62955505057789'
+2025-11-21 15:06:27,610 - WARNING - ❌ Cliente '62955505057789' não encontrado após todas as tentativas.
+2025-11-21 15:06:27,618 - INFO - 🔍 Iniciando busca por: '62955505058599'
+2025-11-21 15:06:27,618 - INFO - Variações geradas: ['62955505058599']
+2025-11-21 15:06:28,762 - INFO - Tentativa 1/1: Buscando por '62955505058599'
+2025-11-21 15:06:31,482 - WARNING - ❌ Cliente '62955505058599' não encontrado após todas as tentativas.
+2025-11-21 15:06:31,489 - INFO - 🔍 Iniciando busca por: '62955505177504'
+2025-11-21 15:06:31,489 - INFO - Variações geradas: ['62955505177504']
+2025-11-21 15:06:32,651 - INFO - Tentativa 1/1: Buscando por '62955505177504'
+2025-11-21 15:06:35,258 - WARNING - ❌ Cliente '62955505177504' não encontrado após todas as tentativas.
+2025-11-21 15:06:35,268 - INFO - 🔍 Iniciando busca por: '62955505197521'
+2025-11-21 15:06:35,268 - INFO - Variações geradas: ['62955505197521']
+2025-11-21 15:06:36,446 - INFO - Tentativa 1/1: Buscando por '62955505197521'
+2025-11-21 15:06:39,003 - WARNING - ❌ Cliente '62955505197521' não encontrado após todas as tentativas.
+2025-11-21 15:06:39,016 - INFO - 🔍 Iniciando busca por: '62955505000167'
+2025-11-21 15:06:39,016 - INFO - Variações geradas: ['62955505000167']
+2025-11-21 15:06:40,177 - INFO - Tentativa 1/1: Buscando por '62955505000167'
+2025-11-21 15:06:42,594 - WARNING - ❌ Cliente '62955505000167' não encontrado após todas as tentativas.
+2025-11-21 15:06:42,600 - INFO - 🔍 Iniciando busca por: '62955505182257'
+2025-11-21 15:06:42,600 - INFO - Variações geradas: ['62955505182257']
+2025-11-21 15:06:43,713 - INFO - Tentativa 1/1: Buscando por '62955505182257'
+2025-11-21 15:06:46,205 - WARNING - ❌ Cliente '62955505182257' não encontrado após todas as tentativas.
+2025-11-21 15:06:46,213 - INFO - 🔍 Iniciando busca por: '62955505379395'
+2025-11-21 15:06:46,214 - INFO - Variações geradas: ['62955505379395']
+2025-11-21 15:06:47,383 - INFO - Tentativa 1/1: Buscando por '62955505379395'
+2025-11-21 15:06:49,766 - WARNING - ❌ Cliente '62955505379395' não encontrado após todas as tentativas.
+2025-11-21 15:06:49,776 - INFO - 🔍 Iniciando busca por: '62955505157066'
+2025-11-21 15:06:49,776 - INFO - Variações geradas: ['62955505157066']
+2025-11-21 15:06:50,881 - INFO - Tentativa 1/1: Buscando por '62955505157066'
+2025-11-21 15:06:53,007 - WARNING - ❌ Cliente '62955505157066' não encontrado após todas as tentativas.
+2025-11-21 15:06:53,014 - INFO - 🔍 Iniciando busca por: '62955505015431'
+2025-11-21 15:06:53,015 - INFO - Variações geradas: ['62955505015431']
+2025-11-21 15:06:54,142 - INFO - Tentativa 1/1: Buscando por '62955505015431'
+2025-11-21 15:06:56,280 - WARNING - ❌ Cliente '62955505015431' não encontrado após todas as tentativas.
+2025-11-21 15:06:56,290 - INFO - 🔍 Iniciando busca por: '62955505359360'
+2025-11-21 15:06:56,290 - INFO - Variações geradas: ['62955505359360']
+2025-11-21 15:06:57,461 - INFO - Tentativa 1/1: Buscando por '62955505359360'
+2025-11-21 15:06:59,833 - WARNING - ❌ Cliente '62955505359360' não encontrado após todas as tentativas.
+2025-11-21 15:06:59,844 - INFO - 🔍 Iniciando busca por: '62955505375721'
+2025-11-21 15:06:59,845 - INFO - Variações geradas: ['62955505375721']
+2025-11-21 15:07:01,022 - INFO - Tentativa 1/1: Buscando por '62955505375721'
+2025-11-21 15:07:03,473 - WARNING - ❌ Cliente '62955505375721' não encontrado após todas as tentativas.
+2025-11-21 15:07:03,482 - INFO - 🔍 Iniciando busca por: '62955505878987'
+2025-11-21 15:07:03,482 - INFO - Variações geradas: ['62955505878987']
+2025-11-21 15:07:04,677 - INFO - Tentativa 1/1: Buscando por '62955505878987'
+2025-11-21 15:07:07,297 - WARNING - ❌ Cliente '62955505878987' não encontrado após todas as tentativas.
+2025-11-21 15:07:07,307 - INFO - 🔍 Iniciando busca por: '62955505016918'
+2025-11-21 15:07:07,307 - INFO - Variações geradas: ['62955505016918']
+2025-11-21 15:07:08,467 - INFO - Tentativa 1/1: Buscando por '62955505016918'
+2025-11-21 15:07:10,706 - WARNING - ❌ Cliente '62955505016918' não encontrado após todas as tentativas.
+2025-11-21 15:07:10,712 - INFO - 🔍 Iniciando busca por: '62955505405140'
+2025-11-21 15:07:10,713 - INFO - Variações geradas: ['62955505405140']
+2025-11-21 15:07:11,831 - INFO - Tentativa 1/1: Buscando por '62955505405140'
+2025-11-21 15:07:14,299 - WARNING - ❌ Cliente '62955505405140' não encontrado após todas as tentativas.
+2025-11-21 15:08:55,327 - INFO - Iniciando automação em: 2025-11-21 15:08:55.327916
+2025-11-21 15:08:59,999 - INFO - Template: Cobrança 1.4 | Departamento: EGS
+2025-11-21 15:09:00,049 - INFO - Carregados 18 clientes para processar.
+2025-11-21 15:09:00,049 - INFO - Iniciando Microsoft Edge...
+2025-11-21 15:09:03,094 - WARNING - There was an error managing msedgedriver (error sending request for url (https://msedgedriver.azureedge.net/LATEST_RELEASE_142_WINDOWS)); using driver found in the cache
+2025-11-21 15:09:12,825 - INFO - Navegando para login...
+2025-11-21 15:09:49,786 - INFO - Selecionando departamento: EGS
+2025-11-21 15:09:52,106 - INFO - Departamento 'EGS' já selecionado.
+2025-11-21 15:09:53,254 - INFO - 🔢 Detectado Documento (CPF/CNPJ). Formatado para busca: '62.955.505/1973-60'
+2025-11-21 15:09:53,254 - INFO - 🔍 Iniciando busca por: '62.955.505/1973-60' (Total variações: 1)
+2025-11-21 15:09:54,253 - INFO - Tentativa 1: Buscando por '62.955.505/1973-60'
+2025-11-21 15:09:55,671 - ERROR - Erro na busca: Message: stale element reference: stale element not found in the current frame
+  (Session info: MicrosoftEdge=142.0.3595.90); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#stale-element-reference-exception
+Stacktrace:
+	GetHandleVerifier [0x0x7ff6d86b2605+51877]
+	GetHandleVerifier [0x0x7ff6d86b2664+51972]
+	GetHandleVerifier [0x0x7ff6d8868bf5+1847445]
+	(No symbol) [0x0x7ff6d8427c7e]
+	(No symbol) [0x0x7ff6d842a54f]
+	(No symbol) [0x0x7ff6d842a60f]
+	(No symbol) [0x0x7ff6d847139a]
+	(No symbol) [0x0x7ff6d847129c]
+	(No symbol) [0x0x7ff6d8471448]
+	(No symbol) [0x0x7ff6d8469942]
+	(No symbol) [0x0x7ff6d849212a]
+	(No symbol) [0x0x7ff6d846667b]
+	(No symbol) [0x0x7ff6d846652d]
+	(No symbol) [0x0x7ff6d84923e0]
+	(No symbol) [0x0x7ff6d846667b]
+	(No symbol) [0x0x7ff6d84af3d2]
+	(No symbol) [0x0x7ff6d8491df3]
+	(No symbol) [0x0x7ff6d8465b36]
+	(No symbol) [0x0x7ff6d8464d80]
+	(No symbol) [0x0x7ff6d8465973]
+	(No symbol) [0x0x7ff6d852e4a5]
+	(No symbol) [0x0x7ff6d852a75d]
+	GetHandleVerifier [0x0x7ff6d86dce43+226019]
+	GetHandleVerifier [0x0x7ff6d86cc011+156849]
+	GetHandleVerifier [0x0x7ff6d86d4509+190889]
+	GetHandleVerifier [0x0x7ff6d86b9744+80868]
+	GetHandleVerifier [0x0x7ff6d86b9893+81203]
+	GetHandleVerifier [0x0x7ff6d86a7e16+8886]
+	BaseThreadInitThunk [0x0x7ffc275de8d7+23]
+	RtlUserThreadStart [0x0x7ffc2802c53c+44]
+
+2025-11-21 15:09:55,690 - WARNING - ❌ Cliente '62955505197360' não encontrado.
+2025-11-21 15:09:55,719 - INFO - 🔢 Detectado Documento (CPF/CNPJ). Formatado para busca: '62.955.505/1821-76'
+2025-11-21 15:09:55,719 - INFO - 🔍 Iniciando busca por: '62.955.505/1821-76' (Total variações: 1)
+2025-11-21 15:10:01,205 - ERROR - Não foi possível abrir a barra de pesquisa.
+2025-11-21 15:10:01,214 - INFO - 🔢 Detectado Documento (CPF/CNPJ). Formatado para busca: '62.955.505/0151-99'
+2025-11-21 15:10:01,214 - INFO - 🔍 Iniciando busca por: '62.955.505/0151-99' (Total variações: 1)
+2025-11-21 15:10:01,449 - INFO - Tentativa 1: Buscando por '62.955.505/0151-99'
+2025-11-21 15:10:04,769 - WARNING - ❌ Cliente '62955505015199' não encontrado.
+2025-11-21 15:10:04,778 - INFO - 🔢 Detectado Documento (CPF/CNPJ). Formatado para busca: '62.955.505/0160-80'
+2025-11-21 15:10:04,779 - INFO - 🔍 Iniciando busca por: '62.955.505/0160-80' (Total variações: 1)
+2025-11-21 15:10:05,907 - INFO - Tentativa 1: Buscando por '62.955.505/0160-80'
+2025-11-21 15:10:08,877 - WARNING - ❌ Cliente '62955505016080' não encontrado.
+2025-11-21 15:10:08,884 - INFO - 🔢 Detectado Documento (CPF/CNPJ). Formatado para busca: '62.955.505/0577-89'
+2025-11-21 15:10:08,885 - INFO - 🔍 Iniciando busca por: '62.955.505/0577-89' (Total variações: 1)
+2025-11-21 15:10:10,022 - INFO - Tentativa 1: Buscando por '62.955.505/0577-89'
+2025-11-21 15:10:12,951 - WARNING - ❌ Cliente '62955505057789' não encontrado.
+2025-11-21 15:10:12,960 - INFO - 🔢 Detectado Documento (CPF/CNPJ). Formatado para busca: '62.955.505/0585-99'
+2025-11-21 15:10:12,960 - INFO - 🔍 Iniciando busca por: '62.955.505/0585-99' (Total variações: 1)
+2025-11-21 15:10:14,071 - INFO - Tentativa 1: Buscando por '62.955.505/0585-99'
+2025-11-21 15:10:16,982 - WARNING - ❌ Cliente '62955505058599' não encontrado.
+2025-11-21 15:10:16,992 - INFO - 🔢 Detectado Documento (CPF/CNPJ). Formatado para busca: '62.955.505/1775-04'
+2025-11-21 15:10:16,992 - INFO - 🔍 Iniciando busca por: '62.955.505/1775-04' (Total variações: 1)
+2025-11-21 15:10:18,166 - INFO - Tentativa 1: Buscando por '62.955.505/1775-04'
+2025-11-21 15:10:21,152 - WARNING - ❌ Cliente '62955505177504' não encontrado.
+2025-11-21 15:10:21,160 - INFO - 🔢 Detectado Documento (CPF/CNPJ). Formatado para busca: '62.955.505/1975-21'
+2025-11-21 15:10:21,161 - INFO - 🔍 Iniciando busca por: '62.955.505/1975-21' (Total variações: 1)
+2025-11-21 15:10:22,343 - INFO - Tentativa 1: Buscando por '62.955.505/1975-21'
+2025-11-21 15:10:25,163 - WARNING - ❌ Cliente '62955505197521' não encontrado.
+2025-11-21 15:10:25,173 - INFO - 🔢 Detectado Documento (CPF/CNPJ). Formatado para busca: '62.955.505/0001-67'
+2025-11-21 15:10:25,173 - INFO - 🔍 Iniciando busca por: '62.955.505/0001-67' (Total variações: 1)
+2025-11-21 15:10:26,281 - INFO - Tentativa 1: Buscando por '62.955.505/0001-67'
+2025-11-21 15:10:29,151 - WARNING - ❌ Cliente '62955505000167' não encontrado.
+2025-11-21 15:10:29,157 - INFO - 🔢 Detectado Documento (CPF/CNPJ). Formatado para busca: '62.955.505/1822-57'
+2025-11-21 15:10:29,158 - INFO - 🔍 Iniciando busca por: '62.955.505/1822-57' (Total variações: 1)
+2025-11-21 15:10:30,299 - INFO - Tentativa 1: Buscando por '62.955.505/1822-57'
+2025-11-21 15:10:33,414 - WARNING - ❌ Cliente '62955505182257' não encontrado.
+2025-11-21 15:10:33,421 - INFO - 🔢 Detectado Documento (CPF/CNPJ). Formatado para busca: '62.955.505/3793-95'
+2025-11-21 15:10:33,421 - INFO - 🔍 Iniciando busca por: '62.955.505/3793-95' (Total variações: 1)
+2025-11-21 15:10:34,521 - INFO - Tentativa 1: Buscando por '62.955.505/3793-95'
+2025-11-21 15:10:37,213 - WARNING - ❌ Cliente '62955505379395' não encontrado.
+2025-11-21 15:10:37,222 - INFO - 🔢 Detectado Documento (CPF/CNPJ). Formatado para busca: '62.955.505/1570-66'
+2025-11-21 15:10:37,222 - INFO - 🔍 Iniciando busca por: '62.955.505/1570-66' (Total variações: 1)
+2025-11-21 15:10:38,378 - INFO - Tentativa 1: Buscando por '62.955.505/1570-66'
+2025-11-21 15:10:41,103 - WARNING - ❌ Cliente '62955505157066' não encontrado.
+2025-11-21 15:10:41,114 - INFO - 🔢 Detectado Documento (CPF/CNPJ). Formatado para busca: '62.955.505/0154-31'
+2025-11-21 15:10:41,114 - INFO - 🔍 Iniciando busca por: '62.955.505/0154-31' (Total variações: 1)
+2025-11-21 15:10:42,273 - INFO - Tentativa 1: Buscando por '62.955.505/0154-31'
+2025-11-21 15:10:45,038 - WARNING - ❌ Cliente '62955505015431' não encontrado.
+2025-11-21 15:10:45,048 - INFO - 🔢 Detectado Documento (CPF/CNPJ). Formatado para busca: '62.955.505/3593-60'
+2025-11-21 15:10:45,049 - INFO - 🔍 Iniciando busca por: '62.955.505/3593-60' (Total variações: 1)
+2025-11-21 15:10:46,161 - INFO - Tentativa 1: Buscando por '62.955.505/3593-60'
+2025-11-21 15:10:48,637 - WARNING - ❌ Cliente '62955505359360' não encontrado.
+2025-11-21 15:10:48,649 - INFO - 🔢 Detectado Documento (CPF/CNPJ). Formatado para busca: '62.955.505/3757-21'
+2025-11-21 15:10:48,649 - INFO - 🔍 Iniciando busca por: '62.955.505/3757-21' (Total variações: 1)
+2025-11-21 15:10:49,808 - INFO - Tentativa 1: Buscando por '62.955.505/3757-21'
+2025-11-21 15:10:52,298 - WARNING - ❌ Cliente '62955505375721' não encontrado.
+2025-11-21 15:10:52,304 - INFO - 🔢 Detectado Documento (CPF/CNPJ). Formatado para busca: '62.955.505/8789-87'
+2025-11-21 15:10:52,305 - INFO - 🔍 Iniciando busca por: '62.955.505/8789-87' (Total variações: 1)
+2025-11-21 15:10:53,509 - INFO - Tentativa 1: Buscando por '62.955.505/8789-87'
+2025-11-21 15:10:55,962 - WARNING - ❌ Cliente '62955505878987' não encontrado.
+2025-11-21 15:10:55,967 - INFO - 🔢 Detectado Documento (CPF/CNPJ). Formatado para busca: '62.955.505/0169-18'
+2025-11-21 15:10:55,968 - INFO - 🔍 Iniciando busca por: '62.955.505/0169-18' (Total variações: 1)
+2025-11-21 15:10:57,136 - INFO - Tentativa 1: Buscando por '62.955.505/0169-18'
+2025-11-21 15:10:59,748 - WARNING - ❌ Cliente '62955505016918' não encontrado.
+2025-11-21 15:10:59,760 - INFO - 🔢 Detectado Documento (CPF/CNPJ). Formatado para busca: '62.955.505/4051-40'
+2025-11-21 15:10:59,761 - INFO - 🔍 Iniciando busca por: '62.955.505/4051-40' (Total variações: 1)
+2025-11-21 15:11:00,931 - INFO - Tentativa 1: Buscando por '62.955.505/4051-40'
+2025-11-21 15:11:03,615 - WARNING - ❌ Cliente '62955505405140' não encontrado.

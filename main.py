@@ -17,28 +17,15 @@ from selenium.common.exceptions import (
     InvalidSessionIdException
 )
 
-# --- IMPORTAÇÕES MODULARES CORRIGIDAS ---
+# --- IMPORTAÇÕES MODULARES EXPLÍCITAS (Para evitar erros) ---
 try:
+    # Configurações
     from config.constants import TEMPLATES_DISPONIVEIS, DEPARTAMENTOS_DISPONIVEIS, URL_ZOHO_DESK
+    # Se estas constantes não existirem no constants.py, defina valores padrão aqui:
     COOLDOWN_INTERVALO_CLIENTES = 20
-    COOLDOWN_DURACAO_SEGUNDOS = 60
-except ImportError:
-    from config.constants import *
-
-# Core (Lógica Principal)
-from core.login import fazer_login
-from core.search import buscar_e_abrir_cliente
-from core.processing import processar_pagina_cliente
-
-# CORREÇÃO: Importar a troca de departamento do sítio certo
-from core.departments import trocar_departamento_zoho 
-
-# Utils (Ferramentas)
-from utils.files import carregar_lista_clientes
-from utils.webdriver import iniciar_driver
 from utils.screenshots import take_screenshot
 
-# Logging
+# Tenta importar setup_logging, senão usa básico
 try:
     from utils.reports import setup_logging, dump_browser_logs
 except ImportError:
@@ -70,13 +57,15 @@ def main():
     if args.dry_run:
         logging.warning(">>> MODO DRY-RUN (SIMULAÇÃO) ATIVADO <<<")
 
-    # 2. Definição de Template e Departamento
+    # 2. Definição de Template e Departamento (Menu ou Argumentos)
     global NOME_TEMPLATE, ANCORAS, NOME_DEPARTAMENTO
     
     if args.template and args.departamento:
+        # Tenta achar pelos argumentos
         NOME_TEMPLATE, ANCORAS = resolver_template(args.template)
         NOME_DEPARTAMENTO = resolver_departamento(args.departamento)
     else:
+        # Abre menu interativo
         NOME_TEMPLATE, ANCORAS, NOME_DEPARTAMENTO = menu_principal()
 
     if not NOME_TEMPLATE or not NOME_DEPARTAMENTO:
@@ -117,6 +106,7 @@ def main():
         for i, cliente in enumerate(pbar):
             pbar.set_postfix_str(f"{cliente[:20]}...")
             
+            # Cooldown (Pausa para evitar bloqueio)
             if i > 0 and i % COOLDOWN_INTERVALO_CLIENTES == 0:
                 logging.info(f"Pausa de {COOLDOWN_DURACAO_SEGUNDOS}s para resfriamento...")
                 time.sleep(COOLDOWN_DURACAO_SEGUNDOS)
@@ -133,11 +123,12 @@ def main():
                     nao_encontrados.append(cliente)
                     continue
 
-                # Processa
+                # Processa (Envia Mensagem)
+                # Passamos o departamento para garantir que está certo na tela do cliente
                 resultado = processar_pagina_cliente(
                     driver=driver,
                     nome_cliente=cliente,
-                    departamento=NOME_DEPARTAMENTO,
+                    departamento=NOME_DEPARTAMENTO, # Passamos o dept aqui
                     template_nome=NOME_TEMPLATE,
                     ancoras=ANCORAS,
                     dry_run=args.dry_run
@@ -152,21 +143,29 @@ def main():
                 logging.error(f"Erro ao processar '{cliente}': {e}")
                 take_screenshot(driver, f"erro_loop_{cliente}")
                 erros.append(cliente)
+                # Tenta recuperar indo para home
                 try: driver.get(URL_ZOHO_DESK) 
                 except: pass
 
     except KeyboardInterrupt:
         logging.warning("Interrompido pelo usuário.")
     finally:
+        # 7. Relatório Final
         imprimir_relatorio(inicio, sucesso, nao_encontrados, erros, args.arquivo)
+        
         if args.keep_open:
             print("\nNavegador mantido aberto. Feche manualmente.")
         else:
             driver.quit()
 
+# ==============================================================================
+# FUNÇÕES AUXILIARES DO MENU
+# ==============================================================================
 def resolver_template(entrada):
+    # Tenta por número
     if entrada in TEMPLATES_DISPONIVEIS:
         return TEMPLATES_DISPONIVEIS[entrada]["nome"], TEMPLATES_DISPONIVEIS[entrada]["ancoras"]
+    # Tenta por nome
     for k, v in TEMPLATES_DISPONIVEIS.items():
         if v["nome"].lower() == entrada.lower():
             return v["nome"], v["ancoras"]
@@ -182,12 +181,15 @@ def resolver_departamento(entrada):
 
 def menu_principal():
     print("\n=== CONFIGURAÇÃO ===")
+    
+    # Dept
     print("Departamentos:")
     for k in sorted(DEPARTAMENTOS_DISPONIVEIS.keys(), key=int):
         print(f" {k}) {DEPARTAMENTOS_DISPONIVEIS[k]}")
     d = input("Escolha o Dept (Número): ").strip()
     dept = DEPARTAMENTOS_DISPONIVEIS.get(d)
     
+    # Template
     print("\nTemplates:")
     for k in sorted(TEMPLATES_DISPONIVEIS.keys(), key=int):
         print(f" {k}) {TEMPLATES_DISPONIVEIS[k]['nome']}")
@@ -208,6 +210,11 @@ def imprimir_relatorio(inicio, sucesso, nao_enc, erros, arquivo):
     print(f"🔍 Não Encontrados: {len(nao_enc)}")
     print(f"❌ Erros: {len(erros)}")
     
+    if nao_enc:
+        print("\nNão Encontrados:")
+        for n in nao_enc: print(f" - {n}")
+    
+    # Salva CSV simples
     nome_csv = f"relatorio_{datetime.now().strftime('%Y%m%d_%H%M')}.csv"
     with open(nome_csv, 'w', newline='', encoding='utf-8-sig') as f:
         writer = csv.writer(f, delimiter=';')

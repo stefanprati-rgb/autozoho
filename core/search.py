@@ -1,424 +1,280 @@
+# -*- coding: utf-8 -*-
 """
-core/busca.py
-Busca inteligente de clientes no Zoho Desk.
-
-- Busca exata por CPF/CNPJ formatado
-- Variações de nomes (PF/PJ) com saneamento
-- Fuzzy-match com limiar dinâmico (PF vs PJ)
-- Cache de decisões manuais (não pergunta duas vezes)
-- Escolha manual quando não há match automático
-- Resiliência a DOM instável (timeouts adaptativos, pequenos retries)
+Módulo de busca de clientes (core/search.py).
+Versão Atualizada: Navega para aba 'Clientes' antes de buscar.
 """
 
-from __future__ import annotations
-
-import json
 import time
-import re  # Adicionado para regex do CPF/CNPJ
-from pathlib import Path
-from typing import Dict, List, Optional, Tuple
+import re
+import logging
+from difflib import SequenceMatcher
 
-from loguru import logger
-from tenacity import retry, stop_after_attempt, wait_exponential
-
+from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import (
     TimeoutException,
     NoSuchElementException,
-    StaleElementReferenceException,
+    StaleElementReferenceException
 )
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.support.ui import WebDriverWait
 
+# --- CONSTANTES ---
+DELAY_DIGITACAO_CURTA = 0.02
+DELAY_DIGITACAO_MEDIA = 0.03
+DELAY_DIGITACAO_LONGA = 0.04
 
-# ---------------------------------------------------------------------------
-# Configs e utilitários com fallbacks
-# ---------------------------------------------------------------------------
-def _load_cfg():
-    """Carrega CONFIG com fallbacks seguros."""
-    try:
-        from config import CONFIG  # type: ignore
-        return CONFIG
-    except Exception:
-        class _Fuzzy:
-            threshold = 0.85
-            primeiro_ultimo = 0.84
-        class _Timeouts:
-            login = 300
-            search_wait = 15
-            after_click = 20
-        class _Cfg:
-            fuzzy = _Fuzzy()
-            timeouts = _Timeouts()
-        return _Cfg()
-
-CONFIG = _load_cfg()
-
-# Funções de normalização/fuzzy (tenta utils, cai para normalizacao)
-try:
-    from utils import (  # type: ignore
-        normalizar_nome,
-        calcular_fuzzy_score,
-        tipo_cliente,
-        _sanear_termo_busca,
-        _tokens_nome,
-        _limpa_sufixos_empresa,
-    )
-except Exception:
-    # fallbacks mínimos se utils falhar
-    from normalizacao import normalizar_nome, calcular_fuzzy_score, tipo_cliente  # type: ignore
-
-    def _sanear_termo_busca(txt: str) -> str:
-        t = normalizar_nome(txt, remover_invalidos=True)
-        return " ".join(p for p in t.split() if len(p) >= 2)
-
-    def _tokens_nome(txt: str) -> List[str]:
-        return [p for p in normalizar_nome(txt, remover_invalidos=True).split() if len(p) > 1]
-
-    def _limpa_sufixos_empresa(txt: str) -> str:
-        base = normalizar_nome(txt, remover_invalidos=True)
-        sufx = {"ltda", "me", "epp", "sa", "eireli", "ei"}
-        return " ".join(p for p in base.split() if p not in sufx)
-
-# Importa formatação (ou define fallback)
-try:
-    from utils.validation import formatar_documento_brasil  # type: ignore
-except Exception:
-    def formatar_documento_brasil(valor):
-        if not valor: return ""
-        limpo = re.sub(r'\D', '', str(valor))
-        if len(limpo) == 11:  # CPF
-            return f"{limpo[:3]}.{limpo[3:6]}.{limpo[6:9]}-{limpo[9:]}"
-        elif len(limpo) == 14:  # CNPJ
-            return f"{limpo[:2]}.{limpo[2:5]}.{limpo[5:8]}/{limpo[8:12]}-{limpo[12:]}"
-        return valor
-
-
-# ---------------------------------------------------------------------------
-# Cache de decisões manuais
-# ---------------------------------------------------------------------------
-CACHE_FILE = Path(__file__).resolve().parent.parent / "mapeamentos_decisoes.json"
-
-def _carregar_cache() -> Dict[str, Dict]:
-    try:
-        with open(CACHE_FILE, encoding="utf-8") as f:
-            return json.load(f)
-    except Exception:
-        return {}
-
-def _salvar_cache(cache: Dict[str, Dict]) -> None:
-    try:
-        with open(CACHE_FILE, "w", encoding="utf-8") as f:
-            json.dump(cache, f, ensure_ascii=False, indent=2)
-    except Exception as e:
-        logger.warning(f"Falha ao salvar cache de decisões: {e!r}")
-
-
-# ---------------------------------------------------------------------------
-# Geração de variações de busca
-# ---------------------------------------------------------------------------
-_SOBRENOMES_MUITO_COMUNS = {
-    "silva","santos","souza","oliveira","pereira","lima","ferreira","costa","rodrigues",
-    "almeida","nascimento","gomes","martins","araujo","melo","barbosa","cardoso","teixeira",
-    "dias","vieira","batista"
+STOPWORDS_NOME = {
+    "de","da","do","das","dos","e","d","jr","jr.","junior","júnior","filho","neto","sobrinho",
+    "me","epp","s/a","sa","s.a","s.a.","ltda","ltda.","holding","group","grupogera"
 }
 
-def _gerar_variacoes_inteligentes(nome_original: str) -> List[str]:
-    variacoes: List[str] = []
-    nome_limpo = _limpa_sufixos_empresa(nome_original)
+SOBRENOMES_COMUNS_IGNORAR = {
+    "silva", "santos", "souza", "oliveira", "pereira", "lima", "ferreira",
+    "costa", "rodrigues", "almeida", "nascimento", "gomes", "martins",
+    "araujo", "melo", "barbosa", "cardoso", "teixeira", "dias", "vieira",
+    "batista"
+}
+
+SELETORES = {
+    "icone_pesquisa": 'button[data-id="globalSearchIcon"]',
+    "barra_pesquisa": 'input[data-id="searchInput"]',
+    "msg_sem_resultados": 'div.zd_v2-commonemptystate-title',
+    "botao_whatsapp": 'span[data-title="Enviar mensagens via WhatsApp (canal de IM)"]',
+    "linha_resultado": 'div.zd_v2-listlayout-innerContainer',
+    # NOVO SELETOR: Aba Clientes
+    "tab_clientes": 'a[data-id="qtab_Contacts_Tab"]'
+}
+
+# --- FUNÇÕES AUXILIARES ---
+
+def normalizar_nome(nome, remover_invalidos=False):
+    """Normaliza strings para comparação."""
+    if not nome: return ""
+    nome = str(nome)
+    if remover_invalidos:
+        nome = nome.replace('\ufffd', ' ').replace('?', ' ')
+    
+    import unicodedata
+    nfkd = unicodedata.normalize('NFKD', nome)
+    sem_acento = "".join([c for c in nfkd if not unicodedata.combining(c)])
+    return re.sub(r'[^a-zA-Z0-9\s]', ' ', sem_acento).lower().strip()
+
+def _formatar_documento(valor):
+    """Formata CPF ou CNPJ para o padrão brasileiro."""
+    limpo = re.sub(r'\D', '', str(valor))
+    if len(limpo) == 11: # CPF
+        return f"{limpo[:3]}.{limpo[3:6]}.{limpo[6:9]}-{limpo[9:]}"
+    elif len(limpo) == 14: # CNPJ
+        return f"{limpo[:2]}.{limpo[2:5]}.{limpo[5:8]}/{limpo[8:12]}-{limpo[12:]}"
+    return valor
+
+def _sanear_termo_busca(s: str) -> str:
+    if not s: return ""
+    s = s.replace('\ufffd', ' ')
+    toks = re.split(r"\s+", s.strip())
+    toks_limpos = [t for t in toks if len(t) >= 3 and t.lower() not in STOPWORDS_NOME]
+    resultado = " ".join(toks_limpos)
+    if len(resultado) < 3: return ""
+    return resultado
+
+def _tokens_nome(nome: str):
+    return [t for t in re.split(r"\s+", nome.strip()) if len(t) >= 2]
+
+def _gerar_variacoes_inteligentes(nome_original: str):
+    variacoes = []
+    nome_original = str(nome_original).strip()
+    
+    # 1. E-mail
+    if "@" in nome_original and "." in nome_original and " " not in nome_original:
+        logging.info(f"📧 Detectado E-mail. Usando busca exata: '{nome_original}'")
+        return [nome_original]
+
+    # 2. Documento (CPF/CNPJ)
+    apenas_numeros = re.sub(r'\D', '', nome_original)
+    if apenas_numeros and (len(apenas_numeros) == 11 or len(apenas_numeros) == 14):
+        doc_formatado = _formatar_documento(apenas_numeros)
+        logging.info(f"🔢 Detectado Documento. Formatado: '{doc_formatado}'")
+        return [doc_formatado]
+
+    # 3. Nome
+    nome_limpo = normalizar_nome(nome_original, remover_invalidos=True)
     toks = _tokens_nome(nome_limpo)
 
     if not toks:
-        unico = _sanear_termo_busca(nome_limpo)
-        return [unico] if unico else []
+        return [nome_original] if len(nome_original) >= 3 else []
 
-    if len(toks) >= 2: variacoes.append(f"{toks[0]} {toks[1]}")
-    if len(toks) >= 2: variacoes.append(f"{toks[0]} {toks[-1]}")
-    
+    if len(toks) >= 2:
+        variacoes.append(f"{toks[0]} {toks[1]}")
+        variacoes.append(f"{toks[0]} {toks[-1]}")
+
     ultimo = toks[-1]
-    if len(ultimo) >= 3 and ultimo not in _SOBRENOMES_MUITO_COMUNS:
+    if len(ultimo) >= 3 and ultimo not in SOBRENOMES_COMUNS_IGNORAR:
         variacoes.append(ultimo)
 
-    if len(toks) >= 3: variacoes.append(" ".join(toks))
-    if len(toks[0]) >= 3: variacoes.append(toks[0])
+    if len(toks) >= 3:
+        variacoes.append(" ".join(toks))
 
-    final = []
-    vistos = set()
-    for v in variacoes:
-        s = _sanear_termo_busca(v)
-        if s and len(s) >= 3 and s not in vistos:
-            vistos.add(s)
-            final.append(s)
-    return final[:10]
+    if len(toks[0]) >= 3:
+        variacoes.append(toks[0])
 
+    sanitizado = _sanear_termo_busca(nome_limpo)
+    if sanitizado:
+        variacoes.append(sanitizado)
 
-# ---------------------------------------------------------------------------
-# Limiar dinâmico
-# ---------------------------------------------------------------------------
-def _limiar_dinamico(tipo: str, qtd_resultados: int, ratio_geral: float) -> float:
-    cfg = getattr(CONFIG, "fuzzy", None)
-    base = getattr(cfg, "primeiro_ultimo", 0.84)
-    if tipo == "PJ":
-        if ratio_geral > 0.70: base -= 0.05
-    else:
-        if qtd_resultados <= 3: base -= 0.03
-    return max(0.70, min(0.95, base))
+    return list(dict.fromkeys(variacoes))[:10]
 
+def _clicar_seguro(driver, seletor, timeout=5):
+    try:
+        el = WebDriverWait(driver, timeout).until(EC.element_to_be_clickable((By.CSS_SELECTOR, seletor)))
+        el.click()
+        return True
+    except:
+        return False
 
-# ---------------------------------------------------------------------------
-# Escolha manual
-# ---------------------------------------------------------------------------
-def _escolher_resultado_manual(resultados_dict: Dict[str, Dict], nome_original: str) -> Optional[Dict]:
-    print("\a")
-    print("\n" + "=" * 60)
-    print(f"Buscando por: '{nome_original}'")
-    print("⚠️  Nenhum match automático encontrado.")
-    print(f"Coletados {len(resultados_dict)} resultados parciais:")
-    print("=" * 60)
-
-    lista_ordenada = sorted(resultados_dict.values(), key=lambda x: x["score"], reverse=True)
-    for idx, res in enumerate(lista_ordenada, 1):
-        via = res.get("busca_origem", "")
-        nome_exib = res.get("nome_exibicao", "")
-        badge = "PJ" if tipo_cliente(normalizar_nome(nome_exib)) == "PJ" else "PF"
-        print(f"  {idx}) {nome_exib}  [{badge}]  (Score: {res['score']*100:.0f}% | via: '{via}')")
-    print("  0) NENHUM dos resultados está correto (pular cliente)")
-    print("=" * 60)
-
-    while True:
-        try:
-            escolha = input(f"\nEscolha o número correto (0-{len(lista_ordenada)}): ").strip()
-            n = int(escolha)
-            if n == 0: return None
-            if 1 <= n <= len(lista_ordenada):
-                escolhido = lista_ordenada[n - 1]
-                _registrar_decisao_manual(
-                    entrada_norm=normalizar_nome(nome_original),
-                    via=escolhido.get("busca_origem", ""),
-                    nome_exibicao=escolhido.get("nome_exibicao", "")
-                )
-                return escolhido
-            print("❌ Opção inválida.")
-        except (ValueError, EOFError, KeyboardInterrupt):
-            print("\n❌ Entrada inválida.")
-
-def _registrar_decisao_manual(entrada_norm: str, via: str, nome_exibicao: str) -> None:
-    cache = _carregar_cache()
-    item = cache.get(entrada_norm, {"via": via, "nome_exibicao": nome_exibicao, "contagem": 0})
-    item["via"] = via
-    item["nome_exibicao"] = nome_exibicao
-    item["contagem"] = int(item.get("contagem", 0)) + 1
-    cache[entrada_norm] = item
-    _salvar_cache(cache)
-
-
-# ---------------------------------------------------------------------------
-# Helpers
-# ---------------------------------------------------------------------------
-def _wait(driver, seconds: Optional[int] = None) -> WebDriverWait:
-    t = seconds or getattr(getattr(CONFIG, "timeouts", object()), "search_wait", 15)
-    return WebDriverWait(driver, t)
-
-
-# ---------------------------------------------------------------------------
-# Busca principal
-# ---------------------------------------------------------------------------
-@retry(stop=stop_after_attempt(3), wait=wait_exponential(multiplier=1, min=2, max=10))
-def buscar_e_abrir_cliente(driver, nome_cliente: str) -> bool:
+def _garantir_aba_clientes(driver):
     """
-    Busca cliente no Zoho Desk:
-    1. Verifica se é CPF/CNPJ e busca exato.
-    2. Verifica cache de decisões manuais.
-    3. Tenta variações de nome e Fuzzy Match.
-    4. Se falhar, pede ajuda manual.
+    Verifica se a aba 'Clientes' está ativa e clica nela se não estiver.
+    Isso atende ao requisito de navegar para Clientes antes de buscar.
     """
-    
-    # --- 0) DETECÇÃO DE CPF/CNPJ (NOVO BLOCO) ---
-    apenas_numeros = re.sub(r'\D', '', str(nome_cliente))
-    
-    # Se tiver 11 (CPF) ou 14 (CNPJ) dígitos, trata como documento
-    if len(apenas_numeros) in [11, 14]:
-        termo_busca = formatar_documento_brasil(apenas_numeros)
-        logger.info(f"🔢 Detectado Documento. Buscando exato: '{termo_busca}'")
+    try:
+        # Verifica se a aba Clientes existe
+        aba = WebDriverWait(driver, 5).until(EC.presence_of_element_located((By.CSS_SELECTOR, SELETORES["tab_clientes"])))
         
+        # Verifica se já está ativa (classe zd_v2-topmenu-menuItemActive)
+        classes = aba.get_attribute("class") or ""
+        if "zd_v2-topmenu-menuItemActive" in classes:
+            logging.debug("Aba 'Clientes' já está ativa.")
+            return True
+        
+        logging.info("Navegando para a aba 'Clientes'...")
         try:
-            # Busca EXATA pelo documento formatado
-            encontrou = _executar_busca_e_clicar(driver, termo_busca, termo_busca)
-            if encontrou:
-                return True
-            else:
-                logger.warning(f"❌ Documento '{termo_busca}' não encontrado. Tentando buscar como nome...")
-        except Exception as e:
-            logger.error(f"Erro ao buscar documento: {e!r}")
-            # Se der erro, não retorna False imediatamente, deixa cair para a busca por nome
-            # caso o 'nome_cliente' original tenha algo útil.
+            aba.click()
+        except:
+            driver.execute_script("arguments[0].click();", aba)
+            
+        time.sleep(2) # Pausa para carregamento da lista
+        return True
+    except Exception as e:
+        logging.warning(f"Não foi possível ativar a aba Clientes: {e}")
+        return False
 
-    # --- 1) Lógica Cache + Normalização ---
-    nome_original_norm = normalizar_nome(nome_cliente, remover_invalidos=True)
-    cache = _carregar_cache()
+# --- FUNÇÃO PRINCIPAL DE BUSCA ---
+
+def buscar_e_abrir_cliente(driver, nome_cliente):
+    wait = WebDriverWait(driver, 15)
+    short_wait = WebDriverWait(driver, 5)
     
-    if nome_original_norm in cache:
-        m = cache[nome_original_norm]
-        logger.info(f"💾 Usando mapeamento aprendido: '{m['nome_exibicao']}' via '{m['via']}'")
-        try:
-            return _executar_busca_e_clicar(driver, m["via"], m["nome_exibicao"])
-        except Exception as e:
-            logger.warning(f"Falha ao aplicar mapeamento (seguindo fluxo normal): {e!r}")
-
-    # --- 2) Variações de Nome ---
+    # 1. GARANTIR QUE ESTAMOS NA ABA CLIENTES (NOVA ETAPA)
+    _garantir_aba_clientes(driver)
+    
+    # 2. Gerar variações de busca
     variacoes = _gerar_variacoes_inteligentes(nome_cliente)
     if not variacoes:
-        logger.warning(f"❌ Nenhuma variação válida para '{nome_cliente}'")
+        logging.warning(f"Nenhuma variação válida para busca de: {nome_cliente}")
         return False
     
-    logger.info(f"🔍 Geradas {len(variacoes)} variações: {variacoes}")
+    logging.info(f"🔍 Iniciando busca por: '{variacoes[0]}' ({len(variacoes)} tentativas)")
 
-    todos_os_resultados: Dict[str, Dict] = {}
-    wait = _wait(driver)
+    # 3. Abrir barra de pesquisa
+    try:
+        _clicar_seguro(driver, SELETORES["icone_pesquisa"], timeout=3)
+        barra_pesquisa = short_wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR, SELETORES["barra_pesquisa"])))
+    except TimeoutException:
+        logging.error("Não foi possível abrir a barra de pesquisa.")
+        return False
 
+    # 4. Loop de tentativas
     for tentativa, termo in enumerate(variacoes, 1):
-        termo_busca = _sanear_termo_busca(termo.strip())
+        is_email = "@" in termo
+        is_doc = not is_email and any(c.isdigit() for c in termo)
+        termo_busca = termo if (is_email or is_doc) else _sanear_termo_busca(termo)
+        
         if len(termo_busca) < 3: continue
 
-        logger.debug(f"  → Tentativa {tentativa}/{len(variacoes)}: '{termo_busca}'")
+        logging.info(f"Tentativa {tentativa}: Buscando por '{termo_busca}'")
+
         try:
-            barra = wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR, 'input[data-id="searchInput"]')))
-            barra.clear()
-            barra.send_keys(termo_busca)
-            barra.send_keys("\n")
+            # Limpar e Digitar
+            barra_pesquisa.click()
+            barra_pesquisa.send_keys(Keys.CONTROL, "a")
+            barra_pesquisa.send_keys(Keys.DELETE)
+            time.sleep(0.2)
+
+            # Delay adaptativo
+            if len(termo_busca) <= 5: delay = DELAY_DIGITACAO_CURTA
+            elif len(termo_busca) <= 10: delay = DELAY_DIGITACAO_MEDIA
+            else: delay = DELAY_DIGITACAO_LONGA
+            
+            for letra in termo_busca:
+                barra_pesquisa.send_keys(letra)
+                time.sleep(delay)
+            
             time.sleep(0.5)
-        except Exception as e:
-            logger.error(f"❌ Erro na barra de pesquisa: {e!r}")
-            continue
-
-        try:
-            wait.until(EC.any_of(
-                EC.presence_of_element_located((By.CSS_SELECTOR, "a[data-title]")),
-                EC.presence_of_element_located((By.CSS_SELECTOR, "div.zd_v2-commonemptystate-title")),
-            ))
-        except TimeoutException:
-            continue
-
-        # Verifica "sem resultados"
-        try:
-            if driver.find_elements(By.CSS_SELECTOR, "div.zd_v2-commonemptystate-title"):
+            barra_pesquisa.send_keys(Keys.ENTER)
+            
+            # Aguardar Resultados
+            try:
+                WebDriverWait(driver, 10).until(
+                    EC.any_of(
+                        EC.presence_of_element_located((By.CSS_SELECTOR, "a[data-title]")),
+                        EC.presence_of_element_located((By.CSS_SELECTOR, SELETORES["msg_sem_resultados"]))
+                    )
+                )
+            except TimeoutException:
+                logging.warning("Timeout esperando resultados.")
                 continue
-        except Exception: pass
 
-        # Coleta itens
-        try:
-            itens = []
-            for _ in range(3): # retries curtos
-                itens = driver.find_elements(By.CSS_SELECTOR, "a[data-title]")
-                if itens: break
-                time.sleep(0.5)
-            
-            if not itens: continue
+            # Validar Resultados
+            if driver.find_elements(By.CSS_SELECTOR, SELETORES["msg_sem_resultados"]):
+                if driver.find_element(By.CSS_SELECTOR, SELETORES["msg_sem_resultados"]).is_displayed():
+                    continue 
 
-            for link in itens:
-                try:
-                    exib = link.get_attribute("data-title") or link.text
-                    if not exib: continue
+            # Verificar lista de resultados
+            if is_email:
+                linhas = driver.find_elements(By.CSS_SELECTOR, SELETORES["linha_resultado"])
+                for linha in linhas:
+                    if termo_busca.lower() in linha.text.lower():
+                        logging.info(f"✅ E-mail encontrado: '{termo_busca}'")
+                        try:
+                            link = linha.find_element(By.CSS_SELECTOR, "a[data-title]")
+                            driver.execute_script("arguments[0].click();", link)
+                            WebDriverWait(driver, 15).until(EC.element_to_be_clickable((By.CSS_SELECTOR, SELETORES["botao_whatsapp"])))
+                            return True
+                        except: pass
+            else:
+                resultados = driver.find_elements(By.CSS_SELECTOR, "a[data-title]")
+                for res in resultados:
+                    try:
+                        titulo = res.get_attribute("data-title") or res.text
+                        if not titulo: continue
+                        
+                        if is_doc:
+                            numeros_titulo = re.sub(r'\D', '', titulo)
+                            numeros_busca = re.sub(r'\D', '', termo_busca)
+                            match = (numeros_titulo == numeros_busca) and len(numeros_busca) > 0
+                        else:
+                            titulo_norm = normalizar_nome(titulo)
+                            busca_norm = normalizar_nome(termo_busca)
+                            match = (busca_norm in titulo_norm) or (SequenceMatcher(None, busca_norm, titulo_norm).ratio() > 0.85)
+
+                        if match:
+                            logging.info(f"✅ ENCONTRADO: '{titulo}'")
+                            try:
+                                driver.execute_script("arguments[0].click();", res)
+                            except:
+                                res.click()
+                            WebDriverWait(driver, 15).until(EC.element_to_be_clickable((By.CSS_SELECTOR, SELETORES["botao_whatsapp"])))
+                            return True
+                            
+                    except StaleElementReferenceException:
+                        continue
                     
-                    exib_norm = normalizar_nome(exib, remover_invalidos=True)
-
-                    # Match Exato
-                    if exib_norm == nome_original_norm:
-                        logger.info(f"✅ EXATO: '{exib}'")
-                        link.click()
-                        _aguardar_whatsapp_botao(driver)
-                        return True
-
-                    # Fuzzy
-                    fuzzy = calcular_fuzzy_score(exib_norm, nome_original_norm)
-                    tipo_b = tipo_cliente(nome_original_norm)
-                    thr = _limiar_dinamico(tipo_b, len(todos_os_resultados), fuzzy["ratio"])
-                    
-                    if fuzzy["ratio"] >= thr:
-                        logger.info(f"✅ FUZZY {fuzzy['ratio']*100:.0f}%: '{exib}'")
-                        link.click()
-                        _aguardar_whatsapp_botao(driver)
-                        return True
-
-                    # Coleta parciais
-                    if fuzzy["ratio"] >= 0.50:
-                        chave = exib_norm
-                        cur = todos_os_resultados.get(chave)
-                        if not cur or cur["score"] < fuzzy["ratio"]:
-                            todos_os_resultados[chave] = {
-                                "nome_exibicao": exib,
-                                "score": fuzzy["ratio"],
-                                "busca_origem": termo_busca,
-                            }
-                except StaleElementReferenceException:
-                    continue
         except Exception as e:
-            logger.debug(f"Erro processando resultados: {e!r}")
-            continue
+            logging.error(f"Erro na busca: {e}")
+            try:
+                barra_pesquisa = driver.find_element(By.CSS_SELECTOR, SELETORES["barra_pesquisa"])
+            except: pass
 
-    # 3) Escolha Manual
-    if not todos_os_resultados:
-        logger.warning(f"❌ Cliente '{nome_cliente}' NÃO encontrado.")
-        return False
-
-    logger.info(f"Sem match automático. {len(todos_os_resultados)} candidatos encontrados.")
-    escolha = _escolher_resultado_manual(todos_os_resultados, nome_cliente)
-    if not escolha:
-        logger.warning(f"Pular '{nome_cliente}'.")
-        return False
-
-    return _executar_busca_e_clicar(driver, escolha["busca_origem"], escolha["nome_exibicao"])
-
-
-def _aguardar_whatsapp_botao(driver):
-    """Espera o botão do WhatsApp ficar clicável após entrar no cliente."""
-    WebDriverWait(driver, getattr(CONFIG.timeouts, "after_click", 20)).until(
-        EC.element_to_be_clickable((By.CSS_SELECTOR, 'span[data-title="Enviar mensagens via WhatsApp (canal de IM)"]'))
-    )
-
-def _executar_busca_e_clicar(driver, nome_busca: str, nome_para_clicar: str) -> bool:
-    """Busca específica e clique exato."""
-    logger.info(f"🔄 Re-buscando '{nome_busca}' para clicar em '{nome_para_clicar}'")
-    wait = _wait(driver)
-
-    barra = wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR, 'input[data-id="searchInput"]')))
-    barra.clear()
-    barra.send_keys(nome_busca)
-    barra.send_keys("\n")
-    time.sleep(0.5)
-
-    wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, "a[data-title]")))
-    itens = driver.find_elements(By.CSS_SELECTOR, "a[data-title]")
-    
-    alvo_norm = normalizar_nome(nome_para_clicar, remover_invalidos=True)
-    
-    for link in itens:
-        try:
-            exib = link.get_attribute("data-title") or link.text
-            if not exib: continue
-            
-            # Comparação normalizada para garantir clique
-            if normalizar_nome(exib, remover_invalidos=True) == alvo_norm:
-                link.click()
-                _aguardar_whatsapp_botao(driver)
-                logger.success(f"✅ Clicado: '{exib}'")
-                return True
-        except StaleElementReferenceException:
-            continue
-
-    # Fallback: tenta contains se o exato falhar
-    for link in itens:
-        try:
-            exib = link.get_attribute("data-title") or link.text
-            if nome_para_clicar in exib:
-                link.click()
-                _aguardar_whatsapp_botao(driver)
-                return True
-        except: pass
-
-    logger.warning(f"❌ Erro final: Item '{nome_para_clicar}' não clicável.")
+    logging.warning(f"❌ Cliente '{nome_cliente}' não encontrado.")
     return False
-
-if __name__ == "__main__":
-    # Teste rápido de variações
-    print(_gerar_variacoes_inteligentes("João da Silva 123"))
