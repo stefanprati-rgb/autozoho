@@ -12,6 +12,7 @@ Busca inteligente de clientes no Zoho Desk.
 from __future__ import annotations
 
 import json
+import re
 import time
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple
@@ -65,6 +66,21 @@ try:
 except Exception:
     # fallbacks mínimos usando normalizacao.py
     from normalizacao import normalizar_nome, calcular_fuzzy_score, tipo_cliente  # type: ignore
+
+# Importa função de formatação de documentos
+try:
+    from utils.validation import formatar_documento_brasil  # type: ignore
+except Exception:
+    # fallback se não existir
+    def formatar_documento_brasil(valor):
+        if not valor:
+            return ""
+        limpo = re.sub(r'\D', '', str(valor))
+        if len(limpo) == 11:  # CPF
+            return f"{limpo[:3]}.{limpo[3:6]}.{limpo[6:9]}-{limpo[9:]}"
+        elif len(limpo) == 14:  # CNPJ
+            return f"{limpo[:2]}.{limpo[2:5]}.{limpo[5:8]}/{limpo[8:12]}-{limpo[12:]}"
+        return valor
 
     # utilitários auxiliares locais (versões simples)
     def _sanear_termo_busca(txt: str) -> str:
@@ -232,45 +248,6 @@ def _registrar_decisao_manual(entrada_norm: str, via: str, nome_exibicao: str) -
 # Helpers de espera
 # ---------------------------------------------------------------------------
 def _wait(driver, seconds: Optional[int] = None) -> WebDriverWait:
-    t = seconds or getattr(getattr(CONFIG, "timeouts", object()), "search_wait", 15)
-    return WebDriverWait(driver, t)
-
-
-# ---------------------------------------------------------------------------
-# Busca principal (com “coleta total” + fuzzy)
-# ---------------------------------------------------------------------------
-@retry(
-    stop=stop_after_attempt(2),
-    wait=wait_exponential(multiplier=1.5, max=6),
-    reraise=True,
-)
-def buscar_e_abrir_cliente(driver, nome_cliente: str) -> bool:
-    """
-    Busca o cliente pelo nome, tentando múltiplas variações e aplicando fuzzy.
-    Fluxo:
-        - tenta cache (decisão manual anterior)
-        - gera variações; para cada:
-            * digita termo, coleta resultados visíveis
-            * tenta match exato (normalizado) e fuzzy
-            * acumula candidatos “quase bons”
-        - se nada automático, pergunta ao usuário (console)
-        - reexecuta busca para a escolha manual e clica
-
-    Retorna:
-        True  -> encontrou e abriu o cliente
-        False -> não encontrou ou usuário optou por pular
-    """
-    logger.info(f"🔍 Buscando cliente: '{nome_cliente}'")
-    nome_original_norm = normalizar_nome(nome_cliente, remover_invalidos=True)
-
-    # 1) cache de decisões
-    cache = _carregar_cache()
-    if nome_original_norm in cache:
-        m = cache[nome_original_norm]
-        logger.info(f"💾 Usando mapeamento aprendido: '{m['nome_exibicao']}' via '{m['via']}'")
-        try:
-            return _executar_busca_e_clicar(driver, m["via"], m["nome_exibicao"])
-        except Exception as e:
             logger.warning(f"Falha ao aplicar mapeamento (seguindo fluxo normal): {e!r}")
 
     # 2) variações

@@ -55,9 +55,24 @@ def carregar_lista_clientes(caminho: Optional[str]) -> List[str]:
     if p.suffix.lower() == ".xlsx":
         import openpyxl
         wb = openpyxl.load_workbook(p)
-        for row in wb.active.iter_rows(min_row=1, values_only=True):
-            if row and row[0]:
-                clientes.append(str(row[0]).strip())
+        sheet = wb.active
+        
+        # Procura o índice da coluna de documento
+        coluna_alvo = 0  # Padrão: primeira coluna
+        headers = [cell.value for cell in sheet[1]]  # Cabeçalhos da primeira linha
+        
+        for i, header in enumerate(headers):
+            if header and str(header).upper() in ['CNPJ', 'CPF', 'DOCUMENTO', 'CPF/CNPJ']:
+                coluna_alvo = i
+                print(f"🎯 Coluna alvo identificada: '{header}' (Índice {i})")
+                break
+        
+        # Lê os dados da coluna identificada
+        for row in sheet.iter_rows(min_row=2, values_only=True):  # Começa da linha 2 (pula header)
+            if row and row[coluna_alvo] is not None:
+                # Limpa espaços
+                valor = str(row[coluna_alvo]).strip()
+                clientes.append(valor)
     else:
         encodings = ["utf-8", "latin-1", "cp1252"]
         for enc in encodings:
