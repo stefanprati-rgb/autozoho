@@ -1,0 +1,7 @@
+loguru
+selenium
+tenacity
+tqdm
+openpyxl
+pyyaml
+python-dotenv

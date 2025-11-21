@@ -1,0 +1,86 @@
+# Configurações da automação Zoho Desk
+
+zoho:
+  url: "https://desk.zoho.com/agent/hubedesk/era-verde-energia/whatsapp/page#IM/-1/sessions/mine-all"
+
+  departamentos:
+    "1": "Alagoas Energia"
+    "2": "EGS"
+    "3": "Era Verde Energia"
+    "4": "Hube"
+    "5": "Lua Nova Energia"
+
+  templates:
+    "1":
+      nome: "Reunião Contrato"
+      ancoras:
+        - "Aqui é Stefan, da Era Verde Energia."
+        - "atualização importante em sua parceria"
+    "2":
+      nome: "Cobrança 1.4"
+      ancoras:
+        - "O pagamento da fatura ainda não foi localizado"
+        - "Para seguirmos com a regularização"
+    "3":
+      nome: "Acordo em Atraso"
+      ancoras:
+        - "seu boleto unificado de acordo"
+        - "ainda não foi pago e está vencido"
+    "4":
+      nome: "Protocolo aberto"
+      ancoras:
+        - "protocolo em aberto"
+        - "continuidade ao atendimento"
+    "5":
+      nome: "Boas Vindas + Cobrança"
+      ancoras:
+        - "Olá, querido cliente!"
+        - "Seja muito bem-vindo à Era Verde Energia!"
+        - "redução no valor da sua conta da CPFL"
+    "6":
+      nome: "Comunicado Faturamento"
+      ancoras:
+        - "Prezado cliente"
+        - "não haverá faturamento"
+        - "problema técnico identificado na usina"
+    "7":
+      nome: "Boas Vindas Padrão"
+      ancoras:
+        - "Prezado cliente"
+        - "Era Verde"
+        - "sua gestora de energia"
+        - "Reverde era o seu canal"
+        - "seremos seu ponto focal"
+    "8":
+      nome: "Contato"
+      ancoras:
+        - "Olá! Tudo bem?"
+        - "retomar a nossa conversa"
+        - "clique no botão abaixo"
+    "9":
+      nome: "Boas Vindas"
+      ancoras:
+        - "Olá! Tudo bem?"
+        - "Me chamo Isabella"
+        - "prosseguir com o seu atendimento"
+    "10":
+      nome: "Cobrança Setembro"
+      ancoras:
+        - "Estamos com dificuldades em localizar seu pagamento"
+        - "fatura Setembro/2025"
+        - "regularização do valor"
+
+timeouts:
+  login: 900          # 15 minutos
+  troca_dept: 15
+  busca_cliente: 15
+  envio: 600          # 10 minutos
+
+fuzzy:
+  threshold: 0.85
+  primeiro_ultimo: 0.85
+
+retry:
+  tentativas: 5
+  backoff_base: 1.5
+  max_backoff: 20
