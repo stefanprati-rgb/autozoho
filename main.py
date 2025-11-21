@@ -1,187 +1,242 @@
-#!/usr/bin/env python3
-# run_batch.py
-from __future__ import annotations
+# -*- coding: utf-8 -*-
+import os
+import sys
+import re
+import csv
+import time
+import argparse
+import logging
+from datetime import datetime
+from tqdm import tqdm  # Barra de progresso
 
-import os, time, csv, re, unicodedata
-from pathlib import Path
-from typing import Optional, List
-
-from loguru import logger
-from tqdm import tqdm
-
-from core.driver import DriverManager, _screenshot_fallback
-from auth import LoginManager
-from core.busca import buscar_e_abrir_cliente
-from core.messaging import abrir_modal_whatsapp, enviar_mensagem_whatsapp, selecionar_canal_e_modelo
-from core.departamento import trocar_departamento_zoho
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.common.exceptions import (
+    TimeoutException,
+    InvalidSessionIdException
+)
 
-# ----------------- CONFIG BÁSICA -----------------
-COOLDOWN_INTERVALO_CLIENTES = 20
-COOLDOWN_DURACAO_SEGUNDOS = 10
+# --- IMPORTAÇÕES MODULARES EXPLÍCITAS (Para evitar erros) ---
+try:
+    # Configurações
+    from config.constants import TEMPLATES_DISPONIVEIS, DEPARTAMENTOS_DISPONIVEIS, URL_ZOHO_DESK
+    # Se estas constantes não existirem no constants.py, defina valores padrão aqui:
+    COOLDOWN_INTERVALO_CLIENTES = 20
+    COOLDOWN_DURACAO_SEGUNDOS = 60
+except ImportError:
+    # Fallback caso constants.py não tenha tudo
+    from config.constants import * # Core (Lógica Principal)
+from core.login import fazer_login
+from core.search import buscar_e_abrir_cliente
+# Nota: A função de troca de departamento está no messaging.py conforme correção anterior
+from core.messaging import trocar_departamento_zoho 
+from core.processing import processar_pagina_cliente
 
-TEMPLATES_DISPONIVEIS = {
-    "1": {"nome": "Reunião Contrato", "ancoras": ["Aqui é", "atualização importante"]},
-    "2": {"nome": "Cobrança 1.4", "ancoras": ["pagamento", "regularização"]},
-    "3": {"nome": "Acordo em Atraso", "ancoras": ["boleto unificado", "vencido"]},
-    "4": {"nome": "Protocolo aberto", "ancoras": ["protocolo em aberto", "continuidade"]},
-    "5": {"nome": "Boas Vindas + Cobrança", "ancoras": ["bem-vindo", "redução no valor"]},
-    "6": {"nome": "Comunicado_faturamento", "ancoras": ["Prezado cliente", "não haverá faturamento"]},
-    "7": {"nome": "Boas Vindas Padrão", "ancoras": ["Era Verde", "ponto focal"]},
-    "8": {"nome": "Contato", "ancoras": ["retomar a nossa conversa"]},
-    "9": {"nome": "Boas-vindas", "ancoras": ["prosseguir com o seu atendimento"]},
-}
+# Utils (Ferramentas)
+from utils.files import carregar_lista_clientes
+from utils.webdriver import iniciar_driver
+from utils.screenshots import take_screenshot
 
-DEPARTAMENTOS_DISPONIVEIS = {
-    "1": "Alagoas Energia",
-    "2": "EGS",
-    "3": "Era Verde Energia",
-    "4": "Hube",
-    "5": "Lua Nova Energia"
-}
+# Tenta importar setup_logging, senão usa básico
+try:
+    from utils.reports import setup_logging, dump_browser_logs
+except ImportError:
+    def setup_logging(level, file):
+        logging.basicConfig(level=level, filename=file, format='%(asctime)s - %(levelname)s - %(message)s')
+    def dump_browser_logs(driver): pass
 
-# ----------------- INPUT DA LISTA -----------------
-def carregar_lista_clientes(caminho: Optional[str]) -> List[str]:
-    if not caminho:
-        print("Passe o caminho do arquivo (xlsx/csv/txt) via argumento ou edite no script.")
-        return []
-    p = Path(caminho)
-    if not p.exists():
-        print(f"Arquivo não encontrado: {p}")
-        return []
-    clientes: List[str] = []
-    if p.suffix.lower() == ".xlsx":
-        import openpyxl
-        wb = openpyxl.load_workbook(p)
-        sheet = wb.active
-        
-        # Procura o índice da coluna de documento
-        coluna_alvo = 0  # Padrão: primeira coluna
-        headers = [cell.value for cell in sheet[1]]  # Cabeçalhos da primeira linha
-        
-        for i, header in enumerate(headers):
-            if header and str(header).upper() in ['CNPJ', 'CPF', 'DOCUMENTO', 'CPF/CNPJ']:
-                coluna_alvo = i
-                print(f"🎯 Coluna alvo identificada: '{header}' (Índice {i})")
-                break
-        
-        # Lê os dados da coluna identificada
-        for row in sheet.iter_rows(min_row=2, values_only=True):  # Começa da linha 2 (pula header)
-            if row and row[coluna_alvo] is not None:
-                # Limpa espaços
-                valor = str(row[coluna_alvo]).strip()
-                clientes.append(valor)
+# ==============================================================================
+# FUNÇÃO PRINCIPAL
+# ==============================================================================
+def main():
+    parser = argparse.ArgumentParser(description="Automação de envio de mensagens via WhatsApp no Zoho Desk.")
+
+    parser.add_argument("-a", "--arquivo", required=True, help="Caminho para o arquivo .xlsx ou .csv com a lista de clientes.")
+    parser.add_argument("-l", "--loglevel", default="INFO", choices=["DEBUG", "INFO", "WARNING", "ERROR"], help="Nível de log.")
+    parser.add_argument("--log", default="automacao.log", help="Arquivo de log.")
+    parser.add_argument("--dry-run", action="store_true", help="Modo simulação (não envia mensagem).")
+    parser.add_argument("--template", help="Número ou nome do template.")
+    parser.add_argument("--departamento", help="Número ou nome do departamento.")
+    parser.add_argument("--keep-open", action="store_true", default=True, help="Manter navegador aberto no final.")
+
+    args = parser.parse_args()
+
+    # 1. Configuração
+    setup_logging(args.loglevel, args.log)
+    inicio = datetime.now()
+    logging.info(f"Iniciando automação em: {inicio}")
+
+    if args.dry_run:
+        logging.warning(">>> MODO DRY-RUN (SIMULAÇÃO) ATIVADO <<<")
+
+    # 2. Definição de Template e Departamento (Menu ou Argumentos)
+    global NOME_TEMPLATE, ANCORAS, NOME_DEPARTAMENTO
+    
+    if args.template and args.departamento:
+        # Tenta achar pelos argumentos
+        NOME_TEMPLATE, ANCORAS = resolver_template(args.template)
+        NOME_DEPARTAMENTO = resolver_departamento(args.departamento)
     else:
-        encodings = ["utf-8", "latin-1", "cp1252"]
-        for enc in encodings:
-            try:
-                txt = p.read_text(encoding=enc)
-                break
-            except UnicodeDecodeError:
-                continue
-        else:
-            raise RuntimeError("Não foi possível detectar encoding do arquivo.")
-        if p.suffix.lower() == ".csv":
-            try:
-                dialect = csv.Sniffer().sniff(txt[:1024], delimiters=";,")
-                rows = list(csv.reader(txt.splitlines(), dialect=dialect))
-            except csv.Error:
-                rows = list(csv.reader(txt.splitlines(), delimiter=";"))
-            for r in rows:
-                if r and r[0]:
-                    clientes.append(r[0].strip())
-        else:
-            for line in txt.splitlines():
-                if line.strip():
-                    clientes.append(line.strip())
-    # dedup preservando ordem
-    seen, out = set(), []
-    for c in clientes:
-        if c not in seen:
-            out.append(c); seen.add(c)
-    return out
+        # Abre menu interativo
+        NOME_TEMPLATE, ANCORAS, NOME_DEPARTAMENTO = menu_principal()
 
-# ----------------- UI CONSOLE -----------------
-def selecionar_departamento() -> Optional[str]:
-    print("\nSelecione o DEPARTAMENTO:")
-    for k in sorted(DEPARTAMENTOS_DISPONIVEIS, key=int):
-        print(f"  {k}) {DEPARTAMENTOS_DISPONIVEIS[k]}")
-    while True:
-        esc = input(f"Escolha (1-{len(DEPARTAMENTOS_DISPONIVEIS)}): ").strip()
-        if esc in DEPARTAMENTOS_DISPONIVEIS:
-            return DEPARTAMENTOS_DISPONIVEIS[esc]
-        print("Inválido.")
-
-def selecionar_template() -> tuple[str, List[str]]:
-    print("\nSelecione o TEMPLATE:")
-    for k in sorted(TEMPLATES_DISPONIVEIS, key=int):
-        print(f"  {k}) {TEMPLATES_DISPONIVEIS[k]['nome']}")
-    while True:
-        esc = input(f"Escolha (1-{len(TEMPLATES_DISPONIVEIS)}): ").strip()
-        if esc in TEMPLATES_DISPONIVEIS:
-            t = TEMPLATES_DISPONIVEIS[esc]
-            return t["nome"], t["ancoras"]
-        print("Inválido.")
-
-# ----------------- DEPARTAMENTO -----------------
-# trocar_departamento_zoho is provided by core.departamento now (imported above)
-
-# ----------------- TEMPLATE -----------------
-# selecionar_template_whatsapp is provided by core.whatsapp now (imported above)
-
-# ----------------- LOOP PRINCIPAL -----------------
-def processar_lote(caminho_lista: str, mensagem_padrao: Optional[str] = None):
-    clientes = carregar_lista_clientes(caminho_lista)
-    if not clientes:
-        print("Lista vazia.")
+    if not NOME_TEMPLATE or not NOME_DEPARTAMENTO:
+        logging.error("Configuração incompleta. Encerrando.")
         return
 
-    dept = selecionar_departamento()
-    if not dept:
-        print("Sem departamento."); return
+    logging.info(f"Template: {NOME_TEMPLATE} | Departamento: {NOME_DEPARTAMENTO}")
 
-    tpl_nome, tpl_ancoras = selecionar_template()
+    # 3. Carregar Clientes
+    lista_clientes = carregar_lista_clientes(args.arquivo)
+    if not lista_clientes:
+        logging.error("Lista de clientes vazia ou arquivo não encontrado.")
+        return
+    logging.info(f"Carregados {len(lista_clientes)} clientes para processar.")
 
-    with DriverManager(headless=None) as driver:
-        with LoginManager(driver) as ok:
-            if not ok:
-                raise SystemExit("Login falhou")
+    # 4. Iniciar Navegador e Login
+    driver = iniciar_driver()
+    if not driver:
+        return
 
-            # troca departamento
-            if not trocar_departamento_zoho(driver, dept):
-                raise SystemExit("Falhou trocar departamento")
+    try:
+        if not fazer_login(driver):
+            logging.critical("Falha no login. Encerrando.")
+            return
 
-            # percorre clientes
-            for i, nome in enumerate(tqdm(clientes, desc="Clientes")):
-                try:
-                    if not buscar_e_abrir_cliente(driver, nome):
-                        logger.warning(f"Cliente não encontrado: {nome}")
-                        continue
+        # 5. Selecionar Departamento Inicial
+        if not trocar_departamento_zoho(driver, NOME_DEPARTAMENTO):
+            logging.critical("Falha ao selecionar departamento inicial.")
+            return
 
-                    # abre canal WhatsApp
-                    if not abrir_modal_whatsapp(driver):
-                        logger.error("Falha ao abrir canal WhatsApp")
-                        continue
+        # 6. Loop de Processamento
+        sucesso = []
+        nao_encontrados = []
+        erros = []
 
-                    # seleciona template
-                    if not selecionar_canal_e_modelo(driver, dept, tpl_nome, tpl_ancoras):
-                        logger.error("Falha ao selecionar template")
-                        continue
+        pbar = tqdm(lista_clientes, desc="Processando", unit="cli")
+        
+        for i, cliente in enumerate(pbar):
+            pbar.set_postfix_str(f"{cliente[:20]}...")
+            
+            # Cooldown (Pausa para evitar bloqueio)
+            if i > 0 and i % COOLDOWN_INTERVALO_CLIENTES == 0:
+                logging.info(f"Pausa de {COOLDOWN_DURACAO_SEGUNDOS}s para resfriamento...")
+                time.sleep(COOLDOWN_DURACAO_SEGUNDOS)
 
-                    # envia (mensagem pode estar no template; aqui podemos enviar só para confirmar)
-                    enviar_mensagem_whatsapp(driver, mensagem=(mensagem_padrao or ""), anexos=None, confirmar=True)
+            # Garante que estamos na home
+            if "desk.zoho.com/agent/" not in driver.current_url:
+                driver.get(URL_ZOHO_DESK)
+                time.sleep(2)
 
-                except Exception as e:
-                    logger.exception(f"Erro com '{nome}': {e}")
-                    _screenshot_fallback(f"erro_{i}_{nome}", driver)
+            try:
+                # Busca
+                encontrado = buscar_e_abrir_cliente(driver, cliente)
+                if not encontrado:
+                    nao_encontrados.append(cliente)
+                    continue
 
-                # cooldown
-                if (i + 1) % COOLDOWN_INTERVALO_CLIENTES == 0:
-                    for s in tqdm(range(COOLDOWN_DURACAO_SEGUNDOS), desc="Cooldown"):
-                        time.sleep(1)
+                # Processa (Envia Mensagem)
+                # Passamos o departamento para garantir que está certo na tela do cliente
+                resultado = processar_pagina_cliente(
+                    driver=driver,
+                    nome_cliente=cliente,
+                    departamento=NOME_DEPARTAMENTO, # Passamos o dept aqui
+                    template_nome=NOME_TEMPLATE,
+                    ancoras=ANCORAS,
+                    dry_run=args.dry_run
+                )
+
+                if resultado:
+                    sucesso.append(cliente)
+                else:
+                    erros.append(cliente)
+
+            except Exception as e:
+                logging.error(f"Erro ao processar '{cliente}': {e}")
+                take_screenshot(driver, f"erro_loop_{cliente}")
+                erros.append(cliente)
+                # Tenta recuperar indo para home
+                try: driver.get(URL_ZOHO_DESK) 
+                except: pass
+
+    except KeyboardInterrupt:
+        logging.warning("Interrompido pelo usuário.")
+    finally:
+        # 7. Relatório Final
+        imprimir_relatorio(inicio, sucesso, nao_encontrados, erros, args.arquivo)
+        
+        if args.keep_open:
+            print("\nNavegador mantido aberto. Feche manualmente.")
+        else:
+            driver.quit()
+
+# ==============================================================================
+# FUNÇÕES AUXILIARES DO MENU
+# ==============================================================================
+def resolver_template(entrada):
+    # Tenta por número
+    if entrada in TEMPLATES_DISPONIVEIS:
+        return TEMPLATES_DISPONIVEIS[entrada]["nome"], TEMPLATES_DISPONIVEIS[entrada]["ancoras"]
+    # Tenta por nome
+    for k, v in TEMPLATES_DISPONIVEIS.items():
+        if v["nome"].lower() == entrada.lower():
+            return v["nome"], v["ancoras"]
+    return None, None
+
+def resolver_departamento(entrada):
+    if entrada in DEPARTAMENTOS_DISPONIVEIS:
+        return DEPARTAMENTOS_DISPONIVEIS[entrada]
+    for k, v in DEPARTAMENTOS_DISPONIVEIS.items():
+        if v.lower() == entrada.lower():
+            return v
+    return None
+
+def menu_principal():
+    print("\n=== CONFIGURAÇÃO ===")
+    
+    # Dept
+    print("Departamentos:")
+    for k in sorted(DEPARTAMENTOS_DISPONIVEIS.keys(), key=int):
+        print(f" {k}) {DEPARTAMENTOS_DISPONIVEIS[k]}")
+    d = input("Escolha o Dept (Número): ").strip()
+    dept = DEPARTAMENTOS_DISPONIVEIS.get(d)
+    
+    # Template
+    print("\nTemplates:")
+    for k in sorted(TEMPLATES_DISPONIVEIS.keys(), key=int):
+        print(f" {k}) {TEMPLATES_DISPONIVEIS[k]['nome']}")
+    t = input("Escolha o Template (Número): ").strip()
+    temp_data = TEMPLATES_DISPONIVEIS.get(t)
+    
+    if dept and temp_data:
+        return temp_data["nome"], temp_data["ancoras"], dept
+    return None, None, None
+
+def imprimir_relatorio(inicio, sucesso, nao_enc, erros, arquivo):
+    total = len(sucesso) + len(nao_enc) + len(erros)
+    print("\n" + "="*40)
+    print("RESUMO FINAL")
+    print(f"Arquivo: {arquivo}")
+    print(f"Total Processado: {total}")
+    print(f"✅ Sucesso: {len(sucesso)}")
+    print(f"🔍 Não Encontrados: {len(nao_enc)}")
+    print(f"❌ Erros: {len(erros)}")
+    
+    if nao_enc:
+        print("\nNão Encontrados:")
+        for n in nao_enc: print(f" - {n}")
+    
+    # Salva CSV simples
+    nome_csv = f"relatorio_{datetime.now().strftime('%Y%m%d_%H%M')}.csv"
+    with open(nome_csv, 'w', newline='', encoding='utf-8-sig') as f:
+        writer = csv.writer(f, delimiter=';')
+        writer.writerow(["Status", "Cliente"])
+        for c in sucesso: writer.writerow(["SUCESSO", c])
+        for c in nao_enc: writer.writerow(["NAO_ENCONTRADO", c])
+        for c in erros: writer.writerow(["ERRO", c])
+    print(f"\nRelatório salvo em: {nome_csv}")
+    print("="*40)
 
 if __name__ == "__main__":
-    # ajuste aqui o arquivo de entrada e uma mensagem opcional
-    processar_lote("clientes.xlsx", mensagem_padrao="")
+    main()
