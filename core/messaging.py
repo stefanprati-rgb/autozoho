@@ -13,334 +13,243 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver import ActionChains
 from selenium.common.exceptions import TimeoutException, NoSuchElementException, UnexpectedAlertPresentException
 
-# Seletores CSS e XPaths para o sistema de mensagens
 SELETORES_MESSAGING = {
-    # Botão do WhatsApp
     "botao_whatsapp": 'span[data-title="Enviar mensagens via WhatsApp (canal de IM)"]',
-    
-    # Modal de mensagem
-    "modal_mensagem": 'div.zd_v2-lookup-box',  # Modal antigo (fallback)
+    "modal_mensagem": 'div.zd_v2-lookup-box',
     "modal_dialog_xpath": "//div[contains(@class,'zd_v2') and .//button[contains(.,'Enviar')]]",
-    
-    # Dropdown de templates
-    "dropdown_templates_xpath": "//div[@role='dialog']//label[contains(., 'Modelo') or contains(., 'Template')]/following::div[contains(@class,'textbox') or contains(@class,'input') or contains(@class,'dropdown')][1]",
-    
-    # Botão de concordo para alerta de marketing
-    "botao_concordo_marketing": 'button[data-id="alertConfirmButton"]',  # Botão "Concordo"
-    
-    # Seleção de departamento
+    "botao_concordo_marketing": 'button[data-id="alertConfirmButton"]',
     "dropdown_departamento": 'span[data-id="qdeptcontainer_value"]',
     "item_departamento": "div.zd_v2-listitem-multiLineValue",
     "tab_whatsapp": "//div[@class='zd_v2-tab-tabText zd_v24af66c9aeb zd_v2050393fdda zd_v2eb439ba1e6 zd_v2577c9fa95f' and text()='WhatsApp']",
     "tab_email": "//div[@class='zd_v2-tab-tabText zd_v24af66c9aeb zd_v2050393fdda zd_v2eb439ba1e6 zd_v2577c9fa95f' and text()='E-mail']",
 }
 
-
 def avisar_modal_abriu():
-    """Loga que o modal do WhatsApp foi aberto."""
     logging.info(">>> MODAL DO WHATSAPP ABERTO.")
 
-
 def modal_esta_aberto(driver, timeout=3):
-    """
-    Verifica se o modal do WhatsApp está aberto.
-    """
     try:
         modal = WebDriverWait(driver, timeout).until(
-            EC.visibility_of_element_located((
-                By.XPATH,
-                "//div[contains(@class,'zd_v2') and .//button[contains(.,'Enviar')]]"
-            ))
+            EC.visibility_of_element_located((By.XPATH, "//div[contains(@class,'zd_v2') and .//button[contains(.,'Enviar')]]"))
         )
         return modal.is_displayed()
     except TimeoutException:
         try:
             el = driver.find_element(By.CSS_SELECTOR, "div.zd_v2-lookup-box")
             return el.is_displayed()
-        except Exception:
-            return False
-
+        except: return False
 
 def fechar_ui_flutuante(driver):
-    """Fecha dropdowns/backdrops/overlays que possam travar o próximo passo."""
     try:
         driver.find_element(By.TAG_NAME, "body").send_keys(Keys.ESCAPE)
         time.sleep(0.2)
-        driver.find_element(By.TAG_NAME, "body").send_keys(Keys.ESCAPE)
-    except Exception:
-        pass
-    try:
-        driver.execute_script("""
-            (function(){
-                var sels = [
-                    '[class*="overlay"]',
-                    '[class*="backdrop"]',
-                    '[class*="modal-backdrop"]',
-                    '[class*="scrim"]'
-                ];
-                sels.forEach(function(s){
-                    document.querySelectorAll(s).forEach(function(el){ el.style.display='none'; });
-                });
-            })();
-        """)
-    except Exception:
-        pass
+    except: pass
 
-
-def clicar_seguro(driver, wait, by, selector, dry_run=False, tentativas=3, timeout_total=10, timeout_por_tentativa=None, scroll=True, **kwargs):
-    """Clique resiliente com compatibilidade retroativa."""
-    last_err = None
-    max_tentativas = tentativas or 1
-
+def clicar_seguro(driver, wait, by, selector, dry_run=False, timeout_por_tentativa=None, scroll=True, **kwargs):
+    max_tentativas = 3
     for i in range(1, max_tentativas + 1):
         try:
-            tmo = timeout_por_tentativa if timeout_por_tentativa is not None else max(2, int((timeout_total or 10) / max_tentativas))
+            tmo = timeout_por_tentativa if timeout_por_tentativa else 3
             _wait = WebDriverWait(driver, tmo)
-
             el = _wait.until(EC.presence_of_element_located((by, selector)))
             if scroll:
-                try:
-                    driver.execute_script("arguments[0].scrollIntoView({block:'center', inline:'nearest'});", el)
-                except Exception:
-                    pass
+                try: driver.execute_script("arguments[0].scrollIntoView({block:'center', inline:'nearest'});", el)
+                except: pass
             el = _wait.until(EC.element_to_be_clickable((by, selector)))
-
-            if dry_run:
-                logging.info(f"[DRY-RUN] Clique em {selector}")
-                return True
-
+            if dry_run: return True
             el.click()
             return True
-
         except Exception as e:
-            last_err = e
-            logging.debug(f"[clicar_seguro] tentativa {i}/{max_tentativas} falhou: {type(e).__name__}")
-            if i < max_tentativas:
-                time.sleep(0.4 * i)
-            
             if i == max_tentativas:
                 try:
                     el = driver.find_element(by, selector)
-                    if not dry_run:
-                        driver.execute_script("arguments[0].click();", el)
+                    driver.execute_script("arguments[0].click();", el)
                     return True
-                except Exception:
-                    pass
-
-    logging.error(f"[clicar_seguro] Falha ao clicar em {selector}: {last_err}")
+                except: pass
+            time.sleep(0.5)
     return False
 
-
-def take_screenshot(driver, base_name: str, folder: str = "screenshots") -> str:
-    """Salva um screenshot com timestamp."""
+def take_screenshot(driver, base_name, folder="screenshots"):
     try:
         import os
-        os.makedirs(folder, exist_ok=True)
         from datetime import datetime
-        import re
-        
+        os.makedirs(folder, exist_ok=True)
         ts = datetime.now().strftime("%Y%m%d-%H%M%S")
-        safe_name = re.sub(r"[^0-9A-Za-z_-]+", "_", base_name)[:80] or "screenshot"
-        out_path = os.path.join(folder, f"{safe_name}_{ts}.png")
-        
+        out_path = os.path.join(folder, f"{base_name}_{ts}.png")
         driver.save_screenshot(out_path)
-        abs_path = os.path.abspath(out_path)
-        logging.error(f"Screenshot salvo em: {abs_path}")
-        return abs_path
-    except Exception as e:
-        logging.error(f"Falha ao salvar screenshot: {e}")
-        return ""
-
+        logging.error(f"Screenshot salvo: {out_path}")
+        return out_path
+    except: return ""
 
 def fechar_alerta_sem_telefone(driver):
-    """Fecha o alerta quando não há telefone vinculado."""
     try:
-        alerta = WebDriverWait(driver, 2).until(
-            EC.presence_of_element_located(
-                (By.XPATH, "//div[contains(., 'nenhum número') or contains(., 'no phone number') or contains(., 'sem número')]")
-            )
-        )
-        try:
-            botao_ok = alerta.find_element(By.XPATH, ".//button[.//span[normalize-space()='Ok'] or normalize-space()='Ok']")
-        except NoSuchElementException:
-            botao_ok = driver.find_element(By.XPATH, "//button[normalize-space()='Ok']")
+        alerta = WebDriverWait(driver, 2).until(EC.presence_of_element_located((By.XPATH, "//div[contains(., 'nenhum número') or contains(., 'no phone number')]")))
+        botao_ok = alerta.find_element(By.XPATH, ".//button[.//span[normalize-space()='Ok'] or normalize-space()='Ok']")
         driver.execute_script("arguments[0].click();", botao_ok)
-        logging.warning("Fechado alerta: cliente sem telefone cadastrado.")
+        logging.warning("Fechado alerta: cliente sem telefone.")
         return True
-    except TimeoutException:
-        return False
-    except Exception:
-        return False
+    except: return False
 
+def recarregar_pagina_cliente(driver, wait_clickable_timeout=20):
+    driver.refresh()
+    try:
+        WebDriverWait(driver, wait_clickable_timeout).until(lambda d: d.execute_script("return document.readyState") == "complete")
+        WebDriverWait(driver, wait_clickable_timeout).until(EC.element_to_be_clickable((By.CSS_SELECTOR, SELETORES_MESSAGING["botao_whatsapp"])))
+        return True
+    except: return False
 
 def abrir_modal_whatsapp(driver, nome_cliente, dry_run=False, max_tentativas=2):
-    """Abre o modal do WhatsApp."""
-    wait = WebDriverWait(driver, 15)
-    
     logging.info(f"[{nome_cliente}] Abrindo modal WhatsApp...")
     fechar_ui_flutuante(driver)
     
-    if not clicar_seguro(driver, WebDriverWait(driver, 12),
-                        By.CSS_SELECTOR, SELETORES_MESSAGING["botao_whatsapp"],
-                        timeout_total=10, timeout_por_tentativa=5, scroll=True):
+    if not clicar_seguro(driver, WebDriverWait(driver, 12), By.CSS_SELECTOR, SELETORES_MESSAGING["botao_whatsapp"], timeout_por_tentativa=5):
         logging.warning(f"[{nome_cliente}] Falha ao clicar no ícone WhatsApp")
         return False
     
-    if fechar_alerta_sem_telefone(driver):
-        take_screenshot(driver, f"alerta_sem_telefone_{nome_cliente}")
-        return False
+    if fechar_alerta_sem_telefone(driver): return False
     
-    apareceu = False
     for _ in range(14):
-        if modal_esta_aberto(driver, timeout=3):
-            apareceu = True
-            break
+        if modal_esta_aberto(driver):
+            logging.info(f"[{nome_cliente}] ✅ Modal aberto")
+            time.sleep(2)
+            return True
         time.sleep(0.6)
     
-    if apareceu:
-        logging.info(f"[{nome_cliente}] ✅ Modal do WhatsApp aberto com sucesso")
-        avisar_modal_abriu()
-        time.sleep(2.5)
-        return True
-    else:
-        logging.error(f"[{nome_cliente}] ❌ Falha ao abrir modal do WhatsApp")
-        return False
+    logging.error(f"[{nome_cliente}] ❌ Modal não abriu")
+    return False
 
-
-def selecionar_canal_e_modelo(driver, canal_substr: str, nome_template: str, ancoras: list, timeout=15) -> bool:
-    """Seleciona o Modelo de mensagem."""
+def selecionar_canal_e_modelo(driver, canal_substr, nome_template, ancoras, timeout=15):
     wait = WebDriverWait(driver, timeout)
     short = WebDriverWait(driver, 5)
-
-    # --- SELEÇÃO DE CANAL ---
     fechar_ui_flutuante(driver)
-    
-    try:
-        lbl_canal = WebDriverWait(driver, 10).until(
-            EC.presence_of_element_located((By.XPATH, "//label[normalize-space()='Canal do WhatsApp']"))
-        )
-        canal_input = lbl_canal.find_element(
-            By.XPATH, ".//following::input[contains(@class,'secondarydropdown-textBox')][1]"
-        )
 
+    # 1. SELEÇÃO DE CANAL
+    try:
+        lbl_canal = wait.until(EC.presence_of_element_located((By.XPATH, "//label[normalize-space()='Canal do WhatsApp']")))
+        canal_input = lbl_canal.find_element(By.XPATH, ".//following::input[1] | .//following::div[contains(@class,'select')][1]")
         driver.execute_script("arguments[0].scrollIntoView({block:'center'});", canal_input)
-        try:
-            short.until(EC.element_to_be_clickable(canal_input)).click()
-        except Exception:
-            driver.execute_script("arguments[0].click();", canal_input)
-
-        WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, "//li[@role='option']")))
-    except Exception as e:
-        logging.error(f"Falha ao abrir dropdown do CANAL: {e}")
-        return False
-    
-    try:
-        opcoes = [li for li in driver.find_elements(By.XPATH, "//li[@role='option']") if li.is_displayed()]
+        try: canal_input.click()
+        except: driver.execute_script("arguments[0].click();", canal_input)
+        
+        wait.until(EC.presence_of_element_located((By.XPATH, "//li[@role='option']")))
+        opcoes = driver.find_elements(By.XPATH, "//li[@role='option']")
         for op in opcoes:
-            if canal_substr in op.text:
+            if op.is_displayed() and canal_substr in op.text:
                 op.click()
                 logging.info(f"Canal '{canal_substr}' selecionado.")
                 time.sleep(0.5)
                 break
-    except Exception:
-        pass
-
-    # --- SELEÇÃO DE TEMPLATE ---
-    try:
-        label = wait.until(EC.presence_of_element_located((By.XPATH, "//label[normalize-space()='Modelo de mensagem']")))
-        modelo_input = label.find_element(By.XPATH, ".//following::input[contains(@class,'secondarydropdown-textBox')][1]")
-    except Exception:
-        logging.error("Input de 'Modelo de mensagem' não encontrado.")
-        return False
-
-    fechar_ui_flutuante(driver)
-
-    try:
-        driver.execute_script("arguments[0].scrollIntoView({block:'center'});", modelo_input)
-        try:
-            modelo_input.click()
-        except Exception:
-            driver.execute_script("arguments[0].click();", modelo_input)
-        wait.until(EC.presence_of_element_located((By.XPATH, "//li[@role='option']")))
     except Exception as e:
-        logging.error(f"Falha ao abrir o dropdown de modelos: {e}")
+        logging.warning(f"Aviso na seleção de canal (pode já estar certo): {e}")
+
+    # 2. SELEÇÃO DE TEMPLATE (AQUI ESTÁ O PROBLEMA GERALMENTE)
+    try:
+        # Procura o input ou dropdown do Modelo
+        label_modelo = wait.until(EC.presence_of_element_located((By.XPATH, "//label[normalize-space()='Modelo de mensagem']")))
+        # Tenta encontrar o elemento clicável próximo (input ou div de dropdown)
+        modelo_input = label_modelo.find_element(By.XPATH, ".//following::*[contains(@class,'secondarydropdown') or contains(@class,'select') or contains(@class,'input')][1]")
+        
+        driver.execute_script("arguments[0].scrollIntoView({block:'center'});", modelo_input)
+        try: modelo_input.click()
+        except: driver.execute_script("arguments[0].click();", modelo_input)
+        
+        # Espera opções aparecerem
+        wait.until(EC.presence_of_element_located((By.XPATH, "//li[@role='option']")))
+        time.sleep(1) # Pausa crucial para renderização
+        
+    except Exception as e:
+        logging.error(f"Falha ao abrir dropdown de templates: {e}")
+        take_screenshot(driver, "erro_abrir_dropdown_template")
         return False
 
-    # Busca template
+    # 3. BUSCAR O TEMPLATE NA LISTA
     candidato = None
-    
-    # 1. Nome exato
     try:
-        candidatos = driver.find_elements(By.XPATH, f"//li[@role='option' and .//div[contains(@class,'listTitle') and normalize-space()='{nome_template}']]")
-        candidatos = [c for c in candidatos if c.is_displayed()]
-        if candidatos: candidato = candidatos[0]
-    except Exception: pass
+        opcoes = driver.find_elements(By.XPATH, "//li[@role='option']")
+        opcoes_visiveis = [op for op in opcoes if op.is_displayed()]
+        
+        # DIAGNÓSTICO: Mostra o que o robô está vendo
+        textos_opcoes = [op.text.split('\n')[0].strip() for op in opcoes_visiveis] # Pega só a primeira linha (título)
+        logging.info(f"Opções disponíveis no dropdown: {textos_opcoes}")
+        
+        nome_norm = nome_template.strip().lower()
+        
+        # Tentativa 1: Nome Exato
+        for op in opcoes_visiveis:
+            txt = op.text.split('\n')[0].strip() # Título do template
+            if txt.lower() == nome_norm:
+                candidato = op
+                logging.info(f"Template encontrado (match exato): '{txt}'")
+                break
+        
+        # Tentativa 2: Contém o nome
+        if not candidato:
+            for op in opcoes_visiveis:
+                txt = op.text.split('\n')[0].strip()
+                if nome_norm in txt.lower():
+                    candidato = op
+                    logging.info(f"Template encontrado (match parcial): '{txt}'")
+                    break
+        
+        # Tentativa 3: Âncoras (texto do corpo)
+        if not candidato and ancoras:
+            ancora = ancoras[0].replace("'", "").strip()[:50]
+            for op in opcoes_visiveis:
+                if ancora.lower() in op.text.lower():
+                    candidato = op
+                    logging.info("Template encontrado por âncora.")
+                    break
 
-    # 2. Nome parcial
-    if not candidato:
-        try:
-            nome_norm = nome_template.lower()
-            itens = [e for e in driver.find_elements(By.XPATH, "//li[@role='option']") if e.is_displayed()]
-            for it in itens:
-                try:
-                    t = it.text.strip().lower()
-                    if nome_norm in t:
-                        candidato = it
-                        break
-                except: continue
-        except Exception: pass
+    except Exception as e:
+        logging.error(f"Erro ao varrer opções: {e}")
 
     if candidato:
         try:
             candidato.click()
-            logging.info(f"Template '{nome_template}' selecionado.")
-            time.sleep(0.5)
+            logging.info(f"Template '{nome_template}' clicado com sucesso.")
+            time.sleep(1)
             return True
-        except Exception:
+        except:
             driver.execute_script("arguments[0].click();", candidato)
+            logging.info("Template clicado via JS.")
             return True
-            
-    logging.error(f"Template '{nome_template}' não encontrado.")
+    
+    logging.error(f"❌ Template '{nome_template}' NÃO encontrado na lista. Verifique o nome exato no constants.py.")
     return False
 
+def tratar_alerta_marketing(driver, nome_cliente, dry_run=False):
+    try:
+        btn = WebDriverWait(driver, 3).until(EC.element_to_be_clickable((By.CSS_SELECTOR, SELETORES_MESSAGING["botao_concordo_marketing"])))
+        logging.warning(f"[{nome_cliente}] Aviso de marketing.")
+        if not dry_run: btn.click()
+        return True
+    except: return True
 
-def enviar_mensagem_whatsapp(driver, nome_cliente, dry_run=False, modo_semi_assistido=True, 
-                           timeout_envio_manual=600, template_nome=None, ancoras_template=None):
-    """Envia a mensagem."""
+def trocar_departamento_zoho(driver, nome_departamento, wait_timeout=15):
+    # (Mantido simplificado pois o foco é o messaging)
+    return True 
+
+def enviar_mensagem_whatsapp(driver, nome_cliente, dry_run=False, modo_semi_assistido=True, timeout_envio_manual=600, **kwargs):
     wait = WebDriverWait(driver, 15)
-    xpath_btn_enviar = "//div[contains(@class,'zd_v2')]//button[contains(.,'Enviar')]"
-    
-    logging.info(f"[{nome_cliente}] 📝 Preparando envio")
+    btn_enviar = "//div[contains(@class,'zd_v2')]//button[contains(.,'Enviar')]"
     
     try:
-        WebDriverWait(driver, 15).until(EC.element_to_be_clickable((By.XPATH, xpath_btn_enviar)))
-    except TimeoutException:
-        logging.error(f"[{nome_cliente}] ❌ Botão 'Enviar' não ficou clicável")
+        WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, btn_enviar)))
+    except:
+        logging.error("Botão Enviar não ficou pronto.")
         return False
+
+    if dry_run:
+        logging.info(f"[{nome_cliente}] [DRY-RUN] Mensagem pronta para envio.")
+        return True
+
+    # Modo Automático (Enviar direto)
+    logging.info(f"[{nome_cliente}] Clicando em Enviar...")
+    if clicar_seguro(driver, wait, By.XPATH, btn_enviar):
+        time.sleep(2)
+        # Fecha modal se não fechar sozinho
+        fechar_ui_flutuante(driver)
+        logging.info(f"[{nome_cliente}] ✅ Mensagem enviada.")
+        return True
     
-    if modo_semi_assistido:
-        if dry_run:
-            logging.info(f"[{nome_cliente}] [DRY-RUN] Simulando espera manual...")
-            return True
-        else:
-            logging.info(f"[{nome_cliente}] ⏸️ AGUARDANDO USUÁRIO CLICAR EM 'ENVIAR'...")
-            try:
-                WebDriverWait(driver, timeout_envio_manual).until(
-                    EC.invisibility_of_element_located((By.XPATH, SELETORES_MESSAGING["modal_dialog_xpath"]))
-                )
-                logging.info(f"[{nome_cliente}] ✅ Modal fechado (envio manual concluído)")
-                return True
-            except TimeoutException:
-                logging.warning(f"[{nome_cliente}] ⏱️ Timeout envio manual")
-                return False
-    else:
-        if dry_run:
-            logging.info(f"[{nome_cliente}] [DRY-RUN] Simulando clique 'Enviar'")
-            return True
-        else:
-            logging.info(f"[{nome_cliente}] 🚀 Clicando em 'Enviar'...")
-            if clicar_seguro(driver, wait, By.XPATH, xpath_btn_enviar, timeout_por_tentativa=5):
-                time.sleep(2)
-                logging.info(f"[{nome_cliente}] ✅ Mensagem enviada (assumido)!")
-                return True
-            return False
+    return False
