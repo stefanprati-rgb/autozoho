@@ -13,7 +13,7 @@ from core.driver import DriverManager, _screenshot_fallback
 from auth import LoginManager
 from core.busca import buscar_e_abrir_cliente
 from core.messaging import abrir_modal_whatsapp, enviar_mensagem_whatsapp, selecionar_canal_e_modelo
-from utils.departamento import trocar_departamento_zoho
+from core.departamento import trocar_departamento_zoho
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
