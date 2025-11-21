@@ -12,7 +12,7 @@ from tqdm import tqdm
 from core.driver import DriverManager, _screenshot_fallback
 from auth import LoginManager
 from core.busca import buscar_e_abrir_cliente
-from utils.whatsapp import abrir_canal_whatsapp, enviar_whatsapp, selecionar_template_whatsapp
+from core.messaging import abrir_modal_whatsapp, enviar_mensagem_whatsapp, selecionar_canal_e_modelo
 from utils.departamento import trocar_departamento_zoho
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
@@ -161,17 +161,17 @@ def processar_lote(caminho_lista: str, mensagem_padrao: Optional[str] = None):
                         continue
 
                     # abre canal WhatsApp
-                    if not abrir_canal_whatsapp(driver):
+                    if not abrir_modal_whatsapp(driver):
                         logger.error("Falha ao abrir canal WhatsApp")
                         continue
 
                     # seleciona template
-                    if not selecionar_template_whatsapp(driver, tpl_nome, tpl_ancoras):
+                    if not selecionar_canal_e_modelo(driver, dept, tpl_nome, tpl_ancoras):
                         logger.error("Falha ao selecionar template")
                         continue
 
                     # envia (mensagem pode estar no template; aqui podemos enviar só para confirmar)
-                    enviar_whatsapp(driver, mensagem=(mensagem_padrao or ""), anexos=None, abrir_canal=False, confirmar=True)
+                    enviar_mensagem_whatsapp(driver, mensagem=(mensagem_padrao or ""), anexos=None, confirmar=True)
 
                 except Exception as e:
                     logger.exception(f"Erro com '{nome}': {e}")
