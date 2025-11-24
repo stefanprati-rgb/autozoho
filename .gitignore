@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+*.log
+debug_erro/
+*.csv
+.venv/
+.vscode/
+.gemini/
