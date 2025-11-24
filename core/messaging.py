@@ -1,11 +1,12 @@
 # -*- coding: utf-8 -*-
 """
 Módulo de messaging do sistema de automação Zoho Desk.
-Versão Otimizada com Estrutura HTML Confirmada (listTitle/listdesc).
+Versão Otimizada: Busca em 2 Etapas (Nome -> Conteúdo) e seleção robusta.
 """
 
 import time
 import logging
+import re
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
@@ -40,7 +41,12 @@ def modal_esta_aberto(driver, timeout=3):
         except: return False
 
 def fechar_ui_flutuante(driver):
+    """
+    Tenta fechar modais e dropdowns pressionando ESC.
+    """
     try:
+        driver.find_element(By.TAG_NAME, "body").send_keys(Keys.ESCAPE)
+        time.sleep(0.3)
         driver.find_element(By.TAG_NAME, "body").send_keys(Keys.ESCAPE)
         time.sleep(0.3)
     except: pass
@@ -136,10 +142,67 @@ def tratar_alerta_marketing(driver, nome_cliente, dry_run=False):
     except: pass
     return True
 
+def _buscar_e_selecionar_visual(driver, nome_template, ancoras, busca_realizada=False):
+    """
+    Helper interno que varre a lista visualmente para encontrar o candidato e clica.
+    Retorna True se clicou, False se não achou.
+    """
+    try:
+        # Espera opções aparecerem
+        WebDriverWait(driver, 5).until(EC.presence_of_element_located((By.XPATH, "//li[@role='option']")))
+        
+        candidato = None
+        nome_limpo = nome_template.strip()
+        
+        opcoes = [op for op in driver.find_elements(By.XPATH, "//li[@role='option']") if op.is_displayed()]
+        
+        # 1. Busca pelo Título (listTitle)
+        for op in opcoes:
+            try:
+                titulo_el = op.find_element(By.XPATH, ".//div[contains(@class, 'listTitle')]")
+                if nome_limpo in titulo_el.text:
+                    candidato = op
+                    logging.info(f"Template encontrado (Título): '{titulo_el.text}'")
+                    break
+            except: continue
+        
+        # 2. Busca pela Descrição (listdesc)
+        if not candidato and ancoras:
+            for ancora in ancoras:
+                ancora_limpa = ancora.replace("'", "\\'")[:60]
+                for op in opcoes:
+                    try:
+                        desc_el = op.find_element(By.XPATH, ".//div[contains(@class, 'listdesc')]")
+                        if ancora_limpa in desc_el.text:
+                            candidato = op
+                            logging.info(f"Template encontrado (Âncora): '{ancora_limpa}...'")
+                            break
+                    except: continue
+                if candidato: break
+
+        if candidato:
+            driver.execute_script("arguments[0].scrollIntoView({block:'center'});", candidato)
+            try: candidato.click()
+            except: driver.execute_script("arguments[0].click();", candidato)
+            time.sleep(1.5)
+            return True
+        
+        # Log de diagnóstico se falhar
+        if busca_realizada:
+             titulos = []
+             for op in opcoes[:5]:
+                 try: titulos.append(op.find_element(By.XPATH, ".//div[contains(@class, 'listTitle')]").text)
+                 except: pass
+             logging.debug(f"Itens visíveis na busca: {titulos}")
+             
+        return False
+
+    except Exception:
+        return False
+
 def selecionar_canal_e_modelo(driver, canal_substr: str, nome_template: str, ancoras: list, timeout=15) -> bool:
     """
-    Seleciona Canal e Template usando busca inteligente e classes confirmadas pelo HTML.
-    Classes: zd_v2-imcommondropdown-listTitle e zd_v2-imcommondropdown-listdesc
+    Seleciona Canal e Template em 2 ETAPAS (Nome -> Conteúdo).
     """
     wait = WebDriverWait(driver, timeout)
     short = WebDriverWait(driver, 5)
@@ -165,14 +228,12 @@ def selecionar_canal_e_modelo(driver, canal_substr: str, nome_template: str, anc
     except Exception as e:
         logging.warning(f"Aviso canal: {e}")
 
-    # --- 2. SELECIONAR TEMPLATE (COM BUSCA E ESTRUTURA HTML CORRETA) ---
+    # --- 2. SELECIONAR TEMPLATE (Lógica em 2 Etapas) ---
     logging.info(f"Procurando template: '{nome_template}'")
     try:
-        # Localiza Input
         label = wait.until(EC.presence_of_element_located((By.XPATH, "//label[normalize-space()='Modelo de mensagem' or contains(.,'Template')]")))
         modelo_input = label.find_element(By.XPATH, ".//following::input[contains(@class,'secondarydropdown-textBox')][1]")
         
-        # Verifica se já selecionado
         if nome_template.lower() in (modelo_input.get_attribute("value") or "").lower():
             return True
 
@@ -181,72 +242,73 @@ def selecionar_canal_e_modelo(driver, canal_substr: str, nome_template: str, anc
         driver.execute_script("arguments[0].scrollIntoView({block:'center'});", modelo_input)
         time.sleep(1)
         driver.execute_script("arguments[0].click();", modelo_input)
-        time.sleep(2) # Carregamento
+        time.sleep(2) 
         
-        # --- Tenta digitar na busca do menu (se houver) ---
-        search_typed = False
+        search_box = None
         try:
             search_box = driver.find_element(By.CSS_SELECTOR, "input[placeholder='Search']")
-            if search_box.is_displayed():
-                search_box.click()
-                search_box.clear()
-                search_box.send_keys(nome_template)
-                time.sleep(1.5)
-                search_typed = True
         except: pass
 
-        # --- BUSCA PELAS CLASSES DO HTML ---
-        wait.until(EC.presence_of_element_located((By.XPATH, "//li[@role='option']")))
-        
-        candidato = None
-        nome_limpo = nome_template.strip()
-        
-        # Pega todos os 'li' visíveis (opções)
-        opcoes = [op for op in driver.find_elements(By.XPATH, "//li[@role='option']") if op.is_displayed()]
-        
-        # 1. Busca pelo Título (listTitle)
-        for op in opcoes:
-            try:
-                titulo_el = op.find_element(By.XPATH, ".//div[contains(@class, 'listTitle')]")
-                if nome_limpo in titulo_el.text:
-                    candidato = op
-                    logging.info(f"Template encontrado (Título): '{titulo_el.text}'")
-                    break
-            except: continue
-        
-        # 2. Busca pela Descrição/Âncora (listdesc)
-        if not candidato and ancoras and not search_typed:
-            for ancora in ancoras:
-                ancora_limpa = ancora.replace("'", "\\'")[:50]
-                for op in opcoes:
-                    try:
-                        desc_el = op.find_element(By.XPATH, ".//div[contains(@class, 'listdesc')]")
-                        if ancora_limpa in desc_el.text:
-                            candidato = op
-                            logging.info(f"Template encontrado (Âncora): '{ancora_limpa}...'")
-                            break
-                    except: continue
-                if candidato: break
+        if search_box and search_box.is_displayed():
+            # --- TENTATIVA 1: BUSCA PELO NOME SANITIZADO ---
+            nome_busca_safe = re.sub(r'[^\w\s]', '', nome_template).strip()
+            logging.info(f"Tentativa 1: Digitando nome '{nome_busca_safe}'...")
+            
+            search_box.click()
+            search_box.clear()
+            for char in nome_busca_safe:
+                search_box.send_keys(char)
+                time.sleep(0.1)
+            time.sleep(2) # Filtro
 
-        # Clica
-        if candidato:
-            driver.execute_script("arguments[0].scrollIntoView({block:'center'});", candidato)
-            try: candidato.click()
-            except: driver.execute_script("arguments[0].click();", candidato)
-            time.sleep(1)
+            if _buscar_e_selecionar_visual(driver, nome_template, ancoras, busca_realizada=True):
+                return True
+            
+            # --- TENTATIVA 2: BUSCA PELO CONTEÚDO (ÂNCORA) ---
+            if ancoras:
+                # Pega a primeira âncora, limpa e usa as primeiras 4 palavras
+                ancora_texto = ancoras[0]
+                # Remove caracteres especiais para a busca
+                ancora_busca = re.sub(r'[^\w\s]', '', ancora_texto).strip()
+                # Pega apenas o início para não ser muito específico
+                palavras = ancora_busca.split()[:4] 
+                termo_ancora = " ".join(palavras)
+                
+                if len(termo_ancora) > 3:
+                    logging.info(f"Tentativa 2: Falha no nome. Buscando por conteúdo: '{termo_ancora}'...")
+                    search_box.click()
+                    # Limpa (CTRL+A + DEL é mais seguro aqui)
+                    search_box.send_keys(Keys.CONTROL + "a")
+                    search_box.send_keys(Keys.DELETE)
+                    time.sleep(0.5)
+                    
+                    for char in termo_ancora:
+                        search_box.send_keys(char)
+                        time.sleep(0.1)
+                    time.sleep(2)
+
+                    if _buscar_e_selecionar_visual(driver, nome_template, ancoras, busca_realizada=True):
+                        return True
+
+        # --- TENTATIVA 3: LISTA COMPLETA (Sem busca) ---
+        logging.warning("Buscas falharam. Resetando filtro para tentar lista completa...")
+        try:
+            if search_box:
+                search_box.send_keys(Keys.CONTROL + "a")
+                search_box.send_keys(Keys.DELETE)
+                time.sleep(1.5)
+        except: pass
+        
+        if _buscar_e_selecionar_visual(driver, nome_template, ancoras):
             return True
-        else:
-            # Debug: lista o que achou
-            titulos_visiveis = []
-            for op in opcoes[:5]:
-                try: titulos_visiveis.append(op.find_element(By.XPATH, ".//div[contains(@class, 'listTitle')]").text)
-                except: pass
-            logging.error(f"Template '{nome_template}' não encontrado. Visíveis: {titulos_visiveis}")
-            return False
+
+        logging.error(f"Template '{nome_template}' não encontrado após todas as tentativas.")
+        fechar_ui_flutuante(driver)
+        return False
 
     except Exception as e:
         logging.error(f"Erro template: {e}")
-        take_screenshot(driver, f"erro_template_{nome_template}")
+        fechar_ui_flutuante(driver)
         return False
 
 def enviar_mensagem_whatsapp(driver, nome_cliente, dry_run=False, modo_semi_assistido=True, timeout_envio_manual=600, template_nome=None, ancoras_template=None):
@@ -284,9 +346,8 @@ def enviar_mensagem_whatsapp(driver, nome_cliente, dry_run=False, modo_semi_assi
                 ))
                 logging.info(f"[{nome_cliente}] ✅ Sucesso detectado.")
                 try:
-                    btn_fechar = driver.find_element(By.XPATH, "//div[contains(@class,'zd_v2') and @role='dialog']//button[contains(@aria-label,'Fechar') or contains(.,'×')]")
-                    driver.execute_script("arguments[0].click();", btn_fechar)
-                except: fechar_ui_flutuante(driver)
+                    fechar_ui_flutuante(driver)
+                except: pass
                 time.sleep(1)
                 return True
             except:
@@ -299,9 +360,14 @@ def enviar_mensagem_whatsapp(driver, nome_cliente, dry_run=False, modo_semi_assi
 def processar_envio_completo_whatsapp(driver, nome_cliente, departamento, template_nome, ancoras_template, dry_run=False, modo_semi_assistido=True):
     logging.info(f"INICIANDO ENVIO WHATSAPP: {nome_cliente}")
     if not abrir_modal_whatsapp(driver, nome_cliente, dry_run): return False
+    
     if not selecionar_canal_e_modelo(driver, departamento, template_nome, ancoras_template):
         take_screenshot(driver, f"falha_template_{nome_cliente}")
+        logging.warning("Seleção falhou. Fechando modal...")
+        fechar_ui_flutuante(driver)
+        time.sleep(1)
         return False
+        
     tratar_alerta_marketing(driver, nome_cliente, dry_run)
     sucesso = enviar_mensagem_whatsapp(driver, nome_cliente, dry_run, modo_semi_assistido, template_nome=template_nome, ancoras_template=ancoras_template)
     if sucesso: logging.info(f"[{nome_cliente}] ✅ ENVIO CONCLUÍDO!")
