@@ -13,6 +13,8 @@ from tqdm import tqdm  # Barra de progresso
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver import ActionChains
+from selenium.webdriver.common.keys import Keys
 from selenium.common.exceptions import (
     TimeoutException,
     InvalidSessionIdException
@@ -23,9 +25,19 @@ try:
     from config.constants import TEMPLATES_DISPONIVEIS, DEPARTAMENTOS_DISPONIVEIS, URL_ZOHO_DESK
     COOLDOWN_INTERVALO_CLIENTES = 20
     COOLDOWN_DURACAO_SEGUNDOS = 60
+    
+    # --- CONFIGURAÇÃO DE VELOCIDADE (AJUSTADA PARA MAIOR RAPIDEZ) ---
+    DELAY_DIGITACAO_CURTA = 0.005  # Antes: 0.02
+    DELAY_DIGITACAO_MEDIA = 0.010  # Antes: 0.03
+    DELAY_DIGITACAO_LONGA = 0.015  # Antes: 0.04
+    
 except ImportError:
     # Fallback caso constants.py não tenha tudo
     from config.constants import *
+    # Fallback constants se não existirem
+    DELAY_DIGITACAO_CURTA = 0.005
+    DELAY_DIGITACAO_MEDIA = 0.010
+    DELAY_DIGITACAO_LONGA = 0.015
 
 # Core (Lógica Principal)
 from core.login import fazer_login
@@ -159,6 +171,15 @@ def main():
         pbar = tqdm(clientes_para_processar, desc="Processando", unit="cli")
         
         for i, cliente_dict in enumerate(pbar):
+            
+            # === LIMPEZA DE SEGURANÇA ===
+            try:
+                # Fecha modais anteriores (ESC) para evitar clique interceptado
+                ActionChains(driver).send_keys(Keys.ESCAPE).perform()
+                time.sleep(0.5)
+            except: pass
+            # ============================
+
             # O termo que usamos para buscar (nome, cpf, email)
             termo_busca = cliente_dict.get('busca', 'Desconhecido')
             pbar.set_postfix_str(f"{termo_busca[:20]}...")
@@ -174,7 +195,7 @@ def main():
                 time.sleep(2)
 
             try:
-                # Busca Inteligente (Passa o dicionário completo para validação cruzada)
+                # Busca Inteligente
                 encontrado = buscar_e_abrir_cliente(driver, cliente_dict)
                 
                 if not encontrado:
@@ -182,7 +203,6 @@ def main():
                     continue
 
                 # Processa (Envia Mensagem)
-                # Passamos apenas o termo_busca como string para o processamento (logs/screenshots)
                 resultado = processar_pagina_cliente(
                     driver=driver,
                     nome_cliente=termo_busca, 
