@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
 Módulo de messaging do sistema de automação Zoho Desk.
-Versão Otimizada: Busca em 2 Etapas (Nome -> Conteúdo) e seleção robusta.
+Versão Otimizada: Busca em 2 Etapas e Detecção de Créditos Insuficientes.
 """
 
 import time
@@ -21,10 +21,48 @@ SELETORES_MESSAGING = {
     "dropdown_departamento": 'span[data-id="qdeptcontainer_value"]',
     "tab_whatsapp": "//div[@class='zd_v2-tab-tabText zd_v24af66c9aeb zd_v2050393fdda zd_v2eb439ba1e6 zd_v2577c9fa95f' and text()='WhatsApp']",
     "tab_email": "//div[@class='zd_v2-tab-tabText zd_v24af66c9aeb zd_v2050393fdda zd_v2eb439ba1e6 zd_v2577c9fa95f' and text()='E-mail']",
+    # Novo seletor para o aviso de créditos
+    "aviso_creditos": "//div[contains(@class, 'zd_v2-globalnotification-text') and (contains(., 'Créditos insuficientes') or contains(., 'Insufficient credits'))]"
 }
 
 def avisar_modal_abriu():
     logging.info(">>> MODAL DO WHATSAPP ABERTO.")
+
+def verificar_creditos_insuficientes(driver):
+    """
+    Verifica se o aviso de créditos insuficientes apareceu.
+    Se sim, PAUSA o script até o usuário resolver.
+    """
+    try:
+        avisos = driver.find_elements(By.XPATH, SELETORES_MESSAGING["aviso_creditos"])
+        if avisos and avisos[0].is_displayed():
+            logging.critical("⛔ ALERTA CRÍTICO: CRÉDITOS INSUFICIENTES DETECTADOS!")
+            print("\n" + "!"*60)
+            print("🚨 PAUSA OBRIGATÓRIA: O ZOHO ESTÁ SEM CRÉDITOS 🚨")
+            print("Aviso detectado: 'Desculpe! Créditos insuficientes.'")
+            print("O script foi PAUSADO para evitar erros em cascata.")
+            print("👉 AÇÃO: Recarregue os créditos no Zoho manualmente agora.")
+            print("!"*60 + "\n")
+            
+            # Toca um som de alerta (bip) no Windows
+            try: print("\a")
+            except: pass
+            
+            # Pausa a execução bloqueando o terminal
+            input(">>> Pressione [ENTER] aqui no terminal APÓS recarregar os créditos para continuar...")
+            logging.info("Usuário retomou a execução após pausa por créditos.")
+            
+            # Tenta fechar o aviso se ele ainda estiver lá (clicando no X se possível ou apenas ignorando)
+            try:
+                btn_fechar = driver.find_element(By.XPATH, "//div[contains(@class, 'zd_v2-globalnotification-close')]")
+                driver.execute_script("arguments[0].click();", btn_fechar)
+            except: pass
+            
+            return True
+    except Exception as e:
+        # Não queremos que a verificação quebre o script
+        pass
+    return False
 
 def modal_esta_aberto(driver, timeout=3):
     try:
@@ -113,6 +151,10 @@ def recarregar_pagina_cliente(driver, wait_clickable_timeout=20):
 
 def abrir_modal_whatsapp(driver, nome_cliente, dry_run=False):
     logging.info(f"[{nome_cliente}] Abrindo modal WhatsApp...")
+    
+    # Verifica créditos antes mesmo de tentar abrir (caso o aviso já esteja lá de um erro anterior)
+    verificar_creditos_insuficientes(driver)
+
     fechar_ui_flutuante(driver)
     
     if not clicar_seguro(driver, WebDriverWait(driver, 12), By.CSS_SELECTOR, SELETORES_MESSAGING["botao_whatsapp"], timeout_total=10, timeout_por_tentativa=5):
@@ -122,10 +164,15 @@ def abrir_modal_whatsapp(driver, nome_cliente, dry_run=False):
     if fechar_alerta_sem_telefone(driver): return False
     
     for _ in range(14):
+        # Verifica a cada passo do loop se apareceu o erro de crédito
+        verificar_creditos_insuficientes(driver)
+        
         if modal_esta_aberto(driver, timeout=3):
             logging.info(f"[{nome_cliente}] ✅ Modal aberto")
             avisar_modal_abriu()
             time.sleep(2.5)
+            # Verifica novamente após o modal estabilizar
+            verificar_creditos_insuficientes(driver)
             return True
         time.sleep(0.6)
     
@@ -312,6 +359,9 @@ def selecionar_canal_e_modelo(driver, canal_substr: str, nome_template: str, anc
         return False
 
 def enviar_mensagem_whatsapp(driver, nome_cliente, dry_run=False, modo_semi_assistido=True, timeout_envio_manual=600, template_nome=None, ancoras_template=None):
+    # Verificação Crítica de Créditos antes de iniciar o processo de envio
+    verificar_creditos_insuficientes(driver)
+
     wait = WebDriverWait(driver, 15)
     xpath_btn = "//div[contains(@class,'zd_v2')]//button[contains(.,'Enviar')]"
     
@@ -320,6 +370,8 @@ def enviar_mensagem_whatsapp(driver, nome_cliente, dry_run=False, modo_semi_assi
         WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, xpath_btn)))
     except:
         logging.warning(f"[{nome_cliente}] Botão Enviar não habilitou.")
+        # Pode ser que não habilitou porque não tem créditos, verifica de novo
+        verificar_creditos_insuficientes(driver)
     
     if modo_semi_assistido:
         if dry_run:
@@ -340,6 +392,10 @@ def enviar_mensagem_whatsapp(driver, nome_cliente, dry_run=False, modo_semi_assi
         logging.info(f"[{nome_cliente}] 🚀 Clicando em 'Enviar' (auto)...")
         if clicar_seguro(driver, wait, By.XPATH, xpath_btn, timeout_por_tentativa=5):
             try:
+                # Verifica créditos de novo logo após clicar (caso o erro apareça só depois do clique)
+                time.sleep(0.5)
+                verificar_creditos_insuficientes(driver)
+                
                 WebDriverWait(driver, 12).until(EC.any_of(
                     EC.presence_of_element_located((By.XPATH, "//div[contains(@class,'toast')][contains(.,'envi') or contains(.,'sucesso')]")),
                     EC.presence_of_element_located((By.XPATH, "//button[contains(.,'Enviar') and @disabled]"))
@@ -352,6 +408,8 @@ def enviar_mensagem_whatsapp(driver, nome_cliente, dry_run=False, modo_semi_assi
                 return True
             except:
                 logging.error("Erro pós-envio.")
+                # Se falhou, pode ser crédito
+                verificar_creditos_insuficientes(driver)
         else:
             logging.error("Falha clique Enviar.")
             return False
@@ -359,6 +417,7 @@ def enviar_mensagem_whatsapp(driver, nome_cliente, dry_run=False, modo_semi_assi
 
 def processar_envio_completo_whatsapp(driver, nome_cliente, departamento, template_nome, ancoras_template, dry_run=False, modo_semi_assistido=True):
     logging.info(f"INICIANDO ENVIO WHATSAPP: {nome_cliente}")
+    
     if not abrir_modal_whatsapp(driver, nome_cliente, dry_run): return False
     
     if not selecionar_canal_e_modelo(driver, departamento, template_nome, ancoras_template):
