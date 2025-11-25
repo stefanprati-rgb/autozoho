@@ -1,14 +1,14 @@
+# Arquivo: main.py
 # -*- coding: utf-8 -*-
 import os
 import sys
 import re
 import csv
 import time
-import json
 import argparse
 import logging
 from datetime import datetime
-from tqdm import tqdm
+from tqdm import tqdm  # Barra de progresso
 
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
@@ -20,136 +20,68 @@ from selenium.common.exceptions import (
     InvalidSessionIdException
 )
 
-# --- TENTATIVA DE IMPORTAR COLORAMA (PARA CORES) ---
-try:
-    import colorama
-    from colorama import Fore, Style
-    colorama.init(autoreset=True)
-    USE_COLORS = True
-except ImportError:
-    USE_COLORS = False
-
 # --- IMPORTAÇÕES MODULARES ---
 try:
     from config.constants import TEMPLATES_DISPONIVEIS, DEPARTAMENTOS_DISPONIVEIS, URL_ZOHO_DESK
     COOLDOWN_INTERVALO_CLIENTES = 20
     COOLDOWN_DURACAO_SEGUNDOS = 60
+    
+    # --- CONFIGURAÇÃO DE VELOCIDADE ---
     DELAY_DIGITACAO_CURTA = 0.005
     DELAY_DIGITACAO_MEDIA = 0.010
     DELAY_DIGITACAO_LONGA = 0.015
+    
 except ImportError:
     from config.constants import *
     DELAY_DIGITACAO_CURTA = 0.005
     DELAY_DIGITACAO_MEDIA = 0.010
     DELAY_DIGITACAO_LONGA = 0.015
 
+# Core (Lógica Principal)
 from core.login import fazer_login
 from core.search import buscar_e_abrir_cliente
 from core.departments import trocar_departamento_zoho
 from core.processing import processar_pagina_cliente
+
+# Utils (Ferramentas)
 from utils.files import carregar_lista_clientes
 from utils.webdriver import iniciar_driver
 from utils.screenshots import take_screenshot
 
-# --- CONFIGURAÇÃO DE LOGGING VISUAL ---
-class ColoredFormatter(logging.Formatter):
-    def format(self, record):
-        if not USE_COLORS:
-            return super().format(record)
-        
-        # Definição de cores e ícones
-        if record.levelno == logging.INFO:
-            prefix = f"{Fore.GREEN}ℹ️ {Style.RESET_ALL}"
-            msg = f"{Fore.LIGHTWHITE_EX}{record.msg}{Style.RESET_ALL}"
-        elif record.levelno == logging.WARNING:
-            prefix = f"{Fore.YELLOW}⚠️ {Style.RESET_ALL}"
-            msg = f"{Fore.YELLOW}{record.msg}{Style.RESET_ALL}"
-        elif record.levelno == logging.ERROR:
-            prefix = f"{Fore.RED}❌ {Style.RESET_ALL}"
-            msg = f"{Fore.RED}{record.msg}{Style.RESET_ALL}"
-        elif record.levelno == logging.CRITICAL:
-            prefix = f"{Fore.RED}{Style.BRIGHT}🔥 {Style.RESET_ALL}"
-            msg = f"{Fore.RED}{Style.BRIGHT}{record.msg}{Style.RESET_ALL}"
-        elif record.levelno == logging.DEBUG:
-            prefix = f"{Fore.CYAN}🐛 {Style.RESET_ALL}"
-            msg = f"{Fore.CYAN}{record.msg}{Style.RESET_ALL}"
-        else:
-            prefix = ""
-            msg = record.msg
-            
-        return f"{prefix} {msg}"
+# Logging
+try:
+    from utils.reports import setup_logging, dump_browser_logs
+except ImportError:
+    def setup_logging(level, file):
+        logging.basicConfig(level=level, filename=file, format='%(asctime)s - %(levelname)s - %(message)s')
+    def dump_browser_logs(driver): pass
 
-def setup_logging_visual(loglevel, logfile):
-    root_logger = logging.getLogger()
-    root_logger.setLevel(getattr(logging, loglevel.upper()))
-    root_logger.handlers = [] # Limpa handlers antigos
-
-    # 1. Console Handler (Limpo e Colorido)
-    console_handler = logging.StreamHandler()
-    console_handler.setFormatter(ColoredFormatter())
-    # Define nível do console um pouco mais alto para esconder ruído se necessário
-    console_level = getattr(logging, loglevel.upper())
-    console_handler.setLevel(console_level)
-    root_logger.addHandler(console_handler)
-
-    # 2. File Handler (Detalhado com datas para auditoria)
-    if logfile:
-        file_handler = logging.FileHandler(logfile, encoding='utf-8')
-        file_fmt = logging.Formatter('%(asctime)s | %(levelname)-8s | %(message)s', datefmt='%Y-%m-%d %H:%M:%S')
-        file_handler.setFormatter(file_fmt)
-        root_logger.addHandler(file_handler)
-        
-    # Silencia logs chatos de bibliotecas externas
-    logging.getLogger("selenium").setLevel(logging.WARNING)
-    logging.getLogger("urllib3").setLevel(logging.WARNING)
-    logging.getLogger("WDM").setLevel(logging.WARNING)
-
-def dump_browser_logs(driver): pass # Placeholder
-
-# ==============================================================================
-# SISTEMA DE MEMÓRIA
-# ==============================================================================
-ARQUIVO_MEMORIA = "clientes_processados_memoria.json"
-
-def carregar_memoria():
-    if os.path.exists(ARQUIVO_MEMORIA):
-        try:
-            with open(ARQUIVO_MEMORIA, 'r', encoding='utf-8') as f:
-                return set(json.load(f))
-        except: return set()
-    return set()
-
-def salvar_memoria(processados_set):
-    try:
-        with open(ARQUIVO_MEMORIA, 'w', encoding='utf-8') as f:
-            json.dump(list(processados_set), f)
-    except: pass
 
 # ==============================================================================
 # FUNÇÃO PRINCIPAL
 # ==============================================================================
 def main():
-    parser = argparse.ArgumentParser(description="Automação Zoho Desk")
-    parser.add_argument("-a", "--arquivo", required=True, help="Arquivo de clientes")
-    parser.add_argument("-l", "--loglevel", default="INFO", choices=["DEBUG", "INFO", "WARNING", "ERROR"], help="Nível de log")
-    parser.add_argument("--log", default="automacao.log", help="Arquivo de log")
-    parser.add_argument("--dry-run", action="store_true", help="Modo simulação")
-    parser.add_argument("--template", help="Nome do template")
-    parser.add_argument("--departamento", help="Nome do departamento")
-    parser.add_argument("--keep-open", action="store_true", default=True, help="Manter navegador aberto")
+    parser = argparse.ArgumentParser(description="Automação de envio de mensagens via WhatsApp no Zoho Desk.")
+
+    parser.add_argument("-a", "--arquivo", required=True, help="Caminho para o arquivo .xlsx ou .csv com a lista de clientes.")
+    parser.add_argument("-l", "--loglevel", default="INFO", choices=["DEBUG", "INFO", "WARNING", "ERROR"], help="Nível de log.")
+    parser.add_argument("--log", default="automacao.log", help="Arquivo de log.")
+    parser.add_argument("--dry-run", action="store_true", help="Modo simulação (não envia mensagem).")
+    parser.add_argument("--template", help="Número ou nome do template.")
+    parser.add_argument("--departamento", help="Número ou nome do departamento.")
+    parser.add_argument("--keep-open", action="store_true", default=True, help="Manter navegador aberto no final.")
 
     args = parser.parse_args()
 
-    setup_logging_visual(args.loglevel, args.log)
-    
-    print("\n" + "="*60)
-    print(f"🚀 INICIANDO AUTOMAÇÃO ZOHO DESK")
-    print(f"📅 {datetime.now().strftime('%d/%m/%Y %H:%M:%S')}")
-    print("="*60 + "\n")
+    # 1. Configuração
+    setup_logging(args.loglevel, args.log)
+    inicio = datetime.now()
+    logging.info(f"Iniciando automação em: {inicio}")
 
     if args.dry_run:
-        logging.warning("MODO DRY-RUN ATIVADO (Nenhuma mensagem será enviada)")
+        logging.warning(">>> MODO DRY-RUN (SIMULAÇÃO) ATIVADO <<<")
 
+    # 2. Definição de Template e Departamento
     global NOME_TEMPLATE, ANCORAS, NOME_DEPARTAMENTO
     
     if args.template and args.departamento:
@@ -162,68 +94,89 @@ def main():
         logging.error("Configuração incompleta. Encerrando.")
         return
 
-    logging.info(f"Configuração: {NOME_DEPARTAMENTO}  >>  {NOME_TEMPLATE}")
+    logging.info(f"Template: {NOME_TEMPLATE} | Departamento: {NOME_DEPARTAMENTO}")
 
+    # 3. Carregar Clientes
+    logging.info("Carregando lista de clientes...")
     todos_clientes = carregar_lista_clientes(args.arquivo)
-    if not todos_clientes:
-        logging.error("Lista de clientes vazia.")
-        return
-
-    ja_processados = carregar_memoria()
-    clientes_para_processar = [c for c in todos_clientes if c.get('busca', '') not in ja_processados]
     
-    logging.info(f"Total: {len(todos_clientes)} | Já feitos: {len(ja_processados)} | A fazer: {len(clientes_para_processar)}")
-
-    if not clientes_para_processar:
-        logging.info("Todos os clientes já foram processados! 🎉")
+    if not todos_clientes:
+        logging.error("Lista de clientes vazia ou arquivo não encontrado.")
         return
 
+    # --- CONTROLE DE SESSÃO (MEMÓRIA RAM APENAS) ---
+    # Usado para garantir que não processamos duplicatas DENTRO desta execução
+    vistos_na_sessao = set()
+    clientes_para_processar = []
+
+    # Filtragem prévia (opcional) ou durante o loop. Vamos carregar tudo para a barra de progresso.
+    logging.info(f"Total carregado do arquivo: {len(todos_clientes)}")
+
+    # 4. Iniciar Navegador e Login
     driver = iniciar_driver()
-    if not driver: return
+    if not driver:
+        return
 
     try:
         if not fazer_login(driver):
-            logging.critical("Login falhou.")
+            logging.critical("Falha no login. Encerrando.")
             return
 
+        # 5. Selecionar Departamento Inicial
         if not trocar_departamento_zoho(driver, NOME_DEPARTAMENTO):
             logging.critical("Falha ao selecionar departamento inicial.")
             return
 
+        # 6. Loop de Processamento
         sucesso = []
         nao_encontrados = []
         erros = []
+        duplicados_ignorados = []
 
-        # Barra de progresso mais limpa
-        pbar = tqdm(clientes_para_processar, desc="Progresso", unit="cli", ncols=80, bar_format="{l_bar}{bar}| {n_fmt}/{total_fmt}")
+        pbar = tqdm(todos_clientes, desc="Processando", unit="cli")
         
         for i, cliente_dict in enumerate(pbar):
-            # Limpa logs anteriores da tela do tqdm
             
-            termo_busca = cliente_dict.get('busca', 'Desconhecido')
-            pbar.set_description(f"Processando: {termo_busca[:20]:<20}")
-            
-            # Limpeza de tela (modais perdidos)
+            # === LIMPEZA DE SEGURANÇA ===
             try:
+                # Fecha modais anteriores (ESC) para evitar clique interceptado
                 ActionChains(driver).send_keys(Keys.ESCAPE).perform()
+                time.sleep(0.5)
             except: pass
+            # ============================
 
-            # Cooldown
+            termo_busca = cliente_dict.get('busca', 'Desconhecido')
+            
+            # --- VERIFICAÇÃO DE DUPLICIDADE NA SESSÃO ---
+            if termo_busca in vistos_na_sessao:
+                pbar.set_postfix_str(f"⏭️ Duplicado: {termo_busca[:15]}")
+                duplicados_ignorados.append(termo_busca)
+                continue
+            
+            # Marca como visto AGORA
+            vistos_na_sessao.add(termo_busca)
+            
+            pbar.set_postfix_str(f"{termo_busca[:20]}...")
+            
+            # Cooldown (Pausa para evitar bloqueio)
             if i > 0 and i % COOLDOWN_INTERVALO_CLIENTES == 0:
-                logging.info(f"❄️ Pausa de {COOLDOWN_DURACAO_SEGUNDOS}s para resfriamento...")
+                logging.info(f"Pausa de {COOLDOWN_DURACAO_SEGUNDOS}s para resfriamento...")
                 time.sleep(COOLDOWN_DURACAO_SEGUNDOS)
 
+            # Garante que estamos na home
             if "desk.zoho.com/agent/" not in driver.current_url:
                 driver.get(URL_ZOHO_DESK)
                 time.sleep(2)
 
             try:
+                # Busca Inteligente
                 encontrado = buscar_e_abrir_cliente(driver, cliente_dict)
                 
                 if not encontrado:
                     nao_encontrados.append(termo_busca)
                     continue
 
+                # Processa (Envia Mensagem)
                 resultado = processar_pagina_cliente(
                     driver=driver,
                     nome_cliente=termo_busca, 
@@ -235,28 +188,31 @@ def main():
 
                 if resultado:
                     sucesso.append(termo_busca)
-                    ja_processados.add(termo_busca)
-                    salvar_memoria(ja_processados)
                 else:
                     erros.append(termo_busca)
 
             except Exception as e:
-                logging.error(f"Erro processando '{termo_busca}': {e}")
+                logging.error(f"Erro ao processar '{termo_busca}': {e}")
                 take_screenshot(driver, f"erro_loop_{termo_busca}")
                 erros.append(termo_busca)
+                # Tenta recuperar indo para home
                 try: driver.get(URL_ZOHO_DESK) 
                 except: pass
 
     except KeyboardInterrupt:
-        print("\n🛑 Interrompido pelo usuário.")
+        logging.warning("Interrompido pelo usuário.")
     finally:
-        imprimir_relatorio_limpo(sucesso, nao_encontrados, erros, args.arquivo)
+        # 7. Relatório Final
+        imprimir_relatorio(inicio, sucesso, nao_encontrados, erros, duplicados_ignorados, args.arquivo)
         
         if args.keep_open:
-            print("\n🌐 Navegador aberto. Pode fechar quando quiser.")
+            print("\nNavegador mantido aberto. Feche manualmente.")
         else:
             driver.quit()
 
+# ==============================================================================
+# FUNÇÕES AUXILIARES DO MENU
+# ==============================================================================
 def resolver_template(entrada):
     if entrada in TEMPLATES_DISPONIVEIS:
         return TEMPLATES_DISPONIVEIS[entrada]["nome"], TEMPLATES_DISPONIVEIS[entrada]["ancoras"]
@@ -274,33 +230,38 @@ def resolver_departamento(entrada):
     return None
 
 def menu_principal():
-    print("\n--- CONFIGURAÇÃO ---")
+    print("\n=== CONFIGURAÇÃO ===")
+    
+    # Dept
     print("Departamentos:")
     for k in sorted(DEPARTAMENTOS_DISPONIVEIS.keys(), key=int):
         print(f" {k}) {DEPARTAMENTOS_DISPONIVEIS[k]}")
-    d = input("Escolha o Dept: ").strip()
+    d = input("Escolha o Dept (Número): ").strip()
     dept = DEPARTAMENTOS_DISPONIVEIS.get(d)
     
+    # Template
     print("\nTemplates:")
     for k in sorted(TEMPLATES_DISPONIVEIS.keys(), key=int):
         print(f" {k}) {TEMPLATES_DISPONIVEIS[k]['nome']}")
-    t = input("Escolha o Template: ").strip()
+    t = input("Escolha o Template (Número): ").strip()
     temp_data = TEMPLATES_DISPONIVEIS.get(t)
     
     if dept and temp_data:
         return temp_data["nome"], temp_data["ancoras"], dept
     return None, None, None
 
-def imprimir_relatorio_limpo(sucesso, nao_enc, erros, arquivo):
-    print("\n" + "="*60)
-    print(f"📊 RELATÓRIO FINAL")
-    print("="*60)
-    print(f"Arquivo: {os.path.basename(arquivo)}")
-    print(f"✅ Sucesso:        {len(sucesso)}")
+def imprimir_relatorio(inicio, sucesso, nao_enc, erros, duplicados, arquivo):
+    total = len(sucesso) + len(nao_enc) + len(erros) + len(duplicados)
+    print("\n" + "="*40)
+    print("RESUMO FINAL DA SESSÃO")
+    print(f"Arquivo: {arquivo}")
+    print(f"Total Processado: {total}")
+    print(f"✅ Sucesso: {len(sucesso)}")
     print(f"🔍 Não Encontrados: {len(nao_enc)}")
-    print(f"❌ Erros:           {len(erros)}")
-    print("-" * 60)
+    print(f"⏭️ Duplicados (Pulados): {len(duplicados)}")
+    print(f"❌ Erros: {len(erros)}")
     
+    # Salva CSV simples
     nome_csv = f"relatorio_{datetime.now().strftime('%Y%m%d_%H%M')}.csv"
     with open(nome_csv, 'w', newline='', encoding='utf-8-sig') as f:
         writer = csv.writer(f, delimiter=';')
@@ -308,9 +269,9 @@ def imprimir_relatorio_limpo(sucesso, nao_enc, erros, arquivo):
         for c in sucesso: writer.writerow(["SUCESSO", c])
         for c in nao_enc: writer.writerow(["NAO_ENCONTRADO", c])
         for c in erros: writer.writerow(["ERRO", c])
-    
-    print(f"📄 Detalhes salvos em: {nome_csv}")
-    print("="*60 + "\n")
+        for c in duplicados: writer.writerow(["DUPLICADO_SESSAO", c])
+    print(f"\nRelatório salvo em: {nome_csv}")
+    print("="*40)
 
 if __name__ == "__main__":
     main()
