@@ -29,7 +29,8 @@ TEMPLATES_DISPONIVEIS = {
     "9": { "nome": "Boas-vindas", "ancoras": ["Me chamo Isabella", "prosseguir com o seu atendimento"] },
     "10": { "nome": "Cobranca Setembro", "ancoras": ["fatura Setembro/25", "regularização do valor"] },
     "11": { "nome": "Data_Vencimento", "ancoras": ["datas de vencimento ficarão entre"] },
-    "12": { "nome": "Black November", "ancoras": ["Mega Desconto para Você", "15% de DESCONTO"] }
+    "12": { "nome": "Black November", "ancoras": ["Mega Desconto para Você", "15% de DESCONTO"] },
+    "13": { "nome": "Assinatura Pendente Contrato", "ancoras": ["Olá tudo bem", "Aqui é o Stefan da Era Verde Energia"] }   
 }
 
 # --- CONFIGURAÇÕES ---
