@@ -1,0 +1,38 @@
+# Patch para integração de correção de telefone em messaging.py
+# Aplicar manualmente as seguintes alterações:
+
+# 1. Após a linha 164 (if fechar_alerta_sem_telefone(driver): return False)
+# Adicionar:
+    
+    # Importa a função de correção de telefone
+    from core.telefone_fix import detectar_erro_telefone_invalido, corrigir_telefone_cliente
+
+# 2. Substituir a linha 166 (for _ in range(14):) por:
+
+    for tentativa in range(14):
+
+# 3. Após a linha 168 (verificar_creditos_insuficientes(driver))
+# Adicionar:
+        
+        # Verifica se apareceu erro de telefone inválido
+        if detectar_erro_telefone_invalido(driver):
+            logging.warning(f"[{nome_cliente}] ⚠️ Erro de telefone inválido detectado. Tentando corrigir...")
+            
+            # Tenta corrigir o telefone
+            if corrigir_telefone_cliente(driver, nome_cliente):
+                logging.info(f"[{nome_cliente}] ✅ Telefone corrigido! Tentando abrir modal novamente...")
+                
+                # Fecha qualquer UI flutuante
+                fechar_ui_flutuante(driver)
+                time.sleep(1)
+                
+                # Tenta clicar no botão WhatsApp novamente
+                if not clicar_seguro(driver, WebDriverWait(driver, 12), By.CSS_SELECTOR, SELETORES_MESSAGING["botao_whatsapp"], timeout_total=10, timeout_por_tentativa=5):
+                    logging.error(f"[{nome_cliente}] ❌ Falha ao clicar no ícone WhatsApp após correção")
+                    return False
+                
+                # Continua o loop para aguardar o modal abrir
+                continue
+            else:
+                logging.error(f"[{nome_cliente}] ❌ Não foi possível corrigir o telefone automaticamente")
+                return False
