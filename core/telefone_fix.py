@@ -18,6 +18,34 @@ SELETORES_TELEFONE_FIX = {
     # Erro de telefone inválido
     "erro_telefone_invalido": "//div[contains(@class, 'zd_v2-globalnotification-text') and contains(., 'número de telefone/celular do contato é inválido')]",
     
+    # Campo celular vazio
+    "celular_vazio": "//div[@data-id='mobile' and contains(@class, 'zd_v2-accountprofile-noData')]",
+    
+    # Link do telefone
+    "link_telefone": "//a[contains(@href, 'tel:')]",
+    
+    # Botão de editar cliente (ícone de lápis)
+    "botao_editar": "//i[contains(@class, 'zd_font_icons') and contains(@class, 'edit')]",
+    
+    # Campo celular no modal de edição
+    "input_celular_modal": "//input[@data-id='mobile']",
+    
+    # Campo telefone no modal de edição  
+    "input_telefone_modal": "//input[@data-id='phone']",
+    
+    # Botão salvar no modal
+    "botao_salvar_modal": "//button[contains(., 'Salvar') or contains(., 'Save')]",
+    
+    # Botão fechar erro
+    "botao_fechar_erro": "//div[@data-id='close_danger_message']",
+    
+    # Botão cancelar modal WhatsApp
+    "botao_cancelar_modal_wpp": "//button[contains(., 'Cancelar')]"
+}
+
+
+def detectar_erro_telefone_invalido(driver, timeout=2):
+    """
     Detecta se o erro de telefone inválido está sendo exibido.
     Retorna True se o erro foi detectado.
     """
