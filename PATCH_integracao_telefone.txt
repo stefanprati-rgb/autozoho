@@ -1,0 +1,46 @@
+# PATCH: Integração de Verificação Inteligente de Telefone
+# Arquivo: core/messaging.py
+# Função: processar_envio_completo_whatsapp
+
+# ============================================
+# INSTRUÇÕES DE APLICAÇÃO
+# ============================================
+# 
+# Localizar a função `processar_envio_completo_whatsapp` (linha ~419)
+# 
+# ANTES:
+# def processar_envio_completo_whatsapp(driver, nome_cliente, departamento, template_nome, ancoras_template, dry_run=False, modo_semi_assistido=True):
+#     logging.info(f"INICIANDO ENVIO WHATSAPP: {nome_cliente}")
+#     
+#     if not abrir_modal_whatsapp(driver, nome_cliente, dry_run): return False
+#
+# ============================================
+# DEPOIS:
+# def processar_envio_completo_whatsapp(driver, nome_cliente, departamento, template_nome, ancoras_template, dry_run=False, modo_semi_assistido=True):
+#     logging.info(f"INICIANDO ENVIO WHATSAPP: {nome_cliente}")
+#     
+#     # Verifica e prepara número de telefone ANTES de abrir modal
+#     from core.telefone_fix import verificar_e_preparar_telefone
+#     
+#     resultado = verificar_e_preparar_telefone(driver, nome_cliente)
+#     if not resultado['sucesso']:
+#         logging.error(f"[{nome_cliente}] ❌ {resultado['motivo_falha']}")
+#         return False
+#     
+#     # Log informativo sobre origem do número
+#     if resultado['origem'] == 'telefone':
+#         logging.info(f"[{nome_cliente}] ℹ️ Usando telefone como fallback: {resultado['numero']}")
+#     else:
+#         logging.info(f"[{nome_cliente}] ✅ Usando celular: {resultado['numero']}")
+#     
+#     if not abrir_modal_whatsapp(driver, nome_cliente, dry_run): return False
+#
+# ============================================
+# 
+# RESUMO DA MUDANÇA:
+# - Adicionar import de verificar_e_preparar_telefone
+# - Chamar verificação ANTES de abrir_modal_whatsapp
+# - Retornar False se não houver número válido
+# - Logar origem do número (celular ou telefone)
+#
+# ============================================

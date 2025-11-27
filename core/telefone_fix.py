@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 """
-Módulo de correção automática de telefone.
-Detecta e corrige casos onde o cliente não tem celular mas tem telefone válido.
+Módulo de verificação inteligente de telefone.
+Verifica e prepara número de telefone para envio WhatsApp.
+Usa celular se disponível, senão tenta usar telefone (se for celular).
 """
 
-import time
 import logging
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
@@ -13,275 +13,167 @@ from selenium.common.exceptions import TimeoutException, NoSuchElementException
 
 from utils.telefone import normalizar_numero, validar_telefone_whatsapp
 
-# Seletores para correção de telefone
-SELETORES_TELEFONE_FIX = {
-    # Erro de telefone inválido
-    "erro_telefone_invalido": "//div[contains(@class, 'zd_v2-globalnotification-text') and contains(., 'número de telefone/celular do contato é inválido')]",
-    
-    # Campo celular vazio
+# Seletores para busca de telefones
+SELETORES_TELEFONE = {
+    # Campo celular (pode estar vazio ou preenchido)
+    "celular_link": "//div[@data-id='mobile']//a[contains(@href, 'tel:')]",
     "celular_vazio": "//div[@data-id='mobile' and contains(@class, 'zd_v2-accountprofile-noData')]",
     
-    # Link do telefone
-    "link_telefone": "//a[contains(@href, 'tel:')]",
-    
-    # Botão de editar cliente (ícone de lápis)
-    "botao_editar": "//i[contains(@class, 'zd_font_icons') and contains(@class, 'edit')]",
-    
-    # Campo celular no modal de edição
-    "input_celular_modal": "//input[@data-id='mobile']",
-    
-    # Campo telefone no modal de edição  
-    "input_telefone_modal": "//input[@data-id='phone']",
-    
-    # Botão salvar no modal
-    "botao_salvar_modal": "//button[contains(., 'Salvar') or contains(., 'Save')]",
-    
-    # Botão fechar erro
-    "botao_fechar_erro": "//div[@data-id='close_danger_message']",
-    
-    # Botão cancelar modal WhatsApp
-    "botao_cancelar_modal_wpp": "//button[contains(., 'Cancelar')]"
+    # Campo telefone
+    "telefone_link": "//div[@data-id='phone']//a[contains(@href, 'tel:')]",
 }
 
 
-def detectar_erro_telefone_invalido(driver, timeout=2):
+def buscar_numero_celular(driver, timeout=2):
     """
-    Detecta se o erro de telefone inválido está sendo exibido.
-    Retorna True se o erro foi detectado.
+    Busca o número de celular do cliente na página.
+    
+    Returns:
+        str ou None: Número normalizado se encontrado e válido, None caso contrário
     """
     try:
-        erro = WebDriverWait(driver, timeout).until(
-            EC.presence_of_element_located((By.XPATH, SELETORES_TELEFONE_FIX["erro_telefone_invalido"]))
+        # Verifica se campo celular está vazio
+        try:
+            celular_vazio = driver.find_element(By.XPATH, SELETORES_TELEFONE["celular_vazio"])
+            if celular_vazio.is_displayed():
+                logging.debug("Campo celular está vazio.")
+                return None
+        except (NoSuchElementException, TimeoutException):
+            pass  # Campo não está vazio, continua
+        
+        # Tenta buscar link do celular
+        celular_link = WebDriverWait(driver, timeout).until(
+            EC.presence_of_element_located((By.XPATH, SELETORES_TELEFONE["celular_link"]))
         )
-        if erro.is_displayed():
-            logging.warning("⚠️ Erro de telefone inválido detectado!")
-            return True
+        
+        if celular_link.is_displayed():
+            numero = celular_link.text.strip()
+            if numero:
+                # Normaliza e valida
+                numero_normalizado = normalizar_numero(numero)
+                if numero_normalizado:
+                    valido, _ = validar_telefone_whatsapp(numero_normalizado)
+                    if valido:
+                        logging.debug(f"Celular encontrado e válido: {numero_normalizado}")
+                        return numero_normalizado
+                    else:
+                        logging.debug(f"Celular encontrado mas inválido: {numero}")
+                        return None
+        
+        return None
     except (TimeoutException, NoSuchElementException):
-        pass
-    return False
-
-
-def fechar_erro_telefone_invalido(driver):
-    """
-    Fecha o alerta de erro de telefone inválido.
-    """
-    try:
-        btn_fechar = WebDriverWait(driver, 3).until(
-            EC.element_to_be_clickable((By.XPATH, SELETORES_TELEFONE_FIX["botao_fechar_erro"]))
-        )
-        driver.execute_script("arguments[0].click();", btn_fechar)
-        time.sleep(0.5)
-        logging.info("Alerta de erro fechado.")
-        return True
+        logging.debug("Campo celular não encontrado ou vazio.")
+        return None
     except Exception as e:
-        logging.debug(f"Não foi possível fechar o erro: {e}")
-        return False
+        logging.error(f"Erro ao buscar celular: {e}")
+        return None
 
 
-def fechar_modal_whatsapp(driver):
-    """
-    Fecha o modal do WhatsApp clicando em Cancelar.
-    """
-    try:
-        btn_cancelar = WebDriverWait(driver, 3).until(
-            EC.element_to_be_clickable((By.XPATH, SELETORES_TELEFONE_FIX["botao_cancelar_modal_wpp"]))
-        )
-        driver.execute_script("arguments[0].click();", btn_cancelar)
-        time.sleep(0.5)
-        logging.info("Modal WhatsApp fechado.")
-        return True
-    except Exception as e:
-        logging.debug(f"Não foi possível fechar o modal WhatsApp: {e}")
-        return False
-
-
-def verificar_celular_vazio(driver, timeout=2):
-    """
-    Verifica se o campo celular está vazio (mostrando "Adicionar Celular").
-    Retorna True se estiver vazio.
-    """
-    try:
-        celular_vazio = WebDriverWait(driver, timeout).until(
-            EC.presence_of_element_located((By.XPATH, SELETORES_TELEFONE_FIX["celular_vazio"]))
-        )
-        if celular_vazio.is_displayed():
-            logging.info("Campo celular está vazio.")
-            return True
-    except (TimeoutException, NoSuchElementException):
-        logging.debug("Campo celular parece estar preenchido.")
-    return False
-
-
-def extrair_numero_telefone(driver, timeout=3):
+def extrair_numero_telefone(driver, timeout=2):
     """
     Extrai o número do campo telefone (link tel:).
-    Retorna o número extraído ou None se não encontrado.
+    
+    Returns:
+        str ou None: Número extraído (não normalizado) ou None se não encontrado
     """
     try:
-        links_telefone = driver.find_elements(By.XPATH, SELETORES_TELEFONE_FIX["link_telefone"])
+        telefone_link = WebDriverWait(driver, timeout).until(
+            EC.presence_of_element_located((By.XPATH, SELETORES_TELEFONE["telefone_link"]))
+        )
         
-        for link in links_telefone:
-            if link.is_displayed():
-                numero = link.text.strip()
-                if numero:
-                    logging.info(f"Número encontrado no campo telefone: {numero}")
-                    return numero
+        if telefone_link.is_displayed():
+            numero = telefone_link.text.strip()
+            if numero:
+                logging.debug(f"Telefone encontrado: {numero}")
+                return numero
         
-        logging.warning("Nenhum número de telefone encontrado na página.")
+        return None
+    except (TimeoutException, NoSuchElementException):
+        logging.debug("Campo telefone não encontrado ou vazio.")
         return None
     except Exception as e:
-        logging.error(f"Erro ao extrair número de telefone: {e}")
+        logging.error(f"Erro ao extrair telefone: {e}")
         return None
 
 
-def abrir_modal_edicao_cliente(driver, timeout=5):
+def verificar_e_preparar_telefone(driver, nome_cliente):
     """
-    Abre o modal de edição do cliente clicando no ícone de editar.
-    Retorna True se conseguiu abrir.
-    """
-    try:
-        # Procura pelo botão de editar (ícone de lápis)
-        botao_editar = WebDriverWait(driver, timeout).until(
-            EC.element_to_be_clickable((By.XPATH, SELETORES_TELEFONE_FIX["botao_editar"]))
-        )
-        
-        driver.execute_script("arguments[0].scrollIntoView({block:'center'});", botao_editar)
-        time.sleep(0.3)
-        driver.execute_script("arguments[0].click();", botao_editar)
-        
-        # Aguarda o modal abrir (verifica se o campo celular do modal apareceu)
-        WebDriverWait(driver, timeout).until(
-            EC.presence_of_element_located((By.XPATH, SELETORES_TELEFONE_FIX["input_celular_modal"]))
-        )
-        
-        logging.info("✅ Modal de edição do cliente aberto.")
-        time.sleep(1)
-        return True
-    except Exception as e:
-        logging.error(f"❌ Erro ao abrir modal de edição: {e}")
-        return False
-
-
-def preencher_campo_celular(driver, numero_normalizado, timeout=5):
-    """
-    Preenche o campo celular no modal de edição com o número normalizado.
-    Retorna True se conseguiu preencher.
-    """
-    try:
-        input_celular = WebDriverWait(driver, timeout).until(
-            EC.presence_of_element_located((By.XPATH, SELETORES_TELEFONE_FIX["input_celular_modal"]))
-        )
-        
-        driver.execute_script("arguments[0].scrollIntoView({block:'center'});", input_celular)
-        time.sleep(0.3)
-        
-        # Limpa o campo
-        input_celular.clear()
-        time.sleep(0.2)
-        
-        # Preenche com o número normalizado
-        input_celular.send_keys(numero_normalizado)
-        time.sleep(0.5)
-        
-        logging.info(f"✅ Campo celular preenchido com: {numero_normalizado}")
-        return True
-    except Exception as e:
-        logging.error(f"❌ Erro ao preencher campo celular: {e}")
-        return False
-
-
-def salvar_edicao_cliente(driver, timeout=5):
-    """
-    Salva as alterações no modal de edição do cliente.
-    Retorna True se conseguiu salvar.
-    """
-    try:
-        botao_salvar = WebDriverWait(driver, timeout).until(
-            EC.element_to_be_clickable((By.XPATH, SELETORES_TELEFONE_FIX["botao_salvar_modal"]))
-        )
-        
-        driver.execute_script("arguments[0].click();", botao_salvar)
-        
-        # Aguarda o modal fechar (o campo do modal deve desaparecer)
-        WebDriverWait(driver, timeout).until(
-            EC.invisibility_of_element_located((By.XPATH, SELETORES_TELEFONE_FIX["input_celular_modal"]))
-        )
-        
-        logging.info("✅ Alterações salvas com sucesso.")
-        time.sleep(2)  # Aguarda a página atualizar
-        return True
-    except Exception as e:
-        logging.error(f"❌ Erro ao salvar alterações: {e}")
-        return False
-
-
-def corrigir_telefone_cliente(driver, nome_cliente):
-    """
-    Função principal que orquestra todo o processo de correção de telefone.
+    Verifica e prepara número de telefone para envio WhatsApp.
+    Usa celular se disponível, senão tenta usar telefone (se for celular).
     
     Fluxo:
-    1. Detecta erro de telefone inválido
-    2. Fecha o alerta de erro
-    3. Fecha o modal do WhatsApp
-    4. Verifica se o celular está vazio
-    5. Extrai número do campo telefone
-    6. Normaliza o número
-    7. Abre modal de edição
-    8. Preenche campo celular
-    9. Salva alterações
+    1. Tenta buscar celular
+    2. Se celular válido, retorna celular
+    3. Se não, tenta buscar telefone
+    4. Normaliza telefone
+    5. Valida se telefone é celular (não fixo)
+    6. Retorna telefone se válido
     
-    Retorna True se conseguiu corrigir, False caso contrário.
+    Args:
+        driver: WebDriver do Selenium
+        nome_cliente: Nome do cliente (para logs)
+    
+    Returns:
+        dict: {
+            'sucesso': bool,
+            'numero': str ou None,
+            'origem': 'celular' ou 'telefone' ou None,
+            'motivo_falha': str ou None
+        }
     """
-    logging.info(f"[{nome_cliente}] 🔧 Iniciando correção automática de telefone...")
+    logging.info(f"[{nome_cliente}] 🔍 Verificando telefones disponíveis...")
     
-    # 1. Detecta erro
-    if not detectar_erro_telefone_invalido(driver):
-        logging.debug("Erro de telefone inválido não detectado. Nada a corrigir.")
-        return False
+    # 1. Tenta buscar celular
+    celular = buscar_numero_celular(driver)
+    if celular:
+        logging.info(f"[{nome_cliente}] ✅ Celular válido encontrado: {celular}")
+        return {
+            'sucesso': True,
+            'numero': celular,
+            'origem': 'celular',
+            'motivo_falha': None
+        }
     
-    # 2. Fecha o alerta de erro
-    fechar_erro_telefone_invalido(driver)
+    logging.info(f"[{nome_cliente}] ℹ️ Celular não disponível, verificando telefone...")
     
-    # 3. Fecha o modal do WhatsApp
-    fechar_modal_whatsapp(driver)
-    time.sleep(0.5)
+    # 2. Se não tem celular válido, tenta telefone
+    telefone = extrair_numero_telefone(driver)
+    if not telefone:
+        logging.warning(f"[{nome_cliente}] ❌ Cliente não possui celular nem telefone")
+        return {
+            'sucesso': False,
+            'numero': None,
+            'origem': None,
+            'motivo_falha': 'Cliente não possui celular nem telefone cadastrado'
+        }
     
-    # 4. Verifica se celular está vazio
-    if not verificar_celular_vazio(driver):
-        logging.warning(f"[{nome_cliente}] Campo celular não está vazio. Pode estar com número inválido.")
-        # Ainda assim, vamos tentar corrigir usando o telefone
+    # 3. Normaliza telefone
+    telefone_normalizado = normalizar_numero(telefone)
+    if not telefone_normalizado:
+        logging.error(f"[{nome_cliente}] ❌ Não foi possível normalizar telefone: {telefone}")
+        return {
+            'sucesso': False,
+            'numero': None,
+            'origem': None,
+            'motivo_falha': f'Não foi possível normalizar telefone: {telefone}'
+        }
     
-    # 5. Extrai número do telefone
-    numero_original = extrair_numero_telefone(driver)
-    if not numero_original:
-        logging.error(f"[{nome_cliente}] ❌ Não foi possível extrair número do campo telefone.")
-        return False
-    
-    # 6. Normaliza o número
-    numero_normalizado = normalizar_numero(numero_original)
-    if not numero_normalizado:
-        logging.error(f"[{nome_cliente}] ❌ Não foi possível normalizar o número: {numero_original}")
-        return False
-    
-    # Valida o número normalizado
-    valido, motivo = validar_telefone_whatsapp(numero_normalizado)
+    # 4. Valida se é celular (não fixo)
+    valido, motivo = validar_telefone_whatsapp(telefone_normalizado)
     if not valido:
-        logging.error(f"[{nome_cliente}] ❌ Número normalizado inválido: {numero_normalizado} - {motivo}")
-        return False
+        logging.warning(f"[{nome_cliente}] ❌ Telefone inválido ou fixo: {motivo}")
+        return {
+            'sucesso': False,
+            'numero': None,
+            'origem': None,
+            'motivo_falha': f'Telefone inválido ou fixo: {motivo}'
+        }
     
-    logging.info(f"[{nome_cliente}] ✅ Número normalizado: {numero_normalizado}")
-    
-    # 7. Abre modal de edição
-    if not abrir_modal_edicao_cliente(driver):
-        return False
-    
-    # 8. Preenche campo celular
-    if not preencher_campo_celular(driver, numero_normalizado):
-        return False
-    
-    # 9. Salva alterações
-    if not salvar_edicao_cliente(driver):
-        return False
-    
-    logging.info(f"[{nome_cliente}] ✅ Telefone corrigido com sucesso! Novo celular: {numero_normalizado}")
-    return True
+    # 5. Telefone é válido e é celular
+    logging.info(f"[{nome_cliente}] ✅ Usando telefone como fallback: {telefone_normalizado}")
+    return {
+        'sucesso': True,
+        'numero': telefone_normalizado,
+        'origem': 'telefone',
+        'motivo_falha': None
+    }
