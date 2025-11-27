@@ -18,31 +18,6 @@ SELETORES_TELEFONE_FIX = {
     # Erro de telefone inválido
     "erro_telefone_invalido": "//div[contains(@class, 'zd_v2-globalnotification-text') and contains(., 'número de telefone/celular do contato é inválido')]",
     
-    # Campo celular vazio
-    "celular_vazio": "//div[@data-id='mobile' and contains(@class, 'zd_v2-accountprofile-noData')]",
-    
-    # Link do telefone
-    "link_telefone": "//a[contains(@href, 'tel:')]",
-    
-    # Botão de editar cliente (ícone de lápis próximo ao nome)
-    "botao_editar": "//i[contains(@class, 'zd_font_icons') and contains(@class, 'edit')]",
-    
-    # Campo celular no modal de edição
-    "input_celular_modal": "//input[@data-id='mobile']",
-    
-    # Campo telefone no modal de edição  
-    "input_telefone_modal": "//input[@data-id='phone']",
-    
-    # Botão salvar no modal
-    "botao_salvar_modal": "//button[contains(., 'Salvar') or contains(., 'Save')]",
-    
-    # Botão fechar erro
-    "botao_fechar_erro": "//div[contains(@class, 'zd_v2-alertclose-close')]"
-}
-
-
-def detectar_erro_telefone_invalido(driver, timeout=2):
-    """
     Detecta se o erro de telefone inválido está sendo exibido.
     Retorna True se o erro foi detectado.
     """
@@ -72,6 +47,23 @@ def fechar_erro_telefone_invalido(driver):
         return True
     except Exception as e:
         logging.debug(f"Não foi possível fechar o erro: {e}")
+        return False
+
+
+def fechar_modal_whatsapp(driver):
+    """
+    Fecha o modal do WhatsApp clicando em Cancelar.
+    """
+    try:
+        btn_cancelar = WebDriverWait(driver, 3).until(
+            EC.element_to_be_clickable((By.XPATH, SELETORES_TELEFONE_FIX["botao_cancelar_modal_wpp"]))
+        )
+        driver.execute_script("arguments[0].click();", btn_cancelar)
+        time.sleep(0.5)
+        logging.info("Modal WhatsApp fechado.")
+        return True
+    except Exception as e:
+        logging.debug(f"Não foi possível fechar o modal WhatsApp: {e}")
         return False
 
 
@@ -202,12 +194,13 @@ def corrigir_telefone_cliente(driver, nome_cliente):
     Fluxo:
     1. Detecta erro de telefone inválido
     2. Fecha o alerta de erro
-    3. Verifica se o celular está vazio
-    4. Extrai número do campo telefone
-    5. Normaliza o número
-    6. Abre modal de edição
-    7. Preenche campo celular
-    8. Salva alterações
+    3. Fecha o modal do WhatsApp
+    4. Verifica se o celular está vazio
+    5. Extrai número do campo telefone
+    6. Normaliza o número
+    7. Abre modal de edição
+    8. Preenche campo celular
+    9. Salva alterações
     
     Retorna True se conseguiu corrigir, False caso contrário.
     """
@@ -218,21 +211,25 @@ def corrigir_telefone_cliente(driver, nome_cliente):
         logging.debug("Erro de telefone inválido não detectado. Nada a corrigir.")
         return False
     
-    # 2. Fecha o alerta
+    # 2. Fecha o alerta de erro
     fechar_erro_telefone_invalido(driver)
     
-    # 3. Verifica se celular está vazio
+    # 3. Fecha o modal do WhatsApp
+    fechar_modal_whatsapp(driver)
+    time.sleep(0.5)
+    
+    # 4. Verifica se celular está vazio
     if not verificar_celular_vazio(driver):
         logging.warning(f"[{nome_cliente}] Campo celular não está vazio. Pode estar com número inválido.")
         # Ainda assim, vamos tentar corrigir usando o telefone
     
-    # 4. Extrai número do telefone
+    # 5. Extrai número do telefone
     numero_original = extrair_numero_telefone(driver)
     if not numero_original:
         logging.error(f"[{nome_cliente}] ❌ Não foi possível extrair número do campo telefone.")
         return False
     
-    # 5. Normaliza o número
+    # 6. Normaliza o número
     numero_normalizado = normalizar_numero(numero_original)
     if not numero_normalizado:
         logging.error(f"[{nome_cliente}] ❌ Não foi possível normalizar o número: {numero_original}")
@@ -246,15 +243,15 @@ def corrigir_telefone_cliente(driver, nome_cliente):
     
     logging.info(f"[{nome_cliente}] ✅ Número normalizado: {numero_normalizado}")
     
-    # 6. Abre modal de edição
+    # 7. Abre modal de edição
     if not abrir_modal_edicao_cliente(driver):
         return False
     
-    # 7. Preenche campo celular
+    # 8. Preenche campo celular
     if not preencher_campo_celular(driver, numero_normalizado):
         return False
     
-    # 8. Salva alterações
+    # 9. Salva alterações
     if not salvar_edicao_cliente(driver):
         return False
     
