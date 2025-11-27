@@ -354,13 +354,81 @@ def buscar_e_abrir_cliente(driver, cliente_input):
     return False
 
 def clicar_resultado(driver, elemento):
+    """
+    Clica no nome do cliente (e NÃO no e-mail).
+    Identifica o nome pelo atributo data-type, ou descarta links que contenham '@'.
+    Prioriza links com espaço no texto (típico de "Nome Sobrenome").
+    """
     try:
-        elemento.click()
+        # 🔍 1. Encontrar a linha
+        try:
+            linha = elemento.find_element(By.XPATH, "./ancestor::tr[1]")
+        except:
+            try:
+                linha = elemento.find_element(By.XPATH, "./ancestor::*[contains(@class, 'row')][1]")
+            except:
+                linha = elemento.find_element(By.XPATH, "./ancestor::*[.//a][1]")
+
+        # 🔍 2. Tentar encontrar link cujo data-type indique NOME
+        try:
+            nome_element = linha.find_element(
+                By.XPATH,
+                ".//a[@data-type and not(contains(@data-title, '@'))]"
+            )
+        except:
+            # 🔍 3. Fallback 1: link sem '@' e com ESPAÇO no texto (ex.: 'João Silva')
+            try:
+                nome_element = linha.find_element(
+                    By.XPATH,
+                    ".//a[not(contains(normalize-space(.), '@')) and contains(normalize-space(.), ' ')]"
+                )
+            except:
+                # 🔍 4. Fallback 2: procura manualmente, priorizando nomes com espaço
+                anchors = linha.find_elements(By.XPATH, ".//a")
+                nome_element = None
+
+                # 4a) Primeiro, sem '@' E com espaço
+                for a in anchors:
+                    txt = (a.text or "").strip()
+                    if txt and "@" not in txt and " " in txt:
+                        nome_element = a
+                        break
+
+                # 4b) Se ainda não achou, qualquer link sem '@'
+                if nome_element is None:
+                    for a in anchors:
+                        txt = (a.text or "").strip()
+                        if txt and "@" not in txt:
+                            nome_element = a
+                            break
+
+                # 4c) Último recurso: primeiro link disponível
+                if nome_element is None and anchors:
+                    nome_element = anchors[0]
+
+        # 🔥 5. Clicar no nome
+        try:
+            nome_element.click()
+        except:
+            driver.execute_script("arguments[0].click();", nome_element)
+
+        logging.info("✅ Clicou no NOME do cliente corretamente")
+
+    except Exception as e:
+        logging.warning(f"⚠️ Falhou ao clicar no nome, usando fallback: {e}")
+        try:
+            elemento.click()
+        except:
+            driver.execute_script("arguments[0].click();", elemento)
+
+    # 🔄 6. Aguardar página carregar
+    try:
+        WebDriverWait(driver, 20).until(
+            EC.element_to_be_clickable((By.CSS_SELECTOR, SELETORES["botao_whatsapp"]))
+        )
     except:
-        driver.execute_script("arguments[0].click();", elemento)
-    try:
-        WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.CSS_SELECTOR, SELETORES["botao_whatsapp"])))
-    except: pass
+        pass
+
 
 def _executar_busca_e_clicar(driver, wait, termo, nome_alvo):
     """Re-executa a busca para clicar num alvo específico."""
