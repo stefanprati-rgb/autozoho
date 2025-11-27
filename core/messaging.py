@@ -287,9 +287,10 @@ def selecionar_canal_e_modelo(driver, canal_substr: str, nome_template: str, anc
         # Abre Dropdown
         fechar_ui_flutuante(driver)
         driver.execute_script("arguments[0].scrollIntoView({block:'center'});", modelo_input)
-        time.sleep(1)
+        time.sleep(0.3)
         driver.execute_script("arguments[0].click();", modelo_input)
-        time.sleep(2) 
+        # Aguarda dropdown abrir (otimizado)
+        time.sleep(0.5) 
         
         search_box = None
         try:
@@ -305,8 +306,8 @@ def selecionar_canal_e_modelo(driver, canal_substr: str, nome_template: str, anc
             search_box.clear()
             for char in nome_busca_safe:
                 search_box.send_keys(char)
-                time.sleep(0.1)
-            time.sleep(2) # Filtro
+                time.sleep(0.03)  # 3x mais rápido
+            time.sleep(0.8)  # Aguarda filtro processar (otimizado)
 
             if _buscar_e_selecionar_visual(driver, nome_template, ancoras, busca_realizada=True):
                 return True
@@ -327,12 +328,12 @@ def selecionar_canal_e_modelo(driver, canal_substr: str, nome_template: str, anc
                     # Limpa (CTRL+A + DEL é mais seguro aqui)
                     search_box.send_keys(Keys.CONTROL + "a")
                     search_box.send_keys(Keys.DELETE)
-                    time.sleep(0.5)
+                    time.sleep(0.3)
                     
                     for char in termo_ancora:
                         search_box.send_keys(char)
-                        time.sleep(0.1)
-                    time.sleep(2)
+                        time.sleep(0.03)  # 3x mais rápido
+                    time.sleep(0.8)  # Aguarda filtro processar (otimizado)
 
                     if _buscar_e_selecionar_visual(driver, nome_template, ancoras, busca_realizada=True):
                         return True
@@ -343,7 +344,7 @@ def selecionar_canal_e_modelo(driver, canal_substr: str, nome_template: str, anc
             if search_box:
                 search_box.send_keys(Keys.CONTROL + "a")
                 search_box.send_keys(Keys.DELETE)
-                time.sleep(1.5)
+                time.sleep(0.5)  # Otimizado
         except: pass
         
         if _buscar_e_selecionar_visual(driver, nome_template, ancoras):
