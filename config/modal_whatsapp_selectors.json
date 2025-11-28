@@ -1,0 +1,155 @@
+{
+    "pagina": "Zoho Desk - Modal Enviar Mensagem WhatsApp",
+    "url": "Modal que abre em qualquer tela ao clicar em enviar WhatsApp",
+    "data_mapeamento": "2025-11-28",
+    "tipo": "modal",
+    "descricao": "Modal para envio de mensagens WhatsApp com seleção de departamento, canal e template",
+    "modal": {
+        "container": {
+            "dialog": {
+                "css": "dialog[aria-modal='true']",
+                "xpath": "//dialog[@aria-modal='true']"
+            },
+            "region": {
+                "css": "region:contains('Escolha um canal e modelo')",
+                "xpath": "//region[contains(text(), 'Escolha um canal e modelo')]"
+            }
+        },
+        "header": {
+            "titulo": {
+                "css": "dialog heading:contains('Enviar mensagem')",
+                "xpath": "//dialog//heading[contains(text(), 'Enviar mensagem')]"
+            },
+            "creditos": {
+                "label_xpath": "//text()[contains(., 'Créditos disponíveis')]"
+            },
+            "link_comprar": {
+                "xpath": "//text()[contains(., 'Comprar mais')]"
+            },
+            "numero_celular": {
+                "xpath": "//text()[contains(., '+55')]",
+                "descricao": "Mostra o número do celular que receberá a mensagem"
+            }
+        },
+        "body": {
+            "departamento": {
+                "label": {
+                    "css": "label[id='ZD_71']",
+                    "xpath": "//label[@id='ZD_71']"
+                },
+                "dropdown": {
+                    "css": "menuitem[id='ZD_71']",
+                    "xpath": "//menuitem[@id='ZD_71']"
+                }
+            },
+            "secao_canal_modelo": {
+                "heading": {
+                    "css": "heading:contains('Escolha um canal e modelo')",
+                    "xpath": "//heading[contains(text(), 'Escolha um canal e modelo')]"
+                },
+                "descricao": {
+                    "xpath": "//text()[contains(., 'Especifique o canal do WhatsApp')]"
+                }
+            },
+            "canal_whatsapp": {
+                "label": {
+                    "xpath": "//text()[contains(., 'Canal do WhatsApp')]"
+                },
+                "input": {
+                    "css": "textbox[id='70778000001234837']",
+                    "xpath": "//textbox[@id='70778000001234837']",
+                    "descricao": "Campo de busca/seleção do canal WhatsApp"
+                },
+                "input_generico": {
+                    "css": "input[type='text']",
+                    "xpath": "//input[@type='text']",
+                    "descricao": "Fallback genérico para o campo de canal"
+                }
+            },
+            "modelo_mensagem": {
+                "label": {
+                    "xpath": "//text()[contains(., 'Modelo de mensagem')]"
+                },
+                "dropdown": {
+                    "css": "textbox[placeholder='Choose templates']",
+                    "xpath": "//textbox[@placeholder='Choose templates']"
+                },
+                "dropdown_generico": {
+                    "css": "input[placeholder*='template']",
+                    "xpath": "//input[contains(@placeholder, 'template')]",
+                    "descricao": "Fallback genérico para o campo de template"
+                }
+            },
+            "alertas": {
+                "heading": {
+                    "xpath": "//text()[contains(., 'Pontos a serem lembrados')]"
+                },
+                "telefone_incorreto": {
+                    "xpath": "//text()[contains(., 'won\\'t be sent')]",
+                    "descricao": "Alerta sobre números incorretos"
+                },
+                "im_conversations": {
+                    "xpath": "//text()[contains(., 'available in IM conversations')]"
+                },
+                "marketing": {
+                    "xpath": "//text()[contains(., 'not using this functionality for marketing')]",
+                    "descricao": "Alerta sobre uso para marketing"
+                }
+            }
+        },
+        "footer": {
+            "botao_enviar": {
+                "css": "button:contains('Enviar')",
+                "xpath": "//button[contains(text(), 'Enviar')]",
+                "xpath_alt": "//dialog//button[contains(text(), 'Enviar') or contains(text(), 'Send')]"
+            },
+            "botao_cancelar": {
+                "css": "button:contains('Cancelar')",
+                "xpath": "//button[contains(text(), 'Cancelar')]",
+                "xpath_alt": "//dialog//button[contains(text(), 'Cancelar') or contains(text(), 'Cancel')]"
+            }
+        }
+    },
+    "opcoes_dropdown": {
+        "canal": {
+            "lista_opcoes": {
+                "css": "menuitem",
+                "xpath": "//menuitem[contains(@role, 'option')]",
+                "descricao": "Lista de canais disponíveis no dropdown"
+            },
+            "opcao_especifica": {
+                "xpath": "//menuitem[contains(text(), 'NOME_DO_CANAL')]",
+                "descricao": "Substituir NOME_DO_CANAL pelo nome desejado"
+            }
+        },
+        "template": {
+            "lista_opcoes": {
+                "css": "menuitem",
+                "xpath": "//menuitem[contains(@role, 'option')]"
+            },
+            "opcao_especifica": {
+                "xpath": "//menuitem[contains(text(), 'NOME_DO_TEMPLATE')]",
+                "descricao": "Substituir NOME_DO_TEMPLATE pelo nome desejado"
+            }
+        }
+    },
+    "estados": {
+        "modal_aberto": {
+            "css": "dialog[aria-modal='true']",
+            "xpath": "//dialog[@aria-modal='true']"
+        },
+        "botao_enviar_habilitado": {
+            "xpath": "//button[contains(text(), 'Enviar') and not(@disabled)]"
+        },
+        "botao_enviar_desabilitado": {
+            "xpath": "//button[contains(text(), 'Enviar') and @disabled]"
+        }
+    },
+    "notas": {
+        "uso": "Este modal abre ao clicar em 'Enviar mensagem WhatsApp' em qualquer tela",
+        "fluxo": "1. Selecionar departamento → 2. Selecionar canal → 3. Selecionar template → 4. Enviar",
+        "validacao": "Botão Enviar só fica habilitado após selecionar canal e template",
+        "importante": "O campo de canal é um textbox com busca, não um dropdown simples",
+        "integracao": "Este modal é usado pelo código em core/messaging.py"
+    }
+}
