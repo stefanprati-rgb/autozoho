@@ -1,0 +1,132 @@
+{
+    "pagina": "Zoho Desk - Chat Encerrado",
+    "url": "https://desk.zoho.com/agent/hubedesk/*/whatsapp/page#IM/-1/sessions/mine-all",
+    "data_mapeamento": "2025-11-28",
+    "tipo": "chat_encerrado",
+    "descricao": "Tela de chat encerrado com opção de reabrir conversa",
+    "navegacao": {
+        "superior": {
+            "whatsapp": {
+                "css": "a[href*='whatsapp']",
+                "xpath": "//a[contains(@href,'whatsapp')]"
+            },
+            "email": {
+                "css": "a[href*='e-mail']",
+                "xpath": "//a[contains(@href,'e-mail')]"
+            },
+            "clientes": {
+                "css": "a[href*='contato']",
+                "xpath": "//a[contains(@href,'contato')]"
+            },
+            "atividades": {
+                "css": "a[href*='activities']",
+                "xpath": "//a[contains(@href,'activities')]"
+            },
+            "analises": {
+                "css": "a[href*='dashboards']",
+                "xpath": "//a[contains(@href,'dashboards')]"
+            },
+            "base_conhecimento": {
+                "css": "a[href*='knowledge-base']",
+                "xpath": "//a[contains(@href,'knowledge-base')]"
+            }
+        },
+        "lateral": {
+            "painel": {
+                "css": "menuitem",
+                "xpath": "//menuitem[contains(text(),'Painel')]"
+            },
+            "todos_canais": {
+                "css": "menuitem",
+                "xpath": "//menuitem[contains(text(),'canais')]"
+            },
+            "minhas_conversas": {
+                "css": "menuitem",
+                "xpath": "//menuitem[contains(text(),'Minhas')]"
+            },
+            "encerrado": {
+                "css": "menuitem",
+                "xpath": "//menuitem[contains(text(),'Encerrado')]"
+            }
+        }
+    },
+    "filtros": {
+        "dropdown_todos": {
+            "css": "button:contains('Todos')",
+            "xpath": "//button[contains(text(),'Todos')]"
+        },
+        "filtro_departamento": {
+            "css": "button:contains('Filtrar')",
+            "xpath": "//button[contains(text(),'Filtrar')]"
+        },
+        "limpar": {
+            "css": "button:contains('Limpar')",
+            "xpath": "//button[contains(text(),'Limpar')]"
+        }
+    },
+    "chat_header": {
+        "titulo_contato": {
+            "css": "heading",
+            "xpath": "//heading"
+        },
+        "atribuido_para": {
+            "css": "button:contains('Caroline')",
+            "xpath": "//button[contains(text(),'Caroline')]"
+        }
+    },
+    "chat_status": {
+        "mensagem_encerrado": {
+            "xpath": "//text()[contains(.,'Chat foi encerrado')]"
+        },
+        "data_encerramento": {
+            "xpath": "//text()[contains(.,'/')][contains(.,'2025')]"
+        }
+    },
+    "chat_mensagens": {
+        "mensagem_cliente": {
+            "css": "button",
+            "xpath": "//button[contains(text(),'Olá')]"
+        },
+        "historico": {
+            "xpath": "//button"
+        }
+    },
+    "acoes_disponiveis": {
+        "enviar_comprovante": {
+            "xpath": "//text()[contains(.,'Enviar comprovante')]"
+        },
+        "negociar_prazo": {
+            "xpath": "//text()[contains(.,'Negociar prazo')]"
+        }
+    },
+    "chat_footer": {
+        "botao_reabrir": {
+            "css": "button:contains('Reabrir')",
+            "xpath": "//button[contains(text(),'Reabrir')]",
+            "descricao": "Botão principal para reabrir conversa encerrada"
+        }
+    },
+    "painel_info": {
+        "contato_info": {
+            "heading": {
+                "css": "heading:contains('Contato Informações')",
+                "xpath": "//heading[contains(text(),'Contato Informações')]"
+            },
+            "email": {
+                "xpath": "//text()[contains(.,'@')]"
+            },
+            "proprietario": {
+                "xpath": "//text()[contains(.,'Adriano') or contains(.,'Caroline')]"
+            },
+            "celular": {
+                "xpath": "//text()[contains(.,'+55') or contains(.,'-')]"
+            }
+        }
+    },
+    "notas": {
+        "uso": "Tela de chat que foi encerrado mas pode ser reaberto",
+        "importante": "Botão 'Reabrir' permite retomar conversa",
+        "restricao": "Após reabrir, tem nova janela de 24h para enviar mensagens",
+        "historico": "Todas as mensagens anteriores permanecem visíveis"
+    }
+}

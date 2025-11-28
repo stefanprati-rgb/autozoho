@@ -1,0 +1,92 @@
+{
+    "pagina": "Zoho Desk - Modal Seleção de Templates",
+    "url": "Modal que abre ao clicar em 'Escolher Modelo' no chat",
+    "data_mapeamento": "2025-11-28",
+    "tipo": "modal_templates",
+    "descricao": "Modal para seleção de templates de mensagem WhatsApp com preview",
+    "modal": {
+        "container": {
+            "css": "generic[aria-current='true']",
+            "xpath": "//*[@aria-current='true']"
+        },
+        "header": {
+            "titulo": {
+                "xpath": "//text()[contains(.,'MODELOS DE MENSAGEM')]"
+            },
+            "dropdown_idioma": {
+                "css": "button:contains('English')",
+                "xpath": "//button[contains(text(),'English')]"
+            },
+            "botao_fechar": {
+                "css": "button:contains('Fechar')",
+                "xpath": "//button[contains(text(),'Fechar')]"
+            }
+        },
+        "busca": {
+            "campo_pesquisa": {
+                "css": "textbox[placeholder*='Pesquisar']",
+                "xpath": "//textbox[contains(@placeholder,'Pesquisar')]"
+            }
+        },
+        "lista_templates": {
+            "template_por_nome": {
+                "css": "button:contains('{}')",
+                "xpath": "//button[contains(text(),'{}')]",
+                "descricao": "Substituir {} pelo nome do template"
+            },
+            "templates_comuns": {
+                "black_november": {
+                    "css": "button:contains('Black November')",
+                    "xpath": "//button[contains(text(),'Black November')]"
+                },
+                "assinatura_pendente": {
+                    "css": "button:contains('Assinatura Pendente')",
+                    "xpath": "//button[contains(text(),'Assinatura Pendente')]"
+                },
+                "comunicado_faturamento": {
+                    "css": "button:contains('Comunicado_faturamento')",
+                    "xpath": "//button[contains(text(),'Comunicado')]"
+                },
+                "acordo_atraso": {
+                    "css": "button:contains('Acordo em Atraso')",
+                    "xpath": "//button[contains(text(),'Acordo')]"
+                },
+                "reuniao_contrato": {
+                    "css": "button:contains('Reunião Contrato')",
+                    "xpath": "//button[contains(text(),'Reunião')]"
+                }
+            }
+        },
+        "preview": {
+            "titulo": {
+                "xpath": "//text()[contains(.,'Mega Desconto') or contains(.,'Olá')]"
+            },
+            "corpo": {
+                "xpath": "//text()[contains(.,'Olá Cliente')]"
+            },
+            "cta": {
+                "xpath": "//text()[contains(.,'QUERO')]"
+            }
+        },
+        "categorias": {
+            "marketing": {
+                "xpath": "//text()[contains(.,'MARKETING')]"
+            },
+            "utility": {
+                "xpath": "//text()[contains(.,'UTILITY')]"
+            }
+        },
+        "footer": {
+            "botao_enviar": {
+                "css": "button:contains('Enviar Mensagem')",
+                "xpath": "//button[contains(text(),'Enviar Mensagem')]"
+            }
+        }
+    },
+    "notas": {
+        "uso": "Modal abre ao clicar em 'Escolher Modelo' no chat ativo",
+        "categorias": "MARKETING (promoções) e UTILITY (transacionais)",
+        "preview": "Mostra preview do template selecionado antes de enviar",
+        "importante": "Só pode enviar se janela de 24h estiver aberta"
+    }
+}
