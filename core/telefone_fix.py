@@ -84,12 +84,13 @@ def extrair_numero_telefone(driver, timeout=2):
         if telefone_link.is_displayed():
             numero = telefone_link.text.strip()
             if numero:
-                logging.debug(f"Telefone encontrado: {numero}")
+                logging.info(f"📞 Telefone encontrado no campo: {numero}")
                 return numero
         
+        logging.info("ℹ️ Campo telefone vazio")
         return None
     except (TimeoutException, NoSuchElementException):
-        logging.debug("Campo telefone não encontrado ou vazio.")
+        logging.info("ℹ️ Campo telefone não encontrado ou vazio")
         return None
     except Exception as e:
         logging.error(f"Erro ao extrair telefone: {e}")
@@ -207,6 +208,10 @@ def obter_lista_numeros_para_envio(driver, nome_cliente):
     
     # 1. Busca celular
     celular = buscar_numero_celular(driver)
+    if celular:
+        logging.info(f"[{nome_cliente}] ✅ Celular encontrado e válido: {celular}")
+    else:
+        logging.info(f"[{nome_cliente}] ℹ️ Celular não disponível ou inválido")
     
     # 2. Busca telefone
     telefone_raw = extrair_numero_telefone(driver)
@@ -214,12 +219,21 @@ def obter_lista_numeros_para_envio(driver, nome_cliente):
     telefone_eh_celular = False
     
     if telefone_raw:
+        logging.info(f"[{nome_cliente}] 📞 Telefone bruto extraído: {telefone_raw}")
         telefone_normalizado = normalizar_numero(telefone_raw)
         if telefone_normalizado:
-            valido, _ = validar_telefone_whatsapp(telefone_normalizado)
+            logging.info(f"[{nome_cliente}] ✅ Telefone normalizado: {telefone_normalizado}")
+            valido, motivo = validar_telefone_whatsapp(telefone_normalizado)
             if valido:
                 telefone = telefone_normalizado
                 telefone_eh_celular = True
+                logging.info(f"[{nome_cliente}] ✅ Telefone é celular válido")
+            else:
+                logging.warning(f"[{nome_cliente}] ❌ Telefone inválido: {motivo}")
+        else:
+            logging.warning(f"[{nome_cliente}] ❌ Não foi possível normalizar telefone: {telefone_raw}")
+    else:
+        logging.info(f"[{nome_cliente}] ℹ️ Campo telefone vazio")
     
     # 3. Aplica regras de deduplicação
     numeros_para_envio = []
@@ -231,7 +245,7 @@ def obter_lista_numeros_para_envio(driver, nome_cliente):
             'origem': 'celular',
             'campo': 'celular'
         })
-        logging.info(f"[{nome_cliente}] ✅ Celular adicionado: {celular}")
+        logging.info(f"[{nome_cliente}] ✅ Celular adicionado à lista: {celular}")
         
         # Verifica se telefone é diferente e também é celular
         if telefone and telefone_eh_celular:
@@ -262,4 +276,7 @@ def obter_lista_numeros_para_envio(driver, nome_cliente):
         return []
     
     logging.info(f"[{nome_cliente}] 📋 Total de números para envio: {len(numeros_para_envio)}")
+    for idx, num in enumerate(numeros_para_envio):
+        logging.info(f"[{nome_cliente}]   {idx+1}. {num['numero']} (campo: {num['campo']})")
+    
     return numeros_para_envio
