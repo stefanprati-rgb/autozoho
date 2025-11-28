@@ -1,0 +1,237 @@
+{
+    "pagina": "Zoho Desk - Editar Contato (Formulário)",
+    "url": "https://desk.zoho.com/agent/hubedesk/*/contato/edit/*",
+    "data_mapeamento": "2025-11-28",
+    "tipo": "formulario",
+    "descricao": "Formulário completo de edição de contato com todos os campos",
+    "navegacao": {
+        "superior": {
+            "whatsapp": {
+                "css": "a[href*='whatsapp']",
+                "xpath": "//a[contains(@href, 'whatsapp')]"
+            },
+            "email": {
+                "css": "a[href*='e-mail']",
+                "xpath": "//a[contains(@href, 'e-mail')]"
+            },
+            "clientes": {
+                "css": "a[href*='contato']",
+                "xpath": "//a[contains(@href, 'contato')]"
+            },
+            "atividades": {
+                "css": "a[href*='activities']",
+                "xpath": "//a[contains(@href, 'activities')]"
+            },
+            "analises": {
+                "css": "a[href*='dashboards']",
+                "xpath": "//a[contains(@href, 'dashboards')]"
+            },
+            "dropdown_departamento": {
+                "css": "button[aria-haspopup='menu']",
+                "xpath": "//button[@aria-haspopup='menu'][contains(text(), 'Era Verde')]"
+            }
+        },
+        "breadcrumb": {
+            "link_contato": {
+                "xpath": "//text()[contains(., 'Contato')]"
+            },
+            "heading_editar": {
+                "css": "heading:contains('Editar Contato')",
+                "xpath": "//heading[contains(text(), 'Editar Contato')]"
+            }
+        }
+    },
+    "formulario": {
+        "secao_principal": {
+            "heading": {
+                "css": "heading:contains('Contato Informações')",
+                "xpath": "//heading[contains(text(), 'Contato Informações')]"
+            }
+        },
+        "campos": {
+            "nome": {
+                "label": {
+                    "css": "label[id='Nome']",
+                    "xpath": "//label[@id='Nome']"
+                },
+                "input": {
+                    "css": "textbox[id='ZD_101']",
+                    "xpath": "//textbox[@id='ZD_101']",
+                    "input_generico": "input[name*='nome' i]"
+                }
+            },
+            "sobrenome": {
+                "label": {
+                    "css": "label[id='Sobrenome']",
+                    "xpath": "//label[@id='Sobrenome']"
+                },
+                "input": {
+                    "css": "textbox[id='ZD_102']",
+                    "xpath": "//textbox[@id='ZD_102']",
+                    "required": true
+                }
+            },
+            "email": {
+                "label": {
+                    "css": "label[id='E-mail']",
+                    "xpath": "//label[@id='E-mail']"
+                },
+                "input": {
+                    "css": "textbox[id='ZD_103']",
+                    "xpath": "//textbox[@id='ZD_103']",
+                    "input_generico": "input[type='email']"
+                }
+            },
+            "email_secundario": {
+                "label": {
+                    "css": "label[id='E-mail secundário']",
+                    "xpath": "//label[@id='E-mail secundário']"
+                },
+                "input": {
+                    "css": "textbox[id='ZD_104']",
+                    "xpath": "//textbox[@id='ZD_104']"
+                }
+            },
+            "nome_conta": {
+                "label": {
+                    "css": "label[id='919191000000000349']",
+                    "xpath": "//label[@id='919191000000000349']"
+                },
+                "input": {
+                    "css": "textbox[id='ZD_105']",
+                    "xpath": "//textbox[@id='ZD_105']"
+                }
+            },
+            "proprietario": {
+                "label": {
+                    "css": "label[id='919191000000000357']",
+                    "xpath": "//label[@id='919191000000000357']"
+                },
+                "combobox": {
+                    "css": "combobox[aria-haspopup='listbox']",
+                    "xpath": "//combobox[@aria-haspopup='listbox']"
+                }
+            },
+            "x_twitter": {
+                "label": {
+                    "css": "label[id='919191000000024001']",
+                    "xpath": "//label[@id='919191000000024001']"
+                },
+                "input": {
+                    "css": "textbox[id='ZD_106']",
+                    "xpath": "//textbox[@id='ZD_106']"
+                }
+            },
+            "facebook": {
+                "label": {
+                    "css": "label[id='Facebook']",
+                    "xpath": "//label[@id='Facebook']"
+                },
+                "input": {
+                    "css": "textbox[id='ZD_107']",
+                    "xpath": "//textbox[@id='ZD_107']",
+                    "readonly": true
+                }
+            },
+            "telefone": {
+                "label": {
+                    "css": "label[id='Telefone']",
+                    "xpath": "//label[@id='Telefone']"
+                },
+                "input": {
+                    "css": "textbox[id='ZD_108']",
+                    "xpath": "//textbox[@id='ZD_108']",
+                    "input_generico": "input[name*='phone' i]"
+                }
+            },
+            "celular": {
+                "label": {
+                    "css": "label[id='Celular']",
+                    "xpath": "//label[@id='Celular']"
+                },
+                "input": {
+                    "css": "textbox[id='ZD_109']",
+                    "xpath": "//textbox[@id='ZD_109']",
+                    "input_generico": "input[name*='mobile' i]"
+                }
+            },
+            "tipo": {
+                "label": {
+                    "css": "label[id='ZD_110']",
+                    "xpath": "//label[@id='ZD_110']"
+                },
+                "dropdown": {
+                    "css": "menuitem[id='ZD_110']",
+                    "xpath": "//menuitem[@id='ZD_110']"
+                }
+            },
+            "titulo": {
+                "label": {
+                    "css": "label[id='Título']",
+                    "xpath": "//label[@id='Título']"
+                },
+                "input": {
+                    "css": "textbox[id='ZD_113']",
+                    "xpath": "//textbox[@id='ZD_113']"
+                }
+            },
+            "idioma": {
+                "label": {
+                    "css": "label[id='ZD_114']",
+                    "xpath": "//label[@id='ZD_114']"
+                },
+                "dropdown": {
+                    "css": "menuitem[id='ZD_114']",
+                    "xpath": "//menuitem[@id='ZD_114']"
+                }
+            }
+        },
+        "acoes": {
+            "botao_salvar": {
+                "css": "button:contains('Salvar')",
+                "xpath": "//button[contains(text(), 'Salvar') or contains(text(), 'Save')]",
+                "xpath_alt": "//button[@type='submit']"
+            },
+            "botao_cancelar": {
+                "css": "button:contains('Cancelar')",
+                "xpath": "//button[contains(text(), 'Cancelar') or contains(text(), 'Cancel')]"
+            },
+            "botao_salvar_e_novo": {
+                "css": "button:contains('Salvar e Novo')",
+                "xpath": "//button[contains(text(), 'Salvar e Novo')]"
+            }
+        }
+    },
+    "painel_lateral": {
+        "marketplace": {
+            "heading": {
+                "css": "heading:contains('EXTENSÕES DO MARKETPLACE')",
+                "xpath": "//heading[contains(text(), 'EXTENSÕES DO MARKETPLACE')]"
+            },
+            "botao": {
+                "css": "button:contains('Vá Para O Marketplace')",
+                "xpath": "//button[contains(text(), 'Vá Para O Marketplace')]"
+            }
+        }
+    },
+    "validacao": {
+        "campos_obrigatorios": {
+            "sobrenome": {
+                "xpath": "//textbox[@id='ZD_102' and @required]"
+            }
+        },
+        "mensagens_erro": {
+            "campo_obrigatorio": {
+                "xpath": "//text()[contains(., 'obrigatório') or contains(., 'required')]"
+            }
+        }
+    },
+    "notas": {
+        "uso": "Este formulário é acessado ao clicar em editar na página de detalhes",
+        "url_dinamica": "O ID do contato varia na URL (ex: 919191000005272169)",
+        "campos_principais": "Telefone (ZD_108) e Celular (ZD_109) são os campos mais importantes",
+        "validacao": "Sobrenome é campo obrigatório",
+        "importante": "Use este formulário para edição completa, diferente do modal inline",
+        "integracao": "Pode ser usado junto com utils/telefone.py para correção em massa"
+    }
+}
