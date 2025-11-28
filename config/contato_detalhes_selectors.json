@@ -1,0 +1,207 @@
+{
+    "pagina": "Zoho Desk - Detalhes de Contato",
+    "url": "https://desk.zoho.com/agent/hubedesk/*/contato/details/*",
+    "data_mapeamento": "2025-11-28",
+    "descricao": "Mapeamento de seletores para a página de detalhes de um contato específico",
+    "navegacao": {
+        "superior": {
+            "whatsapp": {
+                "css": "a[href*='whatsapp']",
+                "xpath": "//a[contains(@href, 'whatsapp')]"
+            },
+            "email": {
+                "css": "a[href*='e-mail']",
+                "xpath": "//a[contains(@href, 'e-mail')]"
+            },
+            "clientes": {
+                "css": "a[href*='contato/list']",
+                "xpath": "//a[contains(@href, 'contato/list')]"
+            },
+            "atividades": {
+                "css": "a[href*='activities']",
+                "xpath": "//a[contains(@href, 'activities')]"
+            },
+            "analises": {
+                "css": "a[href*='dashboards']",
+                "xpath": "//a[contains(@href, 'dashboards')]"
+            },
+            "base_conhecimento": {
+                "css": "a[href*='knowledge-base']",
+                "xpath": "//a[contains(@href, 'knowledge-base')]"
+            },
+            "novo_contato": {
+                "css": "a[href*='contato/new']",
+                "xpath": "//a[contains(@href, 'contato/new')]"
+            },
+            "busca_global": {
+                "css": "button#GlobalSearch",
+                "xpath": "//button[@id='GlobalSearch']"
+            },
+            "notificacoes": {
+                "css": "button#Notification",
+                "xpath": "//button[@id='Notification']"
+            },
+            "dropdown_departamento": {
+                "css": "button[aria-haspopup='menu']",
+                "xpath": "//button[@aria-haspopup='menu'][contains(text(), 'Era Verde')]"
+            }
+        }
+    },
+    "painel_esquerdo": {
+        "navegacao": {
+            "botao_voltar": {
+                "css": "button[aria-label*='Back']",
+                "xpath": "//button[contains(@aria-label, 'Back')]"
+            },
+            "botao_unpin": {
+                "css": "button[aria-label*='unpin']",
+                "xpath": "//button[contains(@aria-label, 'unpin')]"
+            }
+        },
+        "contato": {
+            "nome": {
+                "xpath": "//text()[contains(., 'paulo')]"
+            },
+            "link_detalhes": {
+                "css": "a[href*='details/']",
+                "xpath": "//a[contains(@href, 'details/')]"
+            },
+            "email_link": {
+                "css": "a[href*='mailto:']",
+                "xpath": "//a[contains(@href, 'mailto:')]"
+            },
+            "telefone_link": {
+                "css": "a[href*='tel:']",
+                "xpath": "//a[contains(@href, 'tel:')]"
+            }
+        },
+        "abas": {
+            "contato_informacoes": {
+                "css": "link[aria-label*='Contato Informações']",
+                "xpath": "//a[contains(text(), 'Contato Informações')]"
+            },
+            "seguidores": {
+                "xpath": "//a[contains(text(), 'Seguidores')]"
+            },
+            "zoho_invoice": {
+                "xpath": "//a[contains(text(), 'Zoho Invoice')]"
+            }
+        }
+    },
+    "painel_central": {
+        "cabecalho": {
+            "nome_contato": {
+                "css": "heading:contains('Paulo Sérgio Lima')",
+                "xpath": "//heading[contains(text(), 'Paulo Sérgio Lima')]"
+            }
+        },
+        "botoes_acao": {
+            "adicionar_ticket": {
+                "css": "button:contains('Adicionar Ticket')",
+                "xpath": "//button[contains(text(), 'Adicionar Ticket')]"
+            },
+            "comentar": {
+                "css": "button[aria-label*='Comment']",
+                "xpath": "//button[contains(@aria-label, 'Comment')]"
+            },
+            "mais_acoes": {
+                "css": "button[aria-haspopup='menu']",
+                "xpath": "//button[@aria-haspopup='menu'][contains(text(), 'More')]"
+            },
+            "marketplace": {
+                "css": "button:contains('MArket Place')",
+                "xpath": "//button[contains(text(), 'MArket Place')]"
+            }
+        },
+        "abas_conteudo": {
+            "visao_geral": {
+                "css": "a:contains('VISÃO GERAL')",
+                "xpath": "//a[contains(text(), 'Visão geral')]"
+            },
+            "historico": {
+                "css": "a:contains('HISTÓRICO')",
+                "xpath": "//a[contains(text(), 'Histórico')]"
+            },
+            "atividades": {
+                "css": "a:contains('ATIVIDADES')",
+                "xpath": "//a[contains(text(), 'Atividades')]"
+            },
+            "ticket_interaction": {
+                "css": "a:contains('TICKET INTERACTION')",
+                "xpath": "//a[contains(text(), 'Ticket Interaction')]"
+            },
+            "email": {
+                "css": "a:contains('E-MAIL')",
+                "xpath": "//a[contains(text(), 'E-MAIL')]"
+            }
+        },
+        "propriedades": {
+            "heading": {
+                "css": "heading:contains('Propriedades')",
+                "xpath": "//heading[contains(text(), 'Contato Propriedades')]"
+            },
+            "campos": {
+                "proprietario": {
+                    "label_xpath": "//text()[contains(., 'Proprietário do Contato')]",
+                    "link_css": "a[href*='setup/users-control/agents']",
+                    "link_xpath": "//a[contains(@href, 'setup/users-control/agents')]"
+                },
+                "email": {
+                    "valor_xpath": "//text()[contains(., '@')]",
+                    "descricao": "Busca por texto contendo @"
+                },
+                "celular": {
+                    "valor_xpath": "//text()[contains(., '+55')]",
+                    "descricao": "Busca por texto contendo +55"
+                },
+                "telefone": {
+                    "valor_xpath": "//text()[contains(., 'Adicionar Telefone')]",
+                    "placeholder": "Adicionar Telefone"
+                },
+                "idioma": {
+                    "valor_xpath": "//text()[contains(., 'Adicionar Idioma')]",
+                    "placeholder": "Adicionar Idioma"
+                },
+                "facebook": {
+                    "valor_xpath": "//text()[contains(., 'Adicionar Facebook')]",
+                    "placeholder": "Adicionar Facebook"
+                },
+                "twitter": {
+                    "valor_xpath": "//text()[contains(., 'Adicionar Twitter')]",
+                    "placeholder": "Adicionar Twitter"
+                }
+            }
+        }
+    },
+    "edicao": {
+        "botao_editar": {
+            "css": "button[data-id='iconContainer']",
+            "xpath": "//button[contains(@aria-label, 'Edit') or contains(@class, 'edit')]",
+            "descricao": "Botão de lápis para editar informações"
+        },
+        "botao_salvar": {
+            "css": "button[data-id='saveButtonId']",
+            "xpath": "//button[contains(text(), 'Salvar') or @data-id='saveButtonId']"
+        },
+        "campos_input": {
+            "celular": {
+                "css": "input[data-id='mobile']",
+                "xpath": "//label[contains(., 'Celular')]/following::input[1]"
+            },
+            "telefone": {
+                "css": "input[data-id='phone']",
+                "xpath": "//label[contains(., 'Telefone')]/following::input[1]"
+            },
+            "email": {
+                "css": "input[data-id='email']",
+                "xpath": "//label[contains(., 'E-mail')]/following::input[1]"
+            }
+        }
+    },
+    "notas": {
+        "uso": "Esta tela é acessada ao clicar em um contato específico",
+        "url_dinamica": "O ID do contato varia (ex: 919191000000734001)",
+        "campos_editaveis": "Celular, Telefone, Email podem ser editados clicando no botão editar",
+        "integracao": "Usa os mesmos seletores de edição que a tela de WhatsApp"
+    }
+}
