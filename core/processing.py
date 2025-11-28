@@ -29,24 +29,25 @@ from utils.screenshots import take_screenshot
 SELETOR_BOTAO_EDITAR = 'button[data-id="iconContainer"]' 
 SELETOR_BOTAO_SALVAR = 'button[data-id="saveButtonId"]' 
 
-def corrigir_telefone_na_interface(driver, campo_tipo, numero_corrigido, nome_cliente):
+def corrigir_telefones_na_interface(driver, correcoes, nome_cliente):
     """
-    Clica no botão editar, limpa o campo especificado (Celular ou Telefone), 
-    insere o número corrigido com +55 e salva.
+    Abre o modo de edição UMA VEZ e corrige todos os campos necessários (Celular e/ou Telefone).
     
     Args:
         driver: WebDriver do Selenium
-        campo_tipo: 'mobile' para Celular ou 'phone' para Telefone
-        numero_corrigido: Número já normalizado com +55
+        correcoes: Lista de dicts com {'campo_tipo': 'mobile'/'phone', 'numero': '+55...', 'label': 'Celular'/'Telefone'}
         nome_cliente: Nome do cliente para logs
     """
+    if not correcoes:
+        return True
+        
     wait = WebDriverWait(driver, 10)
-    label_texto = "Celular" if campo_tipo == "mobile" else "Telefone"
     
     try:
-        logging.info(f"[{nome_cliente}] 🛠️ Iniciando correção automática do campo '{label_texto}'...")
+        campos_str = ", ".join([c['label'] for c in correcoes])
+        logging.info(f"[{nome_cliente}] 🛠️ Iniciando correção de {len(correcoes)} campo(s): {campos_str}")
         
-        # 1. Clicar no botão de editar (lápis)
+        # 1. Clicar no botão de editar (lápis) - UMA VEZ
         try:
             btn_editar = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, SELETOR_BOTAO_EDITAR)))
         except Exception:
@@ -55,40 +56,49 @@ def corrigir_telefone_na_interface(driver, campo_tipo, numero_corrigido, nome_cl
         btn_editar.click()
         time.sleep(1.5)
         
-        # 2. Localizar o campo correto (Celular ou Telefone)
-        campo_input = None
-        try:
-            seletor_input = f'input[data-id="{campo_tipo}"]'
-            campo_input = wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR, seletor_input)))
-        except Exception:
+        # 2. Corrigir TODOS os campos necessários
+        for correcao in correcoes:
+            campo_tipo = correcao['campo_tipo']
+            numero_corrigido = correcao['numero']
+            label_texto = correcao['label']
+            
             try:
-                campo_input = driver.find_element(By.XPATH, f"//label[contains(., '{label_texto}')]/following::input[1]")
-            except Exception as e:
-                logging.error(f"[{nome_cliente}] ❌ Não foi possível localizar o campo '{label_texto}': {e}")
-                ActionChains(driver).send_keys(Keys.ESCAPE).perform()
-                return False
+                # Localizar o campo
+                campo_input = None
+                try:
+                    seletor_input = f'input[data-id="{campo_tipo}"]'
+                    campo_input = wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR, seletor_input)))
+                except Exception:
+                    campo_input = driver.find_element(By.XPATH, f"//label[contains(., '{label_texto}')]/following::input[1]")
 
-        # 3. Limpar e Inserir novo número
-        campo_input.click()
-        time.sleep(0.3)
-        campo_input.send_keys(Keys.CONTROL, "a")
-        campo_input.send_keys(Keys.DELETE)
-        time.sleep(0.3)
-        campo_input.send_keys(numero_corrigido)
-        time.sleep(0.5)
+                # Limpar e Inserir novo número
+                campo_input.click()
+                time.sleep(0.3)
+                campo_input.send_keys(Keys.CONTROL, "a")
+                campo_input.send_keys(Keys.DELETE)
+                time.sleep(0.3)
+                campo_input.send_keys(numero_corrigido)
+                time.sleep(0.3)
+                
+                logging.info(f"[{nome_cliente}] ✏️ {label_texto}: {numero_corrigido}")
+                
+            except Exception as e:
+                logging.error(f"[{nome_cliente}] ⚠️ Erro ao preencher '{label_texto}': {e}")
+                # Continua para tentar corrigir os outros campos
         
-        # 4. Salvar
+        # 3. Salvar UMA VEZ (todos os campos de uma vez)
+        time.sleep(0.5)
         btn_salvar = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, SELETOR_BOTAO_SALVAR)))
         btn_salvar.click()
         time.sleep(2)
         
-        logging.info(f"[{nome_cliente}] ✅ Campo '{label_texto}' atualizado com sucesso para: {numero_corrigido}")
+        logging.info(f"[{nome_cliente}] ✅ Todos os campos salvos com sucesso!")
         time.sleep(2)
         return True
         
     except Exception as e:
-        logging.error(f"[{nome_cliente}] ❌ Falha ao editar campo '{label_texto}' na interface: {e}")
-        take_screenshot(driver, f"erro_edicao_{campo_tipo}_{nome_cliente}")
+        logging.error(f"[{nome_cliente}] ❌ Falha ao editar telefones: {e}")
+        take_screenshot(driver, f"erro_edicao_telefones_{nome_cliente}")
         ActionChains(driver).send_keys(Keys.ESCAPE).perform()
         time.sleep(1)
         return False
@@ -97,7 +107,7 @@ def processar_pagina_cliente(driver, nome_cliente, departamento, template_nome, 
     """
     Processa a página do cliente:
     1. Verifica se os números (Celular E Telefone) precisam de correção (falta +55 e/ou 9º dígito).
-    2. Se precisar, corrige na UI.
+    2. Se precisar, corrige AMBOS na UI de uma vez.
     3. Busca os números (agora corrigidos).
     4. Envia a mensagem.
     """
@@ -107,11 +117,13 @@ def processar_pagina_cliente(driver, nome_cliente, departamento, template_nome, 
     # -----------------------------------------------------------
     # ETAPA 1: VERIFICAÇÃO E CORREÇÃO PRÉVIA (Auto-Healing)
     # -----------------------------------------------------------
-    # Verifica e corrige AMBOS os campos: Celular E Telefone
+    # Verifica AMBOS os campos e acumula as correções necessárias
     campos_para_verificar = [
         ('mobile', 'Celular', "//label[contains(., 'Celular')]/following::a[1] | //label[contains(., 'Celular')]/following::span[1]"),
         ('phone', 'Telefone', "//label[contains(., 'Telefone')]/following::a[1] | //label[contains(., 'Telefone')]/following::span[1]")
     ]
+    
+    correcoes_necessarias = []
     
     for campo_tipo, label_campo, xpath_campo in campos_para_verificar:
         try:
@@ -127,7 +139,7 @@ def processar_pagina_cliente(driver, nome_cliente, departamento, template_nome, 
                 valido, msg = validar_telefone_whatsapp(texto_tel)
                 
                 if not valido:
-                    logging.warning(f"[{nome_cliente}] {label_campo} atual '{texto_tel}' inválido ({msg}). Tentando calcular correção...")
+                    logging.warning(f"[{nome_cliente}] {label_campo} '{texto_tel}' inválido ({msg})")
                     
                     # Tenta calcular a correção (ex: adicionar o +55 e/ou 9)
                     novo_numero = normalizar_numero(texto_tel)
@@ -136,21 +148,27 @@ def processar_pagina_cliente(driver, nome_cliente, departamento, template_nome, 
                     if novo_numero:
                         novo_eh_valido, _ = validar_telefone_whatsapp(novo_numero)
                         if novo_eh_valido:
-                            if not dry_run:
-                                # Executa a correção na UI
-                                logging.info(f"[{nome_cliente}] Corrigindo {label_campo}: '{texto_tel}' → '{novo_numero}'")
-                                corrigir_telefone_na_interface(driver, campo_tipo, novo_numero, nome_cliente)
-                            else:
-                                logging.info(f"[DRY-RUN] Simularia correção de '{texto_tel}' para '{novo_numero}'")
+                            logging.info(f"[{nome_cliente}] {label_campo}: '{texto_tel}' → '{novo_numero}'")
+                            correcoes_necessarias.append({
+                                'campo_tipo': campo_tipo,
+                                'numero': novo_numero,
+                                'label': label_campo
+                            })
                         else:
-                            logging.warning(f"[{nome_cliente}] Correção calculada '{novo_numero}' ainda é inválida.")
+                            logging.warning(f"[{nome_cliente}] Correção '{novo_numero}' ainda inválida.")
                     else:
-                        logging.warning(f"[{nome_cliente}] Não foi possível normalizar o número '{texto_tel}'.")
+                        logging.warning(f"[{nome_cliente}] Não foi possível normalizar '{texto_tel}'.")
                 else:
                     logging.info(f"[{nome_cliente}] {label_campo} '{texto_tel}' já está correto.")
                     
         except Exception as e:
-            logging.debug(f"[{nome_cliente}] Erro ao verificar campo '{label_campo}': {e}")
+            logging.debug(f"[{nome_cliente}] Erro ao verificar '{label_campo}': {e}")
+
+    # Se houver correções necessárias, executa TODAS de uma vez
+    if correcoes_necessarias and not dry_run:
+        corrigir_telefones_na_interface(driver, correcoes_necessarias, nome_cliente)
+    elif correcoes_necessarias and dry_run:
+        logging.info(f"[DRY-RUN] Simularia {len(correcoes_necessarias)} correção(ões)")
 
     # -----------------------------------------------------------
     # ETAPA 2: BUSCA E ENVIO (Fluxo Padrão)
