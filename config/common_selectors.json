@@ -1,0 +1,192 @@
+{
+    "pagina": "Zoho Desk - Elementos Comuns",
+    "descricao": "Seletores compartilhados entre múltiplas telas do Zoho Desk",
+    "data_mapeamento": "2025-11-28",
+    "versao": "1.0",
+    "navegacao_superior": {
+        "descricao": "Barra de navegação superior presente em todas as telas",
+        "elementos": {
+            "logo": {
+                "css": "image[alt*='logo']",
+                "xpath": "//image[contains(@alt,'logo')]"
+            },
+            "whatsapp": {
+                "css": "a[href*='whatsapp']",
+                "xpath": "//a[contains(@href,'whatsapp')]"
+            },
+            "email": {
+                "css": "a[href*='e-mail']",
+                "xpath": "//a[contains(@href,'e-mail')]"
+            },
+            "clientes": {
+                "css": "a[href*='contato']",
+                "xpath": "//a[contains(@href,'contato')]"
+            },
+            "atividades": {
+                "css": "a[href*='activities']",
+                "xpath": "//a[contains(@href,'activities')]"
+            },
+            "analises": {
+                "css": "a[href*='dashboards']",
+                "xpath": "//a[contains(@href,'dashboards')]"
+            },
+            "base_conhecimento": {
+                "css": "a[href*='knowledge-base']",
+                "xpath": "//a[contains(@href,'knowledge-base')]"
+            },
+            "dropdown_departamento": {
+                "css": "button[aria-haspopup='menu']",
+                "xpath": "//button[@aria-haspopup='menu']"
+            },
+            "novo_ticket": {
+                "css": "a[href*='e-mail/new']",
+                "xpath": "//a[contains(@href,'e-mail/new')]"
+            },
+            "novo_contato": {
+                "css": "a[href*='contato/new']",
+                "xpath": "//a[contains(@href,'contato/new')]"
+            },
+            "busca_global": {
+                "css": "button#GlobalSearch",
+                "xpath": "//button[@id='GlobalSearch']"
+            },
+            "notificacoes": {
+                "css": "button#Notification",
+                "xpath": "//button[@id='Notification']"
+            },
+            "gamification": {
+                "css": "button[aria-label*='Gamification']",
+                "xpath": "//button[contains(@aria-label,'Gamification')]"
+            },
+            "marketplace": {
+                "css": "button[aria-label*='Marketplace']",
+                "xpath": "//button[contains(@aria-label,'Marketplace')]"
+            },
+            "setup": {
+                "css": "button[aria-label*='Setup']",
+                "xpath": "//button[contains(@aria-label,'Setup')]"
+            }
+        }
+    },
+    "menu_lateral_whatsapp": {
+        "descricao": "Menu lateral presente nas telas de WhatsApp",
+        "elementos": {
+            "painel": {
+                "css": "menuitem",
+                "xpath": "//menuitem[contains(text(),'Painel')]"
+            },
+            "todos_canais": {
+                "css": "menuitem",
+                "xpath": "//menuitem[contains(text(),'canais')]"
+            },
+            "minhas_conversas": {
+                "css": "menuitem",
+                "xpath": "//menuitem[contains(text(),'Minhas')]"
+            },
+            "nao_atribuidas": {
+                "css": "menuitem",
+                "xpath": "//menuitem[contains(text(),'Atribuída')]"
+            },
+            "bloqueado": {
+                "css": "menuitem",
+                "xpath": "//menuitem[contains(text(),'Bloqueado')]"
+            },
+            "encerrado": {
+                "css": "menuitem",
+                "xpath": "//menuitem[contains(text(),'Encerrado')]"
+            },
+            "todas_conversas": {
+                "css": "menuitem",
+                "xpath": "//menuitem[contains(text(),'Todas')]"
+            },
+            "conversas_bot": {
+                "css": "menuitem",
+                "xpath": "//menuitem[contains(text(),'Bot')]"
+            }
+        }
+    },
+    "filtros_chat": {
+        "descricao": "Filtros presentes nas telas de chat",
+        "elementos": {
+            "dropdown_todos": {
+                "css": "button:contains('Todos')",
+                "xpath": "//button[contains(text(),'Todos')]"
+            },
+            "filtro_departamento": {
+                "css": "button:contains('Filtrar')",
+                "xpath": "//button[contains(text(),'Filtrar')]"
+            },
+            "busca_chat": {
+                "css": "button[aria-label*='search']",
+                "xpath": "//button[contains(@aria-label,'search')]"
+            },
+            "limpar_filtro": {
+                "css": "button:contains('Limpar')",
+                "xpath": "//button[contains(text(),'Limpar')]"
+            }
+        }
+    },
+    "painel_contato_info": {
+        "descricao": "Painel de informações do contato (lado direito)",
+        "elementos": {
+            "heading": {
+                "css": "heading:contains('Contato Informações')",
+                "xpath": "//heading[contains(text(),'Contato Informações')]"
+            },
+            "email": {
+                "label_css": "label#E-mail",
+                "label_xpath": "//label[@id='E-mail']",
+                "valor_xpath": "//text()[contains(.,'@')]"
+            },
+            "celular": {
+                "label_css": "label#Celular",
+                "label_xpath": "//label[@id='Celular']",
+                "input_css": "input[data-id='mobile']",
+                "valor_xpath": "//label[@id='Celular']/following::a[1] | //label[@id='Celular']/following::span[1]"
+            },
+            "telefone": {
+                "label_css": "label#Telefone",
+                "label_xpath": "//label[@id='Telefone']",
+                "input_css": "input[data-id='phone']",
+                "valor_xpath": "//label[contains(., 'Telefone')]/following::a[1] | //label[contains(., 'Telefone')]/following::span[1]"
+            },
+            "proprietario": {
+                "label_css": "label[id*='Proprietario']",
+                "label_xpath": "//label[@id='Proprietário do Contato']",
+                "valor_xpath": "//text()[contains(.,'Adriano') or contains(.,'Caroline')]"
+            }
+        }
+    },
+    "edicao_contato": {
+        "descricao": "Botões e campos de edição de contato (modal inline)",
+        "elementos": {
+            "botao_editar": {
+                "css": "button[data-id='iconContainer']",
+                "xpath": "//button[contains(@aria-label, 'Edit') or contains(@class, 'edit')]"
+            },
+            "botao_salvar": {
+                "css": "button[data-id='saveButtonId']",
+                "xpath": "//button[contains(text(), 'Salvar') or @data-id='saveButtonId']"
+            },
+            "campos_input": {
+                "celular": {
+                    "css": "input[data-id='mobile']",
+                    "xpath": "//label[contains(., 'Celular')]/following::input[1]"
+                },
+                "telefone": {
+                    "css": "input[data-id='phone']",
+                    "xpath": "//label[contains(., 'Telefone')]/following::input[1]"
+                },
+                "email": {
+                    "css": "input[data-id='email']",
+                    "xpath": "//label[contains(., 'E-mail')]/following::input[1]"
+                }
+            }
+        }
+    },
+    "notas": {
+        "uso": "Importe este arquivo em outros mapeamentos para evitar duplicação",
+        "exemplo": "Use 'navegacao_superior' em vez de redefinir em cada arquivo",
+        "vantagem": "Atualização centralizada - muda uma vez, reflete em todos"
+    }
+}
