@@ -1,0 +1,159 @@
+{
+    "pagina": "Zoho Desk - Lista de Contatos",
+    "url": "https://desk.zoho.com/agent/hubedesk/*/contato/list/all-contacts",
+    "data_mapeamento": "2025-11-28",
+    "tipo": "lista",
+    "descricao": "Tela de listagem de todos os contatos em formato de grade/cards",
+    "navegacao": {
+        "superior": {
+            "whatsapp": {
+                "css": "a[href*='whatsapp']",
+                "xpath": "//a[contains(@href, 'whatsapp')]"
+            },
+            "email": {
+                "css": "a[href*='e-mail']",
+                "xpath": "//a[contains(@href, 'e-mail')]"
+            },
+            "clientes": {
+                "css": "a[href*='contato/list']",
+                "xpath": "//a[contains(@href, 'contato/list')]"
+            },
+            "atividades": {
+                "css": "a[href*='activities']",
+                "xpath": "//a[contains(@href, 'activities')]"
+            },
+            "analises": {
+                "css": "a[href*='dashboards']",
+                "xpath": "//a[contains(@href, 'dashboards')]"
+            },
+            "novo_contato": {
+                "css": "a[href*='contato/new']",
+                "xpath": "//a[contains(@href, 'contato/new')]"
+            },
+            "busca_global": {
+                "css": "button#GlobalSearch",
+                "xpath": "//button[@id='GlobalSearch']"
+            },
+            "notificacoes": {
+                "css": "button#Notification",
+                "xpath": "//button[@id='Notification']"
+            },
+            "dropdown_departamento": {
+                "css": "button[aria-haspopup='menu']",
+                "xpath": "//button[@aria-haspopup='menu'][contains(text(), 'Era Verde')]"
+            }
+        },
+        "lateral": {
+            "link_contato": {
+                "css": "a[href*='contato']",
+                "xpath": "//complementary//a[contains(text(), 'Contato')]"
+            },
+            "link_conta": {
+                "xpath": "//complementary//a[contains(text(), 'Conta')]"
+            }
+        }
+    },
+    "filtros_e_opcoes": {
+        "dropdown_filtro": {
+            "todos_contatos": {
+                "css": "button[aria-haspopup='menu']:contains('Todos')",
+                "xpath": "//button[@aria-haspopup='menu'][contains(text(), 'Todos')]"
+            }
+        },
+        "botoes": {
+            "contagem_total": {
+                "css": "button:contains('Contagem total')",
+                "xpath": "//button[contains(text(), 'Contagem total')]"
+            },
+            "exibicao_grade": {
+                "css": "button[aria-haspopup='menu']:contains('Exibição')",
+                "xpath": "//button[@aria-haspopup='menu'][contains(text(), 'Exibição')]"
+            },
+            "ordenar": {
+                "css": "button:contains('Sort')",
+                "xpath": "//button[contains(@aria-label, 'Sort')]"
+            }
+        }
+    },
+    "grade_contatos": {
+        "container": {
+            "css": "div[role='main']",
+            "xpath": "//main",
+            "descricao": "Container principal da grade de contatos"
+        },
+        "card_contato": {
+            "generico": {
+                "css": "a[href*='contato/details/']",
+                "xpath": "//a[contains(@href, 'contato/details/')]",
+                "descricao": "Qualquer card de contato na grade"
+            },
+            "por_id": {
+                "css": "a[href*='details/{ID}']",
+                "xpath": "//a[contains(@href, 'details/{ID}')]",
+                "descricao": "Card específico - substituir {ID} pelo ID do contato"
+            },
+            "por_nome": {
+                "xpath": "//a[contains(text(), '{NOME}')]",
+                "descricao": "Card por nome - substituir {NOME} pelo nome do contato"
+            }
+        },
+        "elementos_card": {
+            "nome_contato": {
+                "xpath": "//a[contains(@href, 'details/')]",
+                "descricao": "Link com nome do contato"
+            },
+            "email": {
+                "css": "a[href*='mailto:']",
+                "xpath": "//a[contains(@href, 'mailto:')]"
+            },
+            "telefone": {
+                "css": "a[href*='tel:']",
+                "xpath": "//a[contains(@href, 'tel:')]"
+            }
+        }
+    },
+    "busca_e_navegacao": {
+        "buscar_contato_por_nome": {
+            "xpath": "//a[contains(text(), '{NOME}')]",
+            "descricao": "Busca um contato específico pelo nome"
+        },
+        "buscar_por_telefone": {
+            "xpath": "//a[contains(@href, 'tel:') and contains(text(), '{TELEFONE}')]",
+            "descricao": "Busca um contato pelo número de telefone"
+        },
+        "buscar_por_email": {
+            "xpath": "//a[contains(@href, 'mailto:') and contains(text(), '{EMAIL}')]",
+            "descricao": "Busca um contato pelo email"
+        }
+    },
+    "acoes_em_massa": {
+        "selecionar_multiplos": {
+            "descricao": "Funcionalidade para selecionar múltiplos contatos",
+            "checkbox": {
+                "css": "input[type='checkbox']",
+                "xpath": "//input[@type='checkbox']"
+            }
+        }
+    },
+    "paginacao": {
+        "proxima_pagina": {
+            "css": "button[aria-label*='Next']",
+            "xpath": "//button[contains(@aria-label, 'Next') or contains(text(), 'Próxima')]"
+        },
+        "pagina_anterior": {
+            "css": "button[aria-label*='Previous']",
+            "xpath": "//button[contains(@aria-label, 'Previous') or contains(text(), 'Anterior')]"
+        },
+        "numero_pagina": {
+            "css": "button[aria-current='page']",
+            "xpath": "//button[@aria-current='page']"
+        }
+    },
+    "notas": {
+        "uso": "Esta tela lista todos os contatos em formato de grade/cards",
+        "navegacao": "Clicar em um card abre a tela de detalhes do contato",
+        "filtros": "Use os dropdowns no topo para filtrar contatos",
+        "busca": "Use a busca global ou busque por nome/email/telefone nos cards",
+        "importante": "Os IDs dos contatos são únicos e aparecem na URL (ex: 919191000000438057)"
+    }
+}
