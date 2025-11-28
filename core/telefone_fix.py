@@ -280,3 +280,86 @@ def obter_lista_numeros_para_envio(driver, nome_cliente):
         logging.info(f"[{nome_cliente}]   {idx+1}. {num['numero']} (campo: {num['campo']})")
     
     return numeros_para_envio
+
+
+def preencher_celular_no_zoho(driver, numero_normalizado, nome_cliente):
+    """
+    Preenche o campo Celular no Zoho com o número normalizado.
+    
+    Args:
+        driver: WebDriver do Selenium
+        numero_normalizado: Número no formato +5542998662977
+        nome_cliente: Nome do cliente (para logs)
+    
+    Returns:
+        bool: True se preencheu com sucesso, False caso contrário
+    """
+    try:
+        from selenium.webdriver.common.by import By
+        from selenium.webdriver.support.ui import WebDriverWait
+        from selenium.webdriver.support import expected_conditions as EC
+        import time
+        
+        logging.info(f"[{nome_cliente}] 📝 Preenchendo campo Celular com: {numero_normalizado}")
+        
+        # 1. Localizar o campo Celular
+        try:
+            # Tenta encontrar o link "Adicionar Celular"
+            adicionar_celular = WebDriverWait(driver, 3).until(
+                EC.presence_of_element_located((By.XPATH, "//a[contains(text(), 'Adicionar Celular')]"))
+            )
+            
+            # Clica para abrir o campo
+            adicionar_celular.click()
+            time.sleep(0.5)
+            logging.info(f"[{nome_cliente}] ✅ Clicou em 'Adicionar Celular'")
+            
+        except:
+            # Se não encontrou "Adicionar Celular", tenta encontrar o campo diretamente
+            logging.info(f"[{nome_cliente}] ℹ️ Campo Celular já existe, tentando editar...")
+        
+        # 2. Encontrar o input do celular
+        try:
+            # Tenta vários seletores possíveis
+            celular_input = None
+            seletores = [
+                "//input[@name='Mobile']",
+                "//input[contains(@id, 'Mobile')]",
+                "//input[@data-zcqa='Mobile']",
+                "//label[contains(text(), 'Celular')]/following::input[1]"
+            ]
+            
+            for seletor in seletores:
+                try:
+                    celular_input = driver.find_element(By.XPATH, seletor)
+                    if celular_input:
+                        break
+                except:
+                    continue
+            
+            if not celular_input:
+                logging.error(f"[{nome_cliente}] ❌ Não encontrou campo de input do Celular")
+                return False
+            
+            # 3. Limpar e preencher o campo
+            celular_input.clear()
+            celular_input.send_keys(numero_normalizado)
+            time.sleep(0.3)
+            
+            logging.info(f"[{nome_cliente}] ✅ Campo Celular preenchido: {numero_normalizado}")
+            
+            # 4. Salvar (pressionar Enter ou clicar em Salvar)
+            from selenium.webdriver.common.keys import Keys
+            celular_input.send_keys(Keys.RETURN)
+            time.sleep(1)
+            
+            logging.info(f"[{nome_cliente}] ✅ Salvou alteração no campo Celular")
+            return True
+            
+        except Exception as e:
+            logging.error(f"[{nome_cliente}] ❌ Erro ao preencher campo Celular: {str(e)}")
+            return False
+            
+    except Exception as e:
+        logging.error(f"[{nome_cliente}] ❌ Erro geral ao preencher Celular: {str(e)}")
+        return False

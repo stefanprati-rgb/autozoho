@@ -1,0 +1,128 @@
+{
+    "pagina": "NOME_DA_TELA",
+    "url": "URL_DA_TELA",
+    "data_mapeamento": "YYYY-MM-DD",
+    "descricao": "Descrição breve da tela",
+    "CATEGORIA_1": {
+        "SUBCATEGORIA": {
+            "ELEMENTO_1": {
+                "css": "seletor_css_aqui",
+                "xpath": "//xpath_aqui",
+                "descricao": "Descrição opcional do elemento"
+            },
+            "ELEMENTO_2": {
+                "css": "outro_seletor",
+                "xpath": "//outro_xpath"
+            }
+        }
+    },
+    "CATEGORIA_2": {
+        "campos": {
+            "CAMPO_1": {
+                "label_css": "label#campo1",
+                "label_xpath": "//label[@id='campo1']",
+                "input_css": "input[name='campo1']",
+                "input_xpath": "//input[@name='campo1']",
+                "valor_xpath": "//label[contains(., 'Campo 1')]/following::span[1]"
+            }
+        },
+        "botoes": {
+            "BOTAO_SALVAR": {
+                "css": "button[type='submit']",
+                "xpath": "//button[@type='submit']"
+            },
+            "BOTAO_CANCELAR": {
+                "css": "button.cancel",
+                "xpath": "//button[contains(@class, 'cancel')]"
+            }
+        }
+    },
+    "navegacao": {
+        "links": {
+            "LINK_1": {
+                "css": "a[href*='link1']",
+                "xpath": "//a[contains(@href, 'link1')]"
+            }
+        },
+        "menus": {
+            "MENU_PRINCIPAL": {
+                "css": "nav.main-menu",
+                "xpath": "//nav[contains(@class, 'main-menu')]"
+            }
+        }
+    },
+    "formularios": {
+        "FORM_NOME": {
+            "container": {
+                "css": "form#form-id",
+                "xpath": "//form[@id='form-id']"
+            },
+            "campos": {
+                "CAMPO_TEXTO": {
+                    "css": "input[name='texto']",
+                    "xpath": "//input[@name='texto']"
+                },
+                "CAMPO_SELECT": {
+                    "css": "select[name='opcao']",
+                    "xpath": "//select[@name='opcao']"
+                }
+            },
+            "acoes": {
+                "submit": {
+                    "css": "button[type='submit']",
+                    "xpath": "//button[@type='submit']"
+                }
+            }
+        }
+    },
+    "modais": {
+        "MODAL_CONFIRMACAO": {
+            "container": {
+                "css": "div.modal",
+                "xpath": "//div[contains(@class, 'modal')]"
+            },
+            "titulo": {
+                "css": "h2.modal-title",
+                "xpath": "//h2[contains(@class, 'modal-title')]"
+            },
+            "botoes": {
+                "confirmar": {
+                    "css": "button.confirm",
+                    "xpath": "//button[contains(@class, 'confirm')]"
+                },
+                "cancelar": {
+                    "css": "button.cancel",
+                    "xpath": "//button[contains(@class, 'cancel')]"
+                }
+            }
+        }
+    },
+    "tabelas": {
+        "TABELA_DADOS": {
+            "container": {
+                "css": "table.data-table",
+                "xpath": "//table[contains(@class, 'data-table')]"
+            },
+            "linhas": {
+                "css": "table.data-table tbody tr",
+                "xpath": "//table[contains(@class, 'data-table')]//tbody//tr"
+            },
+            "celulas": {
+                "css": "table.data-table td",
+                "xpath": "//table[contains(@class, 'data-table')]//td"
+            }
+        }
+    },
+    "notas": {
+        "organizacao": "Organize por categorias lógicas (navegacao, formularios, modais, etc)",
+        "nomenclatura": "Use nomes descritivos em CAPS_SNAKE_CASE para elementos",
+        "prioridade": "Sempre forneça CSS e XPath para fallback",
+        "atualizacao": "Mantenha data_mapeamento atualizada",
+        "dicas": [
+            "Use IDs quando disponíveis (mais estáveis)",
+            "Evite seletores muito específicos que podem quebrar",
+            "Teste ambos os seletores (CSS e XPath) antes de adicionar",
+            "Adicione 'descricao' para elementos complexos"
+        ]
+    }
+}

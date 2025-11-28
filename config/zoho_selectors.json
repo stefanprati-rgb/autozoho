@@ -1,0 +1,138 @@
+{
+  "pagina": "Zoho Desk - Suporte WhatsApp",
+  "url": "https://desk.zoho.com/agent/hubedesk/*/whatsapp/page",
+  "data_mapeamento": "2025-11-28",
+  "descricao": "Mapeamento de seletores CSS e XPath para elementos da interface do Zoho Desk WhatsApp",
+  
+  "contato": {
+    "painel_informacoes": {
+      "heading": {
+        "css": "heading:contains-text('Contato')",
+        "xpath": "//heading[contains(text(), 'Contato Informações')]"
+      }
+    },
+    "campos": {
+      "email": {
+        "label_css": "label#E-mail",
+        "label_xpath": "//label[@id='E-mail']"
+      },
+      "celular": {
+        "label_css": "label#Celular",
+        "label_xpath": "//label[@id='Celular']",
+        "input_css": "input[data-id='mobile']",
+        "valor_xpath": "//label[@id='Celular']/following::a[1] | //label[@id='Celular']/following::span[1]"
+      },
+      "telefone": {
+        "label_css": "label#Telefone",
+        "label_xpath": "//label[@id='Telefone']",
+        "input_css": "input[data-id='phone']",
+        "valor_xpath": "//label[contains(., 'Telefone')]/following::a[1] | //label[contains(., 'Telefone')]/following::span[1]"
+      },
+      "proprietario": {
+        "label_css": "label[id*='Proprietario']",
+        "label_xpath": "//label[@id='Proprietário do Contato']"
+      }
+    },
+    "edicao": {
+      "botao_editar": {
+        "css": "button[data-id='iconContainer']",
+        "xpath": "//button[contains(@aria-label, 'Edit') or contains(@class, 'edit')]"
+      },
+      "botao_salvar": {
+        "css": "button[data-id='saveButtonId']",
+        "xpath": "//button[contains(text(), 'Salvar') or @data-id='saveButtonId']"
+      }
+    }
+  },
+  
+  "mensagens": {
+    "editor": {
+      "campo_resposta": {
+        "css": "div[contenteditable='true']",
+        "xpath": "//*[@contenteditable='true']"
+      },
+      "botao_templates": {
+        "css": "button:contains-text('modelo')",
+        "xpath": "//button[contains(text(), 'modelo')]"
+      },
+      "botao_emoji": {
+        "css": "button:contains-text('Emoji')",
+        "xpath": "//button[contains(text(), 'Emoji')]"
+      },
+      "botao_imagem": {
+        "css": "button:contains-text('imagem')",
+        "xpath": "//button[contains(text(), 'imagem')]"
+      },
+      "botao_arquivo": {
+        "css": "button:contains-text('arquivo')",
+        "xpath": "//button[contains(text(), 'arquivo')]"
+      },
+      "botao_encerrar": {
+        "css": "button:contains-text('Encerrar')",
+        "xpath": "//button[contains(text(), 'Encerrar')]"
+      }
+    }
+  },
+  
+  "navegacao": {
+    "superior": {
+      "whatsapp": {
+        "css": "a[href*='whatsapp']",
+        "xpath": "//a[contains(@href, 'whatsapp')]"
+      },
+      "clientes": {
+        "css": "a[href*='contato']",
+        "xpath": "//a[contains(@href, 'contato')]"
+      },
+      "busca_global": {
+        "css": "button#GlobalSearch",
+        "xpath": "//button[@id='GlobalSearch']"
+      },
+      "notificacoes": {
+        "css": "button#Notification",
+        "xpath": "//button[@id='Notification']"
+      }
+    },
+    "lateral": {
+      "painel": {
+        "css": "menuitem",
+        "xpath": "//menuitem[contains(text(), 'Painel')]"
+      },
+      "minhas_conversas": {
+        "css": "menuitem",
+        "xpath": "//menuitem[contains(text(), 'Minhas Conversas')]"
+      },
+      "todas_conversas": {
+        "css": "menuitem",
+        "xpath": "//menuitem[contains(text(), 'Todas As Conversas')]"
+      }
+    }
+  },
+  
+  "conversas": {
+    "filtros": {
+      "dropdown_todos": {
+        "css": "button:nth-of-type(1)",
+        "xpath": "//button[contains(text(), 'Todos')][1]"
+      },
+      "filtro_departamento": {
+        "css": "button[aria-label*='Filtrar']",
+        "xpath": "//button[@aria-label='Filtrar por departamento']"
+      },
+      "busca": {
+        "css": "button[id*='search']",
+        "xpath": "//button[contains(@id, 'search')]"
+      }
+    },
+    "lista": {
+      "css": "div[role='region'] button",
+      "xpath": "//list[@id='zohoim.session.list']"
+    }
+  },
+  
+  "notas": {
+    "uso": "Use os seletores CSS primeiro, XPath como fallback",
+    "atualizacao": "Atualizar este arquivo quando a interface do Zoho mudar",
+    "prioridade": "CSS > XPath > Seletores genéricos"
+  }
+}
