@@ -2,6 +2,7 @@
 """
 Módulo de busca de clientes.
 Replicado fielmente da versão v3.1 funcional (Lógica de Variações Inteligentes + Fuzzy).
+Atualizado com Limpeza Nuclear de Campo de Busca.
 """
 
 import time
@@ -180,7 +181,6 @@ def _limiar_dinamico_auto(tipo, qtd_resultados_coletados, ratio_geral, nome_busc
 
 def calcular_score_composto(nome_resultado_norm, nome_busca_norm):
     if not nome_resultado_norm or not nome_busca_norm: return 0.0
-    # Implementação simplificada para manter integridade sem excesso de código auxiliar
     return SequenceMatcher(None, nome_resultado_norm, nome_busca_norm).ratio()
 
 # --- FUNÇÃO PRINCIPAL DE BUSCA (V3.1) ---
@@ -195,9 +195,7 @@ def buscar_e_abrir_cliente(driver, cliente_input):
     wait = WebDriverWait(driver, 15)
     short_wait = WebDriverWait(driver, 5)
     
-    # Diagnóstico de instabilidade
     instabilidade_zoho = 0
-    max_instabilidade = 5
     
     def calcular_timeout_adaptativo(base):
         return base * 2 if instabilidade_zoho >= 3 else base
@@ -255,21 +253,49 @@ def buscar_e_abrir_cliente(driver, cliente_input):
                 if not clicar_seguro(driver, wait, By.CSS_SELECTOR, SELETORES["icone_pesquisa"]): continue
                 barra = wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR, SELETORES["barra_pesquisa"])))
 
-            barra.click()
-            time.sleep(0.1)
-            # Limpeza Robusta (JS + Teclado)
-            driver.execute_script("arguments[0].value = '';", barra)
-            barra.send_keys(Keys.CONTROL, "a")
-            barra.send_keys(Keys.DELETE)
+            # --- LIMPEZA NUCLEAR DE CAMPO ---
+            # Garante que o campo esteja realmente vazio antes de digitar
+            campo_limpo = False
+            for _ in range(3): # Tenta até 3 vezes limpar se falhar
+                barra.click()
+                time.sleep(0.1)
+                
+                # 1. JS Force Clear + Event Dispatch (Crucial para React/Zoho)
+                driver.execute_script("""
+                    arguments[0].value = '';
+                    arguments[0].dispatchEvent(new Event('input', { bubbles: true }));
+                    arguments[0].dispatchEvent(new Event('change', { bubbles: true }));
+                """, barra)
+                
+                # 2. Teclado Físico (Redundância)
+                barra.send_keys(Keys.CONTROL, "a")
+                barra.send_keys(Keys.DELETE)
+                
+                # 3. Verificação
+                valor_atual = barra.get_attribute("value")
+                if not valor_atual:
+                    campo_limpo = True
+                    break
+                else:
+                    logging.warning(f"⚠️ Campo de busca teimoso: '{valor_atual}'. Tentando limpar novamente...")
+                    # Backspace agressivo se sobrar lixo
+                    for _ in range(len(valor_atual) + 2):
+                        barra.send_keys(Keys.BACKSPACE)
             
+            if not campo_limpo:
+                logging.error("❌ Não foi possível limpar o campo de busca. Pulando variação.")
+                continue
+            # --------------------------------
+
             # Digitação
             delay = DELAY_DIGITACAO_CURTA if len(nome_busca) <= 5 else DELAY_DIGITACAO_MEDIA
             for char in nome_busca:
                 barra.send_keys(char)
                 time.sleep(delay)
             
-            # Validação
+            # Validação final antes do ENTER
             if barra.get_attribute("value").strip() != nome_busca:
+                # Se o JS do site sobrescreveu, forçamos de novo
                 driver.execute_script("arguments[0].value = arguments[1];", barra, nome_busca)
             
             barra.send_keys(Keys.ENTER)
@@ -387,7 +413,7 @@ def clicar_resultado(driver, elemento):
                 anchors = linha.find_elements(By.XPATH, ".//a")
                 nome_element = None
 
-                # 4a) Primeiro, sem '@' E com espaço
+                # 4b) Primeiro, sem '@' E com espaço
                 for a in anchors:
                     txt = (a.text or "").strip()
                     if txt and "@" not in txt and " " in txt:
