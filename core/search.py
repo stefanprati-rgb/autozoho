@@ -197,6 +197,11 @@ def buscar_e_abrir_cliente(driver, cliente_input):
     
     instabilidade_zoho = 0
     
+    # CRÍTICO: Limpar UI antes de começar qualquer busca
+    # Isso fecha modais/overlays que podem ter ficado abertos de erros anteriores
+    fechar_ui_flutuante(driver)
+    time.sleep(0.3)
+
     def calcular_timeout_adaptativo(base):
         return base * 2 if instabilidade_zoho >= 3 else base
 
@@ -239,7 +244,24 @@ def buscar_e_abrir_cliente(driver, cliente_input):
         uniq = list(dict.fromkeys(variacoes))
         return [u for u in (_sanear_termo_busca(u) for u in uniq) if u and len(u) >= 3][:10]
 
-    variacoes = gerar_variacoes_inteligentes(nome_cliente)
+    # Lógica de seleção de variações baseada no tipo de busca
+    tipo_busca = cliente_input.get('tipo_busca') if isinstance(cliente_input, dict) else 'auto'
+    variacoes = []
+
+    if tipo_busca == 'uc':
+        # Para UCs (ex: 10/123456-7), usamos o valor EXATO e preservamos a barra
+        raw_uc = cliente_input.get('busca')
+        if raw_uc:
+            logging.info(f"🔢 Busca por UC detectada: {raw_uc}")
+            # Estratégia Dupla: 1. Exato, 2. Apenas Números (caso Zoho tenha cadastro sujo)
+            variacoes = [raw_uc]
+            numeros_apenas = re.sub(r"[^0-9]", "", raw_uc)
+            if numeros_apenas != raw_uc:
+                variacoes.append(numeros_apenas)
+    else:
+        # Busca padrão (Nome, Email, etc) com variações inteligentes
+        variacoes = gerar_variacoes_inteligentes(nome_cliente)
+    
     logging.info(f"🔍 Buscando '{nome_cliente}' com {len(variacoes)} variações: {variacoes}")
     
     todos_resultados = {}
@@ -247,40 +269,89 @@ def buscar_e_abrir_cliente(driver, cliente_input):
     for tentativa, nome_busca in enumerate(variacoes, 1):
         try:
             # 1. Interação com Barra de Pesquisa
-            try:
-                barra = short_wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR, SELETORES["barra_pesquisa"])))
-            except:
-                if not clicar_seguro(driver, wait, By.CSS_SELECTOR, SELETORES["icone_pesquisa"]): continue
-                barra = wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR, SELETORES["barra_pesquisa"])))
+            barra = None
+            for tentativa_barra in range(3):
+                try:
+                    barra = short_wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR, SELETORES["barra_pesquisa"])))
+                    # Tenta clicar para verificar se está acessível
+                    barra.click()
+                    break
+                except Exception as e:
+                    err_str = str(e).lower()
+                    if "intercepted" in err_str or "not clickable" in err_str:
+                        # Overlay está bloqueando - tenta fechar
+                        logging.warning(f"⚠️ Overlay detectado bloqueando busca. Tentando fechar...")
+                        fechar_ui_flutuante(driver)
+                        time.sleep(0.5)
+                        # Tenta remover overlays específicos do Zoho
+                        try:
+                            overlays = driver.find_elements(By.XPATH, 
+                                "//div[contains(@class, 'lookupheadercommon-title')] | "
+                                "//div[contains(@class, 'zd_v2-lookup-box')] | "
+                                "//div[contains(@class, 'modal') and contains(@style, 'display: block')]"
+                            )
+                            for overlay in overlays:
+                                try:
+                                    driver.execute_script("arguments[0].style.display='none';", overlay)
+                                except:
+                                    pass
+                        except:
+                            pass
+                        continue
+                    else:
+                        # Outro tipo de erro - tenta abrir a barra via ícone
+                        if not clicar_seguro(driver, wait, By.CSS_SELECTOR, SELETORES["icone_pesquisa"]): 
+                            break
+                        try:
+                            barra = wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR, SELETORES["barra_pesquisa"])))
+                        except:
+                            break
+            
+            if not barra:
+                logging.error(f"❌ Não foi possível acessar a barra de busca. Pulando '{nome_busca}'.")
+                continue
 
             # --- LIMPEZA NUCLEAR DE CAMPO ---
             # Garante que o campo esteja realmente vazio antes de digitar
             campo_limpo = False
-            for _ in range(3): # Tenta até 3 vezes limpar se falhar
-                barra.click()
-                time.sleep(0.1)
-                
-                # 1. JS Force Clear + Event Dispatch (Crucial para React/Zoho)
-                driver.execute_script("""
-                    arguments[0].value = '';
-                    arguments[0].dispatchEvent(new Event('input', { bubbles: true }));
-                    arguments[0].dispatchEvent(new Event('change', { bubbles: true }));
-                """, barra)
-                
-                # 2. Teclado Físico (Redundância)
-                barra.send_keys(Keys.CONTROL, "a")
-                barra.send_keys(Keys.DELETE)
-                
-                # 3. Verificação
-                valor_atual = barra.get_attribute("value")
-                if not valor_atual:
-                    campo_limpo = True
-                    break
-                else:
-                    logging.warning(f"⚠️ Campo de busca teimoso: '{valor_atual}'. Tentando limpar novamente...")
-                    # Backspace agressivo se sobrar lixo
-                    for _ in range(len(valor_atual) + 2):
-                        barra.send_keys(Keys.BACKSPACE)
+            for tentativa_limpar in range(3): # Tenta até 3 vezes limpar se falhar
+                try:
+                    # Só clica se não for a primeira tentativa (já clicamos acima)
+                    if tentativa_limpar > 0:
+                        try:
+                            barra.click()
+                        except:
+                            fechar_ui_flutuante(driver)
+                            time.sleep(0.3)
+                            barra.click()
+                    time.sleep(0.1)
+                    
+                    # 1. JS Force Clear + Event Dispatch (Crucial para React/Zoho)
+                    driver.execute_script("""
+                        arguments[0].value = '';
+                        arguments[0].dispatchEvent(new Event('input', { bubbles: true }));
+                        arguments[0].dispatchEvent(new Event('change', { bubbles: true }));
+                    """, barra)
+                    
+                    # 2. Teclado Físico (Redundância)
+                    barra.send_keys(Keys.CONTROL, "a")
+                    barra.send_keys(Keys.DELETE)
+                    
+                    # 3. Verificação
+                    valor_atual = barra.get_attribute("value")
+                    if not valor_atual:
+                        campo_limpo = True
+                        break
+                    else:
+                        logging.warning(f"⚠️ Campo de busca teimoso: '{valor_atual}'. Tentando limpar novamente...")
+                        # Backspace agressivo se sobrar lixo
+                        for _ in range(len(valor_atual) + 2):
+                            barra.send_keys(Keys.BACKSPACE)
+                except Exception as e_limpar:
+                    logging.debug(f"Erro ao limpar campo (tentativa {tentativa_limpar+1}): {e_limpar}")
+                    fechar_ui_flutuante(driver)
+                    time.sleep(0.3)
+
             
             if not campo_limpo:
                 logging.error("❌ Não foi possível limpar o campo de busca. Pulando variação.")
@@ -330,6 +401,16 @@ def buscar_e_abrir_cliente(driver, cliente_input):
                     nome_res = link.get_attribute("data-title") or link.text
                     if not nome_res: continue
                     
+                    # --- LÓGICA ESPECÍFICA PARA UC ---
+                    if tipo_busca == 'uc':
+                        # Verifica se a UC (ex: "10/532723-4") está contida no título do resultado
+                        # Ex: "Igreja ... - UC 10/532723-4"
+                        if nome_busca in nome_res:
+                            logging.info(f"✅ Match de UC encontrado: '{nome_res}'")
+                            clicar_resultado(driver, link)
+                            return True
+                    # ----------------------------------
+
                     nome_res_norm = normalizar_nome(nome_res, remover_invalidos=True)
                     
                     # Match Exato
@@ -348,15 +429,16 @@ def buscar_e_abrir_cliente(driver, cliente_input):
                         clicar_resultado(driver, link)
                         return True
                     
-                    # Coleta parcial
-                    score_comp = calcular_score_composto(nome_res_norm, nome_busca_norm)
-                    if score_comp >= 0.5:
-                        if nome_res_norm not in todos_resultados or todos_resultados[nome_res_norm]['score'] < score_comp:
-                            todos_resultados[nome_res_norm] = {
-                                'nome_exibicao': nome_res,
-                                'score': score_comp,
-                                'busca_origem': nome_busca
-                            }
+                    # Coleta parcial (apenas se não for busca por UC, para evitar falso positivo)
+                    if tipo_busca != 'uc':
+                        score_comp = calcular_score_composto(nome_res_norm, nome_busca_norm)
+                        if score_comp >= 0.5:
+                            if nome_res_norm not in todos_resultados or todos_resultados[nome_res_norm]['score'] < score_comp:
+                                todos_resultados[nome_res_norm] = {
+                                    'nome_exibicao': nome_res,
+                                    'score': score_comp,
+                                    'busca_origem': nome_busca
+                                }
                 except StaleElementReferenceException:
                     continue
 

@@ -6,3 +6,8 @@ debug_erro/
 .venv/
 .vscode/
 .gemini/
+backups/
+*.bak
+logging/*.log
+reports/*.csv
+sessions/

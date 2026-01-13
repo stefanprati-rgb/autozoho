@@ -73,7 +73,7 @@ def worker_process(
         level=logging.INFO,
         format=f'[Worker {worker_id}] %(asctime)s - %(levelname)s - %(message)s',
         handlers=[
-            logging.FileHandler(f'automacao_worker_{worker_id}.log', encoding='utf-8'),
+            logging.FileHandler(os.path.join('logging', f'automacao_worker_{worker_id}.log'), encoding='utf-8'),
         ]
     )
     
@@ -341,7 +341,7 @@ def salvar_relatorio_consolidado(resultados: Dict, arquivo_origem: str):
     Salva relatório consolidado em CSV com detalhes por worker.
     """
     timestamp = datetime.now().strftime('%Y%m%d_%H%M')
-    nome_csv = f"relatorio_paralelo_{timestamp}.csv"
+    nome_csv = os.path.join("reports", f"relatorio_paralelo_{timestamp}.csv")
     
     with open(nome_csv, 'w', newline='', encoding='utf-8-sig') as f:
         writer = csv.writer(f, delimiter=';')

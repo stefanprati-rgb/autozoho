@@ -15,7 +15,8 @@ from core.messaging import (
     enviar_mensagem_whatsapp, 
     tratar_alerta_marketing,
     fechar_ui_flutuante,
-    recarregar_pagina_cliente 
+    recarregar_pagina_cliente,
+    modal_esta_aberto
 )
 # IMPORTANTE: Importamos as funções de validação atualizadas
 from utils.telefone import (
@@ -24,6 +25,57 @@ from utils.telefone import (
     validar_telefone_whatsapp
 )
 from utils.screenshots import take_screenshot
+
+
+def fechar_modal_robusto(driver, nome_cliente="", tentativas=3):
+    """
+    Tenta fechar o modal do WhatsApp de forma robusta usando múltiplas estratégias.
+    Isso é crítico para garantir que o próximo cliente seja processado corretamente.
+    """
+    for i in range(tentativas):
+        try:
+            # 1. Verifica se o modal está aberto
+            if not modal_esta_aberto(driver, timeout=2):
+                logging.debug(f"[{nome_cliente}] Modal já está fechado.")
+                return True
+            
+            # 2. Tenta clicar no botão X (se existir)
+            try:
+                btn_fechar = driver.find_element(
+                    By.XPATH, 
+                    "//button[contains(@class, 'close') or @aria-label='Close' or contains(@title, 'Fechar')] | "
+                    "//div[contains(@class, 'zd_v2')]//button[.//span[text()='×' or text()='X']]"
+                )
+                driver.execute_script("arguments[0].click();", btn_fechar)
+                time.sleep(0.5)
+                if not modal_esta_aberto(driver, timeout=1):
+                    logging.debug(f"[{nome_cliente}] Modal fechado via botão X.")
+                    return True
+            except:
+                pass
+            
+            # 3. Tenta ESC múltiplas vezes
+            fechar_ui_flutuante(driver)
+            time.sleep(0.3)
+            
+            # 4. Verifica novamente
+            if not modal_esta_aberto(driver, timeout=1):
+                logging.debug(f"[{nome_cliente}] Modal fechado via ESC.")
+                return True
+            
+            # 5. Último recurso: Clica fora do modal (no background)
+            try:
+                body = driver.find_element(By.TAG_NAME, "body")
+                ActionChains(driver).move_to_element_with_offset(body, 10, 10).click().perform()
+                time.sleep(0.3)
+            except:
+                pass
+                
+        except Exception as e:
+            logging.debug(f"[{nome_cliente}] Erro ao fechar modal (tentativa {i+1}): {e}")
+    
+    logging.warning(f"[{nome_cliente}] ⚠️ Modal pode não ter sido fechado corretamente.")
+    return False
 
 # Seletores para Edição de Contato (Baseado na v1 e estrutura padrão Zoho)
 SELETOR_BOTAO_EDITAR = 'button[data-id="iconContainer"]' 
@@ -206,11 +258,15 @@ def processar_pagina_cliente(driver, nome_cliente, departamento, template_nome, 
         # A. Abrir Modal
         if not abrir_modal_whatsapp(driver, nome_cliente, dry_run):
             logging.error(f"[{nome_cliente}] Falha ao abrir modal.")
+            fechar_modal_robusto(driver, nome_cliente)
             continue
 
         # B. Selecionar Template
         if not selecionar_canal_e_modelo(driver, canal_substr=departamento, nome_template=template_nome, ancoras=ancoras):
             logging.error(f"[{nome_cliente}] Falha ao selecionar template.")
+            # CRÍTICO: Fechar o modal antes de passar para o próximo cliente
+            fechar_modal_robusto(driver, nome_cliente)
+            time.sleep(1)  # Dar tempo para UI estabilizar
             continue
 
         # C. Marketing Check

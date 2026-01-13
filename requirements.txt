@@ -5,3 +5,5 @@ tqdm
 openpyxl
 pyyaml
 python-dotenv
+pydantic
+pydantic-settings

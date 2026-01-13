@@ -30,11 +30,15 @@ def carregar_lista_clientes(caminho_arquivo):
         def mapear_colunas(headers):
             m = {}
             for i, h in enumerate(headers):
-                h = str(h).upper().strip()
-                if 'EMAIL' in h or 'E-MAIL' in h: m['email'] = i
-                elif any(x in h for x in ['TELEFONE', 'CELULAR', 'WHATSAPP']): m['telefone'] = i
-                elif any(x in h for x in ['NOME', 'CLIENTE', 'RAZÃO', 'RAZAO']): m['nome'] = i
-                elif any(x in h for x in ['CNPJ', 'CPF', 'DOCUMENTO']): m['doc'] = i
+                if not h: continue
+                h_upper = str(h).upper().strip()
+                
+                # Mapeamento com prioridades ajustadas
+                if any(x in h_upper for x in ['INSTALAÇÃO', 'INSTALACAO', 'UC']): m['uc'] = i
+                elif 'EMAIL' in h_upper or 'E-MAIL' in h_upper: m['email'] = i
+                elif any(x in h_upper for x in ['TELEFONE', 'CELULAR', 'WHATSAPP']): m['telefone'] = i
+                elif any(x in h_upper for x in ['NOME', 'CLIENTE', 'RAZÃO', 'RAZAO']): m['nome'] = i
+                elif any(x in h_upper for x in ['CNPJ', 'CPF', 'DOCUMENTO']): m['doc'] = i
             return m
 
         if caminho_arquivo.lower().endswith('.xlsx'):
@@ -51,28 +55,40 @@ def carregar_lista_clientes(caminho_arquivo):
                 cli = {}
                 
                 # Extrai dados brutos (se a coluna existir)
+                val_uc = str(row[col_map['uc']]).strip() if 'uc' in col_map and row[col_map['uc']] else None
                 val_email = str(row[col_map['email']]).strip() if 'email' in col_map and row[col_map['email']] else None
                 val_tel = str(row[col_map['telefone']]).strip() if 'telefone' in col_map and row[col_map['telefone']] else None
                 val_nome = str(row[col_map['nome']]).strip() if 'nome' in col_map and row[col_map['nome']] else None
                 val_doc = str(row[col_map['doc']]).strip() if 'doc' in col_map and row[col_map['doc']] else None
                 
-                # --- LÓGICA DE PRIORIDADE (Email > Telefone > Nome) ---
-                if val_email and '@' in val_email:
+                # --- LÓGICA DE PRIORIDADE ---
+                # 1. UC (Instalação) - Prioridade Máxima para EGS
+                if val_uc and len(val_uc) > 5 and ('/' in val_uc or val_uc.startswith('10')):
+                     cli['busca'] = val_uc
+                     cli['tipo_busca'] = 'uc'
+                # 2. Email
+                elif val_email and '@' in val_email:
                     cli['busca'] = val_email
                     cli['tipo_busca'] = 'email'
+                # 3. Telefone
                 elif val_tel and len(val_tel) >= 8:
                     cli['busca'] = val_tel
                     cli['tipo_busca'] = 'telefone'
+                # 4. Nome
                 elif val_nome and len(val_nome) > 2:
                     cli['busca'] = val_nome
                     cli['tipo_busca'] = 'nome'
-                elif val_doc: # Fallback último caso
+                # 5. Documento
+                elif val_doc: 
                     cli['busca'] = val_doc
                     cli['tipo_busca'] = 'doc'
                 else:
                     # Se não achou nada específico, usa a primeira coluna
                     cli['busca'] = str(row[0]).strip()
                     cli['tipo_busca'] = 'auto'
+
+                # Guarda dados auxiliares para validação
+                if val_uc: cli['uc_excel'] = val_uc
 
                 # Guarda dados auxiliares para validação
                 if val_email: cli['email_excel'] = val_email
@@ -124,3 +140,39 @@ def carregar_lista_clientes(caminho_arquivo):
     except Exception as e:
         logging.error(f"Erro ao ler arquivo: {e}")
         return []
+
+
+def dividir_lista_em_blocos(clientes: list, num_blocos: int) -> list:
+    """
+    Divide a lista de clientes em N blocos aproximadamente iguais.
+    
+    Args:
+        clientes: Lista completa de clientes
+        num_blocos: Número de blocos a criar
+    
+    Returns:
+        Lista de listas (blocos)
+    
+    Exemplo:
+        100 clientes / 3 blocos = [34, 33, 33] clientes por bloco
+    """
+    if num_blocos <= 0:
+        return [clientes]
+    
+    if num_blocos >= len(clientes):
+        # Cada cliente em seu próprio bloco
+        return [[c] for c in clientes]
+    
+    tamanho_bloco = len(clientes) // num_blocos
+    resto = len(clientes) % num_blocos
+    
+    blocos = []
+    inicio = 0
+    
+    for i in range(num_blocos):
+        # Os primeiros 'resto' blocos recebem 1 cliente extra
+        fim = inicio + tamanho_bloco + (1 if i < resto else 0)
+        blocos.append(clientes[inicio:fim])
+        inicio = fim
+    
+    return blocos

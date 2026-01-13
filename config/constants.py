@@ -28,9 +28,12 @@ TEMPLATES_DISPONIVEIS = {
     "8": { "nome": "Contato", "ancoras": ["retomar a nossa conversa", "clique no botão abaixo"] },
     "9": { "nome": "Boas-vindas", "ancoras": ["Me chamo Isabella", "prosseguir com o seu atendimento"] },
     "10": { "nome": "Cobranca Setembro", "ancoras": ["fatura Setembro/25", "regularização do valor"] },
-    "11": { "nome": "Data_Vencimento", "ancoras": ["datas de vencimento ficarão entre"] },
+    "11": { "nome": "Data_Vencimento", "ancoras": ["datas de vencimento ficarão entre", "próximos faturamentos", "boletos da EGS"] },
     "12": { "nome": "Black November", "ancoras": ["Mega Desconto para Você", "15% de DESCONTO"] },
-    "13": { "nome": "Assinatura Pendente Contrato", "ancoras": ["Olá tudo bem", "Aqui é o Stefan da Era Verde Energia"] }   
+    "13": { "nome": "Assinatura Pendente Contrato", "ancoras": ["Olá tudo bem", "Aqui é o Stefan da Era Verde Energia"] },
+    "14": { "nome": "Cobranca Novembro", "ancoras": ["Estamos com dificuldades em localizar", "fatura Novembro/25", "vencida no dia 15/12"] },
+    "15": { "nome": "Acordo Cobrança", "ancoras": ["parcela do acordo", "ainda não foi pago e está vencido"] },
+    "16": { "nome": "Envio de Conta", "ancoras": ["conta digital da EGS Energia", "já está disponível", "o e-mail cadastrado"] }
 }
 
 # --- CONFIGURAÇÕES ---

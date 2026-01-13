@@ -50,40 +50,47 @@ def fazer_login(driver):
     short_wait = WebDriverWait(driver, 5)
         
     try:
-        # 1. Verifica se já está logado
+        # 1. Verifica se já está logado (Sessão Persistente)
         try:
-            WebDriverWait(driver, 3).until(EC.presence_of_element_located((By.CSS_SELECTOR, SELETORES_LOGIN["icone_pesquisa"])))
-            logging.info("Login já estava ativo (sessão em cache).")
-            return True
+            # Tenta acessar URL protegida e verificar elemento chave
+            if "login.zoho.com" not in driver.current_url:
+                try:
+                    WebDriverWait(driver, 5).until(EC.presence_of_element_located((By.CSS_SELECTOR, SELETORES_LOGIN["icone_pesquisa"])))
+                    logging.info("Sessão ativa detectada por perfil de navegador.")
+                    return True
+                except: pass
         except TimeoutException:
-            logging.info("Iniciando processo de login...")
-
-        # 2. Insere Credenciais
-        try:
-            # E-mail
-            email_input = wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR, SELETORES_LOGIN["login_email_input"])))
-            email_input.send_keys(ZOHO_EMAIL)
-            clicar_seguro(driver, wait, By.CSS_SELECTOR, SELETORES_LOGIN["login_next_btn"])
-            logging.info("E-mail inserido.")
+            pass
             
-            # Senha
+        logging.info("Iniciando verificação de login...")
+
+        # 2. Insere Credenciais (SOMENTE SE NECESSÁRIO)
+        if "login.zoho.com" in driver.current_url or driver.find_elements(By.CSS_SELECTOR, SELETORES_LOGIN["login_email_input"]):
             try:
-                password_input = wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR, SELETORES_LOGIN["login_password_input"])))
-                password_input.send_keys(ZOHO_SENHA)
+                # E-mail
+                email_input = wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR, SELETORES_LOGIN["login_email_input"])))
+                email_input.send_keys(ZOHO_EMAIL)
                 clicar_seguro(driver, wait, By.CSS_SELECTOR, SELETORES_LOGIN["login_next_btn"])
-                logging.info("Senha inserida.")
-            except TimeoutException:
-                logging.info("Campo de senha não apareceu (possível fluxo alternativo).")
+                logging.info("E-mail inserido.")
             
-            # Seleção de OTP (se necessário)
-            try:
-                short_wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, SELETORES_LOGIN["login_problem_btn"]))).click()
-                clicar_seguro(driver, wait, By.XPATH, SELETORES_LOGIN["login_otp_method_btn"])
-                logging.info("Selecionado método OTP App.")
-            except: pass
+                # Senha
+                try:
+                    password_input = wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR, SELETORES_LOGIN["login_password_input"])))
+                    password_input.send_keys(ZOHO_SENHA)
+                    clicar_seguro(driver, wait, By.CSS_SELECTOR, SELETORES_LOGIN["login_next_btn"])
+                    logging.info("Senha inserida.")
+                except TimeoutException:
+                    logging.info("Campo de senha não apareceu (possível fluxo alternativo).")
+            
+                # Seleção de OTP (se necessário)
+                try:
+                    short_wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, SELETORES_LOGIN["login_problem_btn"]))).click()
+                    clicar_seguro(driver, wait, By.XPATH, SELETORES_LOGIN["login_otp_method_btn"])
+                    logging.info("Selecionado método OTP App.")
+                except: pass
 
-        except Exception as e:
-            logging.warning(f"Erro parcial no preenchimento (pode já estar na tela de OTP): {e}")
+            except Exception as e:
+                logging.warning(f"Erro parcial no preenchimento (pode já estar na tela de OTP): {e}")
 
         # 3. Espera Inteligente (OTP + Botão 'Agora não')
         print("\n" + "="*40)

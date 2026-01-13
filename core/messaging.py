@@ -157,9 +157,23 @@ def abrir_modal_whatsapp(driver, nome_cliente, dry_run=False):
 
     fechar_ui_flutuante(driver)
     
-    if not clicar_seguro(driver, WebDriverWait(driver, 12), By.CSS_SELECTOR, SELETORES_MESSAGING["botao_whatsapp"], timeout_total=10, timeout_por_tentativa=5):
-        logging.warning(f"[{nome_cliente}] Falha ao clicar no ícone WhatsApp")
-        return False
+    if not clicar_seguro(
+        driver, 
+        WebDriverWait(driver, 15), # Timeout aumentado
+        By.CSS_SELECTOR, 
+        SELETORES_MESSAGING["botao_whatsapp"], 
+        timeout_total=12, 
+        timeout_por_tentativa=6,
+        scroll=True # Garante scroll
+    ):
+        # Tentativa de fallback com JS direto se o clique falhar
+        try:
+            btn = driver.find_element(By.CSS_SELECTOR, SELETORES_MESSAGING["botao_whatsapp"])
+            driver.execute_script("arguments[0].scrollIntoView({block: 'center'});", btn)
+            driver.execute_script("arguments[0].click();", btn)
+        except:
+            logging.warning(f"[{nome_cliente}] Falha crítica ao clicar no ícone WhatsApp")
+            return False
     
     if fechar_alerta_sem_telefone(driver): return False
     

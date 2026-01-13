@@ -41,12 +41,19 @@ except ImportError:
 from core.login import fazer_login
 from core.search import buscar_e_abrir_cliente
 from core.departments import trocar_departamento_zoho
-from core.processing import processar_pagina_cliente
+from core.processing import processar_pagina_cliente, fechar_modal_robusto
+from core.messaging import fechar_ui_flutuante
 
 # Utils (Ferramentas)
 from utils.files import carregar_lista_clientes
 from utils.webdriver import iniciar_driver
 from utils.screenshots import take_screenshot
+from utils.session import (
+    gerar_hash_arquivo, gerar_session_id,
+    sessao_existe, carregar_sessao, criar_sessao,
+    salvar_progresso, cliente_ja_processado,
+    apagar_sessao, resumo_sessao, contar_processados
+)
 
 # Logging
 try:
@@ -65,11 +72,13 @@ def main():
 
     parser.add_argument("-a", "--arquivo", required=True, help="Caminho para o arquivo .xlsx ou .csv com a lista de clientes.")
     parser.add_argument("-l", "--loglevel", default="INFO", choices=["DEBUG", "INFO", "WARNING", "ERROR"], help="Nível de log.")
-    parser.add_argument("--log", default="automacao.log", help="Arquivo de log.")
+    parser.add_argument("--log", default=os.path.join("logging", "automacao.log"), help="Arquivo de log.")
     parser.add_argument("--dry-run", action="store_true", help="Modo simulação (não envia mensagem).")
     parser.add_argument("--template", help="Número ou nome do template.")
     parser.add_argument("--departamento", help="Número ou nome do departamento.")
     parser.add_argument("--keep-open", action="store_true", default=True, help="Manter navegador aberto no final.")
+    parser.add_argument("--resume", action="store_true", help="Retomar sessão anterior automaticamente.")
+    parser.add_argument("--force", action="store_true", help="Forçar nova sessão, ignorando progresso anterior.")
 
     args = parser.parse_args()
 
@@ -104,15 +113,57 @@ def main():
         logging.error("Lista de clientes vazia ou arquivo não encontrado.")
         return
 
-    # --- CONTROLE DE SESSÃO (MEMÓRIA RAM APENAS) ---
-    # Usado para garantir que não processamos duplicatas DENTRO desta execução
-    vistos_na_sessao = set()
-    clientes_para_processar = []
-
-    # Filtragem prévia (opcional) ou durante o loop. Vamos carregar tudo para a barra de progresso.
+    # === SISTEMA DE SESSÕES (PERSISTENTE) ===
+    # Calcula hash do arquivo para identificar mudanças no conteúdo
+    hash_arquivo = gerar_hash_arquivo(args.arquivo)
+    session_id = gerar_session_id(hash_arquivo, NOME_TEMPLATE, NOME_DEPARTAMENTO)
+    
+    logging.info(f"Session ID: {session_id}")
     logging.info(f"Total carregado do arquivo: {len(todos_clientes)}")
+    
+    # Verifica se existe sessão anterior com mesma combinação
+    retomar_sessao = False
+    
+    if sessao_existe(session_id):
+        if args.force:
+            # Flag --force: apaga sessão e recomeça
+            print("\n⚠️  Flag --force detectada. Apagando sessão anterior...")
+            apagar_sessao(session_id)
+            logging.info("Sessão anterior apagada por --force")
+        elif args.resume:
+            # Flag --resume: retoma automaticamente
+            retomar_sessao = True
+            print(resumo_sessao(session_id))
+            print("\n▶️  Flag --resume detectada. Retomando automaticamente...")
+            logging.info("Retomando sessão por --resume")
+        else:
+            # Sem flags: pergunta ao usuário
+            print(resumo_sessao(session_id))
+            resposta = input("\n❓ Deseja RETOMAR esta sessão? (S=Retomar / N=Recomeçar): ").strip().upper()
+            
+            if resposta == 'S':
+                retomar_sessao = True
+                logging.info("Usuário optou por RETOMAR sessão")
+            else:
+                apagar_sessao(session_id)
+                logging.info("Usuário optou por RECOMEÇAR - sessão apagada")
+    
+    # Cria nova sessão se não existe ou se for recomeçar
+    if not sessao_existe(session_id):
+        criar_sessao(session_id, args.arquivo, hash_arquivo, 
+                     NOME_TEMPLATE, NOME_DEPARTAMENTO, len(todos_clientes))
+    
+    # Controle de duplicatas dentro da sessão atual (memória)
+    vistos_na_sessao = set()
 
     # 4. Iniciar Navegador e Login
+    
+    # Inicializa listas de relatório antes de qualquer possível falha
+    sucesso = []
+    nao_encontrados = []
+    erros = []
+    duplicados_ignorados = []
+    
     driver = iniciar_driver()
     if not driver:
         return
@@ -128,29 +179,35 @@ def main():
             return
 
         # 6. Loop de Processamento
-        sucesso = []
-        nao_encontrados = []
-        erros = []
-        duplicados_ignorados = []
-
         pbar = tqdm(todos_clientes, desc="Processando", unit="cli")
         
         for i, cliente_dict in enumerate(pbar):
             
-            # === LIMPEZA DE SEGURANÇA ===
+            # === LIMPEZA DE SEGURANÇA ENTRE CLIENTES ===
             try:
-                # Fecha modais anteriores (ESC) para evitar clique interceptado
-                ActionChains(driver).send_keys(Keys.ESCAPE).perform()
-                time.sleep(0.5)
-            except: pass
+                # Tenta fechar modal do WhatsApp se estiver aberto (erro anterior)
+                fechar_modal_robusto(driver, "limpeza_entre_clientes", tentativas=2)
+                # Fecha qualquer overlay adicional (ESC)
+                fechar_ui_flutuante(driver)
+                time.sleep(0.3)
+            except Exception as e_limpar:
+                logging.debug(f"Limpeza de segurança: {e_limpar}")
             # ============================
 
             termo_busca = cliente_dict.get('busca', 'Desconhecido')
+            tipo_busca = cliente_dict.get('tipo_busca', 'auto')
+            logging.info(f"Processando Cliente: '{termo_busca}' (Método: {tipo_busca.upper()})")
             
             # --- VERIFICAÇÃO DE DUPLICIDADE NA SESSÃO ---
             if termo_busca in vistos_na_sessao:
                 pbar.set_postfix_str(f"⏭️ Duplicado: {termo_busca[:15]}")
                 duplicados_ignorados.append(termo_busca)
+                continue
+            
+            # --- VERIFICAÇÃO DE CLIENTE JÁ PROCESSADO (SESSÃO PERSISTENTE) ---
+            if retomar_sessao and cliente_ja_processado(session_id, termo_busca):
+                pbar.set_postfix_str(f"✅ Já processado: {termo_busca[:15]}")
+                logging.debug(f"Pulando cliente já processado: {termo_busca}")
                 continue
             
             # Marca como visto AGORA
@@ -174,6 +231,7 @@ def main():
                 
                 if not encontrado:
                     nao_encontrados.append(termo_busca)
+                    salvar_progresso(session_id, termo_busca, "NAO_ENCONTRADO")
                     continue
 
                 # Processa (Envia Mensagem)
@@ -188,13 +246,16 @@ def main():
 
                 if resultado:
                     sucesso.append(termo_busca)
+                    salvar_progresso(session_id, termo_busca, "SUCESSO")
                 else:
                     erros.append(termo_busca)
+                    salvar_progresso(session_id, termo_busca, "ERRO")
 
             except Exception as e:
                 logging.error(f"Erro ao processar '{termo_busca}': {e}")
                 take_screenshot(driver, f"erro_loop_{termo_busca}")
                 erros.append(termo_busca)
+                salvar_progresso(session_id, termo_busca, "ERRO")
                 # Tenta recuperar indo para home
                 try: driver.get(URL_ZOHO_DESK) 
                 except: pass
@@ -262,7 +323,7 @@ def imprimir_relatorio(inicio, sucesso, nao_enc, erros, duplicados, arquivo):
     print(f"❌ Erros: {len(erros)}")
     
     # Salva CSV simples
-    nome_csv = f"relatorio_{datetime.now().strftime('%Y%m%d_%H%M')}.csv"
+    nome_csv = os.path.join("reports", f"relatorio_{datetime.now().strftime('%Y%m%d_%H%M')}.csv")
     with open(nome_csv, 'w', newline='', encoding='utf-8-sig') as f:
         writer = csv.writer(f, delimiter=';')
         writer.writerow(["Status", "Cliente"])
