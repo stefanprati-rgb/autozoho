@@ -1,0 +1,238 @@
+{
+  "session_id": "8d5ed331cb85",
+  "arquivo": "COBRANÇA ERA VERDE 05-01.xlsx",
+  "arquivo_path": "C:\\Users\\Stefan_Pratti\\Downloads\\COBRANÇA ERA VERDE 05-01.xlsx",
+  "hash": "586e40a67e4348b7e72e62958f12b380",
+  "template": "Cobrança .",
+  "departamento": "Era Verde Energia",
+  "iniciado_em": "2026-01-05T16:26:45.223245",
+  "atualizado_em": "2026-01-05T17:17:44.085727",
+  "total_clientes": 131,
+  "processados": {
+    "Jose Neuzo Francisco": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-05T16:49:09.764377"
+    },
+    "Grazielle Cristine Gois Alves": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-05T16:50:04.977948"
+    },
+    "Hamilton Luiz Lima Junior": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-05T16:50:10.745152"
+    },
+    "Kevin De Freitas": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-05T16:50:53.488605"
+    },
+    "Condominio Vitta Jardins": {
+      "status": "ERRO",
+      "timestamp": "2026-01-05T16:51:03.149678"
+    },
+    "Maria Terezinha De Jesus Neves": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-05T16:52:15.680120"
+    },
+    "Maria Cristina Pinto": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-05T16:52:29.094612"
+    },
+    "Cintia Tedesco Marques": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-05T16:52:56.978315"
+    },
+    "Be Blue Idiomas Ltda": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-05T16:53:12.270536"
+    },
+    "Emanuelle De Oliveira Carlos": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-05T16:53:39.258700"
+    },
+    "Tereza Rodrigues Sampaio": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-05T16:54:19.566010"
+    },
+    "Everton Siqueira Bueno": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-05T16:54:58.420277"
+    },
+    "Alessandro Silva Romero": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-05T16:55:27.937207"
+    },
+    "Maria Luzia Siquieri Okubo Vaca": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-05T16:55:30.302330"
+    },
+    "Luiz Osvaldo Moreira": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-05T16:56:14.969398"
+    },
+    "Neusa Silva Bombo": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-05T16:56:48.089989"
+    },
+    "Nelson Moraes": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-05T16:57:03.917446"
+    },
+    "10588574": {
+      "status": "NAO_ENCONTRADO",
+      "timestamp": "2026-01-05T16:57:29.763036"
+    },
+    "Rodrigo  Baston Ferreira": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-05T16:57:40.926233"
+    },
+    "Madalena Martins Benatti": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-05T16:58:08.069701"
+    },
+    "Carlos Roberto Pissamiglio": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-05T16:59:28.042630"
+    },
+    "Fabio Luis Signoretti": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-05T16:59:32.458608"
+    },
+    "Maria Luzia Borges": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-05T17:00:22.940187"
+    },
+    "Lais Souza Silva": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-05T17:01:25.528245"
+    },
+    "Aparecida Nogueira De Matos Da Silva": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-05T17:01:41.125219"
+    },
+    "Lucimara Xavier De Andrade Forggia": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-05T17:02:09.916012"
+    },
+    "Natanael Bernardo Dos Santos": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-05T17:02:42.639362"
+    },
+    "Karyn Cassia Sousa Da Silva": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-05T17:02:56.205362"
+    },
+    "Jonathan Jose Rodriguez Diaz": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-05T17:03:25.170892"
+    },
+    "Poliana Fernandes De Sá": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-05T17:03:39.734623"
+    },
+    "Marta De Oliveira": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-05T17:04:01.455057"
+    },
+    "Daniel Lucas Pereira Montanari": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-05T17:04:07.234451"
+    },
+    "Cristiano Martins De Mendonça": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-05T17:04:22.657431"
+    },
+    "Eliseu De Oliveira Souza": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-05T17:04:42.821470"
+    },
+    "Benedito João De Campos": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-05T17:05:11.887666"
+    },
+    "Cleusa Procopio Soares Bachini": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-05T17:05:25.988845"
+    },
+    "Carmen Rosario Ferreira Do Prado": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-05T17:06:19.901817"
+    },
+    "Amanda Costa": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-05T17:07:03.531378"
+    },
+    "Juliano Silva Duarte": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-05T17:07:47.284415"
+    },
+    "Sandra Suveges Ribeiro": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-05T17:08:11.899138"
+    },
+    "Jefferson Roberto Da Silva": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-05T17:08:38.982035"
+    },
+    "Carlos Roberto Marturano": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-05T17:08:56.233987"
+    },
+    "Leonardo Silveira": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-05T17:09:03.467728"
+    },
+    "Orides Previdelli Junior": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-05T17:09:29.857914"
+    },
+    "Rita Brigadeiros Ltda Me": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-05T17:09:53.764820"
+    },
+    "Isnaldo José Da Rocha": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-05T17:10:42.681946"
+    },
+    "Marcia Ribeiro Dos Santos": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-05T17:10:56.820406"
+    },
+    "Marcos Paulo Alves Dos Santos": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-05T17:14:30.699645"
+    },
+    "Carlos Eduardo Caetano": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-05T17:15:10.098062"
+    },
+    "Maura Bernardes De Farias": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-05T17:15:17.236671"
+    },
+    "Luiz Fernando Pedro": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-05T17:15:27.219870"
+    },
+    "Luzimara Fayan": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-05T17:15:52.029215"
+    },
+    "Donaldo Valarine": {
+      "status": "ERRO",
+      "timestamp": "2026-01-05T17:16:08.116451"
+    },
+    "Mário Sérgio Do Amaral Pereira": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-05T17:16:36.859498"
+    },
+    "Adao Soares De Macedo": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-05T17:16:50.215883"
+    },
+    "Osmair Bueno De Oliveira": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-05T17:17:44.085691"
+    }
+  }
+}}
+}

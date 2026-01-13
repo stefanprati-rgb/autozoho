@@ -1,0 +1,613 @@
+{
+  "session_id": "48daa52ece7f",
+  "arquivo": "COBRANÇA ERA VERDE 05-01 (1).xlsx",
+  "arquivo_path": "C:\\Users\\Stefan_Pratti\\Downloads\\COBRANÇA ERA VERDE 05-01 (1).xlsx",
+  "hash": "d716051ad07211652a4ed2326bf2c29a",
+  "template": "Cobrança .",
+  "departamento": "Era Verde Energia",
+  "iniciado_em": "2026-01-07T12:05:24.727975",
+  "atualizado_em": "2026-01-07T12:56:41.898489",
+  "total_clientes": 199,
+  "processados": {
+    "Joilson Novaes Souza": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:07:17.073134"
+    },
+    "Samuel Henrique Pavan": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:07:38.314538"
+    },
+    "Adao Soares De Macedo": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:07:47.692730"
+    },
+    "Guilherme Viana Correa": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:08:19.270545"
+    },
+    "Kelli Regina De Andrade Carrara": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:08:32.326122"
+    },
+    "Elisabeth Aparecida Sousa": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:08:55.191006"
+    },
+    "Ana Paula Rodrigues Leal Dos Santos": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:09:08.193759"
+    },
+    "10792333": {
+      "status": "NAO_ENCONTRADO",
+      "timestamp": "2026-01-07T12:09:20.843558"
+    },
+    "Andreia Karina Lopes Sampaio": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:09:27.125975"
+    },
+    "Uberlândia Cristina Smith Lima": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:09:58.296386"
+    },
+    "Daniel Jesus Barroso": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:09:59.972191"
+    },
+    "Robson Fernando Bodelon": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:10:28.205749"
+    },
+    "Nivaldo Francisco Dos Santos": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:10:29.953594"
+    },
+    "Rozeli Izac": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:10:58.263124"
+    },
+    "Kevin Patrick Alves De Santana": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:11:28.988906"
+    },
+    "Luiz Claudio Da Silva": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:12:46.160055"
+    },
+    "Centro Automotivo Das Magnólias Ltda": {
+      "status": "NAO_ENCONTRADO",
+      "timestamp": "2026-01-07T12:12:58.525442"
+    },
+    "Ronaldo Aparecido De Castro": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:13:23.972484"
+    },
+    "Antônio Condi Filho": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:14:03.301167"
+    },
+    "Maria Braz Caldeira Dos Santos": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:14:17.990658"
+    },
+    "Luiz Osvaldo Moreira": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:14:34.118783"
+    },
+    "Vera Aparecida Gonçalves": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:15:15.669186"
+    },
+    "Karen Carol Andressa Mesquita": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:15:57.723638"
+    },
+    "Jose Adalberto Tonhao": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:16:05.233237"
+    },
+    "Anderson Carmo De Barros": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:16:05.943782"
+    },
+    "Katielly Freitas Souza": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:16:30.269103"
+    },
+    "Alecio Marques Mendonça": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:16:40.750070"
+    },
+    "Mariana Piperno": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:17:11.305550"
+    },
+    "10048693": {
+      "status": "NAO_ENCONTRADO",
+      "timestamp": "2026-01-07T12:17:41.507698"
+    },
+    "Edson Santos Araujo": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:18:16.409505"
+    },
+    "Henrique Galhardo Gomes": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:18:22.341568"
+    },
+    "Hamilton Luiz Lima Junior": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:18:49.034336"
+    },
+    "Andrea Luciana Ferraz Correa": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:18:53.658573"
+    },
+    "Maria Luzia Siquieri Okubo Vaca": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:19:22.702278"
+    },
+    "Sueli Izac": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:19:26.044441"
+    },
+    "Nelson Moraes": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:19:53.226090"
+    },
+    "10588574": {
+      "status": "NAO_ENCONTRADO",
+      "timestamp": "2026-01-07T12:20:06.247526"
+    },
+    "Madalena Martins Benatti": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:20:32.535993"
+    },
+    "Janaína Aparecida De Oliveira": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:20:33.155084"
+    },
+    "Ademilson Nunes De Oliveira": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:21:05.707577"
+    },
+    "Fabio Luis Signoretti": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:21:28.845219"
+    },
+    "Gustavo Augusto Degasperi": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:21:37.525788"
+    },
+    "Sandra Maria Da Silva": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:22:07.909500"
+    },
+    "Gustavo Henrique Vilares Correia": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:22:43.295005"
+    },
+    "Lais Souza Silva": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:22:50.346221"
+    },
+    "Anderlany Blanco": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:23:15.056002"
+    },
+    "Lucimara Xavier De Andrade Forggia": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:23:22.160145"
+    },
+    "Juscélio Rocha Dias": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:23:41.111670"
+    },
+    "Ana Ramos Poli": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:23:45.108341"
+    },
+    "Karyn Cassia Sousa Da Silva": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:23:52.302530"
+    },
+    "Jose Neuzo Francisco": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:24:11.171931"
+    },
+    "Condominio Vitta Jardins": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:24:15.860948"
+    },
+    "Poliana Fernandes De Sá": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:24:22.766202"
+    },
+    "Grazielle Cristine Gois Alves": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:24:42.613641"
+    },
+    "João Ávila De Queiroz Neto": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:24:46.469299"
+    },
+    "Cristiano Martins De Mendonça": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:24:54.243805"
+    },
+    "Marcelo Cristiano Valerio": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:25:16.612837"
+    },
+    "Benedito João De Campos": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:25:28.053223"
+    },
+    "Maria Cristina Pinto": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:25:37.810429"
+    },
+    "Be Blue Idiomas Ltda": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:26:08.216136"
+    },
+    "Juliano Silva Duarte": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:27:07.645312"
+    },
+    "Jefferson Roberto Da Silva": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:27:38.436443"
+    },
+    "Maria Das Gracas Rodrigues Da Silva": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:27:47.366542"
+    },
+    "Alessandro Silva Romero": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:27:48.218567"
+    },
+    "Orides Previdelli Junior": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:28:08.379667"
+    },
+    "Flavio Lopes Batista": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:29:17.610100"
+    },
+    "Matheus Stockmann": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:29:48.336598"
+    },
+    "Luiz Fernando Pedro": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:29:51.964819"
+    },
+    "Mário Sérgio Do Amaral Pereira": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:30:35.837418"
+    },
+    "Maria Luzia Borges": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:30:57.555007"
+    },
+    "Aparecida Nogueira De Matos Da Silva": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:31:52.257308"
+    },
+    "Maria Tereza Coelho De Souza": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:32:07.321135"
+    },
+    "Natanael Bernardo Dos Santos": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:32:23.201693"
+    },
+    "Jonathan Jose Rodriguez Diaz": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:32:55.091998"
+    },
+    "Maria Jose Silvestre Da Silva": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:33:20.009896"
+    },
+    "Daniel Lucas Pereira Montanari": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:33:25.742206"
+    },
+    "Joao Pereira De Carvalho": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:33:43.555424"
+    },
+    "Mislaine Aparecida Costa": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:33:50.805886"
+    },
+    "Jose Carlos Izac": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:35:18.306652"
+    },
+    "Alexandra Regina Roncato": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:35:51.821628"
+    },
+    "Larissa Barbara Feitosa": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:36:48.519128"
+    },
+    "Marcelo Silva De Melo": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:37:10.134767"
+    },
+    "Helio Pereira Rodrigues": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:37:37.071706"
+    },
+    "Gleiciane Pimentel Fernandes Costa": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:37:51.776229"
+    },
+    "Carlos Roberto Marturano": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:37:54.118270"
+    },
+    "Henrique Barbosa Da Silva Comitre": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:38:10.901069"
+    },
+    "Wemerson Manoel Cda Silva": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:38:26.252504"
+    },
+    "Rest E Pizzaria Cantinho Trop Aguas Sao Pedro Ltda": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:39:05.377801"
+    },
+    "Marcia Ribeiro Dos Santos": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:39:15.361570"
+    },
+    "Maria Isabel Teixeira": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:39:55.444801"
+    },
+    "Antonio Luis Paro": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:40:21.925649"
+    },
+    "Roberto Camilo": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:40:27.120256"
+    },
+    "Sr Stallage Hotel Ltda": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:40:54.016752"
+    },
+    "Vilma Milani Gomes De Oliveira": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:40:58.482370"
+    },
+    "Marcos Paulo Alves Dos Santos": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:41:20.918781"
+    },
+    "Robson Amorin Da Costa": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:41:30.549007"
+    },
+    "José Donisete Da Silva": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:41:50.827138"
+    },
+    "Maura Bernardes De Farias": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:41:51.700207"
+    },
+    "João Bosco Vasconcelos Macedo": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:42:01.307046"
+    },
+    "Donaldo Valarine": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:42:22.960028"
+    },
+    "Henrique Donizete Condi": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:42:31.673246"
+    },
+    "Diego Renan Caldeira": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:42:45.808188"
+    },
+    "Zoraide Rosa Ducatti Da Silva": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:43:02.506542"
+    },
+    "Osvaldo José Da Silva": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:43:16.204919"
+    },
+    "Associacao Beneficente Mao Amiga De Sao Pedro": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:43:33.390748"
+    },
+    "Edilma Rosa De Souza": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:43:46.350791"
+    },
+    "Nilcenei Aprecida Constante Franchini": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:44:03.963003"
+    },
+    "Ronilda Querina Silva": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:44:18.515488"
+    },
+    "Ana Paula Francisco Dos Santos": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:44:28.926062"
+    },
+    "Wagner Requel Soares": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:44:36.986914"
+    },
+    "Dejanilda Ferreira De Souza": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:44:49.225241"
+    },
+    "Edvaldo Raspante": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:44:59.294112"
+    },
+    "Leonardo De Souza Ginjo": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:45:20.622993"
+    },
+    "Maria Carmelita Silva De Oliveira": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:45:31.047618"
+    },
+    "Juliana Cavalcante Arco Verde": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:45:52.947830"
+    },
+    "Marcia Dias Da Silva": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:46:35.765331"
+    },
+    "Dalva Rodrigues": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:47:01.668047"
+    },
+    "Huang Chunying": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:47:23.425752"
+    },
+    "Edificio Residencial Vitoria Hill": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:47:31.972206"
+    },
+    "Maria Conceição Martins Dias": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:47:31.982639"
+    },
+    "Abdias Pereira De Almeida": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:47:55.638079"
+    },
+    "Waldemir Venerando Dos Reis": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:48:03.821754"
+    },
+    "Marcela Olivato Calil Eirelli": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:48:27.070499"
+    },
+    "Roneia Davila Pereira": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:48:34.554458"
+    },
+    "Rheys Comércio Instalações Industriais Ltda": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:49:01.611043"
+    },
+    "Paulo Felicio Martins De Camargo Neto": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:49:05.703268"
+    },
+    "Claudia Aparecida Alves": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:49:13.944193"
+    },
+    "David Erik Salles": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:49:31.949813"
+    },
+    "Pedro Luis Morgante": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:50:05.731681"
+    },
+    "R F A. Comércio Varejista De Alimentos E Bebidas Ltda": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:50:25.405037"
+    },
+    "Eunice Aparecida Verri Barboza": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:50:36.876828"
+    },
+    "Ariovaldo Benites": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:50:37.041620"
+    },
+    "Edmilson Lima Ribeiro": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:51:07.839370"
+    },
+    "Leonardo Da Silva Santos": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:51:20.554207"
+    },
+    "Mariana Toledo Soares": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:51:39.685604"
+    },
+    "Tainá Volke Dos Santos": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:51:51.344245"
+    },
+    "Joao Francisco Perez": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:51:53.834606"
+    },
+    "Suzana Fogaça Da Silva": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:52:27.478613"
+    },
+    "Condominio Residencial Fioretti": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:52:56.852860"
+    },
+    "Cláudio Theodoro De Morais Junior": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:52:58.452720"
+    },
+    "Erica Regina Barros Bigelli": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:53:28.559005"
+    },
+    "Patrícia Carvalho De Sousa": {
+      "status": "NAO_ENCONTRADO",
+      "timestamp": "2026-01-07T12:53:29.353272"
+    },
+    "10377000": {
+      "status": "NAO_ENCONTRADO",
+      "timestamp": "2026-01-07T12:53:36.426154"
+    },
+    "Vera Lucia Bispo Dos Santos": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:53:55.681143"
+    },
+    "Nohra Chalita Nohra Sobrinho": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:54:23.699144"
+    },
+    "Nado Livre Natacao Sc Ltda": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:54:27.005676"
+    },
+    "Isilda Alves De Oliveira": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:55:02.038016"
+    },
+    "Ricardo Vinicius De Souza": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:55:31.830716"
+    },
+    "Auto Posto Libero Badaro Eireli": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:56:11.848606"
+    },
+    "Gabriel De Gobbi Garcia": {
+      "status": "SUCESSO",
+      "timestamp": "2026-01-07T12:56:41.898478"
+    }
+  }
+}

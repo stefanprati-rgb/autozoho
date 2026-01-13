@@ -1,0 +1,29 @@
+﻿Status;Cliente;Worker
+ERRO;"{'cliente': 'Paulo Renato Gonçalves Dos Santos', 'erro': ""'bool' object is not subscriptable""}";4
+ERRO;"{'cliente': 'Karen Carol Andressa Mesquita', 'erro': ""'bool' object is not subscriptable""}";4
+ERRO;"{'cliente': 'Pedro Luis Morgante', 'erro': ""'bool' object is not subscriptable""}";4
+ERRO;"{'cliente': 'Piazza Fontanella Incorporacoes Spe Ltda', 'erro': ""'bool' object is not subscriptable""}";4
+ERRO;"{'cliente': 'Lauro Barbosa Da Silva Moreira', 'erro': ""'bool' object is not subscriptable""}";4
+ERRO;"{'cliente': 'Maria Da Conceição De Oliveira Silva', 'erro': ""'bool' object is not subscriptable""}";4
+ERRO;"{'cliente': 'Rest E Pizzaria Cantinho Trop Aguas Sao Pedro Ltda', 'erro': ""'bool' object is not subscriptable""}";4
+ERRO;"{'cliente': 'Rheys Comércio Instalações Industriais Ltda', 'erro': ""'bool' object is not subscriptable""}";4
+ERRO;{'cliente': 'Richard Leandro Leite', 'erro': 'FALHA_FATAL_WORKER'};4
+NAO_ENCONTRADO;Flavia Renata Matos Mendonça;2
+ERRO;"{'cliente': 'Evandro Cesar Olimpio', 'erro': ""'bool' object is not subscriptable""}";2
+ERRO;"{'cliente': 'Excelentissimo Cafe', 'erro': ""'bool' object is not subscriptable""}";2
+ERRO;"{'cliente': 'Fabiano Olini Teixeira', 'erro': ""'bool' object is not subscriptable""}";2
+ERRO;"{'cliente': 'Fabio Luis Signoretti', 'erro': ""'bool' object is not subscriptable""}";2
+ERRO;"{'cliente': 'Fernando Ferro', 'erro': ""'bool' object is not subscriptable""}";2
+ERRO;"{'cliente': 'Flávia Augusta Neves Silva', 'erro': ""'bool' object is not subscriptable""}";2
+ERRO;"{'cliente': 'Flavio De Souza Rocha Junior', 'erro': ""'bool' object is not subscriptable""}";2
+ERRO;"{'cliente': 'Flavio Lopes Batista', 'erro': ""'bool' object is not subscriptable""}";2
+ERRO;"{'cliente': 'Francisca De Fatima Mariano', 'erro': ""'bool' object is not subscriptable""}";2
+ERRO;"{'cliente': 'Gabriel Silva De Melo', 'erro': ""'bool' object is not subscriptable""}";2
+ERRO;"{'cliente': 'Geni De Souza De Andrade', 'erro': ""'bool' object is not subscriptable""}";2
+ERRO;"{'cliente': 'Gilberto Luiz De Barros', 'erro': ""'bool' object is not subscriptable""}";2
+ERRO;"{'cliente': 'Gleiciane Pimentel Fernandes Costa', 'erro': ""'bool' object is not subscriptable""}";2
+ERRO;"{'cliente': 'Graciele Martins Prates', 'erro': ""'bool' object is not subscriptable""}";2
+ERRO;"{'cliente': 'Grazielle Cristine Gois Alves', 'erro': ""'bool' object is not subscriptable""}";2
+ERRO;"{'cliente': 'Guilherme Viana Correa', 'erro': ""'bool' object is not subscriptable""}";2
+ERRO;"{'cliente': 'Gustavo Augusto Degasperi', 'erro': ""'bool' object is not subscriptable""}";2
+ERRO;{'cliente': 'Gustavo Henrique Vilares Correia', 'erro': 'FALHA_FATAL_WORKER'};2

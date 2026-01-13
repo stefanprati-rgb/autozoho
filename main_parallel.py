@@ -136,6 +136,9 @@ def main():
     
     args = parser.parse_args()
     
+    # Cria pasta de logs se não existir
+    os.makedirs('logging', exist_ok=True)
+    
     # Setup logging
     logging.basicConfig(
         level=getattr(logging, args.loglevel),

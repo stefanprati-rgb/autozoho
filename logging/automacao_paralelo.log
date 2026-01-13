@@ -1,0 +1,150 @@
+2025-12-30 12:09:00,911 - INFO - Iniciando AutoZoho Paralelo em: 2025-12-30 12:09:00.911717
+2025-12-30 12:09:00,912 - WARNING - >>> MODO DRY-RUN (SIMULAÇÃO) ATIVADO <<<
+2025-12-30 14:44:34,464 - INFO - Iniciando AutoZoho Paralelo em: 2025-12-30 14:44:34.464069
+2025-12-30 14:44:34,465 - WARNING - >>> MODO DRY-RUN (SIMULAÇÃO) ATIVADO <<<
+2025-12-30 14:44:34,465 - INFO - Template: Boas-vindas | Departamento: Era Verde Energia
+2025-12-30 14:44:34,465 - INFO - Carregando lista de clientes...
+2025-12-30 14:44:34,467 - INFO - Total de clientes carregados: 45
+2025-12-30 14:44:34,468 - INFO - Usando 2 workers (especificado pelo usuário)
+2025-12-30 14:44:34,469 - INFO - Iniciando execução paralela: 45 clientes / 2 workers
+2025-12-30 14:44:34,469 - INFO -   Worker 1: 23 clientes
+2025-12-30 14:44:34,469 - INFO -   Worker 2: 22 clientes
+2025-12-30 15:05:19,670 - INFO - Worker 1 finalizado (1/2)
+2025-12-30 15:05:19,672 - INFO - Worker 1 finalizado (2/2)
+2025-12-30 15:05:19,911 - INFO - Relatório salvo: relatorio_paralelo_20251230_1505.csv
+2025-12-30 15:05:19,912 - ERROR - Erro fatal: 'charmap' codec can't encode character '\u2705' in position 0: character maps to <undefined>
+2026-01-05 16:26:27,465 - INFO - Iniciando AutoZoho Paralelo em: 2026-01-05 16:26:27.465206
+2026-01-05 16:26:45,192 - INFO - Template: Cobrança . | Departamento: Era Verde Energia
+2026-01-05 16:26:45,192 - INFO - Carregando lista de clientes...
+2026-01-05 16:26:45,218 - INFO - Total de clientes carregados: 131
+2026-01-05 16:26:45,220 - INFO - Session ID: 8d5ed331cb85
+2026-01-05 16:26:45,231 - INFO - Nova sessão criada: 8d5ed331cb85
+2026-01-05 16:26:45,232 - INFO - Auto-scaling: 131 clientes → 4 worker(s)
+2026-01-05 16:31:11,718 - INFO - Iniciando execução paralela: 131 clientes / 4 workers
+2026-01-05 16:31:11,719 - INFO -   Worker 1: 33 clientes
+2026-01-05 16:31:11,719 - INFO -   Worker 2: 33 clientes
+2026-01-05 16:31:11,720 - INFO -   Worker 3: 33 clientes
+2026-01-05 16:31:11,720 - INFO -   Worker 4: 32 clientes
+2026-01-05 16:34:22,372 - WARNING - Execução interrompida pelo usuário.
+2026-01-05 16:39:26,347 - INFO - Iniciando AutoZoho Paralelo em: 2026-01-05 16:39:26.347554
+2026-01-05 16:41:40,026 - INFO - Template: Cobrança . | Departamento: Era Verde Energia
+2026-01-05 16:41:40,027 - INFO - Carregando lista de clientes...
+2026-01-05 16:41:40,050 - INFO - Total de clientes carregados: 131
+2026-01-05 16:41:40,054 - INFO - Session ID: 8d5ed331cb85
+2026-01-05 16:43:14,516 - INFO - Usuário optou por RETOMAR sessão
+2026-01-05 16:43:15,053 - INFO - Auto-scaling: 131 clientes → 4 worker(s)
+2026-01-05 16:43:22,913 - INFO - Iniciando execução paralela: 131 clientes / 4 workers
+2026-01-05 16:43:22,913 - INFO -   Worker 1: 33 clientes
+2026-01-05 16:43:22,913 - INFO -   Worker 2: 33 clientes
+2026-01-05 16:43:22,914 - INFO -   Worker 3: 33 clientes
+2026-01-05 16:43:22,914 - INFO -   Worker 4: 32 clientes
+2026-01-05 16:45:39,694 - WARNING - Execução interrompida pelo usuário.
+2026-01-05 16:46:49,073 - INFO - Iniciando AutoZoho Paralelo em: 2026-01-05 16:46:49.073744
+2026-01-05 16:46:54,721 - INFO - Template: Cobrança . | Departamento: Era Verde Energia
+2026-01-05 16:46:54,721 - INFO - Carregando lista de clientes...
+2026-01-05 16:46:54,739 - INFO - Total de clientes carregados: 131
+2026-01-05 16:46:54,742 - INFO - Session ID: 8d5ed331cb85
+2026-01-05 16:46:57,696 - INFO - Usuário optou por RETOMAR sessão
+2026-01-05 16:46:57,900 - INFO - Auto-scaling: 131 clientes → 4 worker(s)
+2026-01-05 16:47:00,870 - INFO - Iniciando execução paralela: 131 clientes / 4 workers
+2026-01-05 16:47:00,871 - INFO -   Worker 1: 33 clientes
+2026-01-05 16:47:00,871 - INFO -   Worker 2: 33 clientes
+2026-01-05 16:47:00,871 - INFO -   Worker 3: 33 clientes
+2026-01-05 16:47:00,871 - INFO -   Worker 4: 32 clientes
+2026-01-05 17:49:35,606 - INFO - Worker 3 finalizado (1/4)
+2026-01-05 17:49:35,678 - INFO - Worker 3 finalizado (2/4)
+2026-01-05 17:49:35,712 - INFO - Worker 4 finalizado (3/4)
+2026-01-05 17:49:35,730 - INFO - Worker 2 finalizado (4/4)
+2026-01-05 17:49:36,951 - INFO - Relatório salvo: relatorio_paralelo_20260105_1749.csv
+2026-01-07 12:05:10,180 - INFO - Iniciando AutoZoho Paralelo em: 2026-01-07 12:05:10.180860
+2026-01-07 12:05:24,706 - INFO - Template: Cobrança . | Departamento: Era Verde Energia
+2026-01-07 12:05:24,706 - INFO - Carregando lista de clientes...
+2026-01-07 12:05:24,724 - INFO - Total de clientes carregados: 199
+2026-01-07 12:05:24,726 - INFO - Session ID: 48daa52ece7f
+2026-01-07 12:05:24,733 - INFO - Nova sessão criada: 48daa52ece7f
+2026-01-07 12:05:24,734 - INFO - Auto-scaling: 199 clientes → 4 worker(s)
+2026-01-07 12:05:32,849 - INFO - Iniciando execução paralela: 199 clientes / 4 workers
+2026-01-07 12:05:32,849 - INFO -   Worker 1: 50 clientes
+2026-01-07 12:05:32,849 - INFO -   Worker 2: 50 clientes
+2026-01-07 12:05:32,850 - INFO -   Worker 3: 50 clientes
+2026-01-07 12:05:32,850 - INFO -   Worker 4: 49 clientes
+2026-01-07 12:56:44,090 - INFO - Worker 4 finalizado (1/4)
+2026-01-07 12:56:44,093 - INFO - Worker 4 finalizado (2/4)
+2026-01-07 12:56:44,094 - INFO - Worker 2 finalizado (3/4)
+2026-01-07 12:56:44,094 - INFO - Worker 1 finalizado (4/4)
+2026-01-07 12:56:44,231 - INFO - Relatório salvo: relatorio_paralelo_20260107_1256.csv
+2026-01-12 10:02:49,425 - INFO - Iniciando AutoZoho Paralelo em: 2026-01-12 10:02:49.425082
+2026-01-12 10:03:05,489 - INFO - Template: Protocolo aberto | Departamento: Era Verde Energia
+2026-01-12 10:03:05,490 - INFO - Carregando lista de clientes...
+2026-01-12 10:03:05,519 - INFO - Total de clientes carregados: 237
+2026-01-12 10:03:05,521 - INFO - Session ID: 3e608cb2cf7d
+2026-01-12 10:03:05,527 - INFO - Nova sessão criada: 3e608cb2cf7d
+2026-01-12 10:03:05,528 - INFO - Auto-scaling: 237 clientes → 4 worker(s)
+2026-01-12 10:03:09,598 - INFO - Iniciando execução paralela: 237 clientes / 4 workers
+2026-01-12 10:03:09,598 - INFO -   Worker 1: 60 clientes
+2026-01-12 10:03:09,598 - INFO -   Worker 2: 59 clientes
+2026-01-12 10:03:09,598 - INFO -   Worker 3: 59 clientes
+2026-01-12 10:03:09,599 - INFO -   Worker 4: 59 clientes
+2026-01-12 10:20:15,100 - INFO - Worker 3 finalizado (1/4)
+2026-01-12 10:20:15,105 - INFO - Worker 3 finalizado (2/4)
+2026-01-12 10:20:15,106 - INFO - Worker 4 finalizado (3/4)
+2026-01-12 10:20:15,111 - INFO - Worker 2 finalizado (4/4)
+2026-01-12 10:20:15,519 - INFO - Relatório salvo: relatorio_paralelo_20260112_1020.csv
+2026-01-12 10:31:43,960 - INFO - Iniciando AutoZoho Paralelo em: 2026-01-12 10:31:43.960241
+2026-01-12 10:31:51,424 - INFO - Template: Protocolo aberto | Departamento: Era Verde Energia
+2026-01-12 10:31:51,424 - INFO - Carregando lista de clientes...
+2026-01-12 10:31:51,439 - INFO - Total de clientes carregados: 237
+2026-01-12 10:31:51,441 - INFO - Session ID: 3e608cb2cf7d
+2026-01-12 10:31:56,617 - INFO - Usuário optou por RETOMAR sessão
+2026-01-12 10:31:56,936 - INFO - Filtrados 38 clientes já processados
+2026-01-12 10:31:56,937 - INFO - Auto-scaling: 199 clientes → 4 worker(s)
+2026-01-12 10:32:01,543 - INFO - Iniciando execução paralela: 199 clientes / 4 workers
+2026-01-12 10:32:01,544 - INFO -   Worker 1: 50 clientes
+2026-01-12 10:32:01,544 - INFO -   Worker 2: 50 clientes
+2026-01-12 10:32:01,544 - INFO -   Worker 3: 50 clientes
+2026-01-12 10:32:01,545 - INFO -   Worker 4: 49 clientes
+2026-01-12 11:00:30,695 - ERROR - Timeout ou erro aguardando worker: 
+2026-01-13 10:41:22,479 - INFO - Iniciando AutoZoho Paralelo em: 2026-01-13 10:41:22.479840
+2026-01-13 10:41:22,480 - WARNING - >>> MODO DRY-RUN (SIMULAÇÃO) ATIVADO <<<
+2026-01-13 10:41:22,480 - ERROR - Configuração incompleta. Encerrando.
+2026-01-13 10:46:46,290 - INFO - Iniciando AutoZoho Paralelo em: 2026-01-13 10:46:46.289987
+2026-01-13 10:47:03,013 - INFO - Template: Protocolo aberto | Departamento: Era Verde Energia
+2026-01-13 10:47:03,013 - INFO - Carregando lista de clientes...
+2026-01-13 10:47:03,028 - INFO - Total de clientes carregados: 237
+2026-01-13 10:47:03,031 - INFO - Session ID: 3e608cb2cf7d
+2026-01-13 10:47:03,037 - INFO - Retomando sessão por --resume
+2026-01-13 10:47:03,200 - INFO - Filtrados 51 clientes já processados
+2026-01-13 10:47:03,200 - INFO - Usando 2 workers (especificado pelo usuário)
+2026-01-13 10:47:06,527 - INFO - Iniciando execução paralela: 186 clientes / 2 workers
+2026-01-13 10:47:06,527 - INFO -   Worker 1: 93 clientes
+2026-01-13 10:47:06,528 - INFO -   Worker 2: 93 clientes
+2026-01-13 10:57:06,450 - WARNING - Execução interrompida pelo usuário.
+2026-01-13 11:07:10,805 - INFO - Iniciando AutoZoho Paralelo em: 2026-01-13 11:07:10.805006
+2026-01-13 11:07:35,618 - INFO - Template: Reunião Contrato | Departamento: Era Verde Energia
+2026-01-13 11:07:35,618 - INFO - Carregando lista de clientes...
+2026-01-13 11:07:35,634 - INFO - Total de clientes carregados: 237
+2026-01-13 11:07:35,637 - INFO - Session ID: 00ebce225efd
+2026-01-13 11:07:35,643 - INFO - Nova sessão criada: 00ebce225efd
+2026-01-13 11:07:35,644 - INFO - Usando 2 workers (especificado pelo usuário)
+2026-01-13 11:07:42,804 - INFO - Iniciando execução paralela: 237 clientes / 2 workers
+2026-01-13 11:07:42,805 - INFO -   Worker 1: 119 clientes
+2026-01-13 11:07:42,805 - INFO -   Worker 2: 118 clientes
+2026-01-13 14:17:41,939 - INFO - Worker 2 finalizado (1/2)
+2026-01-13 14:17:41,943 - INFO - Worker 2 finalizado (2/2)
+2026-01-13 14:17:42,129 - INFO - Relatório salvo: reports\relatorio_paralelo_20260113_1417.csv
+2026-01-13 14:39:41,810 - INFO - Iniciando AutoZoho Paralelo em: 2026-01-13 14:39:41.810867
+2026-01-13 14:39:46,169 - INFO - Template: Reunião Contrato | Departamento: Era Verde Energia
+2026-01-13 14:39:46,169 - INFO - Carregando lista de clientes...
+2026-01-13 14:39:46,183 - INFO - Total de clientes carregados: 237
+2026-01-13 14:39:46,186 - INFO - Session ID: 00ebce225efd
+2026-01-13 14:39:46,189 - INFO - Retomando sessão por --resume
+2026-01-13 14:39:46,383 - INFO - Filtrados 119 clientes já processados
+2026-01-13 14:39:46,383 - INFO - Auto-scaling: 118 clientes → 3 worker(s)
+2026-01-13 14:39:49,077 - INFO - Iniciando execução paralela: 118 clientes / 3 workers
+2026-01-13 14:39:49,078 - INFO -   Worker 1: 40 clientes
+2026-01-13 14:39:49,078 - INFO -   Worker 2: 39 clientes
+2026-01-13 14:39:49,078 - INFO -   Worker 3: 39 clientes
+2026-01-13 15:14:11,376 - INFO - Worker 1 finalizado (1/3)
+2026-01-13 15:14:11,378 - INFO - Worker 1 finalizado (2/3)
+2026-01-13 15:14:11,379 - INFO - Worker 2 finalizado (3/3)
+2026-01-13 15:14:11,561 - INFO - Relatório salvo: reports\relatorio_paralelo_20260113_1514.csv

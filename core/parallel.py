@@ -68,6 +68,9 @@ def worker_process(
         resultado_queue: Fila para enviar resultados ao processo principal
         login_sync_queue: Fila para sincronizar logins sequenciais
     """
+    # Cria pasta de logs se não existir
+    os.makedirs('logging', exist_ok=True)
+    
     # Setup de logging para este worker
     logging.basicConfig(
         level=logging.INFO,
@@ -341,6 +344,7 @@ def salvar_relatorio_consolidado(resultados: Dict, arquivo_origem: str):
     Salva relatório consolidado em CSV com detalhes por worker.
     """
     timestamp = datetime.now().strftime('%Y%m%d_%H%M')
+    os.makedirs("reports", exist_ok=True)
     nome_csv = os.path.join("reports", f"relatorio_paralelo_{timestamp}.csv")
     
     with open(nome_csv, 'w', newline='', encoding='utf-8-sig') as f:

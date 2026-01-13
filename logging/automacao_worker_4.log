@@ -1,0 +1,1336 @@
+[Worker 4] 2026-01-05 16:31:35,449 - INFO - Iniciando com 32 clientes
+[Worker 4] 2026-01-05 16:31:35,458 - INFO - Iniciando Microsoft Edge (Instância 4)...
+[Worker 4] 2026-01-05 16:31:35,479 - INFO - Janela posicionada em x=1440, largura=480
+[Worker 4] 2026-01-05 16:31:35,507 - INFO - Usando driver local: C:\msedgedriver\msedgedriver.exe
+[Worker 4] 2026-01-05 16:31:45,414 - INFO - Aguardando workers anteriores fazerem login...
+[Worker 4] 2026-01-05 16:34:18,283 - WARNING - Timeout aguardando login anterior, tentando mesmo assim...
+[Worker 4] 2026-01-05 16:34:18,284 - INFO - Iniciando login...
+[Worker 4] 2026-01-05 16:34:18,292 - ERROR - Erro fatal no worker: ('Connection aborted.', ConnectionResetError(10054, 'Foi forçado o cancelamento de uma conexão existente pelo host remoto', None, 10054, None))
+[Worker 4] 2026-01-05 16:43:47,896 - INFO - Iniciando com 32 clientes
+[Worker 4] 2026-01-05 16:43:47,966 - INFO - Iniciando Microsoft Edge (Instância 4)...
+[Worker 4] 2026-01-05 16:43:48,016 - INFO - Abrindo janela maximizada (instância 4)
+[Worker 4] 2026-01-05 16:43:48,017 - INFO - Usando driver local: C:\msedgedriver\msedgedriver.exe
+[Worker 4] 2026-01-05 16:44:01,197 - INFO - Aguardando workers anteriores fazerem login...
+[Worker 4] 2026-01-05 16:45:36,718 - WARNING - Timeout aguardando login anterior, tentando mesmo assim...
+[Worker 4] 2026-01-05 16:45:36,719 - INFO - Iniciando login...
+[Worker 4] 2026-01-05 16:45:36,728 - ERROR - Erro fatal no worker: ('Connection aborted.', ConnectionResetError(10054, 'Foi forçado o cancelamento de uma conexão existente pelo host remoto', None, 10054, None))
+[Worker 4] 2026-01-05 16:47:36,385 - INFO - Iniciando com 32 clientes
+[Worker 4] 2026-01-05 16:47:36,405 - INFO - Iniciando Microsoft Edge (Instância 4)...
+[Worker 4] 2026-01-05 16:47:36,413 - INFO - Abrindo janela maximizada (instância 4)
+[Worker 4] 2026-01-05 16:47:36,417 - INFO - Usando driver local: C:\msedgedriver\msedgedriver.exe
+[Worker 4] 2026-01-05 16:47:45,671 - INFO - Aguardando workers anteriores fazerem login...
+[Worker 4] 2026-01-05 16:48:54,848 - INFO - Iniciando login...
+[Worker 4] 2026-01-05 16:49:05,507 - INFO - Iniciando verificação de login...
+[Worker 4] 2026-01-05 16:49:21,230 - INFO - E-mail inserido.
+[Worker 4] 2026-01-05 16:49:23,071 - INFO - Senha inserida.
+[Worker 4] 2026-01-05 16:49:25,690 - INFO - Selecionado método OTP App.
+[Worker 4] 2026-01-05 16:49:48,637 - INFO - Botão 'Agora não' (Dispositivo Confiável) detectado. Clicando...
+[Worker 4] 2026-01-05 16:49:52,591 - INFO - Login concluído com sucesso!
+[Worker 4] 2026-01-05 16:49:52,595 - INFO - Login concluído, sinalizando worker 4
+[Worker 4] 2026-01-05 16:49:52,599 - INFO - Selecionando departamento: Era Verde Energia
+[Worker 4] 2026-01-05 16:49:52,705 - INFO - Navegando para aba E-Mail...
+[Worker 4] 2026-01-05 16:49:54,612 - INFO - 📧 Clicou na aba E-Mail (Seletor: a[data-id='qtab_Cases_Tab'])
+[Worker 4] 2026-01-05 16:49:59,782 - INFO - Procurando seletor de departamento...
+[Worker 4] 2026-01-05 16:50:05,456 - INFO - Dropdown encontrado com seletor: span[data-id="qdeptcontainer_value"]
+[Worker 4] 2026-01-05 16:50:07,233 - INFO - Opção encontrada (DIV Rapid): Era Verde Energia
+[Worker 4] 2026-01-05 16:50:07,882 - INFO - Departamento 'Era Verde Energia' selecionado.
+[Worker 4] 2026-01-05 16:50:11,985 - INFO - 📱 Clicou na aba WhatsApp
+[Worker 4] 2026-01-05 16:50:12,210 - INFO - [1/32] Processando: Kevin De Freitas
+[Worker 4] 2026-01-05 16:50:18,237 - INFO - 🔍 Buscando 'Kevin De Freitas' com 3 variações: ['kevin freitas', 'freitas', 'kevin']
+[Worker 4] 2026-01-05 16:50:29,381 - INFO - ✅ Match EXATO: 'Kevin De Freitas'
+[Worker 4] 2026-01-05 16:50:29,746 - INFO - ✅ Clicou no NOME do cliente corretamente
+[Worker 4] 2026-01-05 16:50:31,959 - INFO - --- Processando: Kevin De Freitas ---
+[Worker 4] 2026-01-05 16:50:32,012 - INFO - [Kevin De Freitas] Celular '+5519991770124' já está correto.
+[Worker 4] 2026-01-05 16:50:32,063 - WARNING - [Kevin De Freitas] Telefone '08/04/2025 14:28' inválido (Sem DDI 55)
+[Worker 4] 2026-01-05 16:50:32,067 - WARNING - [Kevin De Freitas] Não foi possível normalizar '08/04/2025 14:28'.
+[Worker 4] 2026-01-05 16:50:32,152 - INFO - [Kevin De Freitas] Encontrados 1 números para envio.
+[Worker 4] 2026-01-05 16:50:32,153 - INFO - [Kevin De Freitas] 🚀 Iniciando envio 1/1 para LINK_TEL: +5519991770124
+[Worker 4] 2026-01-05 16:50:32,154 - INFO - [Kevin De Freitas] Abrindo modal WhatsApp...
+[Worker 4] 2026-01-05 16:50:35,781 - INFO - [Kevin De Freitas] ✅ Modal aberto
+[Worker 4] 2026-01-05 16:50:35,782 - INFO - >>> MODAL DO WHATSAPP ABERTO.
+[Worker 4] 2026-01-05 16:50:39,247 - INFO - Procurando template: 'Cobrança .'
+[Worker 4] 2026-01-05 16:50:41,219 - INFO - Tentativa 1: Digitando nome 'Cobrança'...
+[Worker 4] 2026-01-05 16:50:44,117 - INFO - Template encontrado (Título): 'Cobrança .'
+[Worker 4] 2026-01-05 16:50:49,086 - INFO - [Kevin De Freitas] 4️⃣ Enviando mensagem...
+[Worker 4] 2026-01-05 16:50:49,168 - INFO - [Kevin De Freitas] 🚀 Clicando em 'Enviar' (auto)...
+[Worker 4] 2026-01-05 16:50:50,318 - INFO - [Kevin De Freitas] ✅ Sucesso detectado.
+[Worker 4] 2026-01-05 16:50:53,482 - INFO - [Kevin De Freitas] ✅ Envio 1 concluído com sucesso!
+[Worker 4] 2026-01-05 16:50:53,503 - INFO - [2/32] Processando: Maria Terezinha De Jesus Neves
+[Worker 4] 2026-01-05 16:50:58,818 - INFO - 🔍 Buscando 'Maria Terezinha De Jesus Neves' com 6 variações: ['maria terezinha', 'maria neves', 'neves', 'maria terezinha jesus neves', 'maria', 'jesus neves']
+[Worker 4] 2026-01-05 16:51:10,562 - INFO - ✅ Match EXATO: 'Maria Terezinha De Jesus Neves'
+[Worker 4] 2026-01-05 16:51:11,061 - INFO - ✅ Clicou no NOME do cliente corretamente
+[Worker 4] 2026-01-05 16:51:13,124 - INFO - --- Processando: Maria Terezinha De Jesus Neves ---
+[Worker 4] 2026-01-05 16:51:13,198 - INFO - [Maria Terezinha De Jesus Neves] Celular '+5519991909479' já está correto.
+[Worker 4] 2026-01-05 16:51:13,276 - WARNING - [Maria Terezinha De Jesus Neves] Telefone '08/04/2025 14:28' inválido (Sem DDI 55)
+[Worker 4] 2026-01-05 16:51:13,277 - WARNING - [Maria Terezinha De Jesus Neves] Não foi possível normalizar '08/04/2025 14:28'.
+[Worker 4] 2026-01-05 16:51:13,414 - INFO - [Maria Terezinha De Jesus Neves] Encontrados 2 números para envio.
+[Worker 4] 2026-01-05 16:51:13,414 - INFO - [Maria Terezinha De Jesus Neves] 🚀 Iniciando envio 1/2 para LINK_TEL: +5534999669900
+[Worker 4] 2026-01-05 16:51:13,415 - INFO - [Maria Terezinha De Jesus Neves] Abrindo modal WhatsApp...
+[Worker 4] 2026-01-05 16:51:17,511 - INFO - [Maria Terezinha De Jesus Neves] ✅ Modal aberto
+[Worker 4] 2026-01-05 16:51:17,512 - INFO - >>> MODAL DO WHATSAPP ABERTO.
+[Worker 4] 2026-01-05 16:51:21,186 - INFO - Procurando template: 'Cobrança .'
+[Worker 4] 2026-01-05 16:51:23,703 - INFO - Tentativa 1: Digitando nome 'Cobrança'...
+[Worker 4] 2026-01-05 16:51:26,464 - INFO - Template encontrado (Título): 'Cobrança .'
+[Worker 4] 2026-01-05 16:51:31,543 - INFO - [Maria Terezinha De Jesus Neves] 4️⃣ Enviando mensagem...
+[Worker 4] 2026-01-05 16:51:31,619 - INFO - [Maria Terezinha De Jesus Neves] 🚀 Clicando em 'Enviar' (auto)...
+[Worker 4] 2026-01-05 16:51:32,773 - INFO - [Maria Terezinha De Jesus Neves] ✅ Sucesso detectado.
+[Worker 4] 2026-01-05 16:51:35,243 - INFO - [Maria Terezinha De Jesus Neves] ✅ Envio 1 concluído com sucesso!
+[Worker 4] 2026-01-05 16:51:35,243 - INFO - [Maria Terezinha De Jesus Neves] 🚀 Iniciando envio 2/2 para LINK_TEL: +5519991909479
+[Worker 4] 2026-01-05 16:51:35,244 - INFO - [Maria Terezinha De Jesus Neves] 🔄 Recarregando página para limpar estado do envio anterior...
+[Worker 4] 2026-01-05 16:51:49,376 - INFO - [Maria Terezinha De Jesus Neves] Abrindo modal WhatsApp...
+[Worker 4] 2026-01-05 16:51:56,203 - INFO - [Maria Terezinha De Jesus Neves] ✅ Modal aberto
+[Worker 4] 2026-01-05 16:51:56,203 - INFO - >>> MODAL DO WHATSAPP ABERTO.
+[Worker 4] 2026-01-05 16:52:01,149 - INFO - Procurando template: 'Cobrança .'
+[Worker 4] 2026-01-05 16:52:03,673 - INFO - Tentativa 1: Digitando nome 'Cobrança'...
+[Worker 4] 2026-01-05 16:52:07,240 - INFO - Template encontrado (Título): 'Cobrança .'
+[Worker 4] 2026-01-05 16:52:12,676 - INFO - [Maria Terezinha De Jesus Neves] 4️⃣ Enviando mensagem...
+[Worker 4] 2026-01-05 16:52:12,773 - INFO - [Maria Terezinha De Jesus Neves] 🚀 Clicando em 'Enviar' (auto)...
+[Worker 4] 2026-01-05 16:52:13,728 - INFO - [Maria Terezinha De Jesus Neves] ✅ Sucesso detectado.
+[Worker 4] 2026-01-05 16:52:15,672 - INFO - [Maria Terezinha De Jesus Neves] ✅ Envio 2 concluído com sucesso!
+[Worker 4] 2026-01-05 16:52:15,698 - INFO - [3/32] Processando: Cintia Tedesco Marques
+[Worker 4] 2026-01-05 16:52:20,520 - INFO - 🔍 Buscando 'Cintia Tedesco Marques' com 6 variações: ['cintia tedesco', 'cintia marques', 'marques', 'cintia tedesco marques', 'cintia', 'tedesco marques']
+[Worker 4] 2026-01-05 16:52:33,417 - INFO - ✅ Match EXATO: 'Cintia Tedesco Marques'
+[Worker 4] 2026-01-05 16:52:33,964 - INFO - ✅ Clicou no NOME do cliente corretamente
+[Worker 4] 2026-01-05 16:52:35,504 - INFO - --- Processando: Cintia Tedesco Marques ---
+[Worker 4] 2026-01-05 16:52:35,550 - INFO - [Cintia Tedesco Marques] Celular '+5519998502710' já está correto.
+[Worker 4] 2026-01-05 16:52:35,598 - WARNING - [Cintia Tedesco Marques] Telefone '08/04/2025 14:28' inválido (Sem DDI 55)
+[Worker 4] 2026-01-05 16:52:35,599 - WARNING - [Cintia Tedesco Marques] Não foi possível normalizar '08/04/2025 14:28'.
+[Worker 4] 2026-01-05 16:52:35,681 - INFO - [Cintia Tedesco Marques] Encontrados 1 números para envio.
+[Worker 4] 2026-01-05 16:52:35,682 - INFO - [Cintia Tedesco Marques] 🚀 Iniciando envio 1/1 para LINK_TEL: +5519998502710
+[Worker 4] 2026-01-05 16:52:35,683 - INFO - [Cintia Tedesco Marques] Abrindo modal WhatsApp...
+[Worker 4] 2026-01-05 16:52:39,739 - INFO - [Cintia Tedesco Marques] ✅ Modal aberto
+[Worker 4] 2026-01-05 16:52:39,740 - INFO - >>> MODAL DO WHATSAPP ABERTO.
+[Worker 4] 2026-01-05 16:52:43,240 - INFO - Procurando template: 'Cobrança .'
+[Worker 4] 2026-01-05 16:52:45,433 - INFO - Tentativa 1: Digitando nome 'Cobrança'...
+[Worker 4] 2026-01-05 16:52:48,639 - INFO - Template encontrado (Título): 'Cobrança .'
+[Worker 4] 2026-01-05 16:52:53,647 - INFO - [Cintia Tedesco Marques] 4️⃣ Enviando mensagem...
+[Worker 4] 2026-01-05 16:52:53,751 - INFO - [Cintia Tedesco Marques] 🚀 Clicando em 'Enviar' (auto)...
+[Worker 4] 2026-01-05 16:52:54,727 - INFO - [Cintia Tedesco Marques] ✅ Sucesso detectado.
+[Worker 4] 2026-01-05 16:52:56,971 - INFO - [Cintia Tedesco Marques] ✅ Envio 1 concluído com sucesso!
+[Worker 4] 2026-01-05 16:52:57,030 - INFO - [4/32] Processando: Emanuelle De Oliveira Carlos
+[Worker 4] 2026-01-05 16:53:02,853 - INFO - 🔍 Buscando 'Emanuelle De Oliveira Carlos' com 6 variações: ['emanuelle oliveira', 'emanuelle carlos', 'carlos', 'emanuelle oliveira carlos', 'emanuelle', 'oliveira carlos']
+[Worker 4] 2026-01-05 16:53:15,309 - INFO - ✅ Match EXATO: 'Emanuelle De Oliveira Carlos'
+[Worker 4] 2026-01-05 16:53:16,012 - INFO - ✅ Clicou no NOME do cliente corretamente
+[Worker 4] 2026-01-05 16:53:17,565 - INFO - --- Processando: Emanuelle De Oliveira Carlos ---
+[Worker 4] 2026-01-05 16:53:17,671 - INFO - [Emanuelle De Oliveira Carlos] Celular '+5519981715105' já está correto.
+[Worker 4] 2026-01-05 16:53:17,830 - WARNING - [Emanuelle De Oliveira Carlos] Telefone '08/04/2025 14:28' inválido (Sem DDI 55)
+[Worker 4] 2026-01-05 16:53:17,831 - WARNING - [Emanuelle De Oliveira Carlos] Não foi possível normalizar '08/04/2025 14:28'.
+[Worker 4] 2026-01-05 16:53:17,943 - INFO - [Emanuelle De Oliveira Carlos] Encontrados 1 números para envio.
+[Worker 4] 2026-01-05 16:53:17,949 - INFO - [Emanuelle De Oliveira Carlos] 🚀 Iniciando envio 1/1 para LINK_TEL: +5519981715105
+[Worker 4] 2026-01-05 16:53:17,952 - INFO - [Emanuelle De Oliveira Carlos] Abrindo modal WhatsApp...
+[Worker 4] 2026-01-05 16:53:21,786 - INFO - [Emanuelle De Oliveira Carlos] ✅ Modal aberto
+[Worker 4] 2026-01-05 16:53:21,787 - INFO - >>> MODAL DO WHATSAPP ABERTO.
+[Worker 4] 2026-01-05 16:53:25,414 - INFO - Procurando template: 'Cobrança .'
+[Worker 4] 2026-01-05 16:53:27,626 - INFO - Tentativa 1: Digitando nome 'Cobrança'...
+[Worker 4] 2026-01-05 16:53:30,799 - INFO - Template encontrado (Título): 'Cobrança .'
+[Worker 4] 2026-01-05 16:53:35,872 - INFO - [Emanuelle De Oliveira Carlos] 4️⃣ Enviando mensagem...
+[Worker 4] 2026-01-05 16:53:35,959 - INFO - [Emanuelle De Oliveira Carlos] 🚀 Clicando em 'Enviar' (auto)...
+[Worker 4] 2026-01-05 16:53:36,922 - INFO - [Emanuelle De Oliveira Carlos] ✅ Sucesso detectado.
+[Worker 4] 2026-01-05 16:53:39,255 - INFO - [Emanuelle De Oliveira Carlos] ✅ Envio 1 concluído com sucesso!
+[Worker 4] 2026-01-05 16:53:39,277 - INFO - [5/32] Processando: Tereza Rodrigues Sampaio
+[Worker 4] 2026-01-05 16:53:43,853 - INFO - 🔍 Buscando 'Tereza Rodrigues Sampaio' com 6 variações: ['tereza rodrigues', 'tereza sampaio', 'sampaio', 'tereza rodrigues sampaio', 'tereza', 'rodrigues sampaio']
+[Worker 4] 2026-01-05 16:53:54,841 - INFO - ✅ Match EXATO: 'Tereza Rodrigues Sampaio'
+[Worker 4] 2026-01-05 16:53:55,414 - INFO - ✅ Clicou no NOME do cliente corretamente
+[Worker 4] 2026-01-05 16:53:56,454 - INFO - --- Processando: Tereza Rodrigues Sampaio ---
+[Worker 4] 2026-01-05 16:53:56,541 - INFO - [Tereza Rodrigues Sampaio] Celular '+5519994193083' já está correto.
+[Worker 4] 2026-01-05 16:53:56,602 - WARNING - [Tereza Rodrigues Sampaio] Telefone '08/04/2025 14:28' inválido (Sem DDI 55)
+[Worker 4] 2026-01-05 16:53:56,604 - WARNING - [Tereza Rodrigues Sampaio] Não foi possível normalizar '08/04/2025 14:28'.
+[Worker 4] 2026-01-05 16:53:56,707 - INFO - [Tereza Rodrigues Sampaio] Encontrados 1 números para envio.
+[Worker 4] 2026-01-05 16:53:56,708 - INFO - [Tereza Rodrigues Sampaio] 🚀 Iniciando envio 1/1 para LINK_TEL: +5519994193083
+[Worker 4] 2026-01-05 16:53:56,709 - INFO - [Tereza Rodrigues Sampaio] Abrindo modal WhatsApp...
+[Worker 4] 2026-01-05 16:54:01,721 - INFO - [Tereza Rodrigues Sampaio] ✅ Modal aberto
+[Worker 4] 2026-01-05 16:54:01,722 - INFO - >>> MODAL DO WHATSAPP ABERTO.
+[Worker 4] 2026-01-05 16:54:05,344 - INFO - Procurando template: 'Cobrança .'
+[Worker 4] 2026-01-05 16:54:07,906 - INFO - Tentativa 1: Digitando nome 'Cobrança'...
+[Worker 4] 2026-01-05 16:54:10,854 - INFO - Template encontrado (Título): 'Cobrança .'
+[Worker 4] 2026-01-05 16:54:15,854 - INFO - [Tereza Rodrigues Sampaio] 4️⃣ Enviando mensagem...
+[Worker 4] 2026-01-05 16:54:15,927 - INFO - [Tereza Rodrigues Sampaio] 🚀 Clicando em 'Enviar' (auto)...
+[Worker 4] 2026-01-05 16:54:16,931 - INFO - [Tereza Rodrigues Sampaio] ✅ Sucesso detectado.
+[Worker 4] 2026-01-05 16:54:19,549 - INFO - [Tereza Rodrigues Sampaio] ✅ Envio 1 concluído com sucesso!
+[Worker 4] 2026-01-05 16:54:19,601 - INFO - [6/32] Processando: Everton Siqueira Bueno
+[Worker 4] 2026-01-05 16:54:24,115 - INFO - 🔍 Buscando 'Everton Siqueira Bueno' com 6 variações: ['everton siqueira', 'everton bueno', 'bueno', 'everton siqueira bueno', 'everton', 'siqueira bueno']
+[Worker 4] 2026-01-05 16:54:37,463 - INFO - ✅ Match EXATO: 'Everton Siqueira Bueno'
+[Worker 4] 2026-01-05 16:54:38,088 - INFO - ✅ Clicou no NOME do cliente corretamente
+[Worker 4] 2026-01-05 16:54:39,046 - INFO - --- Processando: Everton Siqueira Bueno ---
+[Worker 4] 2026-01-05 16:54:39,098 - INFO - [Everton Siqueira Bueno] Celular '+5511976401216' já está correto.
+[Worker 4] 2026-01-05 16:54:39,166 - WARNING - [Everton Siqueira Bueno] Telefone '08/04/2025 14:28' inválido (Sem DDI 55)
+[Worker 4] 2026-01-05 16:54:39,167 - WARNING - [Everton Siqueira Bueno] Não foi possível normalizar '08/04/2025 14:28'.
+[Worker 4] 2026-01-05 16:54:39,255 - INFO - [Everton Siqueira Bueno] Encontrados 1 números para envio.
+[Worker 4] 2026-01-05 16:54:39,256 - INFO - [Everton Siqueira Bueno] 🚀 Iniciando envio 1/1 para LINK_TEL: +5511976401216
+[Worker 4] 2026-01-05 16:54:39,257 - INFO - [Everton Siqueira Bueno] Abrindo modal WhatsApp...
+[Worker 4] 2026-01-05 16:54:42,788 - INFO - [Everton Siqueira Bueno] ✅ Modal aberto
+[Worker 4] 2026-01-05 16:54:42,789 - INFO - >>> MODAL DO WHATSAPP ABERTO.
+[Worker 4] 2026-01-05 16:54:46,243 - INFO - Procurando template: 'Cobrança .'
+[Worker 4] 2026-01-05 16:54:48,102 - INFO - Tentativa 1: Digitando nome 'Cobrança'...
+[Worker 4] 2026-01-05 16:54:50,140 - INFO - Template encontrado (Título): 'Cobrança .'
+[Worker 4] 2026-01-05 16:54:55,138 - INFO - [Everton Siqueira Bueno] 4️⃣ Enviando mensagem...
+[Worker 4] 2026-01-05 16:54:55,203 - INFO - [Everton Siqueira Bueno] 🚀 Clicando em 'Enviar' (auto)...
+[Worker 4] 2026-01-05 16:54:56,153 - INFO - [Everton Siqueira Bueno] ✅ Sucesso detectado.
+[Worker 4] 2026-01-05 16:54:58,383 - INFO - [Everton Siqueira Bueno] ✅ Envio 1 concluído com sucesso!
+[Worker 4] 2026-01-05 16:54:58,453 - INFO - [7/32] Processando: Neusa Silva Bombo
+[Worker 4] 2026-01-05 16:55:04,912 - INFO - 🔍 Buscando 'Neusa Silva Bombo' com 6 variações: ['neusa silva', 'neusa bombo', 'bombo', 'neusa silva bombo', 'neusa', 'silva bombo']
+[Worker 4] 2026-01-05 16:55:15,905 - INFO - ✅ Match EXATO: 'Neusa Silva Bombo'
+[Worker 4] 2026-01-05 16:55:16,892 - INFO - ✅ Clicou no NOME do cliente corretamente
+[Worker 4] 2026-01-05 16:55:18,377 - INFO - --- Processando: Neusa Silva Bombo ---
+[Worker 4] 2026-01-05 16:55:18,442 - INFO - [Neusa Silva Bombo] Celular '+5516992607093' já está correto.
+[Worker 4] 2026-01-05 16:55:18,516 - WARNING - [Neusa Silva Bombo] Telefone '08/04/2025 14:28' inválido (Sem DDI 55)
+[Worker 4] 2026-01-05 16:55:18,519 - WARNING - [Neusa Silva Bombo] Não foi possível normalizar '08/04/2025 14:28'.
+[Worker 4] 2026-01-05 16:55:18,690 - INFO - [Neusa Silva Bombo] Encontrados 3 números para envio.
+[Worker 4] 2026-01-05 16:55:18,690 - INFO - [Neusa Silva Bombo] 🚀 Iniciando envio 1/3 para LINK_TEL: +5516992607093
+[Worker 4] 2026-01-05 16:55:18,690 - INFO - [Neusa Silva Bombo] Abrindo modal WhatsApp...
+[Worker 4] 2026-01-05 16:55:22,027 - INFO - [Neusa Silva Bombo] ✅ Modal aberto
+[Worker 4] 2026-01-05 16:55:22,028 - INFO - >>> MODAL DO WHATSAPP ABERTO.
+[Worker 4] 2026-01-05 16:55:25,551 - INFO - Procurando template: 'Cobrança .'
+[Worker 4] 2026-01-05 16:55:27,543 - INFO - Tentativa 1: Digitando nome 'Cobrança'...
+[Worker 4] 2026-01-05 16:55:30,636 - INFO - Template encontrado (Título): 'Cobrança .'
+[Worker 4] 2026-01-05 16:55:35,661 - INFO - [Neusa Silva Bombo] 4️⃣ Enviando mensagem...
+[Worker 4] 2026-01-05 16:55:35,729 - INFO - [Neusa Silva Bombo] 🚀 Clicando em 'Enviar' (auto)...
+[Worker 4] 2026-01-05 16:55:36,841 - INFO - [Neusa Silva Bombo] ✅ Sucesso detectado.
+[Worker 4] 2026-01-05 16:55:39,076 - INFO - [Neusa Silva Bombo] ✅ Envio 1 concluído com sucesso!
+[Worker 4] 2026-01-05 16:55:39,076 - INFO - [Neusa Silva Bombo] 🚀 Iniciando envio 2/3 para LINK_TEL: +5544997368019
+[Worker 4] 2026-01-05 16:55:39,077 - INFO - [Neusa Silva Bombo] 🔄 Recarregando página para limpar estado do envio anterior...
+[Worker 4] 2026-01-05 16:55:51,707 - INFO - [Neusa Silva Bombo] Abrindo modal WhatsApp...
+[Worker 4] 2026-01-05 16:55:56,055 - INFO - [Neusa Silva Bombo] ✅ Modal aberto
+[Worker 4] 2026-01-05 16:55:56,055 - INFO - >>> MODAL DO WHATSAPP ABERTO.
+[Worker 4] 2026-01-05 16:55:59,614 - INFO - Procurando template: 'Cobrança .'
+[Worker 4] 2026-01-05 16:56:01,872 - INFO - Tentativa 1: Digitando nome 'Cobrança'...
+[Worker 4] 2026-01-05 16:56:04,831 - INFO - Template encontrado (Título): 'Cobrança .'
+[Worker 4] 2026-01-05 16:56:09,924 - INFO - [Neusa Silva Bombo] 4️⃣ Enviando mensagem...
+[Worker 4] 2026-01-05 16:56:10,004 - INFO - [Neusa Silva Bombo] 🚀 Clicando em 'Enviar' (auto)...
+[Worker 4] 2026-01-05 16:56:11,069 - INFO - [Neusa Silva Bombo] ✅ Sucesso detectado.
+[Worker 4] 2026-01-05 16:56:13,256 - INFO - [Neusa Silva Bombo] ✅ Envio 2 concluído com sucesso!
+[Worker 4] 2026-01-05 16:56:13,257 - INFO - [Neusa Silva Bombo] 🚀 Iniciando envio 3/3 para LINK_TEL: +5535988425796
+[Worker 4] 2026-01-05 16:56:13,258 - INFO - [Neusa Silva Bombo] 🔄 Recarregando página para limpar estado do envio anterior...
+[Worker 4] 2026-01-05 16:56:22,992 - INFO - [Neusa Silva Bombo] Abrindo modal WhatsApp...
+[Worker 4] 2026-01-05 16:56:27,943 - INFO - [Neusa Silva Bombo] ✅ Modal aberto
+[Worker 4] 2026-01-05 16:56:27,947 - INFO - >>> MODAL DO WHATSAPP ABERTO.
+[Worker 4] 2026-01-05 16:56:31,880 - INFO - Procurando template: 'Cobrança .'
+[Worker 4] 2026-01-05 16:56:34,136 - INFO - Tentativa 1: Digitando nome 'Cobrança'...
+[Worker 4] 2026-01-05 16:56:38,144 - INFO - Template encontrado (Título): 'Cobrança .'
+[Worker 4] 2026-01-05 16:56:43,296 - INFO - [Neusa Silva Bombo] 4️⃣ Enviando mensagem...
+[Worker 4] 2026-01-05 16:56:43,376 - INFO - [Neusa Silva Bombo] 🚀 Clicando em 'Enviar' (auto)...
+[Worker 4] 2026-01-05 16:56:45,255 - INFO - [Neusa Silva Bombo] ✅ Sucesso detectado.
+[Worker 4] 2026-01-05 16:56:48,083 - INFO - [Neusa Silva Bombo] ✅ Envio 3 concluído com sucesso!
+[Worker 4] 2026-01-05 16:56:48,110 - INFO - [8/32] Processando: Rodrigo  Baston Ferreira
+[Worker 4] 2026-01-05 16:56:54,552 - INFO - 🔍 Buscando 'Rodrigo  Baston Ferreira' com 6 variações: ['rodrigo baston', 'rodrigo ferreira', 'rodrigo baston ferreira', 'rodrigo', 'baston ferreira', 'ferreira']
+[Worker 4] 2026-01-05 16:57:09,471 - INFO - ✅ Match EXATO: 'Rodrigo  Baston Ferreira'
+[Worker 4] 2026-01-05 16:57:10,044 - INFO - ✅ Clicou no NOME do cliente corretamente
+[Worker 4] 2026-01-05 16:57:11,819 - INFO - --- Processando: Rodrigo  Baston Ferreira ---
+[Worker 4] 2026-01-05 16:57:11,893 - INFO - [Rodrigo  Baston Ferreira] Celular '+5519992997655' já está correto.
+[Worker 4] 2026-01-05 16:57:11,965 - WARNING - [Rodrigo  Baston Ferreira] Telefone '08/04/2025 14:28' inválido (Sem DDI 55)
+[Worker 4] 2026-01-05 16:57:11,966 - WARNING - [Rodrigo  Baston Ferreira] Não foi possível normalizar '08/04/2025 14:28'.
+[Worker 4] 2026-01-05 16:57:12,060 - INFO - [Rodrigo  Baston Ferreira] Encontrados 1 números para envio.
+[Worker 4] 2026-01-05 16:57:12,061 - INFO - [Rodrigo  Baston Ferreira] 🚀 Iniciando envio 1/1 para LINK_TEL: +5519992997655
+[Worker 4] 2026-01-05 16:57:12,061 - INFO - [Rodrigo  Baston Ferreira] Abrindo modal WhatsApp...
+[Worker 4] 2026-01-05 16:57:15,616 - INFO - [Rodrigo  Baston Ferreira] ✅ Modal aberto
+[Worker 4] 2026-01-05 16:57:15,616 - INFO - >>> MODAL DO WHATSAPP ABERTO.
+[Worker 4] 2026-01-05 16:57:23,539 - INFO - Procurando template: 'Cobrança .'
+[Worker 4] 2026-01-05 16:57:28,919 - INFO - Tentativa 1: Digitando nome 'Cobrança'...
+[Worker 4] 2026-01-05 16:57:31,973 - INFO - Template encontrado (Título): 'Cobrança .'
+[Worker 4] 2026-01-05 16:57:37,397 - INFO - [Rodrigo  Baston Ferreira] 4️⃣ Enviando mensagem...
+[Worker 4] 2026-01-05 16:57:37,502 - INFO - [Rodrigo  Baston Ferreira] 🚀 Clicando em 'Enviar' (auto)...
+[Worker 4] 2026-01-05 16:57:38,495 - INFO - [Rodrigo  Baston Ferreira] ✅ Sucesso detectado.
+[Worker 4] 2026-01-05 16:57:40,921 - INFO - [Rodrigo  Baston Ferreira] ✅ Envio 1 concluído com sucesso!
+[Worker 4] 2026-01-05 16:57:40,945 - INFO - [9/32] Processando: Carlos Roberto Pissamiglio
+[Worker 4] 2026-01-05 16:57:46,155 - INFO - 🔍 Buscando 'Carlos Roberto Pissamiglio' com 6 variações: ['carlos roberto', 'carlos pissamiglio', 'pissamiglio', 'carlos roberto pissamiglio', 'carlos', 'roberto pissamiglio']
+[Worker 4] 2026-01-05 16:57:53,502 - WARNING - ⚠️ Campo de busca teimoso: 'rodrigo baston'. Tentando limpar novamente...
+[Worker 4] 2026-01-05 16:58:12,525 - INFO - ✅ Match EXATO: 'Carlos Roberto Pissamiglio'
+[Worker 4] 2026-01-05 16:58:13,077 - INFO - ✅ Clicou no NOME do cliente corretamente
+[Worker 4] 2026-01-05 16:58:14,785 - INFO - --- Processando: Carlos Roberto Pissamiglio ---
+[Worker 4] 2026-01-05 16:58:14,851 - INFO - [Carlos Roberto Pissamiglio] Celular '+5516991193763' já está correto.
+[Worker 4] 2026-01-05 16:58:14,912 - WARNING - [Carlos Roberto Pissamiglio] Telefone '+551699202665' inválido (Tamanho incorreto (12 dígitos))
+[Worker 4] 2026-01-05 16:58:14,913 - INFO - [Carlos Roberto Pissamiglio] Telefone: '+551699202665' → '+5516999202665'
+[Worker 4] 2026-01-05 16:58:14,914 - INFO - [Carlos Roberto Pissamiglio] 🛠️ Iniciando correção de 1 campo(s): Telefone
+[Worker 4] 2026-01-05 16:58:20,145 - INFO - [Carlos Roberto Pissamiglio] ✏️ Telefone: +5516999202665
+[Worker 4] 2026-01-05 16:58:22,989 - INFO - [Carlos Roberto Pissamiglio] ✅ Todos os campos salvos com sucesso!
+[Worker 4] 2026-01-05 16:58:25,136 - INFO - [Carlos Roberto Pissamiglio] Encontrados 2 números para envio.
+[Worker 4] 2026-01-05 16:58:25,138 - INFO - [Carlos Roberto Pissamiglio] 🚀 Iniciando envio 1/2 para LINK_TEL: +5516999202665
+[Worker 4] 2026-01-05 16:58:25,138 - INFO - [Carlos Roberto Pissamiglio] Abrindo modal WhatsApp...
+[Worker 4] 2026-01-05 16:58:28,767 - INFO - [Carlos Roberto Pissamiglio] ✅ Modal aberto
+[Worker 4] 2026-01-05 16:58:28,768 - INFO - >>> MODAL DO WHATSAPP ABERTO.
+[Worker 4] 2026-01-05 16:58:32,454 - INFO - Procurando template: 'Cobrança .'
+[Worker 4] 2026-01-05 16:58:35,196 - INFO - Tentativa 1: Digitando nome 'Cobrança'...
+[Worker 4] 2026-01-05 16:58:39,282 - INFO - Template encontrado (Título): 'Cobrança .'
+[Worker 4] 2026-01-05 16:58:44,616 - INFO - [Carlos Roberto Pissamiglio] 4️⃣ Enviando mensagem...
+[Worker 4] 2026-01-05 16:58:44,729 - INFO - [Carlos Roberto Pissamiglio] 🚀 Clicando em 'Enviar' (auto)...
+[Worker 4] 2026-01-05 16:58:46,008 - INFO - [Carlos Roberto Pissamiglio] ✅ Sucesso detectado.
+[Worker 4] 2026-01-05 16:58:48,749 - INFO - [Carlos Roberto Pissamiglio] ✅ Envio 1 concluído com sucesso!
+[Worker 4] 2026-01-05 16:58:48,754 - INFO - [Carlos Roberto Pissamiglio] 🚀 Iniciando envio 2/2 para LINK_TEL: +5516991193763
+[Worker 4] 2026-01-05 16:58:48,755 - INFO - [Carlos Roberto Pissamiglio] 🔄 Recarregando página para limpar estado do envio anterior...
+[Worker 4] 2026-01-05 16:59:00,710 - INFO - [Carlos Roberto Pissamiglio] Abrindo modal WhatsApp...
+[Worker 4] 2026-01-05 16:59:06,962 - INFO - [Carlos Roberto Pissamiglio] ✅ Modal aberto
+[Worker 4] 2026-01-05 16:59:06,962 - INFO - >>> MODAL DO WHATSAPP ABERTO.
+[Worker 4] 2026-01-05 16:59:10,741 - INFO - Procurando template: 'Cobrança .'
+[Worker 4] 2026-01-05 16:59:12,867 - INFO - Tentativa 1: Digitando nome 'Cobrança'...
+[Worker 4] 2026-01-05 16:59:18,941 - INFO - Template encontrado (Título): 'Cobrança .'
+[Worker 4] 2026-01-05 16:59:24,429 - INFO - [Carlos Roberto Pissamiglio] 4️⃣ Enviando mensagem...
+[Worker 4] 2026-01-05 16:59:24,520 - INFO - [Carlos Roberto Pissamiglio] 🚀 Clicando em 'Enviar' (auto)...
+[Worker 4] 2026-01-05 16:59:25,631 - INFO - [Carlos Roberto Pissamiglio] ✅ Sucesso detectado.
+[Worker 4] 2026-01-05 16:59:28,035 - INFO - [Carlos Roberto Pissamiglio] ✅ Envio 2 concluído com sucesso!
+[Worker 4] 2026-01-05 16:59:28,065 - INFO - [10/32] Processando: Marta De Oliveira
+[Worker 4] 2026-01-05 16:59:33,111 - INFO - 🔍 Buscando 'Marta De Oliveira' com 3 variações: ['marta oliveira', 'marta', 'oliveira']
+[Worker 4] 2026-01-05 16:59:45,819 - INFO - ✅ Match EXATO: 'Marta De Oliveira'
+[Worker 4] 2026-01-05 16:59:46,545 - INFO - ✅ Clicou no NOME do cliente corretamente
+[Worker 4] 2026-01-05 16:59:48,382 - INFO - --- Processando: Marta De Oliveira ---
+[Worker 4] 2026-01-05 16:59:48,533 - INFO - [Marta De Oliveira] Celular '+5516992041813' já está correto.
+[Worker 4] 2026-01-05 16:59:48,665 - WARNING - [Marta De Oliveira] Telefone '08/04/2025 14:28' inválido (Sem DDI 55)
+[Worker 4] 2026-01-05 16:59:48,666 - WARNING - [Marta De Oliveira] Não foi possível normalizar '08/04/2025 14:28'.
+[Worker 4] 2026-01-05 16:59:49,256 - INFO - [Marta De Oliveira] Encontrados 8 números para envio.
+[Worker 4] 2026-01-05 16:59:49,257 - INFO - [Marta De Oliveira] 🚀 Iniciando envio 1/8 para LINK_TEL: +5516992041813
+[Worker 4] 2026-01-05 16:59:49,258 - INFO - [Marta De Oliveira] Abrindo modal WhatsApp...
+[Worker 4] 2026-01-05 16:59:53,177 - INFO - [Marta De Oliveira] ✅ Modal aberto
+[Worker 4] 2026-01-05 16:59:53,177 - INFO - >>> MODAL DO WHATSAPP ABERTO.
+[Worker 4] 2026-01-05 16:59:57,157 - INFO - Procurando template: 'Cobrança .'
+[Worker 4] 2026-01-05 16:59:59,365 - INFO - Tentativa 1: Digitando nome 'Cobrança'...
+[Worker 4] 2026-01-05 17:00:05,361 - INFO - Template encontrado (Título): 'Cobrança .'
+[Worker 4] 2026-01-05 17:00:10,558 - INFO - [Marta De Oliveira] 4️⃣ Enviando mensagem...
+[Worker 4] 2026-01-05 17:00:10,652 - INFO - [Marta De Oliveira] 🚀 Clicando em 'Enviar' (auto)...
+[Worker 4] 2026-01-05 17:00:11,658 - INFO - [Marta De Oliveira] ✅ Sucesso detectado.
+[Worker 4] 2026-01-05 17:00:14,117 - INFO - [Marta De Oliveira] ✅ Envio 1 concluído com sucesso!
+[Worker 4] 2026-01-05 17:00:14,117 - INFO - [Marta De Oliveira] 🚀 Iniciando envio 2/8 para LINK_TEL: +5541987152730
+[Worker 4] 2026-01-05 17:00:14,118 - INFO - [Marta De Oliveira] 🔄 Recarregando página para limpar estado do envio anterior...
+[Worker 4] 2026-01-05 17:00:22,421 - INFO - [Marta De Oliveira] Abrindo modal WhatsApp...
+[Worker 4] 2026-01-05 17:00:26,236 - INFO - [Marta De Oliveira] ✅ Modal aberto
+[Worker 4] 2026-01-05 17:00:26,236 - INFO - >>> MODAL DO WHATSAPP ABERTO.
+[Worker 4] 2026-01-05 17:00:30,172 - INFO - Procurando template: 'Cobrança .'
+[Worker 4] 2026-01-05 17:00:32,220 - INFO - Tentativa 1: Digitando nome 'Cobrança'...
+[Worker 4] 2026-01-05 17:00:34,976 - INFO - Template encontrado (Título): 'Cobrança .'
+[Worker 4] 2026-01-05 17:00:40,249 - INFO - [Marta De Oliveira] 4️⃣ Enviando mensagem...
+[Worker 4] 2026-01-05 17:00:40,340 - INFO - [Marta De Oliveira] 🚀 Clicando em 'Enviar' (auto)...
+[Worker 4] 2026-01-05 17:00:41,384 - INFO - [Marta De Oliveira] ✅ Sucesso detectado.
+[Worker 4] 2026-01-05 17:00:43,614 - INFO - [Marta De Oliveira] ✅ Envio 2 concluído com sucesso!
+[Worker 4] 2026-01-05 17:00:43,616 - INFO - [Marta De Oliveira] 🚀 Iniciando envio 3/8 para LINK_TEL: +5517992167163
+[Worker 4] 2026-01-05 17:00:43,616 - INFO - [Marta De Oliveira] 🔄 Recarregando página para limpar estado do envio anterior...
+[Worker 4] 2026-01-05 17:00:52,412 - INFO - [Marta De Oliveira] Abrindo modal WhatsApp...
+[Worker 4] 2026-01-05 17:00:56,920 - INFO - [Marta De Oliveira] ✅ Modal aberto
+[Worker 4] 2026-01-05 17:00:56,922 - INFO - >>> MODAL DO WHATSAPP ABERTO.
+[Worker 4] 2026-01-05 17:01:00,869 - INFO - Procurando template: 'Cobrança .'
+[Worker 4] 2026-01-05 17:01:03,203 - INFO - Tentativa 1: Digitando nome 'Cobrança'...
+[Worker 4] 2026-01-05 17:01:06,589 - INFO - Template encontrado (Título): 'Cobrança .'
+[Worker 4] 2026-01-05 17:01:12,229 - INFO - [Marta De Oliveira] 4️⃣ Enviando mensagem...
+[Worker 4] 2026-01-05 17:01:12,356 - INFO - [Marta De Oliveira] 🚀 Clicando em 'Enviar' (auto)...
+[Worker 4] 2026-01-05 17:01:13,647 - INFO - [Marta De Oliveira] ✅ Sucesso detectado.
+[Worker 4] 2026-01-05 17:01:16,615 - INFO - [Marta De Oliveira] ✅ Envio 3 concluído com sucesso!
+[Worker 4] 2026-01-05 17:01:16,616 - INFO - [Marta De Oliveira] 🚀 Iniciando envio 4/8 para LINK_TEL: +5516991052238
+[Worker 4] 2026-01-05 17:01:16,617 - INFO - [Marta De Oliveira] 🔄 Recarregando página para limpar estado do envio anterior...
+[Worker 4] 2026-01-05 17:01:26,865 - INFO - [Marta De Oliveira] Abrindo modal WhatsApp...
+[Worker 4] 2026-01-05 17:01:31,241 - INFO - [Marta De Oliveira] ✅ Modal aberto
+[Worker 4] 2026-01-05 17:01:31,241 - INFO - >>> MODAL DO WHATSAPP ABERTO.
+[Worker 4] 2026-01-05 17:01:34,991 - INFO - Procurando template: 'Cobrança .'
+[Worker 4] 2026-01-05 17:01:37,088 - INFO - Tentativa 1: Digitando nome 'Cobrança'...
+[Worker 4] 2026-01-05 17:01:40,021 - INFO - Template encontrado (Título): 'Cobrança .'
+[Worker 4] 2026-01-05 17:01:45,459 - INFO - [Marta De Oliveira] 4️⃣ Enviando mensagem...
+[Worker 4] 2026-01-05 17:01:45,562 - INFO - [Marta De Oliveira] 🚀 Clicando em 'Enviar' (auto)...
+[Worker 4] 2026-01-05 17:01:46,757 - INFO - [Marta De Oliveira] ✅ Sucesso detectado.
+[Worker 4] 2026-01-05 17:01:48,886 - INFO - [Marta De Oliveira] ✅ Envio 4 concluído com sucesso!
+[Worker 4] 2026-01-05 17:01:48,892 - INFO - [Marta De Oliveira] 🚀 Iniciando envio 5/8 para LINK_TEL: +5517991644640
+[Worker 4] 2026-01-05 17:01:48,894 - INFO - [Marta De Oliveira] 🔄 Recarregando página para limpar estado do envio anterior...
+[Worker 4] 2026-01-05 17:01:58,414 - INFO - [Marta De Oliveira] Abrindo modal WhatsApp...
+[Worker 4] 2026-01-05 17:02:03,392 - INFO - [Marta De Oliveira] ✅ Modal aberto
+[Worker 4] 2026-01-05 17:02:03,393 - INFO - >>> MODAL DO WHATSAPP ABERTO.
+[Worker 4] 2026-01-05 17:02:07,000 - INFO - Procurando template: 'Cobrança .'
+[Worker 4] 2026-01-05 17:02:09,474 - INFO - Tentativa 1: Digitando nome 'Cobrança'...
+[Worker 4] 2026-01-05 17:02:12,970 - INFO - Template encontrado (Título): 'Cobrança .'
+[Worker 4] 2026-01-05 17:02:19,119 - INFO - [Marta De Oliveira] 4️⃣ Enviando mensagem...
+[Worker 4] 2026-01-05 17:02:19,230 - INFO - [Marta De Oliveira] 🚀 Clicando em 'Enviar' (auto)...
+[Worker 4] 2026-01-05 17:02:20,217 - INFO - [Marta De Oliveira] ✅ Sucesso detectado.
+[Worker 4] 2026-01-05 17:02:22,210 - INFO - [Marta De Oliveira] ✅ Envio 5 concluído com sucesso!
+[Worker 4] 2026-01-05 17:02:22,211 - INFO - [Marta De Oliveira] 🚀 Iniciando envio 6/8 para LINK_TEL: +5511966721042
+[Worker 4] 2026-01-05 17:02:22,215 - INFO - [Marta De Oliveira] 🔄 Recarregando página para limpar estado do envio anterior...
+[Worker 4] 2026-01-05 17:02:32,916 - INFO - [Marta De Oliveira] Abrindo modal WhatsApp...
+[Worker 4] 2026-01-05 17:02:37,281 - INFO - [Marta De Oliveira] ✅ Modal aberto
+[Worker 4] 2026-01-05 17:02:37,282 - INFO - >>> MODAL DO WHATSAPP ABERTO.
+[Worker 4] 2026-01-05 17:02:41,192 - INFO - Procurando template: 'Cobrança .'
+[Worker 4] 2026-01-05 17:02:43,733 - INFO - Tentativa 1: Digitando nome 'Cobrança'...
+[Worker 4] 2026-01-05 17:02:46,737 - INFO - Template encontrado (Título): 'Cobrança .'
+[Worker 4] 2026-01-05 17:02:51,809 - INFO - [Marta De Oliveira] 4️⃣ Enviando mensagem...
+[Worker 4] 2026-01-05 17:02:51,890 - INFO - [Marta De Oliveira] 🚀 Clicando em 'Enviar' (auto)...
+[Worker 4] 2026-01-05 17:02:52,946 - INFO - [Marta De Oliveira] ✅ Sucesso detectado.
+[Worker 4] 2026-01-05 17:02:55,621 - INFO - [Marta De Oliveira] ✅ Envio 6 concluído com sucesso!
+[Worker 4] 2026-01-05 17:02:55,622 - INFO - [Marta De Oliveira] 🚀 Iniciando envio 7/8 para LINK_TEL: +5585987473751
+[Worker 4] 2026-01-05 17:02:55,623 - INFO - [Marta De Oliveira] 🔄 Recarregando página para limpar estado do envio anterior...
+[Worker 4] 2026-01-05 17:03:05,315 - INFO - [Marta De Oliveira] Abrindo modal WhatsApp...
+[Worker 4] 2026-01-05 17:03:10,318 - INFO - [Marta De Oliveira] ✅ Modal aberto
+[Worker 4] 2026-01-05 17:03:10,320 - INFO - >>> MODAL DO WHATSAPP ABERTO.
+[Worker 4] 2026-01-05 17:03:14,153 - INFO - Procurando template: 'Cobrança .'
+[Worker 4] 2026-01-05 17:03:16,398 - INFO - Tentativa 1: Digitando nome 'Cobrança'...
+[Worker 4] 2026-01-05 17:03:19,861 - INFO - Template encontrado (Título): 'Cobrança .'
+[Worker 4] 2026-01-05 17:03:24,984 - INFO - [Marta De Oliveira] 4️⃣ Enviando mensagem...
+[Worker 4] 2026-01-05 17:03:25,087 - INFO - [Marta De Oliveira] 🚀 Clicando em 'Enviar' (auto)...
+[Worker 4] 2026-01-05 17:03:26,112 - INFO - [Marta De Oliveira] ✅ Sucesso detectado.
+[Worker 4] 2026-01-05 17:03:28,965 - INFO - [Marta De Oliveira] ✅ Envio 7 concluído com sucesso!
+[Worker 4] 2026-01-05 17:03:28,966 - INFO - [Marta De Oliveira] 🚀 Iniciando envio 8/8 para LINK_TEL: +5567992915057
+[Worker 4] 2026-01-05 17:03:28,967 - INFO - [Marta De Oliveira] 🔄 Recarregando página para limpar estado do envio anterior...
+[Worker 4] 2026-01-05 17:03:38,303 - INFO - [Marta De Oliveira] Abrindo modal WhatsApp...
+[Worker 4] 2026-01-05 17:03:43,203 - INFO - [Marta De Oliveira] ✅ Modal aberto
+[Worker 4] 2026-01-05 17:03:43,206 - INFO - >>> MODAL DO WHATSAPP ABERTO.
+[Worker 4] 2026-01-05 17:03:46,823 - INFO - Procurando template: 'Cobrança .'
+[Worker 4] 2026-01-05 17:03:48,929 - INFO - Tentativa 1: Digitando nome 'Cobrança'...
+[Worker 4] 2026-01-05 17:03:52,370 - INFO - Template encontrado (Título): 'Cobrança .'
+[Worker 4] 2026-01-05 17:03:57,556 - INFO - [Marta De Oliveira] 4️⃣ Enviando mensagem...
+[Worker 4] 2026-01-05 17:03:57,658 - INFO - [Marta De Oliveira] 🚀 Clicando em 'Enviar' (auto)...
+[Worker 4] 2026-01-05 17:03:58,835 - INFO - [Marta De Oliveira] ✅ Sucesso detectado.
+[Worker 4] 2026-01-05 17:04:01,450 - INFO - [Marta De Oliveira] ✅ Envio 8 concluído com sucesso!
+[Worker 4] 2026-01-05 17:04:01,468 - INFO - [11/32] Processando: Eliseu De Oliveira Souza
+[Worker 4] 2026-01-05 17:04:06,210 - INFO - 🔍 Buscando 'Eliseu De Oliveira Souza' com 6 variações: ['eliseu oliveira', 'eliseu souza', 'eliseu oliveira souza', 'eliseu', 'oliveira souza', 'souza']
+[Worker 4] 2026-01-05 17:04:18,665 - INFO - ✅ Match EXATO: 'Eliseu De Oliveira Souza'
+[Worker 4] 2026-01-05 17:04:19,708 - INFO - ✅ Clicou no NOME do cliente corretamente
+[Worker 4] 2026-01-05 17:04:21,050 - INFO - --- Processando: Eliseu De Oliveira Souza ---
+[Worker 4] 2026-01-05 17:04:21,199 - INFO - [Eliseu De Oliveira Souza] Celular '+5516991338686' já está correto.
+[Worker 4] 2026-01-05 17:04:21,282 - WARNING - [Eliseu De Oliveira Souza] Telefone '08/04/2025 14:28' inválido (Sem DDI 55)
+[Worker 4] 2026-01-05 17:04:21,283 - WARNING - [Eliseu De Oliveira Souza] Não foi possível normalizar '08/04/2025 14:28'.
+[Worker 4] 2026-01-05 17:04:21,396 - INFO - [Eliseu De Oliveira Souza] Encontrados 1 números para envio.
+[Worker 4] 2026-01-05 17:04:21,397 - INFO - [Eliseu De Oliveira Souza] 🚀 Iniciando envio 1/1 para LINK_TEL: +5516991338686
+[Worker 4] 2026-01-05 17:04:21,398 - INFO - [Eliseu De Oliveira Souza] Abrindo modal WhatsApp...
+[Worker 4] 2026-01-05 17:04:25,386 - INFO - [Eliseu De Oliveira Souza] ✅ Modal aberto
+[Worker 4] 2026-01-05 17:04:25,387 - INFO - >>> MODAL DO WHATSAPP ABERTO.
+[Worker 4] 2026-01-05 17:04:28,972 - INFO - Procurando template: 'Cobrança .'
+[Worker 4] 2026-01-05 17:04:31,025 - INFO - Tentativa 1: Digitando nome 'Cobrança'...
+[Worker 4] 2026-01-05 17:04:34,157 - INFO - Template encontrado (Título): 'Cobrança .'
+[Worker 4] 2026-01-05 17:04:39,514 - INFO - [Eliseu De Oliveira Souza] 4️⃣ Enviando mensagem...
+[Worker 4] 2026-01-05 17:04:39,600 - INFO - [Eliseu De Oliveira Souza] 🚀 Clicando em 'Enviar' (auto)...
+[Worker 4] 2026-01-05 17:04:40,717 - INFO - [Eliseu De Oliveira Souza] ✅ Sucesso detectado.
+[Worker 4] 2026-01-05 17:04:42,815 - INFO - [Eliseu De Oliveira Souza] ✅ Envio 1 concluído com sucesso!
+[Worker 4] 2026-01-05 17:04:42,840 - INFO - [12/32] Processando: Cleusa Procopio Soares Bachini
+[Worker 4] 2026-01-05 17:04:47,621 - INFO - 🔍 Buscando 'Cleusa Procopio Soares Bachini' com 6 variações: ['cleusa procopio', 'cleusa bachini', 'bachini', 'cleusa procopio soares bachini', 'cleusa', 'soares bachini']
+[Worker 4] 2026-01-05 17:05:00,493 - INFO - ✅ Match EXATO: 'Cleusa Procopio Soares Bachini'
+[Worker 4] 2026-01-05 17:05:01,322 - INFO - ✅ Clicou no NOME do cliente corretamente
+[Worker 4] 2026-01-05 17:05:03,014 - INFO - --- Processando: Cleusa Procopio Soares Bachini ---
+[Worker 4] 2026-01-05 17:05:03,112 - INFO - [Cleusa Procopio Soares Bachini] Celular '+5516997173418' já está correto.
+[Worker 4] 2026-01-05 17:05:03,196 - WARNING - [Cleusa Procopio Soares Bachini] Telefone '08/04/2025 14:28' inválido (Sem DDI 55)
+[Worker 4] 2026-01-05 17:05:03,196 - WARNING - [Cleusa Procopio Soares Bachini] Não foi possível normalizar '08/04/2025 14:28'.
+[Worker 4] 2026-01-05 17:05:03,383 - INFO - [Cleusa Procopio Soares Bachini] Encontrados 1 números para envio.
+[Worker 4] 2026-01-05 17:05:03,384 - INFO - [Cleusa Procopio Soares Bachini] 🚀 Iniciando envio 1/1 para LINK_TEL: +5516997173418
+[Worker 4] 2026-01-05 17:05:03,384 - INFO - [Cleusa Procopio Soares Bachini] Abrindo modal WhatsApp...
+[Worker 4] 2026-01-05 17:05:07,484 - INFO - [Cleusa Procopio Soares Bachini] ✅ Modal aberto
+[Worker 4] 2026-01-05 17:05:07,485 - INFO - >>> MODAL DO WHATSAPP ABERTO.
+[Worker 4] 2026-01-05 17:05:11,331 - INFO - Procurando template: 'Cobrança .'
+[Worker 4] 2026-01-05 17:05:13,513 - INFO - Tentativa 1: Digitando nome 'Cobrança'...
+[Worker 4] 2026-01-05 17:05:16,384 - INFO - Template encontrado (Título): 'Cobrança .'
+[Worker 4] 2026-01-05 17:05:21,482 - INFO - [Cleusa Procopio Soares Bachini] 4️⃣ Enviando mensagem...
+[Worker 4] 2026-01-05 17:05:21,574 - INFO - [Cleusa Procopio Soares Bachini] 🚀 Clicando em 'Enviar' (auto)...
+[Worker 4] 2026-01-05 17:05:23,087 - INFO - [Cleusa Procopio Soares Bachini] ✅ Sucesso detectado.
+[Worker 4] 2026-01-05 17:05:25,984 - INFO - [Cleusa Procopio Soares Bachini] ✅ Envio 1 concluído com sucesso!
+[Worker 4] 2026-01-05 17:05:26,014 - INFO - [13/32] Processando: Carmen Rosario Ferreira Do Prado
+[Worker 4] 2026-01-05 17:05:31,099 - INFO - 🔍 Buscando 'Carmen Rosario Ferreira Do Prado' com 6 variações: ['carmen rosario', 'carmen prado', 'prado', 'carmen rosario ferreira prado', 'carmen', 'ferreira prado']
+[Worker 4] 2026-01-05 17:05:42,882 - INFO - ✅ Match EXATO: 'Carmen Rosario Ferreira Do Prado'
+[Worker 4] 2026-01-05 17:05:43,696 - INFO - ✅ Clicou no NOME do cliente corretamente
+[Worker 4] 2026-01-05 17:05:45,220 - INFO - --- Processando: Carmen Rosario Ferreira Do Prado ---
+[Worker 4] 2026-01-05 17:05:45,302 - WARNING - [Carmen Rosario Ferreira Do Prado] Celular '19982319751' inválido (Sem DDI 55)
+[Worker 4] 2026-01-05 17:05:45,302 - INFO - [Carmen Rosario Ferreira Do Prado] Celular: '19982319751' → '+5519982319751'
+[Worker 4] 2026-01-05 17:05:45,366 - WARNING - [Carmen Rosario Ferreira Do Prado] Telefone '08/04/2025 14:28' inválido (Sem DDI 55)
+[Worker 4] 2026-01-05 17:05:45,367 - WARNING - [Carmen Rosario Ferreira Do Prado] Não foi possível normalizar '08/04/2025 14:28'.
+[Worker 4] 2026-01-05 17:05:45,367 - INFO - [Carmen Rosario Ferreira Do Prado] 🛠️ Iniciando correção de 1 campo(s): Celular
+[Worker 4] 2026-01-05 17:05:49,668 - INFO - [Carmen Rosario Ferreira Do Prado] ✏️ Celular: +5519982319751
+[Worker 4] 2026-01-05 17:05:52,572 - INFO - [Carmen Rosario Ferreira Do Prado] ✅ Todos os campos salvos com sucesso!
+[Worker 4] 2026-01-05 17:05:54,685 - INFO - [Carmen Rosario Ferreira Do Prado] Encontrados 1 números para envio.
+[Worker 4] 2026-01-05 17:05:54,686 - INFO - [Carmen Rosario Ferreira Do Prado] 🚀 Iniciando envio 1/1 para LINK_TEL: +5519982319751
+[Worker 4] 2026-01-05 17:05:54,687 - INFO - [Carmen Rosario Ferreira Do Prado] Abrindo modal WhatsApp...
+[Worker 4] 2026-01-05 17:05:59,572 - INFO - [Carmen Rosario Ferreira Do Prado] ✅ Modal aberto
+[Worker 4] 2026-01-05 17:05:59,572 - INFO - >>> MODAL DO WHATSAPP ABERTO.
+[Worker 4] 2026-01-05 17:06:04,102 - INFO - Procurando template: 'Cobrança .'
+[Worker 4] 2026-01-05 17:06:06,425 - INFO - Tentativa 1: Digitando nome 'Cobrança'...
+[Worker 4] 2026-01-05 17:06:10,282 - INFO - Template encontrado (Título): 'Cobrança .'
+[Worker 4] 2026-01-05 17:06:15,699 - INFO - [Carmen Rosario Ferreira Do Prado] 4️⃣ Enviando mensagem...
+[Worker 4] 2026-01-05 17:06:15,806 - INFO - [Carmen Rosario Ferreira Do Prado] 🚀 Clicando em 'Enviar' (auto)...
+[Worker 4] 2026-01-05 17:06:17,020 - INFO - [Carmen Rosario Ferreira Do Prado] ✅ Sucesso detectado.
+[Worker 4] 2026-01-05 17:06:19,896 - INFO - [Carmen Rosario Ferreira Do Prado] ✅ Envio 1 concluído com sucesso!
+[Worker 4] 2026-01-05 17:06:19,918 - INFO - [14/32] Processando: Amanda Costa
+[Worker 4] 2026-01-05 17:06:24,783 - INFO - 🔍 Buscando 'Amanda Costa' com 3 variações: ['amanda costa', 'amanda', 'costa']
+[Worker 4] 2026-01-05 17:06:37,933 - INFO - ✅ Match EXATO: 'Amanda Costa'
+[Worker 4] 2026-01-05 17:06:39,147 - INFO - ✅ Clicou no NOME do cliente corretamente
+[Worker 4] 2026-01-05 17:06:41,223 - INFO - --- Processando: Amanda Costa ---
+[Worker 4] 2026-01-05 17:06:41,308 - INFO - [Amanda Costa] Celular '+5516991068973' já está correto.
+[Worker 4] 2026-01-05 17:06:41,384 - WARNING - [Amanda Costa] Telefone '08/04/2025 14:28' inválido (Sem DDI 55)
+[Worker 4] 2026-01-05 17:06:41,385 - WARNING - [Amanda Costa] Não foi possível normalizar '08/04/2025 14:28'.
+[Worker 4] 2026-01-05 17:06:41,506 - INFO - [Amanda Costa] Encontrados 1 números para envio.
+[Worker 4] 2026-01-05 17:06:41,507 - INFO - [Amanda Costa] 🚀 Iniciando envio 1/1 para LINK_TEL: +5516991068973
+[Worker 4] 2026-01-05 17:06:41,507 - INFO - [Amanda Costa] Abrindo modal WhatsApp...
+[Worker 4] 2026-01-05 17:06:45,595 - INFO - [Amanda Costa] ✅ Modal aberto
+[Worker 4] 2026-01-05 17:06:45,596 - INFO - >>> MODAL DO WHATSAPP ABERTO.
+[Worker 4] 2026-01-05 17:06:49,234 - INFO - Procurando template: 'Cobrança .'
+[Worker 4] 2026-01-05 17:06:51,548 - INFO - Tentativa 1: Digitando nome 'Cobrança'...
+[Worker 4] 2026-01-05 17:06:54,415 - INFO - Template encontrado (Título): 'Cobrança .'
+[Worker 4] 2026-01-05 17:06:59,569 - INFO - [Amanda Costa] 4️⃣ Enviando mensagem...
+[Worker 4] 2026-01-05 17:06:59,648 - INFO - [Amanda Costa] 🚀 Clicando em 'Enviar' (auto)...
+[Worker 4] 2026-01-05 17:07:00,792 - INFO - [Amanda Costa] ✅ Sucesso detectado.
+[Worker 4] 2026-01-05 17:07:03,526 - INFO - [Amanda Costa] ✅ Envio 1 concluído com sucesso!
+[Worker 4] 2026-01-05 17:07:03,545 - INFO - [15/32] Processando: Sandra Suveges Ribeiro
+[Worker 4] 2026-01-05 17:07:09,949 - INFO - 🔍 Buscando 'Sandra Suveges Ribeiro' com 6 variações: ['sandra suveges', 'sandra ribeiro', 'ribeiro', 'sandra suveges ribeiro', 'sandra', 'suveges ribeiro']
+[Worker 4] 2026-01-05 17:07:31,845 - INFO - ✅ Match EXATO: 'Sandra Suveges Ribeiro'
+[Worker 4] 2026-01-05 17:07:32,858 - INFO - ✅ Clicou no NOME do cliente corretamente
+[Worker 4] 2026-01-05 17:07:34,053 - INFO - --- Processando: Sandra Suveges Ribeiro ---
+[Worker 4] 2026-01-05 17:07:34,118 - WARNING - [Sandra Suveges Ribeiro] Celular '19981774433' inválido (Sem DDI 55)
+[Worker 4] 2026-01-05 17:07:34,119 - INFO - [Sandra Suveges Ribeiro] Celular: '19981774433' → '+5519981774433'
+[Worker 4] 2026-01-05 17:07:34,182 - WARNING - [Sandra Suveges Ribeiro] Telefone '08/04/2025 14:28' inválido (Sem DDI 55)
+[Worker 4] 2026-01-05 17:07:34,183 - WARNING - [Sandra Suveges Ribeiro] Não foi possível normalizar '08/04/2025 14:28'.
+[Worker 4] 2026-01-05 17:07:34,183 - INFO - [Sandra Suveges Ribeiro] 🛠️ Iniciando correção de 1 campo(s): Celular
+[Worker 4] 2026-01-05 17:07:39,120 - INFO - [Sandra Suveges Ribeiro] ✏️ Celular: +5519981774433
+[Worker 4] 2026-01-05 17:07:42,511 - INFO - [Sandra Suveges Ribeiro] ✅ Todos os campos salvos com sucesso!
+[Worker 4] 2026-01-05 17:07:44,726 - INFO - [Sandra Suveges Ribeiro] Encontrados 1 números para envio.
+[Worker 4] 2026-01-05 17:07:44,727 - INFO - [Sandra Suveges Ribeiro] 🚀 Iniciando envio 1/1 para LINK_TEL: +5519981774433
+[Worker 4] 2026-01-05 17:07:44,728 - INFO - [Sandra Suveges Ribeiro] Abrindo modal WhatsApp...
+[Worker 4] 2026-01-05 17:07:49,169 - INFO - [Sandra Suveges Ribeiro] ✅ Modal aberto
+[Worker 4] 2026-01-05 17:07:49,170 - INFO - >>> MODAL DO WHATSAPP ABERTO.
+[Worker 4] 2026-01-05 17:07:52,894 - INFO - Procurando template: 'Cobrança .'
+[Worker 4] 2026-01-05 17:07:55,096 - INFO - Tentativa 1: Digitando nome 'Cobrança'...
+[Worker 4] 2026-01-05 17:08:00,716 - INFO - Template encontrado (Título): 'Cobrança .'
+[Worker 4] 2026-01-05 17:08:06,280 - INFO - [Sandra Suveges Ribeiro] 4️⃣ Enviando mensagem...
+[Worker 4] 2026-01-05 17:08:06,538 - INFO - [Sandra Suveges Ribeiro] 🚀 Clicando em 'Enviar' (auto)...
+[Worker 4] 2026-01-05 17:08:08,598 - INFO - [Sandra Suveges Ribeiro] ✅ Sucesso detectado.
+[Worker 4] 2026-01-05 17:08:11,866 - INFO - [Sandra Suveges Ribeiro] ✅ Envio 1 concluído com sucesso!
+[Worker 4] 2026-01-05 17:08:11,947 - INFO - [16/32] Processando: Leonardo Silveira
+[Worker 4] 2026-01-05 17:08:17,361 - INFO - 🔍 Buscando 'Leonardo Silveira' com 3 variações: ['leonardo silveira', 'silveira', 'leonardo']
+[Worker 4] 2026-01-05 17:08:34,320 - INFO - ✅ Match EXATO: 'Leonardo Silveira'
+[Worker 4] 2026-01-05 17:08:35,243 - INFO - ✅ Clicou no NOME do cliente corretamente
+[Worker 4] 2026-01-05 17:08:37,284 - INFO - --- Processando: Leonardo Silveira ---
+[Worker 4] 2026-01-05 17:08:37,391 - INFO - [Leonardo Silveira] Celular '+5519981544662' já está correto.
+[Worker 4] 2026-01-05 17:08:37,461 - WARNING - [Leonardo Silveira] Telefone '08/04/2025 14:28' inválido (Sem DDI 55)
+[Worker 4] 2026-01-05 17:08:37,462 - WARNING - [Leonardo Silveira] Não foi possível normalizar '08/04/2025 14:28'.
+[Worker 4] 2026-01-05 17:08:37,594 - INFO - [Leonardo Silveira] Encontrados 1 números para envio.
+[Worker 4] 2026-01-05 17:08:37,596 - INFO - [Leonardo Silveira] 🚀 Iniciando envio 1/1 para LINK_TEL: +5519981544662
+[Worker 4] 2026-01-05 17:08:37,599 - INFO - [Leonardo Silveira] Abrindo modal WhatsApp...
+[Worker 4] 2026-01-05 17:08:41,452 - INFO - [Leonardo Silveira] ✅ Modal aberto
+[Worker 4] 2026-01-05 17:08:41,453 - INFO - >>> MODAL DO WHATSAPP ABERTO.
+[Worker 4] 2026-01-05 17:08:45,103 - INFO - Procurando template: 'Cobrança .'
+[Worker 4] 2026-01-05 17:08:47,806 - INFO - Tentativa 1: Digitando nome 'Cobrança'...
+[Worker 4] 2026-01-05 17:08:52,272 - INFO - Template encontrado (Título): 'Cobrança .'
+[Worker 4] 2026-01-05 17:08:57,543 - INFO - [Leonardo Silveira] 4️⃣ Enviando mensagem...
+[Worker 4] 2026-01-05 17:08:57,996 - INFO - [Leonardo Silveira] 🚀 Clicando em 'Enviar' (auto)...
+[Worker 4] 2026-01-05 17:08:59,416 - INFO - [Leonardo Silveira] ✅ Sucesso detectado.
+[Worker 4] 2026-01-05 17:09:03,457 - INFO - [Leonardo Silveira] ✅ Envio 1 concluído com sucesso!
+[Worker 4] 2026-01-05 17:09:03,490 - INFO - [17/32] Processando: Rita Brigadeiros Ltda Me
+[Worker 4] 2026-01-05 17:09:09,892 - INFO - 🔍 Buscando 'Rita Brigadeiros Ltda Me' com 3 variações: ['rita brigadeiros', 'brigadeiros', 'rita']
+[Worker 4] 2026-01-05 17:09:26,509 - INFO - ✅ Match EXATO: 'Rita Brigadeiros Ltda Me'
+[Worker 4] 2026-01-05 17:09:27,036 - INFO - ✅ Clicou no NOME do cliente corretamente
+[Worker 4] 2026-01-05 17:09:29,145 - INFO - --- Processando: Rita Brigadeiros Ltda Me ---
+[Worker 4] 2026-01-05 17:09:29,204 - INFO - [Rita Brigadeiros Ltda Me] Celular '+5516996066760' já está correto.
+[Worker 4] 2026-01-05 17:09:29,275 - WARNING - [Rita Brigadeiros Ltda Me] Telefone '08/04/2025 14:28' inválido (Sem DDI 55)
+[Worker 4] 2026-01-05 17:09:29,275 - WARNING - [Rita Brigadeiros Ltda Me] Não foi possível normalizar '08/04/2025 14:28'.
+[Worker 4] 2026-01-05 17:09:29,376 - INFO - [Rita Brigadeiros Ltda Me] Encontrados 1 números para envio.
+[Worker 4] 2026-01-05 17:09:29,377 - INFO - [Rita Brigadeiros Ltda Me] 🚀 Iniciando envio 1/1 para LINK_TEL: +5516996066760
+[Worker 4] 2026-01-05 17:09:29,378 - INFO - [Rita Brigadeiros Ltda Me] Abrindo modal WhatsApp...
+[Worker 4] 2026-01-05 17:09:32,931 - INFO - [Rita Brigadeiros Ltda Me] ✅ Modal aberto
+[Worker 4] 2026-01-05 17:09:32,932 - INFO - >>> MODAL DO WHATSAPP ABERTO.
+[Worker 4] 2026-01-05 17:09:36,560 - INFO - Procurando template: 'Cobrança .'
+[Worker 4] 2026-01-05 17:09:38,704 - INFO - Tentativa 1: Digitando nome 'Cobrança'...
+[Worker 4] 2026-01-05 17:09:42,386 - INFO - Template encontrado (Título): 'Cobrança .'
+[Worker 4] 2026-01-05 17:09:47,916 - INFO - [Rita Brigadeiros Ltda Me] 4️⃣ Enviando mensagem...
+[Worker 4] 2026-01-05 17:09:48,296 - INFO - [Rita Brigadeiros Ltda Me] 🚀 Clicando em 'Enviar' (auto)...
+[Worker 4] 2026-01-05 17:09:50,036 - INFO - [Rita Brigadeiros Ltda Me] ✅ Sucesso detectado.
+[Worker 4] 2026-01-05 17:09:53,759 - INFO - [Rita Brigadeiros Ltda Me] ✅ Envio 1 concluído com sucesso!
+[Worker 4] 2026-01-05 17:09:53,797 - INFO - [18/32] Processando: Isnaldo José Da Rocha
+[Worker 4] 2026-01-05 17:09:59,796 - INFO - 🔍 Buscando 'Isnaldo José Da Rocha' com 6 variações: ['isnaldo jose', 'isnaldo rocha', 'rocha', 'isnaldo jose rocha', 'isnaldo', 'jose rocha']
+[Worker 4] 2026-01-05 17:10:13,259 - INFO - ✅ Match FUZZY (0.98): 'Isnaldo Jos� Da Rocha'
+[Worker 4] 2026-01-05 17:10:13,912 - INFO - ✅ Clicou no NOME do cliente corretamente
+[Worker 4] 2026-01-05 17:10:15,677 - INFO - --- Processando: Isnaldo José Da Rocha ---
+[Worker 4] 2026-01-05 17:10:15,741 - INFO - [Isnaldo José Da Rocha] Celular '+5516994442342' já está correto.
+[Worker 4] 2026-01-05 17:10:15,803 - WARNING - [Isnaldo José Da Rocha] Telefone '08/04/2025 14:28' inválido (Sem DDI 55)
+[Worker 4] 2026-01-05 17:10:15,804 - WARNING - [Isnaldo José Da Rocha] Não foi possível normalizar '08/04/2025 14:28'.
+[Worker 4] 2026-01-05 17:10:15,911 - INFO - [Isnaldo José Da Rocha] Encontrados 1 números para envio.
+[Worker 4] 2026-01-05 17:10:15,911 - INFO - [Isnaldo José Da Rocha] 🚀 Iniciando envio 1/1 para LINK_TEL: +5516994442342
+[Worker 4] 2026-01-05 17:10:15,912 - INFO - [Isnaldo José Da Rocha] Abrindo modal WhatsApp...
+[Worker 4] 2026-01-05 17:10:21,158 - INFO - [Isnaldo José Da Rocha] ✅ Modal aberto
+[Worker 4] 2026-01-05 17:10:21,159 - INFO - >>> MODAL DO WHATSAPP ABERTO.
+[Worker 4] 2026-01-05 17:10:25,498 - INFO - Procurando template: 'Cobrança .'
+[Worker 4] 2026-01-05 17:10:28,486 - INFO - Tentativa 1: Digitando nome 'Cobrança'...
+[Worker 4] 2026-01-05 17:10:33,466 - INFO - Template encontrado (Título): 'Cobrança .'
+[Worker 4] 2026-01-05 17:10:38,754 - INFO - [Isnaldo José Da Rocha] 4️⃣ Enviando mensagem...
+[Worker 4] 2026-01-05 17:10:38,839 - INFO - [Isnaldo José Da Rocha] 🚀 Clicando em 'Enviar' (auto)...
+[Worker 4] 2026-01-05 17:10:40,051 - INFO - [Isnaldo José Da Rocha] ✅ Sucesso detectado.
+[Worker 4] 2026-01-05 17:10:42,667 - INFO - [Isnaldo José Da Rocha] ✅ Envio 1 concluído com sucesso!
+[Worker 4] 2026-01-05 17:10:42,702 - INFO - [19/32] Processando: Carlos Eduardo Caetano
+[Worker 4] 2026-01-05 17:10:47,849 - INFO - 🔍 Buscando 'Carlos Eduardo Caetano' com 6 variações: ['carlos eduardo', 'carlos caetano', 'caetano', 'carlos eduardo caetano', 'carlos', 'eduardo caetano']
+[Worker 4] 2026-01-05 17:10:55,444 - WARNING - ⚠️ Campo de busca teimoso: 'isnaldo jose'. Tentando limpar novamente...
+[Worker 4] 2026-01-05 17:11:08,063 - INFO - ✅ Match EXATO: 'Carlos Eduardo Caetano'
+[Worker 4] 2026-01-05 17:11:09,473 - INFO - ✅ Clicou no NOME do cliente corretamente
+[Worker 4] 2026-01-05 17:11:10,781 - INFO - --- Processando: Carlos Eduardo Caetano ---
+[Worker 4] 2026-01-05 17:11:10,856 - WARNING - [Carlos Eduardo Caetano] Celular '19992491226' inválido (Sem DDI 55)
+[Worker 4] 2026-01-05 17:11:10,858 - INFO - [Carlos Eduardo Caetano] Celular: '19992491226' → '+5519992491226'
+[Worker 4] 2026-01-05 17:11:10,924 - WARNING - [Carlos Eduardo Caetano] Telefone '08/04/2025 14:28' inválido (Sem DDI 55)
+[Worker 4] 2026-01-05 17:11:10,924 - WARNING - [Carlos Eduardo Caetano] Não foi possível normalizar '08/04/2025 14:28'.
+[Worker 4] 2026-01-05 17:11:10,925 - INFO - [Carlos Eduardo Caetano] 🛠️ Iniciando correção de 1 campo(s): Celular
+[Worker 4] 2026-01-05 17:11:15,433 - INFO - [Carlos Eduardo Caetano] ✏️ Celular: +5519992491226
+[Worker 4] 2026-01-05 17:11:18,871 - INFO - [Carlos Eduardo Caetano] ✅ Todos os campos salvos com sucesso!
+[Worker 4] 2026-01-05 17:11:21,222 - INFO - [Carlos Eduardo Caetano] Encontrados 6 números para envio.
+[Worker 4] 2026-01-05 17:11:21,223 - INFO - [Carlos Eduardo Caetano] 🚀 Iniciando envio 1/6 para LINK_TEL: +5513974150723
+[Worker 4] 2026-01-05 17:11:21,223 - INFO - [Carlos Eduardo Caetano] Abrindo modal WhatsApp...
+[Worker 4] 2026-01-05 17:11:25,385 - INFO - [Carlos Eduardo Caetano] ✅ Modal aberto
+[Worker 4] 2026-01-05 17:11:25,386 - INFO - >>> MODAL DO WHATSAPP ABERTO.
+[Worker 4] 2026-01-05 17:11:29,185 - INFO - Procurando template: 'Cobrança .'
+[Worker 4] 2026-01-05 17:11:31,546 - INFO - Tentativa 1: Digitando nome 'Cobrança'...
+[Worker 4] 2026-01-05 17:11:38,404 - INFO - Template encontrado (Título): 'Cobrança .'
+[Worker 4] 2026-01-05 17:11:43,651 - INFO - [Carlos Eduardo Caetano] 4️⃣ Enviando mensagem...
+[Worker 4] 2026-01-05 17:11:43,805 - INFO - [Carlos Eduardo Caetano] 🚀 Clicando em 'Enviar' (auto)...
+[Worker 4] 2026-01-05 17:11:45,777 - INFO - [Carlos Eduardo Caetano] ✅ Sucesso detectado.
+[Worker 4] 2026-01-05 17:11:48,513 - INFO - [Carlos Eduardo Caetano] ✅ Envio 1 concluído com sucesso!
+[Worker 4] 2026-01-05 17:11:48,513 - INFO - [Carlos Eduardo Caetano] 🚀 Iniciando envio 2/6 para LINK_TEL: +5514997270545
+[Worker 4] 2026-01-05 17:11:48,514 - INFO - [Carlos Eduardo Caetano] 🔄 Recarregando página para limpar estado do envio anterior...
+[Worker 4] 2026-01-05 17:12:04,136 - INFO - [Carlos Eduardo Caetano] Abrindo modal WhatsApp...
+[Worker 4] 2026-01-05 17:12:12,118 - INFO - [Carlos Eduardo Caetano] ✅ Modal aberto
+[Worker 4] 2026-01-05 17:12:12,121 - INFO - >>> MODAL DO WHATSAPP ABERTO.
+[Worker 4] 2026-01-05 17:12:17,867 - INFO - Procurando template: 'Cobrança .'
+[Worker 4] 2026-01-05 17:12:22,883 - INFO - Tentativa 1: Digitando nome 'Cobrança'...
+[Worker 4] 2026-01-05 17:12:30,265 - INFO - Template encontrado (Título): 'Cobrança .'
+[Worker 4] 2026-01-05 17:12:36,114 - INFO - [Carlos Eduardo Caetano] 4️⃣ Enviando mensagem...
+[Worker 4] 2026-01-05 17:12:36,466 - INFO - [Carlos Eduardo Caetano] 🚀 Clicando em 'Enviar' (auto)...
+[Worker 4] 2026-01-05 17:12:38,551 - INFO - [Carlos Eduardo Caetano] ✅ Sucesso detectado.
+[Worker 4] 2026-01-05 17:12:41,290 - INFO - [Carlos Eduardo Caetano] ✅ Envio 2 concluído com sucesso!
+[Worker 4] 2026-01-05 17:12:41,297 - INFO - [Carlos Eduardo Caetano] 🚀 Iniciando envio 3/6 para LINK_TEL: +5513997888768
+[Worker 4] 2026-01-05 17:12:41,310 - INFO - [Carlos Eduardo Caetano] 🔄 Recarregando página para limpar estado do envio anterior...
+[Worker 4] 2026-01-05 17:12:53,159 - INFO - [Carlos Eduardo Caetano] Abrindo modal WhatsApp...
+[Worker 4] 2026-01-05 17:12:59,401 - INFO - [Carlos Eduardo Caetano] ✅ Modal aberto
+[Worker 4] 2026-01-05 17:12:59,402 - INFO - >>> MODAL DO WHATSAPP ABERTO.
+[Worker 4] 2026-01-05 17:13:03,152 - INFO - Procurando template: 'Cobrança .'
+[Worker 4] 2026-01-05 17:13:07,170 - INFO - Tentativa 1: Digitando nome 'Cobrança'...
+[Worker 4] 2026-01-05 17:13:14,427 - INFO - Template encontrado (Título): 'Cobrança .'
+[Worker 4] 2026-01-05 17:13:19,747 - INFO - [Carlos Eduardo Caetano] 4️⃣ Enviando mensagem...
+[Worker 4] 2026-01-05 17:13:19,858 - INFO - [Carlos Eduardo Caetano] 🚀 Clicando em 'Enviar' (auto)...
+[Worker 4] 2026-01-05 17:13:21,175 - INFO - [Carlos Eduardo Caetano] ✅ Sucesso detectado.
+[Worker 4] 2026-01-05 17:13:23,872 - INFO - [Carlos Eduardo Caetano] ✅ Envio 3 concluído com sucesso!
+[Worker 4] 2026-01-05 17:13:23,897 - INFO - [Carlos Eduardo Caetano] 🚀 Iniciando envio 4/6 para LINK_TEL: +5519992491226
+[Worker 4] 2026-01-05 17:13:23,938 - INFO - [Carlos Eduardo Caetano] 🔄 Recarregando página para limpar estado do envio anterior...
+[Worker 4] 2026-01-05 17:13:35,829 - INFO - [Carlos Eduardo Caetano] Abrindo modal WhatsApp...
+[Worker 4] 2026-01-05 17:13:40,437 - INFO - [Carlos Eduardo Caetano] ✅ Modal aberto
+[Worker 4] 2026-01-05 17:13:40,438 - INFO - >>> MODAL DO WHATSAPP ABERTO.
+[Worker 4] 2026-01-05 17:13:44,649 - INFO - Procurando template: 'Cobrança .'
+[Worker 4] 2026-01-05 17:13:46,968 - INFO - Tentativa 1: Digitando nome 'Cobrança'...
+[Worker 4] 2026-01-05 17:13:50,884 - INFO - Template encontrado (Título): 'Cobrança .'
+[Worker 4] 2026-01-05 17:13:56,220 - INFO - [Carlos Eduardo Caetano] 4️⃣ Enviando mensagem...
+[Worker 4] 2026-01-05 17:13:56,565 - INFO - [Carlos Eduardo Caetano] 🚀 Clicando em 'Enviar' (auto)...
+[Worker 4] 2026-01-05 17:13:58,084 - INFO - [Carlos Eduardo Caetano] ✅ Sucesso detectado.
+[Worker 4] 2026-01-05 17:14:00,860 - INFO - [Carlos Eduardo Caetano] ✅ Envio 4 concluído com sucesso!
+[Worker 4] 2026-01-05 17:14:00,861 - INFO - [Carlos Eduardo Caetano] 🚀 Iniciando envio 5/6 para LINK_TEL: +5532999836297
+[Worker 4] 2026-01-05 17:14:00,862 - INFO - [Carlos Eduardo Caetano] 🔄 Recarregando página para limpar estado do envio anterior...
+[Worker 4] 2026-01-05 17:14:12,404 - INFO - [Carlos Eduardo Caetano] Abrindo modal WhatsApp...
+[Worker 4] 2026-01-05 17:14:16,635 - INFO - [Carlos Eduardo Caetano] ✅ Modal aberto
+[Worker 4] 2026-01-05 17:14:16,637 - INFO - >>> MODAL DO WHATSAPP ABERTO.
+[Worker 4] 2026-01-05 17:14:20,342 - INFO - Procurando template: 'Cobrança .'
+[Worker 4] 2026-01-05 17:14:22,924 - INFO - Tentativa 1: Digitando nome 'Cobrança'...
+[Worker 4] 2026-01-05 17:14:25,918 - INFO - Template encontrado (Título): 'Cobrança .'
+[Worker 4] 2026-01-05 17:14:31,101 - INFO - [Carlos Eduardo Caetano] 4️⃣ Enviando mensagem...
+[Worker 4] 2026-01-05 17:14:31,212 - INFO - [Carlos Eduardo Caetano] 🚀 Clicando em 'Enviar' (auto)...
+[Worker 4] 2026-01-05 17:14:33,154 - INFO - [Carlos Eduardo Caetano] ✅ Sucesso detectado.
+[Worker 4] 2026-01-05 17:14:35,971 - INFO - [Carlos Eduardo Caetano] ✅ Envio 5 concluído com sucesso!
+[Worker 4] 2026-01-05 17:14:35,972 - INFO - [Carlos Eduardo Caetano] 🚀 Iniciando envio 6/6 para LINK_TEL: +5519991098746
+[Worker 4] 2026-01-05 17:14:35,972 - INFO - [Carlos Eduardo Caetano] 🔄 Recarregando página para limpar estado do envio anterior...
+[Worker 4] 2026-01-05 17:14:46,248 - INFO - [Carlos Eduardo Caetano] Abrindo modal WhatsApp...
+[Worker 4] 2026-01-05 17:14:51,113 - INFO - [Carlos Eduardo Caetano] ✅ Modal aberto
+[Worker 4] 2026-01-05 17:14:51,114 - INFO - >>> MODAL DO WHATSAPP ABERTO.
+[Worker 4] 2026-01-05 17:14:54,889 - INFO - Procurando template: 'Cobrança .'
+[Worker 4] 2026-01-05 17:14:57,257 - INFO - Tentativa 1: Digitando nome 'Cobrança'...
+[Worker 4] 2026-01-05 17:15:00,717 - INFO - Template encontrado (Título): 'Cobrança .'
+[Worker 4] 2026-01-05 17:15:05,861 - INFO - [Carlos Eduardo Caetano] 4️⃣ Enviando mensagem...
+[Worker 4] 2026-01-05 17:15:05,957 - INFO - [Carlos Eduardo Caetano] 🚀 Clicando em 'Enviar' (auto)...
+[Worker 4] 2026-01-05 17:15:07,160 - INFO - [Carlos Eduardo Caetano] ✅ Sucesso detectado.
+[Worker 4] 2026-01-05 17:15:10,089 - INFO - [Carlos Eduardo Caetano] ✅ Envio 6 concluído com sucesso!
+[Worker 4] 2026-01-05 17:15:10,129 - INFO - [20/32] Processando: Luzimara Fayan
+[Worker 4] 2026-01-05 17:15:14,938 - INFO - 🔍 Buscando 'Luzimara Fayan' com 3 variações: ['luzimara fayan', 'fayan', 'luzimara']
+[Worker 4] 2026-01-05 17:15:27,408 - INFO - ✅ Match EXATO: 'Luzimara Fayan'
+[Worker 4] 2026-01-05 17:15:28,056 - INFO - ✅ Clicou no NOME do cliente corretamente
+[Worker 4] 2026-01-05 17:15:30,051 - INFO - --- Processando: Luzimara Fayan ---
+[Worker 4] 2026-01-05 17:15:30,166 - INFO - [Luzimara Fayan] Celular '+5516996426551' já está correto.
+[Worker 4] 2026-01-05 17:15:30,255 - WARNING - [Luzimara Fayan] Telefone '08/04/2025 14:28' inválido (Sem DDI 55)
+[Worker 4] 2026-01-05 17:15:30,259 - WARNING - [Luzimara Fayan] Não foi possível normalizar '08/04/2025 14:28'.
+[Worker 4] 2026-01-05 17:15:30,386 - INFO - [Luzimara Fayan] Encontrados 1 números para envio.
+[Worker 4] 2026-01-05 17:15:30,386 - INFO - [Luzimara Fayan] 🚀 Iniciando envio 1/1 para LINK_TEL: +5516996426551
+[Worker 4] 2026-01-05 17:15:30,387 - INFO - [Luzimara Fayan] Abrindo modal WhatsApp...
+[Worker 4] 2026-01-05 17:15:34,051 - INFO - [Luzimara Fayan] ✅ Modal aberto
+[Worker 4] 2026-01-05 17:15:34,052 - INFO - >>> MODAL DO WHATSAPP ABERTO.
+[Worker 4] 2026-01-05 17:15:37,621 - INFO - Procurando template: 'Cobrança .'
+[Worker 4] 2026-01-05 17:15:39,868 - INFO - Tentativa 1: Digitando nome 'Cobrança'...
+[Worker 4] 2026-01-05 17:15:42,795 - INFO - Template encontrado (Título): 'Cobrança .'
+[Worker 4] 2026-01-05 17:15:47,912 - INFO - [Luzimara Fayan] 4️⃣ Enviando mensagem...
+[Worker 4] 2026-01-05 17:15:48,015 - INFO - [Luzimara Fayan] 🚀 Clicando em 'Enviar' (auto)...
+[Worker 4] 2026-01-05 17:15:49,246 - INFO - [Luzimara Fayan] ✅ Sucesso detectado.
+[Worker 4] 2026-01-05 17:15:52,008 - INFO - [Luzimara Fayan] ✅ Envio 1 concluído com sucesso!
+[Worker 4] 2026-01-05 17:15:52,053 - INFO - [21/32] Processando: Osmair Bueno De Oliveira
+[Worker 4] 2026-01-05 17:15:55,605 - INFO - Pausa de 60s...
+[Worker 4] 2026-01-05 17:16:57,008 - INFO - 🔍 Buscando 'Osmair Bueno De Oliveira' com 6 variações: ['osmair bueno', 'osmair oliveira', 'osmair bueno oliveira', 'osmair', 'bueno oliveira', 'oliveira']
+[Worker 4] 2026-01-05 17:17:04,942 - WARNING - ⚠️ Campo de busca teimoso: 'luzimara fayan'. Tentando limpar novamente...
+[Worker 4] 2026-01-05 17:17:15,398 - INFO - ✅ Match EXATO: 'Osmair Bueno De Oliveira'
+[Worker 4] 2026-01-05 17:17:16,121 - INFO - ✅ Clicou no NOME do cliente corretamente
+[Worker 4] 2026-01-05 17:17:18,662 - INFO - --- Processando: Osmair Bueno De Oliveira ---
+[Worker 4] 2026-01-05 17:17:18,845 - INFO - [Osmair Bueno De Oliveira] Celular '+5519991294159' já está correto.
+[Worker 4] 2026-01-05 17:17:19,033 - WARNING - [Osmair Bueno De Oliveira] Telefone '08/04/2025 14:28' inválido (Sem DDI 55)
+[Worker 4] 2026-01-05 17:17:19,043 - WARNING - [Osmair Bueno De Oliveira] Não foi possível normalizar '08/04/2025 14:28'.
+[Worker 4] 2026-01-05 17:17:19,607 - INFO - [Osmair Bueno De Oliveira] Encontrados 1 números para envio.
+[Worker 4] 2026-01-05 17:17:19,607 - INFO - [Osmair Bueno De Oliveira] 🚀 Iniciando envio 1/1 para LINK_TEL: +5519991294159
+[Worker 4] 2026-01-05 17:17:19,608 - INFO - [Osmair Bueno De Oliveira] Abrindo modal WhatsApp...
+[Worker 4] 2026-01-05 17:17:27,114 - INFO - [Osmair Bueno De Oliveira] ✅ Modal aberto
+[Worker 4] 2026-01-05 17:17:27,119 - INFO - >>> MODAL DO WHATSAPP ABERTO.
+[Worker 4] 2026-01-05 17:17:30,700 - INFO - Procurando template: 'Cobrança .'
+[Worker 4] 2026-01-05 17:17:32,770 - INFO - Tentativa 1: Digitando nome 'Cobrança'...
+[Worker 4] 2026-01-05 17:17:35,457 - INFO - Template encontrado (Título): 'Cobrança .'
+[Worker 4] 2026-01-05 17:17:40,557 - INFO - [Osmair Bueno De Oliveira] 4️⃣ Enviando mensagem...
+[Worker 4] 2026-01-05 17:17:40,646 - INFO - [Osmair Bueno De Oliveira] 🚀 Clicando em 'Enviar' (auto)...
+[Worker 4] 2026-01-05 17:17:41,753 - INFO - [Osmair Bueno De Oliveira] ✅ Sucesso detectado.
+[Worker 4] 2026-01-05 17:17:44,080 - INFO - [Osmair Bueno De Oliveira] ✅ Envio 1 concluído com sucesso!
+[Worker 4] 2026-01-05 17:17:44,102 - INFO - [22/32] Processando: Rosimara Aparecida Baldino Rodrigues
+[Worker 4] 2026-01-05 17:17:49,052 - INFO - 🔍 Buscando 'Rosimara Aparecida Baldino Rodrigues' com 6 variações: ['rosimara aparecida', 'rosimara rodrigues', 'rosimara aparecida baldino rodrigues', 'rosimara', 'baldino rodrigues', 'rodrigues']
+[Worker 4] 2026-01-05 17:18:02,381 - INFO - ✅ Match EXATO: 'Rosimara Aparecida Baldino Rodrigues'
+[Worker 4] 2026-01-05 17:18:03,045 - INFO - ✅ Clicou no NOME do cliente corretamente
+[Worker 4] 2026-01-05 17:18:04,742 - INFO - --- Processando: Rosimara Aparecida Baldino Rodrigues ---
+[Worker 4] 2026-01-05 17:18:04,802 - INFO - [Rosimara Aparecida Baldino Rodrigues] Celular '+5519992514760' já está correto.
+[Worker 4] 2026-01-05 17:18:04,853 - WARNING - [Rosimara Aparecida Baldino Rodrigues] Telefone '08/04/2025 14:28' inválido (Sem DDI 55)
+[Worker 4] 2026-01-05 17:18:04,854 - WARNING - [Rosimara Aparecida Baldino Rodrigues] Não foi possível normalizar '08/04/2025 14:28'.
+[Worker 4] 2026-01-05 17:18:04,949 - INFO - [Rosimara Aparecida Baldino Rodrigues] Encontrados 1 números para envio.
+[Worker 4] 2026-01-05 17:18:04,950 - INFO - [Rosimara Aparecida Baldino Rodrigues] 🚀 Iniciando envio 1/1 para LINK_TEL: +5519992514760
+[Worker 4] 2026-01-05 17:18:04,951 - INFO - [Rosimara Aparecida Baldino Rodrigues] Abrindo modal WhatsApp...
+[Worker 4] 2026-01-05 17:18:08,942 - INFO - [Rosimara Aparecida Baldino Rodrigues] ✅ Modal aberto
+[Worker 4] 2026-01-05 17:18:08,943 - INFO - >>> MODAL DO WHATSAPP ABERTO.
+[Worker 4] 2026-01-05 17:18:12,564 - INFO - Procurando template: 'Cobrança .'
+[Worker 4] 2026-01-05 17:18:14,591 - INFO - Tentativa 1: Digitando nome 'Cobrança'...
+[Worker 4] 2026-01-05 17:18:17,166 - INFO - Template encontrado (Título): 'Cobrança .'
+[Worker 4] 2026-01-05 17:18:22,322 - INFO - [Rosimara Aparecida Baldino Rodrigues] 4️⃣ Enviando mensagem...
+[Worker 4] 2026-01-05 17:18:22,412 - INFO - [Rosimara Aparecida Baldino Rodrigues] 🚀 Clicando em 'Enviar' (auto)...
+[Worker 4] 2026-01-05 17:18:24,028 - INFO - [Rosimara Aparecida Baldino Rodrigues] ✅ Sucesso detectado.
+[Worker 4] 2026-01-05 17:18:26,347 - INFO - [Rosimara Aparecida Baldino Rodrigues] ✅ Envio 1 concluído com sucesso!
+[Worker 4] 2026-01-05 17:18:26,355 - ERROR - Erro ao carregar sessão 8d5ed331cb85: Extra data: line 237 column 2 (char 6875)
+[Worker 4] 2026-01-05 17:18:26,356 - ERROR - Sessão 8d5ed331cb85 não encontrada para salvar progresso
+[Worker 4] 2026-01-05 17:18:26,357 - INFO - [23/32] Processando: Jeovany Ribeiro De Moraes
+[Worker 4] 2026-01-05 17:18:31,579 - INFO - 🔍 Buscando 'Jeovany Ribeiro De Moraes' com 6 variações: ['jeovany ribeiro', 'jeovany moraes', 'moraes', 'jeovany ribeiro moraes', 'jeovany', 'ribeiro moraes']
+[Worker 4] 2026-01-05 17:18:38,596 - WARNING - ⚠️ Campo de busca teimoso: 'rosimara aparecida'. Tentando limpar novamente...
+[Worker 4] 2026-01-05 17:18:46,892 - INFO - ✅ Match FUZZY (0.96): 'Jeovany Ribeiro de Morais'
+[Worker 4] 2026-01-05 17:18:47,368 - INFO - ✅ Clicou no NOME do cliente corretamente
+[Worker 4] 2026-01-05 17:19:07,698 - INFO - --- Processando: Jeovany Ribeiro De Moraes ---
+[Worker 4] 2026-01-05 17:19:07,757 - WARNING - [Jeovany Ribeiro De Moraes] Celular '06/06/2025 14:47' inválido (Sem DDI 55)
+[Worker 4] 2026-01-05 17:19:07,758 - WARNING - [Jeovany Ribeiro De Moraes] Não foi possível normalizar '06/06/2025 14:47'.
+[Worker 4] 2026-01-05 17:19:07,812 - WARNING - [Jeovany Ribeiro De Moraes] Telefone '06/06/2025 14:47' inválido (Sem DDI 55)
+[Worker 4] 2026-01-05 17:19:07,813 - WARNING - [Jeovany Ribeiro De Moraes] Não foi possível normalizar '06/06/2025 14:47'.
+[Worker 4] 2026-01-05 17:19:07,876 - INFO - [Jeovany Ribeiro De Moraes] Encontrados 1 números para envio.
+[Worker 4] 2026-01-05 17:19:07,877 - INFO - [Jeovany Ribeiro De Moraes] 🚀 Iniciando envio 1/1 para LINK_TEL: +5519982988786
+[Worker 4] 2026-01-05 17:19:07,878 - INFO - [Jeovany Ribeiro De Moraes] Abrindo modal WhatsApp...
+[Worker 4] 2026-01-05 17:19:29,874 - WARNING - [Jeovany Ribeiro De Moraes] Falha crítica ao clicar no ícone WhatsApp
+[Worker 4] 2026-01-05 17:19:29,876 - ERROR - [Jeovany Ribeiro De Moraes] Falha ao abrir modal.
+[Worker 4] 2026-01-05 17:19:32,249 - ERROR - Erro ao carregar sessão 8d5ed331cb85: Extra data: line 237 column 2 (char 6875)
+[Worker 4] 2026-01-05 17:19:32,250 - ERROR - Sessão 8d5ed331cb85 não encontrada para salvar progresso
+[Worker 4] 2026-01-05 17:19:32,251 - INFO - [24/32] Processando: Carnelos & Ribeiro Gelateria Ltda
+[Worker 4] 2026-01-05 17:19:37,236 - INFO - 🔍 Buscando 'Carnelos & Ribeiro Gelateria Ltda' com 6 variações: ['carnelos ribeiro', 'carnelos gelateria', 'gelateria', 'carnelos ribeiro gelateria', 'carnelos', 'ribeiro gelateria']
+[Worker 4] 2026-01-05 17:19:50,022 - INFO - ✅ Match EXATO: 'Carnelos & Ribeiro Gelateria Ltda'
+[Worker 4] 2026-01-05 17:19:50,876 - INFO - ✅ Clicou no NOME do cliente corretamente
+[Worker 4] 2026-01-05 17:19:52,160 - INFO - --- Processando: Carnelos & Ribeiro Gelateria Ltda ---
+[Worker 4] 2026-01-05 17:19:52,232 - INFO - [Carnelos & Ribeiro Gelateria Ltda] Celular '+5516993085216' já está correto.
+[Worker 4] 2026-01-05 17:19:52,302 - WARNING - [Carnelos & Ribeiro Gelateria Ltda] Telefone '08/04/2025 14:28' inválido (Sem DDI 55)
+[Worker 4] 2026-01-05 17:19:52,303 - WARNING - [Carnelos & Ribeiro Gelateria Ltda] Não foi possível normalizar '08/04/2025 14:28'.
+[Worker 4] 2026-01-05 17:19:52,392 - INFO - [Carnelos & Ribeiro Gelateria Ltda] Encontrados 1 números para envio.
+[Worker 4] 2026-01-05 17:19:52,393 - INFO - [Carnelos & Ribeiro Gelateria Ltda] 🚀 Iniciando envio 1/1 para LINK_TEL: +5516993085216
+[Worker 4] 2026-01-05 17:19:52,393 - INFO - [Carnelos & Ribeiro Gelateria Ltda] Abrindo modal WhatsApp...
+[Worker 4] 2026-01-05 17:19:56,318 - INFO - [Carnelos & Ribeiro Gelateria Ltda] ✅ Modal aberto
+[Worker 4] 2026-01-05 17:19:56,319 - INFO - >>> MODAL DO WHATSAPP ABERTO.
+[Worker 4] 2026-01-05 17:19:59,990 - INFO - Procurando template: 'Cobrança .'
+[Worker 4] 2026-01-05 17:20:02,103 - INFO - Tentativa 1: Digitando nome 'Cobrança'...
+[Worker 4] 2026-01-05 17:20:05,465 - INFO - Template encontrado (Título): 'Cobrança .'
+[Worker 4] 2026-01-05 17:20:10,540 - INFO - [Carnelos & Ribeiro Gelateria Ltda] 4️⃣ Enviando mensagem...
+[Worker 4] 2026-01-05 17:20:10,638 - INFO - [Carnelos & Ribeiro Gelateria Ltda] 🚀 Clicando em 'Enviar' (auto)...
+[Worker 4] 2026-01-05 17:20:11,812 - INFO - [Carnelos & Ribeiro Gelateria Ltda] ✅ Sucesso detectado.
+[Worker 4] 2026-01-05 17:20:13,858 - INFO - [Carnelos & Ribeiro Gelateria Ltda] ✅ Envio 1 concluído com sucesso!
+[Worker 4] 2026-01-05 17:20:13,868 - ERROR - Erro ao carregar sessão 8d5ed331cb85: Extra data: line 237 column 2 (char 6875)
+[Worker 4] 2026-01-05 17:20:13,873 - ERROR - Sessão 8d5ed331cb85 não encontrada para salvar progresso
+[Worker 4] 2026-01-05 17:20:13,876 - INFO - [25/32] Processando: Rodneia De Fatima Barboza
+[Worker 4] 2026-01-05 17:20:18,903 - INFO - 🔍 Buscando 'Rodneia De Fatima Barboza' com 6 variações: ['rodneia fatima', 'rodneia barboza', 'barboza', 'rodneia fatima barboza', 'rodneia', 'fatima barboza']
+[Worker 4] 2026-01-05 17:20:30,740 - INFO - ✅ Match EXATO: 'Rodneia De Fatima Barboza'
+[Worker 4] 2026-01-05 17:20:31,271 - INFO - ✅ Clicou no NOME do cliente corretamente
+[Worker 4] 2026-01-05 17:20:32,854 - INFO - --- Processando: Rodneia De Fatima Barboza ---
+[Worker 4] 2026-01-05 17:20:32,923 - INFO - [Rodneia De Fatima Barboza] Celular '+5519996885930' já está correto.
+[Worker 4] 2026-01-05 17:20:32,981 - WARNING - [Rodneia De Fatima Barboza] Telefone '08/04/2025 14:28' inválido (Sem DDI 55)
+[Worker 4] 2026-01-05 17:20:32,982 - WARNING - [Rodneia De Fatima Barboza] Não foi possível normalizar '08/04/2025 14:28'.
+[Worker 4] 2026-01-05 17:20:33,083 - INFO - [Rodneia De Fatima Barboza] Encontrados 1 números para envio.
+[Worker 4] 2026-01-05 17:20:33,084 - INFO - [Rodneia De Fatima Barboza] 🚀 Iniciando envio 1/1 para LINK_TEL: +5519996885930
+[Worker 4] 2026-01-05 17:20:33,084 - INFO - [Rodneia De Fatima Barboza] Abrindo modal WhatsApp...
+[Worker 4] 2026-01-05 17:20:37,202 - INFO - [Rodneia De Fatima Barboza] ✅ Modal aberto
+[Worker 4] 2026-01-05 17:20:37,204 - INFO - >>> MODAL DO WHATSAPP ABERTO.
+[Worker 4] 2026-01-05 17:20:40,826 - INFO - Procurando template: 'Cobrança .'
+[Worker 4] 2026-01-05 17:20:42,939 - INFO - Tentativa 1: Digitando nome 'Cobrança'...
+[Worker 4] 2026-01-05 17:20:45,600 - INFO - Template encontrado (Título): 'Cobrança .'
+[Worker 4] 2026-01-05 17:20:50,695 - INFO - [Rodneia De Fatima Barboza] 4️⃣ Enviando mensagem...
+[Worker 4] 2026-01-05 17:20:50,790 - INFO - [Rodneia De Fatima Barboza] 🚀 Clicando em 'Enviar' (auto)...
+[Worker 4] 2026-01-05 17:20:51,855 - INFO - [Rodneia De Fatima Barboza] ✅ Sucesso detectado.
+[Worker 4] 2026-01-05 17:20:53,853 - INFO - [Rodneia De Fatima Barboza] ✅ Envio 1 concluído com sucesso!
+[Worker 4] 2026-01-05 17:20:53,871 - ERROR - Erro ao carregar sessão 8d5ed331cb85: Extra data: line 237 column 2 (char 6875)
+[Worker 4] 2026-01-05 17:20:53,873 - ERROR - Sessão 8d5ed331cb85 não encontrada para salvar progresso
+[Worker 4] 2026-01-05 17:20:53,881 - INFO - [26/32] Processando: 10595848
+[Worker 4] 2026-01-05 17:20:58,725 - INFO - 🔢 Busca por UC detectada: 10595848
+[Worker 4] 2026-01-05 17:20:58,733 - INFO - 🔍 Buscando '10595848' com 1 variações: ['10595848']
+[Worker 4] 2026-01-05 17:21:09,177 - WARNING - ❌ Cliente '10595848' não encontrado.
+[Worker 4] 2026-01-05 17:21:09,183 - ERROR - Erro ao carregar sessão 8d5ed331cb85: Extra data: line 237 column 2 (char 6875)
+[Worker 4] 2026-01-05 17:21:09,184 - ERROR - Sessão 8d5ed331cb85 não encontrada para salvar progresso
+[Worker 4] 2026-01-05 17:21:09,185 - INFO - [27/32] Processando: Natália Casagrande Guizardi
+[Worker 4] 2026-01-05 17:21:13,897 - INFO - 🔍 Buscando 'Natália Casagrande Guizardi' com 6 variações: ['natalia casagrande', 'natalia guizardi', 'guizardi', 'natalia casagrande guizardi', 'natalia', 'casagrande guizardi']
+[Worker 4] 2026-01-05 17:21:14,748 - WARNING - ⚠️ Campo de busca teimoso: 'rodneia fatima10595848'. Tentando limpar novamente...
+[Worker 4] 2026-01-05 17:21:25,434 - WARNING - ⚠️ Campo de busca teimoso: 'natalia casagrande'. Tentando limpar novamente...
+[Worker 4] 2026-01-05 17:21:34,447 - WARNING - ⚠️ Campo de busca teimoso: 'natalia guizardi'. Tentando limpar novamente...
+[Worker 4] 2026-01-05 17:21:41,697 - INFO - ✅ Match FUZZY (0.96): 'Nat�lia Casagrande Guizardi'
+[Worker 4] 2026-01-05 17:21:42,236 - INFO - ✅ Clicou no NOME do cliente corretamente
+[Worker 4] 2026-01-05 17:21:44,139 - INFO - --- Processando: Natália Casagrande Guizardi ---
+[Worker 4] 2026-01-05 17:21:44,194 - WARNING - [Natália Casagrande Guizardi] Celular '14997112038' inválido (Sem DDI 55)
+[Worker 4] 2026-01-05 17:21:44,195 - INFO - [Natália Casagrande Guizardi] Celular: '14997112038' → '+5514997112038'
+[Worker 4] 2026-01-05 17:21:44,244 - WARNING - [Natália Casagrande Guizardi] Telefone '08/04/2025 14:28' inválido (Sem DDI 55)
+[Worker 4] 2026-01-05 17:21:44,245 - WARNING - [Natália Casagrande Guizardi] Não foi possível normalizar '08/04/2025 14:28'.
+[Worker 4] 2026-01-05 17:21:44,245 - INFO - [Natália Casagrande Guizardi] 🛠️ Iniciando correção de 1 campo(s): Celular
+[Worker 4] 2026-01-05 17:21:48,591 - INFO - [Natália Casagrande Guizardi] ✏️ Celular: +5514997112038
+[Worker 4] 2026-01-05 17:21:51,544 - INFO - [Natália Casagrande Guizardi] ✅ Todos os campos salvos com sucesso!
+[Worker 4] 2026-01-05 17:21:53,687 - INFO - [Natália Casagrande Guizardi] Encontrados 2 números para envio.
+[Worker 4] 2026-01-05 17:21:53,688 - INFO - [Natália Casagrande Guizardi] 🚀 Iniciando envio 1/2 para LINK_TEL: +5514997112038
+[Worker 4] 2026-01-05 17:21:53,688 - INFO - [Natália Casagrande Guizardi] Abrindo modal WhatsApp...
+[Worker 4] 2026-01-05 17:21:57,898 - INFO - [Natália Casagrande Guizardi] ✅ Modal aberto
+[Worker 4] 2026-01-05 17:21:57,899 - INFO - >>> MODAL DO WHATSAPP ABERTO.
+[Worker 4] 2026-01-05 17:22:01,557 - INFO - Procurando template: 'Cobrança .'
+[Worker 4] 2026-01-05 17:22:03,755 - INFO - Tentativa 1: Digitando nome 'Cobrança'...
+[Worker 4] 2026-01-05 17:22:06,582 - INFO - Template encontrado (Título): 'Cobrança .'
+[Worker 4] 2026-01-05 17:22:11,965 - INFO - [Natália Casagrande Guizardi] 4️⃣ Enviando mensagem...
+[Worker 4] 2026-01-05 17:22:12,058 - INFO - [Natália Casagrande Guizardi] 🚀 Clicando em 'Enviar' (auto)...
+[Worker 4] 2026-01-05 17:22:13,441 - INFO - [Natália Casagrande Guizardi] ✅ Sucesso detectado.
+[Worker 4] 2026-01-05 17:22:17,114 - INFO - [Natália Casagrande Guizardi] ✅ Envio 1 concluído com sucesso!
+[Worker 4] 2026-01-05 17:22:17,115 - INFO - [Natália Casagrande Guizardi] 🚀 Iniciando envio 2/2 para LINK_TEL: +5528999404789
+[Worker 4] 2026-01-05 17:22:17,116 - INFO - [Natália Casagrande Guizardi] 🔄 Recarregando página para limpar estado do envio anterior...
+[Worker 4] 2026-01-05 17:22:28,158 - INFO - [Natália Casagrande Guizardi] Abrindo modal WhatsApp...
+[Worker 4] 2026-01-05 17:22:33,343 - INFO - [Natália Casagrande Guizardi] ✅ Modal aberto
+[Worker 4] 2026-01-05 17:22:33,344 - INFO - >>> MODAL DO WHATSAPP ABERTO.
+[Worker 4] 2026-01-05 17:22:37,057 - INFO - Procurando template: 'Cobrança .'
+[Worker 4] 2026-01-05 17:22:39,514 - INFO - Tentativa 1: Digitando nome 'Cobrança'...
+[Worker 4] 2026-01-05 17:22:42,515 - INFO - Template encontrado (Título): 'Cobrança .'
+[Worker 4] 2026-01-05 17:22:47,615 - INFO - [Natália Casagrande Guizardi] 4️⃣ Enviando mensagem...
+[Worker 4] 2026-01-05 17:22:47,712 - INFO - [Natália Casagrande Guizardi] 🚀 Clicando em 'Enviar' (auto)...
+[Worker 4] 2026-01-05 17:22:48,941 - INFO - [Natália Casagrande Guizardi] ✅ Sucesso detectado.
+[Worker 4] 2026-01-05 17:22:52,317 - INFO - [Natália Casagrande Guizardi] ✅ Envio 2 concluído com sucesso!
+[Worker 4] 2026-01-05 17:22:52,330 - ERROR - Erro ao carregar sessão 8d5ed331cb85: Extra data: line 237 column 2 (char 6875)
+[Worker 4] 2026-01-05 17:22:52,331 - ERROR - Sessão 8d5ed331cb85 não encontrada para salvar progresso
+[Worker 4] 2026-01-05 17:22:52,332 - INFO - [28/32] Processando: Lucia Vallt Da Silva Camargo
+[Worker 4] 2026-01-05 17:22:57,248 - INFO - 🔍 Buscando 'Lucia Vallt Da Silva Camargo' com 6 variações: ['lucia vallt', 'lucia camargo', 'camargo', 'lucia vallt silva camargo', 'lucia', 'silva camargo']
+[Worker 4] 2026-01-05 17:23:08,394 - INFO - ✅ Match EXATO: 'Lucia Vallt Da Silva Camargo'
+[Worker 4] 2026-01-05 17:23:08,930 - INFO - ✅ Clicou no NOME do cliente corretamente
+[Worker 4] 2026-01-05 17:23:10,853 - INFO - --- Processando: Lucia Vallt Da Silva Camargo ---
+[Worker 4] 2026-01-05 17:23:10,930 - WARNING - [Lucia Vallt Da Silva Camargo] Celular '16991825830' inválido (Sem DDI 55)
+[Worker 4] 2026-01-05 17:23:10,932 - INFO - [Lucia Vallt Da Silva Camargo] Celular: '16991825830' → '+5516991825830'
+[Worker 4] 2026-01-05 17:23:11,009 - INFO - [Lucia Vallt Da Silva Camargo] Telefone '+5516991825830' já está correto.
+[Worker 4] 2026-01-05 17:23:11,010 - INFO - [Lucia Vallt Da Silva Camargo] 🛠️ Iniciando correção de 1 campo(s): Celular
+[Worker 4] 2026-01-05 17:23:15,102 - INFO - [Lucia Vallt Da Silva Camargo] ✏️ Celular: +5516991825830
+[Worker 4] 2026-01-05 17:23:17,920 - INFO - [Lucia Vallt Da Silva Camargo] ✅ Todos os campos salvos com sucesso!
+[Worker 4] 2026-01-05 17:23:20,066 - INFO - [Lucia Vallt Da Silva Camargo] Encontrados 1 números para envio.
+[Worker 4] 2026-01-05 17:23:20,067 - INFO - [Lucia Vallt Da Silva Camargo] 🚀 Iniciando envio 1/1 para LINK_TEL: +5516991825830
+[Worker 4] 2026-01-05 17:23:20,068 - INFO - [Lucia Vallt Da Silva Camargo] Abrindo modal WhatsApp...
+[Worker 4] 2026-01-05 17:23:23,588 - INFO - [Lucia Vallt Da Silva Camargo] ✅ Modal aberto
+[Worker 4] 2026-01-05 17:23:23,589 - INFO - >>> MODAL DO WHATSAPP ABERTO.
+[Worker 4] 2026-01-05 17:23:27,209 - INFO - Procurando template: 'Cobrança .'
+[Worker 4] 2026-01-05 17:23:29,308 - INFO - Tentativa 1: Digitando nome 'Cobrança'...
+[Worker 4] 2026-01-05 17:23:32,003 - INFO - Template encontrado (Título): 'Cobrança .'
+[Worker 4] 2026-01-05 17:23:37,127 - INFO - [Lucia Vallt Da Silva Camargo] 4️⃣ Enviando mensagem...
+[Worker 4] 2026-01-05 17:23:37,212 - INFO - [Lucia Vallt Da Silva Camargo] 🚀 Clicando em 'Enviar' (auto)...
+[Worker 4] 2026-01-05 17:23:38,313 - INFO - [Lucia Vallt Da Silva Camargo] ✅ Sucesso detectado.
+[Worker 4] 2026-01-05 17:23:40,592 - INFO - [Lucia Vallt Da Silva Camargo] ✅ Envio 1 concluído com sucesso!
+[Worker 4] 2026-01-05 17:23:40,598 - ERROR - Erro ao carregar sessão 8d5ed331cb85: Extra data: line 237 column 2 (char 6875)
+[Worker 4] 2026-01-05 17:23:40,598 - ERROR - Sessão 8d5ed331cb85 não encontrada para salvar progresso
+[Worker 4] 2026-01-05 17:23:40,599 - INFO - [29/32] Processando: Rogelio Jose Nunez
+[Worker 4] 2026-01-05 17:23:45,368 - INFO - 🔍 Buscando 'Rogelio Jose Nunez' com 6 variações: ['rogelio jose', 'rogelio nunez', 'nunez', 'rogelio jose nunez', 'rogelio', 'jose nunez']
+[Worker 4] 2026-01-05 17:23:58,306 - INFO - ✅ Match EXATO: 'Rogelio Jose Nunez'
+[Worker 4] 2026-01-05 17:23:58,910 - INFO - ✅ Clicou no NOME do cliente corretamente
+[Worker 4] 2026-01-05 17:24:00,600 - INFO - --- Processando: Rogelio Jose Nunez ---
+[Worker 4] 2026-01-05 17:24:00,667 - INFO - [Rogelio Jose Nunez] Celular '+5519999862068' já está correto.
+[Worker 4] 2026-01-05 17:24:00,733 - INFO - [Rogelio Jose Nunez] Telefone '+5519997553760' já está correto.
+[Worker 4] 2026-01-05 17:24:00,866 - INFO - [Rogelio Jose Nunez] Encontrados 2 números para envio.
+[Worker 4] 2026-01-05 17:24:00,867 - INFO - [Rogelio Jose Nunez] 🚀 Iniciando envio 1/2 para LINK_TEL: +5519997553760
+[Worker 4] 2026-01-05 17:24:00,868 - INFO - [Rogelio Jose Nunez] Abrindo modal WhatsApp...
+[Worker 4] 2026-01-05 17:24:05,643 - INFO - [Rogelio Jose Nunez] ✅ Modal aberto
+[Worker 4] 2026-01-05 17:24:05,644 - INFO - >>> MODAL DO WHATSAPP ABERTO.
+[Worker 4] 2026-01-05 17:24:09,211 - INFO - Procurando template: 'Cobrança .'
+[Worker 4] 2026-01-05 17:24:11,268 - INFO - Tentativa 1: Digitando nome 'Cobrança'...
+[Worker 4] 2026-01-05 17:24:14,118 - INFO - Template encontrado (Título): 'Cobrança .'
+[Worker 4] 2026-01-05 17:24:19,276 - INFO - [Rogelio Jose Nunez] 4️⃣ Enviando mensagem...
+[Worker 4] 2026-01-05 17:24:19,368 - INFO - [Rogelio Jose Nunez] 🚀 Clicando em 'Enviar' (auto)...
+[Worker 4] 2026-01-05 17:24:20,388 - INFO - [Rogelio Jose Nunez] ✅ Sucesso detectado.
+[Worker 4] 2026-01-05 17:24:22,576 - INFO - [Rogelio Jose Nunez] ✅ Envio 1 concluído com sucesso!
+[Worker 4] 2026-01-05 17:24:22,577 - INFO - [Rogelio Jose Nunez] 🚀 Iniciando envio 2/2 para LINK_TEL: +5519999862068
+[Worker 4] 2026-01-05 17:24:22,578 - INFO - [Rogelio Jose Nunez] 🔄 Recarregando página para limpar estado do envio anterior...
+[Worker 4] 2026-01-05 17:24:32,369 - INFO - [Rogelio Jose Nunez] Abrindo modal WhatsApp...
+[Worker 4] 2026-01-05 17:24:37,521 - INFO - [Rogelio Jose Nunez] ✅ Modal aberto
+[Worker 4] 2026-01-05 17:24:37,523 - INFO - >>> MODAL DO WHATSAPP ABERTO.
+[Worker 4] 2026-01-05 17:24:41,159 - INFO - Procurando template: 'Cobrança .'
+[Worker 4] 2026-01-05 17:24:43,267 - INFO - Tentativa 1: Digitando nome 'Cobrança'...
+[Worker 4] 2026-01-05 17:24:46,316 - INFO - Template encontrado (Título): 'Cobrança .'
+[Worker 4] 2026-01-05 17:24:51,495 - INFO - [Rogelio Jose Nunez] 4️⃣ Enviando mensagem...
+[Worker 4] 2026-01-05 17:24:51,585 - INFO - [Rogelio Jose Nunez] 🚀 Clicando em 'Enviar' (auto)...
+[Worker 4] 2026-01-05 17:24:52,624 - INFO - [Rogelio Jose Nunez] ✅ Sucesso detectado.
+[Worker 4] 2026-01-05 17:24:54,900 - INFO - [Rogelio Jose Nunez] ✅ Envio 2 concluído com sucesso!
+[Worker 4] 2026-01-05 17:24:54,906 - ERROR - Erro ao carregar sessão 8d5ed331cb85: Extra data: line 237 column 2 (char 6875)
+[Worker 4] 2026-01-05 17:24:54,907 - ERROR - Sessão 8d5ed331cb85 não encontrada para salvar progresso
+[Worker 4] 2026-01-05 17:24:54,908 - INFO - [30/32] Processando: Benigno Rodrigues Moronta Filho
+[Worker 4] 2026-01-05 17:24:59,665 - INFO - 🔍 Buscando 'Benigno Rodrigues Moronta Filho' com 6 variações: ['benigno rodrigues', 'benigno moronta', 'moronta', 'benigno rodrigues moronta', 'benigno', 'rodrigues moronta']
+[Worker 4] 2026-01-05 17:25:12,046 - INFO - ✅ Match EXATO: 'Benigno Rodrigues Moronta Filho'
+[Worker 4] 2026-01-05 17:25:12,567 - INFO - ✅ Clicou no NOME do cliente corretamente
+[Worker 4] 2026-01-05 17:25:14,222 - INFO - --- Processando: Benigno Rodrigues Moronta Filho ---
+[Worker 4] 2026-01-05 17:25:14,285 - INFO - [Benigno Rodrigues Moronta Filho] Celular '+5516991851065' já está correto.
+[Worker 4] 2026-01-05 17:25:14,351 - WARNING - [Benigno Rodrigues Moronta Filho] Telefone '08/04/2025 14:28' inválido (Sem DDI 55)
+[Worker 4] 2026-01-05 17:25:14,352 - WARNING - [Benigno Rodrigues Moronta Filho] Não foi possível normalizar '08/04/2025 14:28'.
+[Worker 4] 2026-01-05 17:25:14,447 - INFO - [Benigno Rodrigues Moronta Filho] Encontrados 1 números para envio.
+[Worker 4] 2026-01-05 17:25:14,448 - INFO - [Benigno Rodrigues Moronta Filho] 🚀 Iniciando envio 1/1 para LINK_TEL: +5516991851065
+[Worker 4] 2026-01-05 17:25:14,449 - INFO - [Benigno Rodrigues Moronta Filho] Abrindo modal WhatsApp...
+[Worker 4] 2026-01-05 17:25:18,436 - INFO - [Benigno Rodrigues Moronta Filho] ✅ Modal aberto
+[Worker 4] 2026-01-05 17:25:18,437 - INFO - >>> MODAL DO WHATSAPP ABERTO.
+[Worker 4] 2026-01-05 17:25:22,064 - INFO - Procurando template: 'Cobrança .'
+[Worker 4] 2026-01-05 17:25:24,381 - INFO - Tentativa 1: Digitando nome 'Cobrança'...
+[Worker 4] 2026-01-05 17:25:27,135 - INFO - Template encontrado (Título): 'Cobrança .'
+[Worker 4] 2026-01-05 17:25:32,235 - INFO - [Benigno Rodrigues Moronta Filho] 4️⃣ Enviando mensagem...
+[Worker 4] 2026-01-05 17:25:32,319 - INFO - [Benigno Rodrigues Moronta Filho] 🚀 Clicando em 'Enviar' (auto)...
+[Worker 4] 2026-01-05 17:25:33,466 - INFO - [Benigno Rodrigues Moronta Filho] ✅ Sucesso detectado.
+[Worker 4] 2026-01-05 17:25:36,051 - INFO - [Benigno Rodrigues Moronta Filho] ✅ Envio 1 concluído com sucesso!
+[Worker 4] 2026-01-05 17:25:36,056 - ERROR - Erro ao carregar sessão 8d5ed331cb85: Extra data: line 237 column 2 (char 6875)
+[Worker 4] 2026-01-05 17:25:36,056 - ERROR - Sessão 8d5ed331cb85 não encontrada para salvar progresso
+[Worker 4] 2026-01-05 17:25:36,057 - INFO - [31/32] Processando: Milton De Jesus Assunção Caniles
+[Worker 4] 2026-01-05 17:25:40,831 - INFO - 🔍 Buscando 'Milton De Jesus Assunção Caniles' com 6 variações: ['milton jesus', 'milton caniles', 'caniles', 'milton jesus assuncao caniles', 'milton', 'assuncao caniles']
+[Worker 4] 2026-01-05 17:25:48,646 - WARNING - ⚠️ Campo de busca teimoso: 'benigno rodrigues'. Tentando limpar novamente...
+[Worker 4] 2026-01-05 17:25:57,301 - INFO - ✅ Match FUZZY (0.95): 'Milton De Jesus Assun��o Caniles'
+[Worker 4] 2026-01-05 17:25:57,775 - INFO - ✅ Clicou no NOME do cliente corretamente
+[Worker 4] 2026-01-05 17:25:59,242 - INFO - --- Processando: Milton De Jesus Assunção Caniles ---
+[Worker 4] 2026-01-05 17:25:59,321 - INFO - [Milton De Jesus Assunção Caniles] Celular '+5515997909836' já está correto.
+[Worker 4] 2026-01-05 17:25:59,384 - WARNING - [Milton De Jesus Assunção Caniles] Telefone '08/04/2025 14:28' inválido (Sem DDI 55)
+[Worker 4] 2026-01-05 17:25:59,385 - WARNING - [Milton De Jesus Assunção Caniles] Não foi possível normalizar '08/04/2025 14:28'.
+[Worker 4] 2026-01-05 17:25:59,481 - INFO - [Milton De Jesus Assunção Caniles] Encontrados 1 números para envio.
+[Worker 4] 2026-01-05 17:25:59,482 - INFO - [Milton De Jesus Assunção Caniles] 🚀 Iniciando envio 1/1 para LINK_TEL: +5515997909836
+[Worker 4] 2026-01-05 17:25:59,483 - INFO - [Milton De Jesus Assunção Caniles] Abrindo modal WhatsApp...
+[Worker 4] 2026-01-05 17:26:03,503 - INFO - [Milton De Jesus Assunção Caniles] ✅ Modal aberto
+[Worker 4] 2026-01-05 17:26:03,506 - INFO - >>> MODAL DO WHATSAPP ABERTO.
+[Worker 4] 2026-01-05 17:26:07,111 - INFO - Procurando template: 'Cobrança .'
+[Worker 4] 2026-01-05 17:26:09,279 - INFO - Tentativa 1: Digitando nome 'Cobrança'...
+[Worker 4] 2026-01-05 17:26:11,914 - INFO - Template encontrado (Título): 'Cobrança .'
+[Worker 4] 2026-01-05 17:26:17,055 - INFO - [Milton De Jesus Assunção Caniles] 4️⃣ Enviando mensagem...
+[Worker 4] 2026-01-05 17:26:17,403 - INFO - [Milton De Jesus Assunção Caniles] 🚀 Clicando em 'Enviar' (auto)...
+[Worker 4] 2026-01-05 17:26:19,060 - INFO - [Milton De Jesus Assunção Caniles] ✅ Sucesso detectado.
+[Worker 4] 2026-01-05 17:26:21,448 - INFO - [Milton De Jesus Assunção Caniles] ✅ Envio 1 concluído com sucesso!
+[Worker 4] 2026-01-05 17:26:21,455 - ERROR - Erro ao carregar sessão 8d5ed331cb85: Extra data: line 237 column 2 (char 6875)
+[Worker 4] 2026-01-05 17:26:21,457 - ERROR - Sessão 8d5ed331cb85 não encontrada para salvar progresso
+[Worker 4] 2026-01-05 17:26:21,459 - INFO - [32/32] Processando: Sorvetes Paviotti Ltda
+[Worker 4] 2026-01-05 17:26:26,277 - INFO - 🔍 Buscando 'Sorvetes Paviotti Ltda' com 3 variações: ['sorvetes paviotti', 'paviotti', 'sorvetes']
+[Worker 4] 2026-01-05 17:26:39,861 - WARNING - ⚠️ Campo de busca teimoso: 'milton jesussorvetes paviotti'. Tentando limpar novamente...
+[Worker 4] 2026-01-05 17:26:49,076 - INFO - ✅ Match EXATO: 'Sorvetes Paviotti Ltda'
+[Worker 4] 2026-01-05 17:26:49,973 - INFO - ✅ Clicou no NOME do cliente corretamente
+[Worker 4] 2026-01-05 17:26:51,645 - INFO - --- Processando: Sorvetes Paviotti Ltda ---
+[Worker 4] 2026-01-05 17:26:51,784 - INFO - [Sorvetes Paviotti Ltda] Celular '+5519992322923' já está correto.
+[Worker 4] 2026-01-05 17:26:51,865 - WARNING - [Sorvetes Paviotti Ltda] Telefone '08/04/2025 14:28' inválido (Sem DDI 55)
+[Worker 4] 2026-01-05 17:26:51,867 - WARNING - [Sorvetes Paviotti Ltda] Não foi possível normalizar '08/04/2025 14:28'.
+[Worker 4] 2026-01-05 17:26:51,971 - INFO - [Sorvetes Paviotti Ltda] Encontrados 1 números para envio.
+[Worker 4] 2026-01-05 17:26:51,972 - INFO - [Sorvetes Paviotti Ltda] 🚀 Iniciando envio 1/1 para LINK_TEL: +5519992322923
+[Worker 4] 2026-01-05 17:26:51,973 - INFO - [Sorvetes Paviotti Ltda] Abrindo modal WhatsApp...
+[Worker 4] 2026-01-05 17:26:56,154 - INFO - [Sorvetes Paviotti Ltda] ✅ Modal aberto
+[Worker 4] 2026-01-05 17:26:56,155 - INFO - >>> MODAL DO WHATSAPP ABERTO.
+[Worker 4] 2026-01-05 17:26:59,801 - INFO - Procurando template: 'Cobrança .'
+[Worker 4] 2026-01-05 17:27:02,251 - INFO - Tentativa 1: Digitando nome 'Cobrança'...
+[Worker 4] 2026-01-05 17:27:11,887 - INFO - Tentativa 2: Falha no nome. Buscando por conteúdo: 'O pagamento da fatura'...
+[Worker 4] 2026-01-05 17:27:23,112 - INFO - Template encontrado (Título): 'Cobrança .'
+[Worker 4] 2026-01-05 17:27:28,996 - INFO - [Sorvetes Paviotti Ltda] 4️⃣ Enviando mensagem...
+[Worker 4] 2026-01-05 17:27:29,090 - INFO - [Sorvetes Paviotti Ltda] 🚀 Clicando em 'Enviar' (auto)...
+[Worker 4] 2026-01-05 17:27:30,191 - INFO - [Sorvetes Paviotti Ltda] ✅ Sucesso detectado.
+[Worker 4] 2026-01-05 17:27:32,860 - INFO - [Sorvetes Paviotti Ltda] ✅ Envio 1 concluído com sucesso!
+[Worker 4] 2026-01-05 17:27:32,875 - ERROR - Erro ao carregar sessão 8d5ed331cb85: Extra data: line 237 column 2 (char 6875)
+[Worker 4] 2026-01-05 17:27:32,878 - ERROR - Sessão 8d5ed331cb85 não encontrada para salvar progresso
+[Worker 4] 2026-01-05 17:27:32,882 - INFO - Processamento concluído: 30 sucesso, 1 não encontrados, 1 erros
+[Worker 4] 2026-01-05 17:27:32,903 - INFO - Resultados enviados ao processo principal
+[Worker 4] 2026-01-07 12:05:46,470 - INFO - Iniciando com 49 clientes
+[Worker 4] 2026-01-07 12:05:46,606 - INFO - Iniciando Microsoft Edge (Instância 4)...
+[Worker 4] 2026-01-07 12:05:46,665 - INFO - Abrindo janela maximizada (instância 4)
+[Worker 4] 2026-01-07 12:05:46,691 - INFO - Usando driver local: C:\msedgedriver\msedgedriver.exe
+[Worker 4] 2026-01-07 12:05:56,154 - INFO - Aguardando workers anteriores fazerem login...
+[Worker 4] 2026-01-07 12:11:46,366 - WARNING - Timeout aguardando login anterior, tentando mesmo assim...
+[Worker 4] 2026-01-07 12:11:46,367 - INFO - Iniciando login...
+[Worker 4] 2026-01-07 12:11:53,488 - INFO - Iniciando verificação de login...
+[Worker 4] 2026-01-07 12:11:53,768 - INFO - E-mail inserido.
+[Worker 4] 2026-01-07 12:11:54,452 - INFO - Senha inserida.
+[Worker 4] 2026-01-07 12:11:56,161 - INFO - Selecionado método OTP App.
+[Worker 4] 2026-01-07 12:15:09,433 - INFO - Botão 'Agora não' (Dispositivo Confiável) detectado. Clicando...
+[Worker 4] 2026-01-07 12:15:19,974 - INFO - Login concluído com sucesso!
+[Worker 4] 2026-01-07 12:15:19,976 - INFO - Login concluído, sinalizando worker 4
+[Worker 4] 2026-01-07 12:15:19,982 - INFO - Selecionando departamento: Era Verde Energia
+[Worker 4] 2026-01-07 12:15:20,106 - INFO - Navegando para aba E-Mail...
+[Worker 4] 2026-01-07 12:15:22,036 - INFO - 📧 Clicou na aba E-Mail (Seletor: a[data-id='qtab_Cases_Tab'])
+[Worker 4] 2026-01-07 12:15:28,404 - INFO - Procurando seletor de departamento...
+[Worker 4] 2026-01-07 12:15:34,043 - INFO - Dropdown encontrado com seletor: span[data-id="qdeptcontainer_value"]
+[Worker 4] 2026-01-07 12:15:38,780 - WARNING - Dropdown parece não ter aberto options. Tentando XPath direto...
+[Worker 4] 2026-01-07 12:15:47,029 - ERROR - Falha ao localizar o departamento 'Era Verde Energia' na lista.
+[Worker 4] 2026-01-07 12:15:47,063 - ERROR - Falha ao trocar departamento
+[Worker 4] 2026-01-07 12:15:53,864 - INFO - Resultados enviados ao processo principal
+[Worker 4] 2026-01-12 10:03:29,093 - INFO - Iniciando com 59 clientes
+[Worker 4] 2026-01-12 10:03:29,094 - INFO - Iniciando Microsoft Edge (Instância 4)...
+[Worker 4] 2026-01-12 10:03:29,095 - INFO - Abrindo janela maximizada (instância 4)
+[Worker 4] 2026-01-12 10:03:29,095 - INFO - Usando driver local: C:\msedgedriver\msedgedriver.exe
+[Worker 4] 2026-01-12 10:03:36,683 - INFO - Aguardando workers anteriores fazerem login...
+[Worker 4] 2026-01-12 10:09:11,858 - WARNING - Timeout aguardando login anterior, tentando mesmo assim...
+[Worker 4] 2026-01-12 10:09:11,860 - INFO - Iniciando login...
+[Worker 4] 2026-01-12 10:09:18,845 - INFO - Iniciando verificação de login...
+[Worker 4] 2026-01-12 10:09:19,301 - INFO - E-mail inserido.
+[Worker 4] 2026-01-12 10:09:20,162 - INFO - Senha inserida.
+[Worker 4] 2026-01-12 10:09:21,542 - INFO - Selecionado método OTP App.
+[Worker 4] 2026-01-12 10:09:35,647 - INFO - Botão 'Agora não' (Dispositivo Confiável) detectado. Clicando...
+[Worker 4] 2026-01-12 10:09:41,998 - INFO - Login concluído com sucesso!
+[Worker 4] 2026-01-12 10:09:41,999 - INFO - Login concluído, sinalizando worker 4
+[Worker 4] 2026-01-12 10:09:41,999 - INFO - Selecionando departamento: Era Verde Energia
+[Worker 4] 2026-01-12 10:09:42,019 - INFO - Navegando para aba E-Mail...
+[Worker 4] 2026-01-12 10:09:43,831 - INFO - 📧 Clicou na aba E-Mail (Seletor: a[data-id='qtab_Cases_Tab'])
+[Worker 4] 2026-01-12 10:09:48,883 - INFO - Procurando seletor de departamento...
+[Worker 4] 2026-01-12 10:09:54,519 - INFO - Dropdown encontrado com seletor: span[data-id="qdeptcontainer_value"]
+[Worker 4] 2026-01-12 10:09:56,235 - INFO - Opção encontrada (DIV Rapid): Era Verde Energia
+[Worker 4] 2026-01-12 10:09:56,852 - INFO - Departamento 'Era Verde Energia' selecionado.
+[Worker 4] 2026-01-12 10:10:00,942 - INFO - 📱 Clicou na aba WhatsApp
+[Worker 4] 2026-01-12 10:10:01,072 - INFO - [1/59] Processando: Paulo Renato Gonçalves Dos Santos
+[Worker 4] 2026-01-12 10:10:06,732 - INFO - 🔍 Buscando 'Paulo Renato Gonçalves Dos Santos' com 6 variações: ['paulo renato', 'paulo santos', 'paulo renato goncalves santos', 'paulo', 'goncalves santos', 'santos']
+[Worker 4] 2026-01-12 10:10:17,436 - INFO - ✅ Match FUZZY (0.90): 'PAULO Renato Gonçalves dos Santos Santos'
+[Worker 4] 2026-01-12 10:10:17,748 - INFO - ✅ Clicou no NOME do cliente corretamente
+[Worker 4] 2026-01-12 10:10:37,772 - INFO - --- Processando: Paulo Renato Gonçalves Dos Santos ---
+[Worker 4] 2026-01-12 10:10:37,803 - WARNING - [Paulo Renato Gonçalves Dos Santos] Celular '07/04/2025 11:40' inválido (Sem DDI 55)
+[Worker 4] 2026-01-12 10:10:37,803 - WARNING - [Paulo Renato Gonçalves Dos Santos] Não foi possível normalizar '07/04/2025 11:40'.
+[Worker 4] 2026-01-12 10:10:37,832 - WARNING - [Paulo Renato Gonçalves Dos Santos] Telefone '07/04/2025 11:40' inválido (Sem DDI 55)
+[Worker 4] 2026-01-12 10:10:37,832 - WARNING - [Paulo Renato Gonçalves Dos Santos] Não foi possível normalizar '07/04/2025 11:40'.
+[Worker 4] 2026-01-12 10:10:37,871 - WARNING - [Paulo Renato Gonçalves Dos Santos] ❌ Nenhum número válido encontrado para envio.
+[Worker 4] 2026-01-12 10:10:37,872 - ERROR - Erro genérico no cliente Paulo Renato Gonçalves Dos Santos: 'bool' object is not subscriptable
+[Worker 4] 2026-01-12 10:10:37,881 - INFO - [2/59] Processando: Karen Carol Andressa Mesquita
+[Worker 4] 2026-01-12 10:10:42,012 - INFO - 🔍 Buscando 'Karen Carol Andressa Mesquita' com 6 variações: ['karen carol', 'karen mesquita', 'mesquita', 'karen carol andressa mesquita', 'karen', 'andressa mesquita']
+[Worker 4] 2026-01-12 10:10:55,541 - INFO - ✅ Match EXATO: 'Karen Carol Andressa Mesquita'
+[Worker 4] 2026-01-12 10:10:56,212 - INFO - ✅ Clicou no NOME do cliente corretamente
+[Worker 4] 2026-01-12 10:10:57,909 - INFO - --- Processando: Karen Carol Andressa Mesquita ---
+[Worker 4] 2026-01-12 10:10:57,971 - INFO - [Karen Carol Andressa Mesquita] Celular '+5516997756366' já está correto.
+[Worker 4] 2026-01-12 10:10:58,033 - WARNING - [Karen Carol Andressa Mesquita] Telefone '08/04/2025 14:28' inválido (Sem DDI 55)
+[Worker 4] 2026-01-12 10:10:58,033 - WARNING - [Karen Carol Andressa Mesquita] Não foi possível normalizar '08/04/2025 14:28'.
+[Worker 4] 2026-01-12 10:10:58,097 - INFO - [Karen Carol Andressa Mesquita] Encontrados 1 números para envio.
+[Worker 4] 2026-01-12 10:10:58,097 - INFO - [Karen Carol Andressa Mesquita] 🚀 Iniciando envio 1/1 para LINK_TEL: +5516997756366
+[Worker 4] 2026-01-12 10:10:58,097 - INFO - [Karen Carol Andressa Mesquita] Abrindo modal WhatsApp...
+[Worker 4] 2026-01-12 10:11:01,501 - INFO - [Karen Carol Andressa Mesquita] ✅ Modal aberto
+[Worker 4] 2026-01-12 10:11:01,501 - INFO - >>> MODAL DO WHATSAPP ABERTO.
+[Worker 4] 2026-01-12 10:11:04,942 - INFO - Procurando template: 'Protocolo aberto'
+[Worker 4] 2026-01-12 10:11:06,847 - INFO - Tentativa 1: Digitando nome 'Protocolo aberto'...
+[Worker 4] 2026-01-12 10:11:09,154 - INFO - Template encontrado (Título): 'Protocolo aberto'
+[Worker 4] 2026-01-12 10:11:13,969 - INFO - [Karen Carol Andressa Mesquita] 4️⃣ Enviando mensagem...
+[Worker 4] 2026-01-12 10:11:14,004 - INFO - [Karen Carol Andressa Mesquita] 🚀 Clicando em 'Enviar' (auto)...
+[Worker 4] 2026-01-12 10:11:14,870 - INFO - [Karen Carol Andressa Mesquita] ✅ Sucesso detectado.
+[Worker 4] 2026-01-12 10:11:16,750 - INFO - [Karen Carol Andressa Mesquita] ✅ Envio 1 concluído com sucesso!
+[Worker 4] 2026-01-12 10:11:16,751 - ERROR - Erro genérico no cliente Karen Carol Andressa Mesquita: 'bool' object is not subscriptable
+[Worker 4] 2026-01-12 10:11:16,761 - INFO - [3/59] Processando: Pedro Luis Morgante
+[Worker 4] 2026-01-12 10:11:21,222 - INFO - 🔍 Buscando 'Pedro Luis Morgante' com 6 variações: ['pedro luis', 'pedro morgante', 'morgante', 'pedro luis morgante', 'pedro', 'luis morgante']
+[Worker 4] 2026-01-12 10:11:27,737 - WARNING - ⚠️ Campo de busca teimoso: 'karen mesquita'. Tentando limpar novamente...
+[Worker 4] 2026-01-12 10:11:32,943 - INFO - ✅ Match EXATO: 'Pedro Luis Morgante'
+[Worker 4] 2026-01-12 10:11:33,287 - INFO - ✅ Clicou no NOME do cliente corretamente
+[Worker 4] 2026-01-12 10:11:34,375 - INFO - --- Processando: Pedro Luis Morgante ---
+[Worker 4] 2026-01-12 10:11:34,400 - INFO - [Pedro Luis Morgante] Celular '+5519995068034' já está correto.
+[Worker 4] 2026-01-12 10:11:34,429 - WARNING - [Pedro Luis Morgante] Telefone '08/04/2025 14:28' inválido (Sem DDI 55)
+[Worker 4] 2026-01-12 10:11:34,430 - WARNING - [Pedro Luis Morgante] Não foi possível normalizar '08/04/2025 14:28'.
+[Worker 4] 2026-01-12 10:11:34,506 - INFO - [Pedro Luis Morgante] Encontrados 2 números para envio.
+[Worker 4] 2026-01-12 10:11:34,507 - INFO - [Pedro Luis Morgante] 🚀 Iniciando envio 1/2 para LINK_TEL: +5519995068034
+[Worker 4] 2026-01-12 10:11:34,507 - INFO - [Pedro Luis Morgante] Abrindo modal WhatsApp...
+[Worker 4] 2026-01-12 10:11:38,053 - INFO - [Pedro Luis Morgante] ✅ Modal aberto
+[Worker 4] 2026-01-12 10:11:38,053 - INFO - >>> MODAL DO WHATSAPP ABERTO.
+[Worker 4] 2026-01-12 10:11:41,490 - INFO - Procurando template: 'Protocolo aberto'
+[Worker 4] 2026-01-12 10:11:43,255 - INFO - Tentativa 1: Digitando nome 'Protocolo aberto'...
+[Worker 4] 2026-01-12 10:11:46,022 - INFO - Template encontrado (Título): 'Protocolo aberto'
+[Worker 4] 2026-01-12 10:11:50,916 - INFO - [Pedro Luis Morgante] 4️⃣ Enviando mensagem...
+[Worker 4] 2026-01-12 10:11:50,964 - INFO - [Pedro Luis Morgante] 🚀 Clicando em 'Enviar' (auto)...
+[Worker 4] 2026-01-12 10:11:51,752 - INFO - [Pedro Luis Morgante] ✅ Sucesso detectado.
+[Worker 4] 2026-01-12 10:11:53,559 - INFO - [Pedro Luis Morgante] ✅ Envio 1 concluído com sucesso!
+[Worker 4] 2026-01-12 10:11:53,559 - INFO - [Pedro Luis Morgante] 🚀 Iniciando envio 2/2 para LINK_TEL: +5519984576000
+[Worker 4] 2026-01-12 10:11:53,559 - INFO - [Pedro Luis Morgante] 🔄 Recarregando página para limpar estado do envio anterior...
+[Worker 4] 2026-01-12 10:12:02,332 - INFO - [Pedro Luis Morgante] Abrindo modal WhatsApp...
+[Worker 4] 2026-01-12 10:12:06,375 - INFO - [Pedro Luis Morgante] ✅ Modal aberto
+[Worker 4] 2026-01-12 10:12:06,375 - INFO - >>> MODAL DO WHATSAPP ABERTO.
+[Worker 4] 2026-01-12 10:12:10,176 - INFO - Procurando template: 'Protocolo aberto'
+[Worker 4] 2026-01-12 10:12:12,165 - INFO - Tentativa 1: Digitando nome 'Protocolo aberto'...
+[Worker 4] 2026-01-12 10:12:16,001 - INFO - Template encontrado (Título): 'Protocolo aberto'
+[Worker 4] 2026-01-12 10:12:21,007 - INFO - [Pedro Luis Morgante] 4️⃣ Enviando mensagem...
+[Worker 4] 2026-01-12 10:12:21,215 - INFO - [Pedro Luis Morgante] 🚀 Clicando em 'Enviar' (auto)...
+[Worker 4] 2026-01-12 10:12:22,799 - INFO - [Pedro Luis Morgante] ✅ Sucesso detectado.
+[Worker 4] 2026-01-12 10:12:24,923 - INFO - [Pedro Luis Morgante] ✅ Envio 2 concluído com sucesso!
+[Worker 4] 2026-01-12 10:12:24,923 - ERROR - Erro genérico no cliente Pedro Luis Morgante: 'bool' object is not subscriptable
+[Worker 4] 2026-01-12 10:12:24,938 - INFO - [4/59] Processando: Piazza Fontanella Incorporacoes Spe Ltda
+[Worker 4] 2026-01-12 10:12:30,504 - INFO - 🔍 Buscando 'Piazza Fontanella Incorporacoes Spe Ltda' com 6 variações: ['piazza fontanella', 'piazza spe', 'spe', 'piazza fontanella incorporacoes spe', 'piazza', 'incorporacoes spe']
+[Worker 4] 2026-01-12 10:12:41,615 - INFO - ✅ Match EXATO: 'Piazza Fontanella Incorporacoes Spe Ltda'
+[Worker 4] 2026-01-12 10:12:42,140 - INFO - ✅ Clicou no NOME do cliente corretamente
+[Worker 4] 2026-01-12 10:12:42,977 - INFO - --- Processando: Piazza Fontanella Incorporacoes Spe Ltda ---
+[Worker 4] 2026-01-12 10:12:43,027 - INFO - [Piazza Fontanella Incorporacoes Spe Ltda] Celular '+5519981204747' já está correto.
+[Worker 4] 2026-01-12 10:12:43,092 - WARNING - [Piazza Fontanella Incorporacoes Spe Ltda] Telefone '08/04/2025 14:28' inválido (Sem DDI 55)
+[Worker 4] 2026-01-12 10:12:43,092 - WARNING - [Piazza Fontanella Incorporacoes Spe Ltda] Não foi possível normalizar '08/04/2025 14:28'.
+[Worker 4] 2026-01-12 10:12:43,329 - INFO - [Piazza Fontanella Incorporacoes Spe Ltda] Encontrados 1 números para envio.
+[Worker 4] 2026-01-12 10:12:43,329 - INFO - [Piazza Fontanella Incorporacoes Spe Ltda] 🚀 Iniciando envio 1/1 para LINK_TEL: +5519981204747
+[Worker 4] 2026-01-12 10:12:43,330 - INFO - [Piazza Fontanella Incorporacoes Spe Ltda] Abrindo modal WhatsApp...
+[Worker 4] 2026-01-12 10:12:47,086 - INFO - [Piazza Fontanella Incorporacoes Spe Ltda] ✅ Modal aberto
+[Worker 4] 2026-01-12 10:12:47,086 - INFO - >>> MODAL DO WHATSAPP ABERTO.
+[Worker 4] 2026-01-12 10:12:50,607 - INFO - Procurando template: 'Protocolo aberto'
+[Worker 4] 2026-01-12 10:12:52,527 - INFO - Tentativa 1: Digitando nome 'Protocolo aberto'...
+[Worker 4] 2026-01-12 10:12:55,485 - INFO - Template encontrado (Título): 'Protocolo aberto'
+[Worker 4] 2026-01-12 10:13:00,270 - INFO - [Piazza Fontanella Incorporacoes Spe Ltda] 4️⃣ Enviando mensagem...
+[Worker 4] 2026-01-12 10:13:00,314 - INFO - [Piazza Fontanella Incorporacoes Spe Ltda] 🚀 Clicando em 'Enviar' (auto)...
+[Worker 4] 2026-01-12 10:13:01,068 - INFO - [Piazza Fontanella Incorporacoes Spe Ltda] ✅ Sucesso detectado.
+[Worker 4] 2026-01-12 10:13:02,971 - INFO - [Piazza Fontanella Incorporacoes Spe Ltda] ✅ Envio 1 concluído com sucesso!
+[Worker 4] 2026-01-12 10:13:02,971 - ERROR - Erro genérico no cliente Piazza Fontanella Incorporacoes Spe Ltda: 'bool' object is not subscriptable
+[Worker 4] 2026-01-12 10:13:02,980 - INFO - [5/59] Processando: Lauro Barbosa Da Silva Moreira
+[Worker 4] 2026-01-12 10:13:07,193 - INFO - 🔍 Buscando 'Lauro Barbosa Da Silva Moreira' com 6 variações: ['lauro barbosa', 'lauro moreira', 'moreira', 'lauro barbosa silva moreira', 'lauro', 'silva moreira']
+[Worker 4] 2026-01-12 10:13:15,754 - INFO - ✅ Match EXATO: 'Lauro Barbosa Da Silva Moreira'
+[Worker 4] 2026-01-12 10:13:15,959 - INFO - ✅ Clicou no NOME do cliente corretamente
+[Worker 4] 2026-01-12 10:13:16,633 - INFO - --- Processando: Lauro Barbosa Da Silva Moreira ---
+[Worker 4] 2026-01-12 10:13:16,654 - INFO - [Lauro Barbosa Da Silva Moreira] Celular '+5516981114448' já está correto.
+[Worker 4] 2026-01-12 10:13:16,672 - WARNING - [Lauro Barbosa Da Silva Moreira] Telefone '08/04/2025 14:28' inválido (Sem DDI 55)
+[Worker 4] 2026-01-12 10:13:16,672 - WARNING - [Lauro Barbosa Da Silva Moreira] Não foi possível normalizar '08/04/2025 14:28'.
+[Worker 4] 2026-01-12 10:13:16,711 - INFO - [Lauro Barbosa Da Silva Moreira] Encontrados 2 números para envio.
+[Worker 4] 2026-01-12 10:13:16,711 - INFO - [Lauro Barbosa Da Silva Moreira] 🚀 Iniciando envio 1/2 para LINK_TEL: +5516981114448
+[Worker 4] 2026-01-12 10:13:16,711 - INFO - [Lauro Barbosa Da Silva Moreira] Abrindo modal WhatsApp...
+[Worker 4] 2026-01-12 10:13:19,753 - INFO - [Lauro Barbosa Da Silva Moreira] ✅ Modal aberto
+[Worker 4] 2026-01-12 10:13:19,754 - INFO - >>> MODAL DO WHATSAPP ABERTO.
+[Worker 4] 2026-01-12 10:13:23,060 - INFO - Procurando template: 'Protocolo aberto'
+[Worker 4] 2026-01-12 10:13:24,835 - INFO - Tentativa 1: Digitando nome 'Protocolo aberto'...
+[Worker 4] 2026-01-12 10:13:27,180 - INFO - Template encontrado (Título): 'Protocolo aberto'
+[Worker 4] 2026-01-12 10:13:31,983 - INFO - [Lauro Barbosa Da Silva Moreira] 4️⃣ Enviando mensagem...
+[Worker 4] 2026-01-12 10:13:32,021 - INFO - [Lauro Barbosa Da Silva Moreira] 🚀 Clicando em 'Enviar' (auto)...
+[Worker 4] 2026-01-12 10:13:32,769 - INFO - [Lauro Barbosa Da Silva Moreira] ✅ Sucesso detectado.
+[Worker 4] 2026-01-12 10:13:34,677 - INFO - [Lauro Barbosa Da Silva Moreira] ✅ Envio 1 concluído com sucesso!
+[Worker 4] 2026-01-12 10:13:34,677 - INFO - [Lauro Barbosa Da Silva Moreira] 🚀 Iniciando envio 2/2 para LINK_TEL: +5512974037928
+[Worker 4] 2026-01-12 10:13:34,677 - INFO - [Lauro Barbosa Da Silva Moreira] 🔄 Recarregando página para limpar estado do envio anterior...
+[Worker 4] 2026-01-12 10:13:41,388 - INFO - [Lauro Barbosa Da Silva Moreira] Abrindo modal WhatsApp...
+[Worker 4] 2026-01-12 10:13:44,807 - INFO - [Lauro Barbosa Da Silva Moreira] ✅ Modal aberto
+[Worker 4] 2026-01-12 10:13:44,808 - INFO - >>> MODAL DO WHATSAPP ABERTO.
+[Worker 4] 2026-01-12 10:13:48,052 - INFO - Procurando template: 'Protocolo aberto'
+[Worker 4] 2026-01-12 10:13:49,692 - INFO - Tentativa 1: Digitando nome 'Protocolo aberto'...
+[Worker 4] 2026-01-12 10:13:54,230 - INFO - Template encontrado (Título): 'Protocolo aberto'
+[Worker 4] 2026-01-12 10:13:59,366 - INFO - [Lauro Barbosa Da Silva Moreira] 4️⃣ Enviando mensagem...
+[Worker 4] 2026-01-12 10:13:59,406 - INFO - [Lauro Barbosa Da Silva Moreira] 🚀 Clicando em 'Enviar' (auto)...
+[Worker 4] 2026-01-12 10:14:00,171 - INFO - [Lauro Barbosa Da Silva Moreira] ✅ Sucesso detectado.
+[Worker 4] 2026-01-12 10:14:01,914 - INFO - [Lauro Barbosa Da Silva Moreira] ✅ Envio 2 concluído com sucesso!
+[Worker 4] 2026-01-12 10:14:01,914 - ERROR - Erro genérico no cliente Lauro Barbosa Da Silva Moreira: 'bool' object is not subscriptable
+[Worker 4] 2026-01-12 10:14:01,922 - INFO - [6/59] Processando: Maria Da Conceição De Oliveira Silva
+[Worker 4] 2026-01-12 10:14:06,043 - INFO - 🔍 Buscando 'Maria Da Conceição De Oliveira Silva' com 6 variações: ['maria conceicao', 'maria silva', 'maria conceicao oliveira silva', 'maria', 'oliveira silva', 'silva']
+[Worker 4] 2026-01-12 10:14:15,397 - INFO - ✅ Match FUZZY (0.96): 'Maria Da Concei��o De Oliveira Silva'
+[Worker 4] 2026-01-12 10:14:15,758 - INFO - ✅ Clicou no NOME do cliente corretamente
+[Worker 4] 2026-01-12 10:14:16,903 - INFO - --- Processando: Maria Da Conceição De Oliveira Silva ---
+[Worker 4] 2026-01-12 10:14:16,938 - INFO - [Maria Da Conceição De Oliveira Silva] Celular '+5519982816172' já está correto.
+[Worker 4] 2026-01-12 10:14:16,967 - WARNING - [Maria Da Conceição De Oliveira Silva] Telefone '08/04/2025 14:28' inválido (Sem DDI 55)
+[Worker 4] 2026-01-12 10:14:16,967 - WARNING - [Maria Da Conceição De Oliveira Silva] Não foi possível normalizar '08/04/2025 14:28'.
+[Worker 4] 2026-01-12 10:14:17,073 - INFO - [Maria Da Conceição De Oliveira Silva] Encontrados 7 números para envio.
+[Worker 4] 2026-01-12 10:14:17,073 - INFO - [Maria Da Conceição De Oliveira Silva] 🚀 Iniciando envio 1/7 para LINK_TEL: +5582987147647
+[Worker 4] 2026-01-12 10:14:17,073 - INFO - [Maria Da Conceição De Oliveira Silva] Abrindo modal WhatsApp...
+[Worker 4] 2026-01-12 10:14:20,348 - INFO - [Maria Da Conceição De Oliveira Silva] ✅ Modal aberto
+[Worker 4] 2026-01-12 10:14:20,348 - INFO - >>> MODAL DO WHATSAPP ABERTO.
+[Worker 4] 2026-01-12 10:14:23,616 - INFO - Procurando template: 'Protocolo aberto'
+[Worker 4] 2026-01-12 10:14:25,302 - INFO - Tentativa 1: Digitando nome 'Protocolo aberto'...
+[Worker 4] 2026-01-12 10:14:27,893 - INFO - Template encontrado (Título): 'Protocolo aberto'
+[Worker 4] 2026-01-12 10:14:32,680 - INFO - [Maria Da Conceição De Oliveira Silva] 4️⃣ Enviando mensagem...
+[Worker 4] 2026-01-12 10:14:32,718 - INFO - [Maria Da Conceição De Oliveira Silva] 🚀 Clicando em 'Enviar' (auto)...
+[Worker 4] 2026-01-12 10:14:33,455 - INFO - [Maria Da Conceição De Oliveira Silva] ✅ Sucesso detectado.
+[Worker 4] 2026-01-12 10:14:35,573 - INFO - [Maria Da Conceição De Oliveira Silva] ✅ Envio 1 concluído com sucesso!
+[Worker 4] 2026-01-12 10:14:35,573 - INFO - [Maria Da Conceição De Oliveira Silva] 🚀 Iniciando envio 2/7 para LINK_TEL: +5582996080504
+[Worker 4] 2026-01-12 10:14:35,574 - INFO - [Maria Da Conceição De Oliveira Silva] 🔄 Recarregando página para limpar estado do envio anterior...
+[Worker 4] 2026-01-12 10:14:42,475 - INFO - [Maria Da Conceição De Oliveira Silva] Abrindo modal WhatsApp...
+[Worker 4] 2026-01-12 10:14:46,031 - INFO - [Maria Da Conceição De Oliveira Silva] ✅ Modal aberto
+[Worker 4] 2026-01-12 10:14:46,031 - INFO - >>> MODAL DO WHATSAPP ABERTO.
+[Worker 4] 2026-01-12 10:14:51,295 - INFO - Procurando template: 'Protocolo aberto'
+[Worker 4] 2026-01-12 10:14:53,580 - INFO - Tentativa 1: Digitando nome 'Protocolo aberto'...
+[Worker 4] 2026-01-12 10:14:56,210 - INFO - Template encontrado (Título): 'Protocolo aberto'
+[Worker 4] 2026-01-12 10:15:00,985 - INFO - [Maria Da Conceição De Oliveira Silva] 4️⃣ Enviando mensagem...
+[Worker 4] 2026-01-12 10:15:01,019 - INFO - [Maria Da Conceição De Oliveira Silva] 🚀 Clicando em 'Enviar' (auto)...
+[Worker 4] 2026-01-12 10:15:01,725 - INFO - [Maria Da Conceição De Oliveira Silva] ✅ Sucesso detectado.
+[Worker 4] 2026-01-12 10:15:03,663 - INFO - [Maria Da Conceição De Oliveira Silva] ✅ Envio 2 concluído com sucesso!
+[Worker 4] 2026-01-12 10:15:03,663 - INFO - [Maria Da Conceição De Oliveira Silva] 🚀 Iniciando envio 3/7 para LINK_TEL: +5582991119428
+[Worker 4] 2026-01-12 10:15:03,663 - INFO - [Maria Da Conceição De Oliveira Silva] 🔄 Recarregando página para limpar estado do envio anterior...
+[Worker 4] 2026-01-12 10:15:10,391 - INFO - [Maria Da Conceição De Oliveira Silva] Abrindo modal WhatsApp...
+[Worker 4] 2026-01-12 10:15:13,840 - INFO - [Maria Da Conceição De Oliveira Silva] ✅ Modal aberto
+[Worker 4] 2026-01-12 10:15:13,840 - INFO - >>> MODAL DO WHATSAPP ABERTO.
+[Worker 4] 2026-01-12 10:15:17,177 - INFO - Procurando template: 'Protocolo aberto'
+[Worker 4] 2026-01-12 10:15:19,062 - INFO - Tentativa 1: Digitando nome 'Protocolo aberto'...
+[Worker 4] 2026-01-12 10:15:21,602 - INFO - Template encontrado (Título): 'Protocolo aberto'
+[Worker 4] 2026-01-12 10:15:26,380 - INFO - [Maria Da Conceição De Oliveira Silva] 4️⃣ Enviando mensagem...
+[Worker 4] 2026-01-12 10:15:26,427 - INFO - [Maria Da Conceição De Oliveira Silva] 🚀 Clicando em 'Enviar' (auto)...
+[Worker 4] 2026-01-12 10:15:27,231 - INFO - [Maria Da Conceição De Oliveira Silva] ✅ Sucesso detectado.
+[Worker 4] 2026-01-12 10:15:29,438 - INFO - [Maria Da Conceição De Oliveira Silva] ✅ Envio 3 concluído com sucesso!
+[Worker 4] 2026-01-12 10:15:29,438 - INFO - [Maria Da Conceição De Oliveira Silva] 🚀 Iniciando envio 4/7 para LINK_TEL: +5588981300466
+[Worker 4] 2026-01-12 10:15:29,438 - INFO - [Maria Da Conceição De Oliveira Silva] 🔄 Recarregando página para limpar estado do envio anterior...
+[Worker 4] 2026-01-12 10:15:35,397 - INFO - [Maria Da Conceição De Oliveira Silva] Abrindo modal WhatsApp...
+[Worker 4] 2026-01-12 10:15:38,444 - INFO - [Maria Da Conceição De Oliveira Silva] ✅ Modal aberto
+[Worker 4] 2026-01-12 10:15:38,444 - INFO - >>> MODAL DO WHATSAPP ABERTO.
+[Worker 4] 2026-01-12 10:15:41,691 - INFO - Procurando template: 'Protocolo aberto'
+[Worker 4] 2026-01-12 10:15:43,343 - INFO - Tentativa 1: Digitando nome 'Protocolo aberto'...
+[Worker 4] 2026-01-12 10:15:46,031 - INFO - Template encontrado (Título): 'Protocolo aberto'
+[Worker 4] 2026-01-12 10:15:50,842 - INFO - [Maria Da Conceição De Oliveira Silva] 4️⃣ Enviando mensagem...
+[Worker 4] 2026-01-12 10:15:50,880 - INFO - [Maria Da Conceição De Oliveira Silva] 🚀 Clicando em 'Enviar' (auto)...
+[Worker 4] 2026-01-12 10:15:51,617 - INFO - [Maria Da Conceição De Oliveira Silva] ✅ Sucesso detectado.
+[Worker 4] 2026-01-12 10:15:53,602 - INFO - [Maria Da Conceição De Oliveira Silva] ✅ Envio 4 concluído com sucesso!
+[Worker 4] 2026-01-12 10:15:53,602 - INFO - [Maria Da Conceição De Oliveira Silva] 🚀 Iniciando envio 5/7 para LINK_TEL: +5582988621959
+[Worker 4] 2026-01-12 10:15:53,602 - INFO - [Maria Da Conceição De Oliveira Silva] 🔄 Recarregando página para limpar estado do envio anterior...
+[Worker 4] 2026-01-12 10:15:59,655 - INFO - [Maria Da Conceição De Oliveira Silva] Abrindo modal WhatsApp...
+[Worker 4] 2026-01-12 10:16:03,177 - INFO - [Maria Da Conceição De Oliveira Silva] ✅ Modal aberto
+[Worker 4] 2026-01-12 10:16:03,177 - INFO - >>> MODAL DO WHATSAPP ABERTO.
+[Worker 4] 2026-01-12 10:16:06,442 - INFO - Procurando template: 'Protocolo aberto'
+[Worker 4] 2026-01-12 10:16:08,250 - INFO - Tentativa 1: Digitando nome 'Protocolo aberto'...
+[Worker 4] 2026-01-12 10:16:10,685 - INFO - Template encontrado (Título): 'Protocolo aberto'
+[Worker 4] 2026-01-12 10:16:15,474 - INFO - [Maria Da Conceição De Oliveira Silva] 4️⃣ Enviando mensagem...
+[Worker 4] 2026-01-12 10:16:15,514 - INFO - [Maria Da Conceição De Oliveira Silva] 🚀 Clicando em 'Enviar' (auto)...
+[Worker 4] 2026-01-12 10:16:16,275 - INFO - [Maria Da Conceição De Oliveira Silva] ✅ Sucesso detectado.
+[Worker 4] 2026-01-12 10:16:18,225 - INFO - [Maria Da Conceição De Oliveira Silva] ✅ Envio 5 concluído com sucesso!
+[Worker 4] 2026-01-12 10:16:18,225 - INFO - [Maria Da Conceição De Oliveira Silva] 🚀 Iniciando envio 6/7 para LINK_TEL: +5582993421212
+[Worker 4] 2026-01-12 10:16:18,226 - INFO - [Maria Da Conceição De Oliveira Silva] 🔄 Recarregando página para limpar estado do envio anterior...
+[Worker 4] 2026-01-12 10:16:23,828 - INFO - [Maria Da Conceição De Oliveira Silva] Abrindo modal WhatsApp...
+[Worker 4] 2026-01-12 10:16:27,105 - INFO - [Maria Da Conceição De Oliveira Silva] ✅ Modal aberto
+[Worker 4] 2026-01-12 10:16:27,105 - INFO - >>> MODAL DO WHATSAPP ABERTO.
+[Worker 4] 2026-01-12 10:16:30,376 - INFO - Procurando template: 'Protocolo aberto'
+[Worker 4] 2026-01-12 10:16:32,155 - INFO - Tentativa 1: Digitando nome 'Protocolo aberto'...
+[Worker 4] 2026-01-12 10:16:34,352 - INFO - Template encontrado (Título): 'Protocolo aberto'
+[Worker 4] 2026-01-12 10:16:39,059 - INFO - [Maria Da Conceição De Oliveira Silva] 4️⃣ Enviando mensagem...
+[Worker 4] 2026-01-12 10:16:39,108 - INFO - [Maria Da Conceição De Oliveira Silva] 🚀 Clicando em 'Enviar' (auto)...
+[Worker 4] 2026-01-12 10:16:39,950 - INFO - [Maria Da Conceição De Oliveira Silva] ✅ Sucesso detectado.
+[Worker 4] 2026-01-12 10:16:41,780 - INFO - [Maria Da Conceição De Oliveira Silva] ✅ Envio 6 concluído com sucesso!
+[Worker 4] 2026-01-12 10:16:41,780 - INFO - [Maria Da Conceição De Oliveira Silva] 🚀 Iniciando envio 7/7 para LINK_TEL: +5519982816172
+[Worker 4] 2026-01-12 10:16:41,780 - INFO - [Maria Da Conceição De Oliveira Silva] 🔄 Recarregando página para limpar estado do envio anterior...
+[Worker 4] 2026-01-12 10:16:47,569 - INFO - [Maria Da Conceição De Oliveira Silva] Abrindo modal WhatsApp...
+[Worker 4] 2026-01-12 10:16:50,646 - INFO - [Maria Da Conceição De Oliveira Silva] ✅ Modal aberto
+[Worker 4] 2026-01-12 10:16:50,646 - INFO - >>> MODAL DO WHATSAPP ABERTO.
+[Worker 4] 2026-01-12 10:16:53,938 - INFO - Procurando template: 'Protocolo aberto'
+[Worker 4] 2026-01-12 10:16:55,759 - INFO - Tentativa 1: Digitando nome 'Protocolo aberto'...
+[Worker 4] 2026-01-12 10:16:58,143 - INFO - Template encontrado (Título): 'Protocolo aberto'
+[Worker 4] 2026-01-12 10:17:02,893 - INFO - [Maria Da Conceição De Oliveira Silva] 4️⃣ Enviando mensagem...
+[Worker 4] 2026-01-12 10:17:02,921 - INFO - [Maria Da Conceição De Oliveira Silva] 🚀 Clicando em 'Enviar' (auto)...
+[Worker 4] 2026-01-12 10:17:03,590 - INFO - [Maria Da Conceição De Oliveira Silva] ✅ Sucesso detectado.
+[Worker 4] 2026-01-12 10:17:05,476 - INFO - [Maria Da Conceição De Oliveira Silva] ✅ Envio 7 concluído com sucesso!
+[Worker 4] 2026-01-12 10:17:05,476 - ERROR - Erro genérico no cliente Maria Da Conceição De Oliveira Silva: 'bool' object is not subscriptable
+[Worker 4] 2026-01-12 10:17:05,486 - INFO - [7/59] Processando: Rest E Pizzaria Cantinho Trop Aguas Sao Pedro Ltda
+[Worker 4] 2026-01-12 10:17:09,591 - INFO - 🔍 Buscando 'Rest E Pizzaria Cantinho Trop Aguas Sao Pedro Ltda' com 6 variações: ['rest pizzaria', 'rest pedro', 'pedro', 'rest pizzaria cantinho trop aguas sao pedro', 'rest', 'sao pedro']
+[Worker 4] 2026-01-12 10:17:19,198 - INFO - ✅ Match EXATO: 'Rest E Pizzaria Cantinho Trop Aguas Sao Pedro Ltda'
+[Worker 4] 2026-01-12 10:17:19,547 - INFO - ✅ Clicou no NOME do cliente corretamente
+[Worker 4] 2026-01-12 10:17:20,302 - INFO - --- Processando: Rest E Pizzaria Cantinho Trop Aguas Sao Pedro Ltda ---
+[Worker 4] 2026-01-12 10:17:20,345 - INFO - [Rest E Pizzaria Cantinho Trop Aguas Sao Pedro Ltda] Celular '+5519996067070' já está correto.
+[Worker 4] 2026-01-12 10:17:20,380 - WARNING - [Rest E Pizzaria Cantinho Trop Aguas Sao Pedro Ltda] Telefone '08/04/2025 14:28' inválido (Sem DDI 55)
+[Worker 4] 2026-01-12 10:17:20,380 - WARNING - [Rest E Pizzaria Cantinho Trop Aguas Sao Pedro Ltda] Não foi possível normalizar '08/04/2025 14:28'.
+[Worker 4] 2026-01-12 10:17:20,428 - INFO - [Rest E Pizzaria Cantinho Trop Aguas Sao Pedro Ltda] Encontrados 1 números para envio.
+[Worker 4] 2026-01-12 10:17:20,428 - INFO - [Rest E Pizzaria Cantinho Trop Aguas Sao Pedro Ltda] 🚀 Iniciando envio 1/1 para LINK_TEL: +5519996067070
+[Worker 4] 2026-01-12 10:17:20,428 - INFO - [Rest E Pizzaria Cantinho Trop Aguas Sao Pedro Ltda] Abrindo modal WhatsApp...
+[Worker 4] 2026-01-12 10:17:23,488 - INFO - [Rest E Pizzaria Cantinho Trop Aguas Sao Pedro Ltda] ✅ Modal aberto
+[Worker 4] 2026-01-12 10:17:23,488 - INFO - >>> MODAL DO WHATSAPP ABERTO.
+[Worker 4] 2026-01-12 10:17:26,786 - INFO - Procurando template: 'Protocolo aberto'
+[Worker 4] 2026-01-12 10:17:28,450 - INFO - Tentativa 1: Digitando nome 'Protocolo aberto'...
+[Worker 4] 2026-01-12 10:17:30,591 - INFO - Template encontrado (Título): 'Protocolo aberto'
+[Worker 4] 2026-01-12 10:17:35,283 - INFO - [Rest E Pizzaria Cantinho Trop Aguas Sao Pedro Ltda] 4️⃣ Enviando mensagem...
+[Worker 4] 2026-01-12 10:17:35,312 - INFO - [Rest E Pizzaria Cantinho Trop Aguas Sao Pedro Ltda] 🚀 Clicando em 'Enviar' (auto)...
+[Worker 4] 2026-01-12 10:17:36,008 - INFO - [Rest E Pizzaria Cantinho Trop Aguas Sao Pedro Ltda] ✅ Sucesso detectado.
+[Worker 4] 2026-01-12 10:17:37,866 - INFO - [Rest E Pizzaria Cantinho Trop Aguas Sao Pedro Ltda] ✅ Envio 1 concluído com sucesso!
+[Worker 4] 2026-01-12 10:17:37,867 - ERROR - Erro genérico no cliente Rest E Pizzaria Cantinho Trop Aguas Sao Pedro Ltda: 'bool' object is not subscriptable
+[Worker 4] 2026-01-12 10:17:37,875 - INFO - [8/59] Processando: Rheys Comércio Instalações Industriais Ltda
+[Worker 4] 2026-01-12 10:17:44,541 - INFO - 🔍 Buscando 'Rheys Comércio Instalações Industriais Ltda' com 6 variações: ['rheys comercio', 'rheys industriais', 'industriais', 'rheys comercio instalacoes industriais', 'rheys', 'instalacoes industriais']
+[Worker 4] 2026-01-12 10:17:54,448 - WARNING - ⚠️ Campo de busca teimoso: 'rheys comercio'. Tentando limpar novamente...
+[Worker 4] 2026-01-12 10:17:58,439 - INFO - ✅ Match FUZZY (0.94): 'Rheys Com�rcio Instala��es Industriais Ltda'
+[Worker 4] 2026-01-12 10:17:58,757 - INFO - ✅ Clicou no NOME do cliente corretamente
+[Worker 4] 2026-01-12 10:17:59,526 - INFO - --- Processando: Rheys Comércio Instalações Industriais Ltda ---
+[Worker 4] 2026-01-12 10:17:59,556 - INFO - [Rheys Comércio Instalações Industriais Ltda] Celular '+5519996683012' já está correto.
+[Worker 4] 2026-01-12 10:17:59,583 - WARNING - [Rheys Comércio Instalações Industriais Ltda] Telefone '08/04/2025 14:28' inválido (Sem DDI 55)
+[Worker 4] 2026-01-12 10:17:59,584 - WARNING - [Rheys Comércio Instalações Industriais Ltda] Não foi possível normalizar '08/04/2025 14:28'.
+[Worker 4] 2026-01-12 10:17:59,628 - INFO - [Rheys Comércio Instalações Industriais Ltda] Encontrados 1 números para envio.
+[Worker 4] 2026-01-12 10:17:59,628 - INFO - [Rheys Comércio Instalações Industriais Ltda] 🚀 Iniciando envio 1/1 para LINK_TEL: +5519996683012
+[Worker 4] 2026-01-12 10:17:59,628 - INFO - [Rheys Comércio Instalações Industriais Ltda] Abrindo modal WhatsApp...
+[Worker 4] 2026-01-12 10:18:03,767 - INFO - [Rheys Comércio Instalações Industriais Ltda] ✅ Modal aberto
+[Worker 4] 2026-01-12 10:18:03,767 - INFO - >>> MODAL DO WHATSAPP ABERTO.
+[Worker 4] 2026-01-12 10:18:07,103 - INFO - Procurando template: 'Protocolo aberto'
+[Worker 4] 2026-01-12 10:18:09,415 - INFO - Tentativa 1: Digitando nome 'Protocolo aberto'...
+[Worker 4] 2026-01-12 10:18:15,044 - INFO - Template encontrado (Título): 'Protocolo aberto'
+[Worker 4] 2026-01-12 10:18:18,662 - INFO - [Rheys Comércio Instalações Industriais Ltda] 4️⃣ Enviando mensagem...
+[Worker 4] 2026-01-12 10:18:18,695 - WARNING - [Rheys Comércio Instalações Industriais Ltda] Botão Enviar não habilitou.
+[Worker 4] 2026-01-12 10:18:18,733 - INFO - [Rheys Comércio Instalações Industriais Ltda] 🚀 Clicando em 'Enviar' (auto)...
+[Worker 4] 2026-01-12 10:18:20,268 - ERROR - Falha clique Enviar.
+[Worker 4] 2026-01-12 10:18:20,268 - ERROR - [Rheys Comércio Instalações Industriais Ltda] ❌ Falha no envio 1.
+[Worker 4] 2026-01-12 10:18:20,269 - ERROR - Erro genérico no cliente Rheys Comércio Instalações Industriais Ltda: 'bool' object is not subscriptable
+[Worker 4] 2026-01-12 10:18:20,290 - INFO - [9/59] Processando: Richard Leandro Leite
+[Worker 4] 2026-01-12 10:18:20,609 - CRITICAL - ERRO DE CONEXÃO/DRIVER DETECTADO: Message: invalid session id
+Stacktrace:
+Symbols not available. Dumping unresolved backtrace:
+	0x7ff7472c87d5
+	0x7ff747238e44
+	0x7ff74704c746
+	0x7ff74708837c
+	0x7ff7470b2252
+	0x7ff74706288d
+	0x7ff7470aee8c
+	0x7ff7470ae77e
+	0x7ff747026405
+	0x7ff7471722e4
+	0x7ff74718109c
+	0x7ff74717ac7f
+	0x7ff747359b37
+	0x7ff7472446a6
+	0x7ff747024ed8
+	0x7ff74745b4c8
+	0x7ff8a009e8d7
+	0x7ff8a1e4c53c
+
+[Worker 4] 2026-01-12 10:18:20,611 - INFO - Tentando reiniciar o navegador e recuperar o worker...
+[Worker 4] 2026-01-12 10:18:28,765 - INFO - Tentativa de recuperação 1/3...
+[Worker 4] 2026-01-12 10:18:28,765 - INFO - Iniciando Microsoft Edge (Instância 4)...
+[Worker 4] 2026-01-12 10:18:28,765 - INFO - Abrindo janela maximizada (instância 4)
+[Worker 4] 2026-01-12 10:18:28,766 - INFO - Usando driver local: C:\msedgedriver\msedgedriver.exe
+[Worker 4] 2026-01-12 10:18:41,248 - INFO - Iniciando verificação de login...
+[Worker 4] 2026-01-12 10:18:42,929 - INFO - E-mail inserido.
+[Worker 4] 2026-01-12 10:18:43,962 - INFO - Senha inserida.
+[Worker 4] 2026-01-12 10:18:45,906 - INFO - Selecionado método OTP App.
+[Worker 4] 2026-01-12 10:19:28,659 - CRITICAL - Navegador fechado pelo usuário.
+[Worker 4] 2026-01-12 10:19:28,665 - INFO - Tentativa de recuperação 2/3...
+[Worker 4] 2026-01-12 10:19:28,665 - INFO - Iniciando Microsoft Edge (Instância 4)...
+[Worker 4] 2026-01-12 10:19:28,665 - INFO - Abrindo janela maximizada (instância 4)
+[Worker 4] 2026-01-12 10:19:28,665 - INFO - Usando driver local: C:\msedgedriver\msedgedriver.exe
+[Worker 4] 2026-01-12 10:19:45,046 - INFO - Iniciando verificação de login...
+[Worker 4] 2026-01-12 10:19:45,909 - INFO - E-mail inserido.
+[Worker 4] 2026-01-12 10:19:47,099 - INFO - Senha inserida.
+[Worker 4] 2026-01-12 10:19:48,366 - CRITICAL - Navegador fechado pelo usuário.
+[Worker 4] 2026-01-12 10:19:48,367 - INFO - Tentativa de recuperação 3/3...
+[Worker 4] 2026-01-12 10:19:48,367 - INFO - Iniciando Microsoft Edge (Instância 4)...
+[Worker 4] 2026-01-12 10:19:48,367 - INFO - Abrindo janela maximizada (instância 4)
+[Worker 4] 2026-01-12 10:19:48,367 - INFO - Usando driver local: C:\msedgedriver\msedgedriver.exe
+[Worker 4] 2026-01-12 10:19:58,224 - ERROR - Falha na tentativa de recuperação 3: Message: invalid session id: session deleted as the browser has closed the connection
+from disconnected: not connected to DevTools
+  (Session info: MicrosoftEdge=143.0.3650.139)
+Stacktrace:
+Symbols not available. Dumping unresolved backtrace:
+	0x7ff7472c87d5
+	0x7ff747238e44
+	0x7ff7476231f2
+	0x7ff74703e6b2
+	0x7ff747059093
+	0x7ff7470b73ec
+	0x7ff7470cc212
+	0x7ff74708982a
+	0x7ff747088b33
+	0x7ff747089653
+	0x7ff7471722e4
+	0x7ff74718109c
+	0x7ff74717ac7f
+	0x7ff747359b37
+	0x7ff7472446a6
+	0x7ff74723eab4
+	0x7ff74723ebf9
+	0x7ff747232cbd
+	0x7ff8a009e8d7
+	0x7ff8a1e4c53c
+
+[Worker 4] 2026-01-12 10:20:09,419 - CRITICAL - FALHA TOTAL NA RECUPERAÇÃO DO WORKER. Encerrando este worker.
+[Worker 4] 2026-01-12 10:20:13,504 - INFO - Resultados enviados ao processo principal
+[Worker 4] 2026-01-12 10:32:18,881 - INFO - Iniciando com 49 clientes
+[Worker 4] 2026-01-12 10:32:18,882 - INFO - Iniciando Microsoft Edge (Instância 4)...
+[Worker 4] 2026-01-12 10:32:18,882 - INFO - Abrindo janela maximizada (instância 4)
+[Worker 4] 2026-01-12 10:32:18,883 - INFO - Usando driver local: C:\msedgedriver\msedgedriver.exe
+[Worker 4] 2026-01-12 10:32:23,738 - INFO - Aguardando workers anteriores fazerem login...
+[Worker 4] 2026-01-12 10:37:23,757 - WARNING - Timeout aguardando login anterior, tentando mesmo assim...
+[Worker 4] 2026-01-12 10:37:23,757 - INFO - Iniciando login...
+[Worker 4] 2026-01-12 10:37:23,759 - ERROR - Erro fatal no worker: Message: invalid session id: session deleted as the browser has closed the connection
+from disconnected: not connected to DevTools
+  (Session info: MicrosoftEdge=143.0.3650.139)
+Stacktrace:
+Symbols not available. Dumping unresolved backtrace:
+	0x7ff7496287d5
+	0x7ff749598e44
+	0x7ff7499831f2
+	0x7ff74939e6b2
+	0x7ff7493b9093
+	0x7ff7494173ec
+	0x7ff74942c212
+	0x7ff7493e982a
+	0x7ff7493e8b33
+	0x7ff7493e9653
+	0x7ff7494d22e4
+	0x7ff7494e109c
+	0x7ff7494dac7f
+	0x7ff7496b9b37
+	0x7ff7495a46a6
+	0x7ff74959eab4
+	0x7ff74959ebf9
+	0x7ff749592cbd
+	0x7ff8a009e8d7
+	0x7ff8a1e4c53c
+
+[Worker 4] 2026-01-12 10:37:23,759 - INFO - Resultados enviados ao processo principal

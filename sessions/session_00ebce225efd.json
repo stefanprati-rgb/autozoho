@@ -1,0 +1,801 @@
+{
+  "session_id": "00ebce225efd",
+  "arquivo": "fsdfasdfsad.xlsx",
+  "arquivo_path": "C:\\Users\\Stefan_Pratti\\OneDrive - GRUPO GERA\\Área de Trabalho\\fsdfasdfsad.xlsx",
+  "hash": "e177e171d3afe5273b46acf762f347bb",
+  "template": "Reunião Contrato",
+  "departamento": "Era Verde Energia",
+  "iniciado_em": "2026-01-13T11:07:35.638590",
+  "atualizado_em": "2026-01-13T15:14:09.164255",
+  "total_clientes": 237,
+  "processados": {
+    "Adan Correa De Assis": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T11:10:17.169317"
+    },
+    "Adao Soares De Macedo": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T11:10:47.834932"
+    },
+    "Ademilson Nunes De Oliveira": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T11:11:18.961667"
+    },
+    "Alecio Marques Mendonça": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T11:11:49.938426"
+    },
+    "Alessandra Elias Palma": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T11:12:21.291297"
+    },
+    "Alessandro Silva Romero": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T11:12:55.367386"
+    },
+    "Alex Mendonça Da Silva Pinto": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T11:14:22.288146"
+    },
+    "Alexandra Regina Roncato": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T11:14:54.124438"
+    },
+    "Amanda Queiroz Dos Reis": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T11:15:28.629698"
+    },
+    "Ana Paula Francisco Dos Santos": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T11:17:30.648406"
+    },
+    "Ana Paula Rodrigues Leal Dos Santos": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T11:19:34.970496"
+    },
+    "Andrea Luciana Ferraz Correa": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T11:20:06.805020"
+    },
+    "Andreia Karina Lopes Sampaio": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T11:20:37.553854"
+    },
+    "Angelo Capellari": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T11:21:08.017404"
+    },
+    "Anor Costa Alves": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T11:21:38.435820"
+    },
+    "Antonia Gomes Correa": {
+      "status": "NAO_ENCONTRADO",
+      "timestamp": "2026-01-13T11:22:05.926357"
+    },
+    "Antônio Condi Filho": {
+      "status": "NAO_ENCONTRADO",
+      "timestamp": "2026-01-13T11:22:18.653608"
+    },
+    "Antonio Luis Estanislau": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T11:23:30.314458"
+    },
+    "Antonio Luis Paro": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T11:24:45.056938"
+    },
+    "Arlindo Jóse Francisco": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T11:25:19.319231"
+    },
+    "Associacao Beneficente Mao Amiga De Sao Pedro": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T11:26:50.718050"
+    },
+    "AtendeClin Clínica Médica Ltda": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T11:28:07.940781"
+    },
+    "Be Blue Idiomas Ltda": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T11:28:38.855516"
+    },
+    "Benedito João De Campos": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T11:29:15.382182"
+    },
+    "Benigno Rodrigues Moronta Filho": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T11:29:48.783328"
+    },
+    "Bonfim Paulista Restaurante Ltda": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T11:30:20.091669"
+    },
+    "Bredariol Ftw Ltda": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T11:30:54.041440"
+    },
+    "Bruno Cesar": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T11:31:53.165139"
+    },
+    "Caio Augusto Rossigalli Piccolo": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T11:32:24.090190"
+    },
+    "Carlos Roberto Marturano": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T11:36:26.252381"
+    },
+    "Caroline Martins De Oliveira": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T11:37:21.381334"
+    },
+    "Centro Automotivo Das Magnólias Ltda": {
+      "status": "NAO_ENCONTRADO",
+      "timestamp": "2026-01-13T11:37:33.776944"
+    },
+    "Cesar Wadhy Rebehy": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T11:37:59.980528"
+    },
+    "Ciromar Favaro Sebastião Gestão Patrimonial": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T11:38:31.031980"
+    },
+    "Claudia Aparecida Alves": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T11:39:46.523431"
+    },
+    "Cláudio Theodoro De Morais Junior": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T11:40:18.197646"
+    },
+    "Cleide Rodrigues Alves Pereira": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T11:40:48.791360"
+    },
+    "Conceição De Fátima Baptista Manias": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T11:41:24.940806"
+    },
+    "Condominio Edificio Onix": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T11:42:44.323571"
+    },
+    "Condominio Vitta Jardins": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T11:43:15.837853"
+    },
+    "Cristiano Martins De Mendonça": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T11:44:46.753362"
+    },
+    "Ct Marques Drogaria E Perfumaria Me": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T11:45:18.200492"
+    },
+    "Dalva Rodrigues": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T11:47:51.041171"
+    },
+    "Daniel Jesus Barroso": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T11:48:21.313278"
+    },
+    "Davi Floes Macedo": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T11:48:51.356972"
+    },
+    "David Erik Salles": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T11:49:21.560348"
+    },
+    "Diego Ferreira De Carvalho": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T11:49:52.446131"
+    },
+    "Diego Renan Caldeira": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T11:50:46.428995"
+    },
+    "Doraci Ferreira Coelho Dos Santos": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T11:51:17.082776"
+    },
+    "Edificio Residencial Vitoria Hill": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T11:51:48.002731"
+    },
+    "Edmilson Lima Ribeiro": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T11:52:19.148754"
+    },
+    "Edson Santos Araujo": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T11:53:11.663376"
+    },
+    "Edvaldo Raspante": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T11:53:44.036823"
+    },
+    "Elisabeth Aparecida Sousa": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T11:54:15.685544"
+    },
+    "Eliseu De Oliveira Souza": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T11:54:47.466124"
+    },
+    "Elite Academia Jh Ltda": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T11:55:20.356742"
+    },
+    "Elizângela Aparecida Dos Santos Lemos": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T11:59:29.230753"
+    },
+    "Emanuelle De Oliveira Carlos": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T12:00:01.209808"
+    },
+    "Eunice Aparecida Verri Barboza": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T12:00:31.944099"
+    },
+    "Eurotides Coletti": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T12:01:04.888908"
+    },
+    "Evandro Cesar Olimpio": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T12:02:35.488063"
+    },
+    "Excelentissimo Cafe": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T12:03:06.214057"
+    },
+    "Fabiano Olini Teixeira": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T12:03:36.899148"
+    },
+    "Fabio Luis Signoretti": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T12:04:28.938533"
+    },
+    "Fernando Ferro": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T12:04:59.832046"
+    },
+    "Flávia Augusta Neves Silva": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T12:05:30.525204"
+    },
+    "Flavia Renata Matos Mendonça": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T12:06:01.285353"
+    },
+    "Flavio De Souza Rocha Junior": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T12:07:15.969927"
+    },
+    "Flavio Lopes Batista": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T12:07:46.655816"
+    },
+    "Francisca De Fatima Mariano": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T12:08:17.141805"
+    },
+    "Gabriel Silva De Melo": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T12:10:39.383985"
+    },
+    "Geni De Souza De Andrade": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T13:29:46.611521"
+    },
+    "Gilberto Luiz De Barros": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T13:30:18.093846"
+    },
+    "Gleiciane Pimentel Fernandes Costa": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T13:30:48.836367"
+    },
+    "Graciele Martins Prates": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T13:32:48.891003"
+    },
+    "Grazielle Cristine Gois Alves": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T13:33:20.846927"
+    },
+    "Guilherme Viana Correa": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T13:33:51.852748"
+    },
+    "Gustavo Augusto Degasperi": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T13:34:22.976936"
+    },
+    "Gustavo Henrique Vilares Correia": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T13:35:19.007002"
+    },
+    "Gustavo Yorhan De Macedo Pereira": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T13:35:50.145814"
+    },
+    "Hamilton Luiz Lima Junior": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T13:37:20.848940"
+    },
+    "Helio Pereira Rodrigues": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T13:37:51.340489"
+    },
+    "Henrique Barbosa Da Silva Comitre": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T13:38:21.999627"
+    },
+    "Henrique Galhardo Gomes": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T13:38:53.057576"
+    },
+    "Huang Chunying": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T13:39:24.147370"
+    },
+    "Janaína Aparecida De Oliveira": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T13:43:44.642868"
+    },
+    "Janete Aparecida De Jesus": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T13:44:16.058046"
+    },
+    "Jean Marcos De Oliveira": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T13:45:09.674754"
+    },
+    "Jefferson Roberto Da Silva": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T13:45:40.395993"
+    },
+    "Jf Pecas Automotivas Eireli": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T13:46:55.873635"
+    },
+    "Jf Pecas Automotivas Ltda": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T13:48:10.552143"
+    },
+    "Jhon Wericles Ramos Antonio": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T13:48:41.203710"
+    },
+    "Jicely Lima De Oliveira": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T13:49:11.497675"
+    },
+    "João Ávila De Queiroz Neto": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T13:49:41.567700"
+    },
+    "João Bosco Vasconcelos Macedo": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T13:50:11.601081"
+    },
+    "Joao Francisco Perez": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T13:51:26.885568"
+    },
+    "Joao Henrique  Lopes": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T13:51:57.371190"
+    },
+    "Joao Pereira De Carvalho": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T13:56:24.197865"
+    },
+    "Joao Vitor Delfino": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T13:58:26.891263"
+    },
+    "Jonatas Felipe Barreiro Fidelis": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T13:59:01.652178"
+    },
+    "José Carlos Dos Santos": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T14:00:41.816136"
+    },
+    "Jose Carlos Izac": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T14:01:15.206515"
+    },
+    "José Donisete Da Silva": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T14:02:08.761631"
+    },
+    "Neusa Silva Bombo": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T14:03:26.505096"
+    },
+    "Jose Neuzo Francisco": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T14:03:57.553368"
+    },
+    "Jose Roberto Dos Santos": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T14:08:08.715745"
+    },
+    "Júlia Cristina Carvalho Bonilha Da Cruz": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T14:08:39.065375"
+    },
+    "Jurandir De Araujo": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T14:09:09.756656"
+    },
+    "Karine Roberta Belonci": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T14:09:39.882550"
+    },
+    "Kelli Regina De Andrade Carrara": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T14:10:37.640747"
+    },
+    "Kevin De Freitas": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T14:11:08.634275"
+    },
+    "Kevin Patrick Alves De Santana": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T14:11:39.991610"
+    },
+    "Rosimara Aparecida Baldino Rodrigues": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T14:12:10.479329"
+    },
+    "Lavinia Bortoleti da Silva": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T14:13:00.752179"
+    },
+    "Leonardo Afonso Golino": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T14:13:39.063305"
+    },
+    "Leonardo Da Silva Santos": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T14:14:34.770370"
+    },
+    "Leonardo De Souza Ginjo": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T14:15:09.045668"
+    },
+    "Leonardo Pereira Rocha": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T14:17:03.970117"
+    },
+    "Lucas Candido Dos Santos": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T14:17:37.667976"
+    },
+    "Mislaine Aparecida Costa": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T14:41:55.807613"
+    },
+    "Paulo Cesar Gomes Da Silva": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T14:42:16.527416"
+    },
+    "Murilo De Souza Ribeiro": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T14:42:30.340274"
+    },
+    "Renato Cunis": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T14:42:50.017186"
+    },
+    "Murilo Rodella": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T14:43:04.724430"
+    },
+    "Rozeli Izac": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T14:43:22.016587"
+    },
+    "Nado Livre Natacao Sc Ltda": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T14:43:36.384575"
+    },
+    "Samuel Henrique Pavan": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T14:43:54.089530"
+    },
+    "Natalia Cristine De Matos": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T14:44:08.349539"
+    },
+    "Natanael Bernardo Dos Santos": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T14:44:41.317213"
+    },
+    "Nelaine Cristina De Andrade": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T14:45:13.589052"
+    },
+    "Sandra Maria Da Silva": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T14:45:39.264963"
+    },
+    "Neli Uliani Girardi": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T14:47:05.664347"
+    },
+    "Nelson Moraes": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T14:47:38.004174"
+    },
+    "Sandra Silva Chaves": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T14:47:45.231854"
+    },
+    "Carolina Barrada Curaça": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T14:48:09.944288"
+    },
+    "Rita Brigadeiros Ltda Me": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T14:48:17.473902"
+    },
+    "Cleusa Procopio Soares Bachini": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T14:48:40.765435"
+    },
+    "Serena Idade Casa De Repouso Ltda Me": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T14:49:13.539047"
+    },
+    "Orides Previdelli Junior": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T14:49:13.700996"
+    },
+    "Shirlei Cristina Dos Santos Bordignon": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T14:49:51.662584"
+    },
+    "Osvaldo José Da Silva": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T14:49:53.086107"
+    },
+    "Rosalice De Souza Neves": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T14:50:23.252039"
+    },
+    "Otávio Marchesi  D 'Orsi Ravagnani": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T14:50:55.173505"
+    },
+    "Silvio Antonio Bueno": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T14:50:57.045066"
+    },
+    "PANODAS ODONTOLOGIA LTDA": {
+      "status": "NAO_ENCONTRADO",
+      "timestamp": "2026-01-13T14:51:16.828089"
+    },
+    "Sindicato Dos Servidores Públicos Municipais De Pontal, Sertaozinho Sales Oliveira E Nuporanga": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T14:51:29.270063"
+    },
+    "Daiane Pires Dos Santos": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T14:51:42.405441"
+    },
+    "Sindicato Dos Servidores Públicos Municipais De Pontal, Sertaozinho, Sales Oliveira E Nuporanga": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T14:52:01.275714"
+    },
+    "Patrícia Delgado Puche": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T14:52:14.331505"
+    },
+    "Isacosta Drogaria Ltda": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T14:52:45.621106"
+    },
+    "Rosana Cristinne Salgueiro Russo": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T14:52:56.349218"
+    },
+    "Paulo Felicio Martins De Camargo Neto": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T14:53:17.521430"
+    },
+    "Sr Stallage Hotel Ltda": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T14:53:28.095931"
+    },
+    "Sueli Izac": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T14:53:58.859553"
+    },
+    "Suzana Fogaça Da Silva": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T14:54:34.647019"
+    },
+    "Paulo Renato Gonçalves Dos Santos": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T14:54:37.913337"
+    },
+    "Tainá Volke Dos Santos": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T14:55:05.072681"
+    },
+    "Rossana De Souza Pizzinatto Araujo": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T14:55:35.908219"
+    },
+    "Tereza Rodrigues Sampaio": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T14:56:07.307937"
+    },
+    "Karen Carol Andressa Mesquita": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T14:56:08.712389"
+    },
+    "Pedro Luis Morgante": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T14:57:01.934905"
+    },
+    "Piazza Fontanella Incorporacoes Spe Ltda": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T14:57:34.620324"
+    },
+    "Lauro Barbosa Da Silva Moreira": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T14:58:08.179643"
+    },
+    "Sílvia Regina Scalize": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T15:00:33.651367"
+    },
+    "Maria Da Conceição De Oliveira Silva": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T15:01:04.679731"
+    },
+    "Uberlândia Cristina Smith Lima": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T15:01:19.707999"
+    },
+    "Rest E Pizzaria Cantinho Trop Aguas Sao Pedro Ltda": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T15:01:37.175540"
+    },
+    "Valdeci Aparecido De Santis": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T15:01:50.939981"
+    },
+    "Rheys Comércio Instalações Industriais Ltda": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T15:02:10.996614"
+    },
+    "Valeria Adriana Cardoso Mei": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T15:02:22.962447"
+    },
+    "Richard Leandro Leite": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T15:02:44.853371"
+    },
+    "Vanessa Lilian Faria": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T15:02:56.673082"
+    },
+    "Vantoir Silva Oliveira": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T15:03:27.540637"
+    },
+    "Maria Neide Ferreira De Andrade": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T15:03:38.995588"
+    },
+    "Roberto Camilo": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T15:04:10.638130"
+    },
+    "Roberto Correa Malvas": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T15:04:41.745894"
+    },
+    "Rodrigo  Baston Ferreira": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T15:05:14.592290"
+    },
+    "Vera Lucia Bispo Dos Santos": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T15:05:36.494573"
+    },
+    "Rogelio Jose Nunez": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T15:06:09.181058"
+    },
+    "Rogerio Aguiar Marconi": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T15:06:42.133162"
+    },
+    "Victor Dos Santos Rocha": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T15:06:54.897569"
+    },
+    "Rogerio Alves": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T15:07:13.739419"
+    },
+    "Rogério Placidonio Da Silva": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T15:07:46.580554"
+    },
+    "Victor Hugo Oliveira Lima": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T15:08:12.960958"
+    },
+    "Ronaldo Aparecido De Castro": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T15:08:17.700213"
+    },
+    "Vilma Milani Gomes De Oliveira": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T15:08:44.096321"
+    },
+    "Nirut Industria e Comércio de Calçados": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T15:08:48.462397"
+    },
+    "Wagner Requel Soares": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T15:09:14.869236"
+    },
+    "Patrícia Carvalho De Sousa": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T15:09:35.363546"
+    },
+    "Waldemir Venerando Dos Reis": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T15:09:45.951801"
+    },
+    "Walter Stefanoni Fenerich": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T15:10:17.888031"
+    },
+    "Wanderley Antonio Sabino": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T15:11:10.802562"
+    },
+    "Wanderley Antonio Sabino Junior": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T15:12:04.363099"
+    },
+    "Wemerson Manoel Cda Silva": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T15:12:35.951907"
+    },
+    "Wendy Gustavo Moraes": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T15:13:08.022854"
+    },
+    "Wilson De Poli": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T15:13:38.796835"
+    },
+    "Zoraide Rosa Ducatti Da Silva": {
+      "status": "ERRO_GENERICO",
+      "timestamp": "2026-01-13T15:14:09.164243"
+    }
+  }
+}

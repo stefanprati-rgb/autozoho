@@ -1,13 +1,8 @@
 __pycache__/
 *.pyc
-*.log
+# *.log
 debug_erro/
-*.csv
+# *.csv
 .venv/
 .vscode/
 .gemini/
-backups/
-*.bak
-logging/*.log
-reports/*.csv
-sessions/

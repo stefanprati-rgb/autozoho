@@ -323,6 +323,7 @@ def imprimir_relatorio(inicio, sucesso, nao_enc, erros, duplicados, arquivo):
     print(f"❌ Erros: {len(erros)}")
     
     # Salva CSV simples
+    os.makedirs("reports", exist_ok=True)
     nome_csv = os.path.join("reports", f"relatorio_{datetime.now().strftime('%Y%m%d_%H%M')}.csv")
     with open(nome_csv, 'w', newline='', encoding='utf-8-sig') as f:
         writer = csv.writer(f, delimiter=';')

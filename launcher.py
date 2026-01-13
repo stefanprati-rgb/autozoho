@@ -86,11 +86,14 @@ def main():
         # 2. Select Mode
         mode = select_mode()
         
-        cmd_args = [sys.executable, "main_parallel.py", f"--arquivo={file_path}"]
-        
         if mode == 'advanced':
+            # Modo avançado: usa main_parallel.py com workers
+            cmd_args = [sys.executable, "main_parallel.py", f"--arquivo={file_path}"]
             extra_args = get_advanced_options()
             cmd_args.extend(extra_args)
+        else:
+            # Modo padrão: usa main.py (single worker)
+            cmd_args = [sys.executable, "main.py", f"--arquivo={file_path}"]
             
         # 3. Confirmation
         print("\n" + "-" * 60)
